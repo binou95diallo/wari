@@ -9,13 +9,13 @@ class UserControllerTest extends WebTestCase
     public function testRegister()
     {
         $client = static::createClient([],[
-            'PHP_AUTH_USER' => 'bbb',
+            'PHP_AUTH_USER' => 'binousha',
             'PHP_AUTH_PW'   => '123',
         ]);
         $crawler = $client->request('POST', '/api/register',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "username":"malika",
+            "username":"mike",
             "password":"123",
             "nomComplet":"malick",
             "adresse":"mbour",
@@ -23,7 +23,7 @@ class UserControllerTest extends WebTestCase
             "email":"malick@malick.fr",
             "profil":"admin",
             "status":"debloquer",
-            "partenaire":31
+            "partenaire":33
 
         }'
     
@@ -35,13 +35,13 @@ class UserControllerTest extends WebTestCase
     public function testAjoutKo()
     {
         $client = static::createClient([],[
-            'PHP_AUTH_USER' => 'bbb',
+            'PHP_AUTH_USER' => 'binousha',
             'PHP_AUTH_PW'   => '123',
         ]);
         $crawler = $client->request('POST', '/api/register',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "username":"mayrame",
+            "username":"maya",
             "password":"123",
             "nomComplet":"binetou",
             "adresse":"mbour",
@@ -49,10 +49,24 @@ class UserControllerTest extends WebTestCase
             "email":"malick@malick.fr",
             "profil":"admin",
             "status":"debloquer",
-            "partenaire":"30"
+            "partenaire":"34"
         }');
         $rep=$client->getResponse();
         var_dump($rep);
         $this->assertSame(201,$client->getResponse()->getStatusCode());
+    }
+
+    public function testListAction()
+    {
+        $client = static::createClient([],[
+            'PHP_AUTH_USER' => 'binousha',
+            'PHP_AUTH_PW'   => '123',
+        ]);
+        $crawler = $client->request('GET', '/api/users',[],[],
+        ['CONTENT_TYPE'=>"application/json"]
+    
+    );
+    $reponse=$client->getResponse();
+        $this->assertSame(200,$reponse->getStatusCode());
     }
 }

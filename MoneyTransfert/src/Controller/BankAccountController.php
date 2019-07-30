@@ -48,13 +48,17 @@ class BankAccountController extends AbstractController
         $values=json_decode($request->getContent());
         $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
         $bankAccount->setNumeroCompte($values->numeroCompte);
-        $bankAccount->setSolde($values->solde);
+        $solde=$values->solde;
+        if($solde<=0){
+            return new Response('le solde ne peut-être négatif ou null', Response::HTTP_CREATED);
+        }
+        $bankAccount->setSolde($solde);
         //$bankAccount->setPartenaire($bankAccount->getId());
         $bankAccount->setPartenaire($partenaire);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($bankAccount);
         $entityManager->flush();
-    return new Response('users adding', Response::HTTP_CREATED);
+    return new Response('solde ajouté', Response::HTTP_CREATED);
 }
 
     /**

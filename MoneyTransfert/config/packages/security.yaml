@@ -27,7 +27,7 @@ security:
 
         api:
             http_basic: ~
-            pattern:   ^/api/a
+            pattern:   ^/api
             stateless: true
             guard:
                 authenticators:
@@ -41,4 +41,4 @@ security:
         - { path: ^/adminP, roles: ROLE_ADMINPARTENAIRE }
         - { path: ^/userLocked, roles: ROLE_USERLOCKED }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/a,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }

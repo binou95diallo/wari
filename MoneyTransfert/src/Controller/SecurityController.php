@@ -112,6 +112,7 @@ class SecurityController extends AbstractController
                     return $object->getId();
                 }
             ]);
+            
         return new Response($jsonObject, 200, [
             'Content-Type' => 'application/json'
         ]);
@@ -191,25 +192,39 @@ class SecurityController extends AbstractController
      */
     public function userBloquer(Request $request, UserRepository $userRepo,EntityManagerInterface $entityManager): Response
     {
+        $tableUsers=$this->getDoctrine()->getRepository('App:User')->countByUsername();
         $values = json_decode($request->getContent());
         $user=$userRepo->findOneByUsername($values->username);
         echo $user->getStatus();
-        if($user->getStatus()=="bloqué"){
-            
-            if($user->getProfil()=="admin"){
-                $user->setRoles(["ROLE_ADMIN"]);
-            }
-            elseif ($user->getProfil()=="user") {
-                $user->setRoles(["ROLE_USER"]);
-            }
-            elseif ($user->getProfil()=="adminPartenaire") {
-                $user->setRoles(["ROLE_ADMINPARTENAIRE"]);
-            }
-            $user->setStatus("debloqué");
+        if($user->getProfil()=="admin" && $tableUsers<=1){
+
+                  $data = [
+                    'status' => 200,
+                    'message' => 'Il n\'y à qu\'un super-administrateur dans le système une fois bloquer 
+                    la plateforme risque de ne plus fonctionner'
+                ];
+                return new JsonResponse($data);
         }
-        else {
-            $user->setStatus("bloqué");
-            $user->setRoles(["ROLE_USERLOCK"]);
+        else{
+            if($user->getStatus()=="bloqué"){
+            
+                if($user->getProfil()=="admin"){
+                    $user->setRoles(["ROLE_ADMIN"]);
+                }
+                elseif ($user->getProfil()=="user") {
+                    $user->setRoles(["ROLE_USER"]);
+                }
+                elseif ($user->getProfil()=="adminPartenaire") {
+                    $user->setRoles(["ROLE_ADMINPARTENAIRE"]);
+                }
+                $user->setStatus("debloqué");
+
+                
+            }
+            else {
+                $user->setStatus("bloqué");
+                $user->setRoles(["ROLE_USERLOCK"]);
+            }
         }
         
         $entityManager->flush();

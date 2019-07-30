@@ -9,7 +9,7 @@ class UserControllerTest extends WebTestCase
     public function testRegister()
     {
         $client = static::createClient([],[
-            'PHP_AUTH_USER' => 'binousha',
+            'PHP_AUTH_USER' => 'bbb',
             'PHP_AUTH_PW'   => '123',
         ]);
         $crawler = $client->request('POST', '/api/register',[],[],
@@ -35,7 +35,7 @@ class UserControllerTest extends WebTestCase
     public function testAjoutKo()
     {
         $client = static::createClient([],[
-            'PHP_AUTH_USER' => 'binousha',
+            'PHP_AUTH_USER' => 'bbb',
             'PHP_AUTH_PW'   => '123',
         ]);
         $crawler = $client->request('POST', '/api/register',[],[],

@@ -27,7 +27,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 class PartenaireController extends AbstractController
 {
     /**
-     * @Route("/", name="partenaire_index", methods={"GET"})
+     * @Route("/", name="partenaireIndex", methods={"GET"})
      */
     public function index(PartenaireRepository $partenaireRepository): Response
     {

@@ -32,6 +32,7 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
         ),
         'T' => 
         array (
+            'Twig\\Extensions\\' => 16,
             'Twig\\' => 5,
         ),
         'S' => 
@@ -49,6 +50,7 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
             'Symfony\\Component\\WebLink\\' => 26,
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\Validator\\' => 28,
+            'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Templating\\' => 29,
             'Symfony\\Component\\Stopwatch\\' => 28,
             'Symfony\\Component\\Serializer\\' => 29,
@@ -99,6 +101,7 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
             'Psr\\Cache\\' => 10,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
+            'Pagerfanta\\' => 11,
             'PackageVersions\\' => 16,
         ),
         'N' => 
@@ -116,6 +119,10 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
         array (
             'Fig\\Link\\' => 9,
             'FOS\\RestBundle\\' => 15,
+        ),
+        'E' => 
+        array (
+            'EasyCorp\\Bundle\\EasyAdminBundle\\' => 32,
         ),
         'D' => 
         array (
@@ -160,6 +167,10 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Twig\\Extensions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/extensions/src',
         ),
         'Twig\\' => 
         array (
@@ -216,6 +227,10 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
         'Symfony\\Component\\Validator\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/validator',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
         ),
         'Symfony\\Component\\Templating\\' => 
         array (
@@ -405,6 +420,10 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Pagerfanta\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src/Pagerfanta',
+        ),
         'PackageVersions\\' => 
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
@@ -436,6 +455,10 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
         'FOS\\RestBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
+        ),
+        'EasyCorp\\Bundle\\EasyAdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easycorp/easyadmin-bundle/src',
         ),
         'Doctrine\\ORM\\' => 
         array (
@@ -513,6 +536,10 @@ class ComposerStaticInitfdc855b93f9b31c8ebdcae1d2a948bc6
     public static $prefixesPsr0 = array (
         'T' => 
         array (
+            'Twig_Extensions_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/extensions/lib',
+            ),
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',

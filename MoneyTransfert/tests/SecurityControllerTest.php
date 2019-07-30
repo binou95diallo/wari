@@ -15,7 +15,7 @@ class UserControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/register',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "username":"mali",
+            "username":"malika",
             "password":"123",
             "nomComplet":"malick",
             "adresse":"mbour",
@@ -23,7 +23,7 @@ class UserControllerTest extends WebTestCase
             "email":"malick@malick.fr",
             "profil":"admin",
             "status":"debloquer",
-            "partenaire":28
+            "partenaire":31
 
         }'
     
@@ -41,7 +41,7 @@ class UserControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/register',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "username":"mayra",
+            "username":"mayrame",
             "password":"123",
             "nomComplet":"binetou",
             "adresse":"mbour",
@@ -49,7 +49,7 @@ class UserControllerTest extends WebTestCase
             "email":"malick@malick.fr",
             "profil":"admin",
             "status":"debloquer",
-            "partenaire":"29"
+            "partenaire":"30"
         }');
         $rep=$client->getResponse();
         var_dump($rep);

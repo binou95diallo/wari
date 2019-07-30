@@ -17,7 +17,7 @@ class BankAccountControllerTest extends WebTestCase
         '{
             "numeroCompte":"ma01475",
             "solde":5000000,
-            "partenaire":29
+            "partenaire":31
 
         }'
     
@@ -37,7 +37,7 @@ class BankAccountControllerTest extends WebTestCase
         '{
             "numeroCompte":"ma0147555",
             "solde":"4000000",
-            "partenaire":30
+            "partenaire":32
         }');
         $rep=$client->getResponse();
         var_dump($rep);

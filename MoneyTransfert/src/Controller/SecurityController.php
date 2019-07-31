@@ -28,7 +28,6 @@ class SecurityController extends AbstractController
 {
      /**
      * @Route("/register", name="register", methods={"POST"})
-     * @IsGranted("ROLE_ADMIN")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator)
     {

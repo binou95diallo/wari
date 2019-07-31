@@ -15,7 +15,7 @@ class UserControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/register',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "username":"mike",
+            "username":"mikael",
             "password":"123",
             "nomComplet":"malick",
             "adresse":"mbour",
@@ -41,7 +41,7 @@ class UserControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/register',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "username":"maya",
+            "username":"mayama",
             "password":"123",
             "nomComplet":"binetou",
             "adresse":"mbour",

@@ -17,7 +17,7 @@ class BankAccountControllerTest extends WebTestCase
         '{
             "numeroCompte":"ma01475",
             "solde":5000000,
-            "partenaire":35
+            "partenaire":41
 
         }'
     
@@ -37,7 +37,7 @@ class BankAccountControllerTest extends WebTestCase
         '{
             "numeroCompte":"ma0147555",
             "solde":"4000000",
-            "partenaire":34
+            "partenaire":40
         }');
         $rep=$client->getResponse();
         var_dump($rep);
@@ -49,7 +49,7 @@ class BankAccountControllerTest extends WebTestCase
             'PHP_AUTH_USER' => 'binousha',
             'PHP_AUTH_PW'   => '123',
         ]);
-        $crawler = $client->request('GET', '/api/bankAccount/33',[],[],
+        $crawler = $client->request('GET', '/api/bankAccount/45',[],[],
         ['CONTENT_TYPE'=>"application/json"]
     
     );

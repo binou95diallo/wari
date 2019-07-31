@@ -219,19 +219,25 @@ class SecurityController extends AbstractController
                 }
                 $user->setStatus("debloqué");
 
+                $entityManager->flush();
+                $data = [
+                    'status' => 200,
+                    'message' => 'utilisateur debloqué'
+                ];
+                return new JsonResponse($data);
                 
             }
             else {
                 $user->setStatus("bloqué");
                 $user->setRoles(["ROLE_USERLOCK"]);
+
+                $entityManager->flush();
+                $data = [
+                    'status' => 200,
+                    'message' => 'utilisateur bloqué'
+                ];
+                return new JsonResponse($data);
             }
         }
-        
-        $entityManager->flush();
-        $data = [
-            'status' => 200,
-            'message' => 'utilisateur bloqué'
-        ];
-        return new JsonResponse($data);
     }
 }

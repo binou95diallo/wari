@@ -41,7 +41,7 @@ class BankAccountController extends AbstractController
      * @Route("/bankAccount/ajout", name="bankAccountAjout", methods={"POST","GET"})
      * isGranted("ROLES_ADMIN")
      */
-    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager): Response
+    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {
         
         $bankAccount = new BankAccount();
@@ -53,6 +53,13 @@ class BankAccountController extends AbstractController
             return new Response('le solde ne peut-être négatif ou null', Response::HTTP_CREATED);
         }
         $bankAccount->setSolde($solde);
+        $errors = $validator->validate($bankAccount);
+            if(count($errors)) {
+                $errors = $serializer->serialize($errors, 'json');
+                return new Response($errors, 500, [
+                    'Content-Type' => 'application/json'
+                ]);
+            }
         //$bankAccount->setPartenaire($bankAccount->getId());
         $bankAccount->setPartenaire($partenaire);
         $entityManager = $this->getDoctrine()->getManager();

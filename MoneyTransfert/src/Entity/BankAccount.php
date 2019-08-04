@@ -29,6 +29,7 @@ class BankAccount
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
+     * @Assert\Range(min="75000",minMessage="La valeur minimum autorisée est {{ limit }}")
      */
     private $solde;
 

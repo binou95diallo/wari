@@ -211,19 +211,19 @@ class SecurityController extends AbstractController
         $values = json_decode($request->getContent());
         $user=$userRepo->findOneByUsername($values->username);
         echo $user->getStatus();
-        if($user->getProfil()==PROFIL && $tableUsers<=1){
+        if($user->getProfil()=="admin" && $tableUsers<=1){
 
                   $data = [
-                    JSONSTATUS => 200,
-                    MESSAGE=> 'Il n\'y à qu\'un super-administrateur dans le système une fois bloquer 
+                    'status' => 200,
+                    'message' => 'Il n\'y à qu\'un super-administrateur dans le système une fois bloquer 
                     la plateforme risque de ne plus fonctionner'
                 ];
                 return new JsonResponse($data);
         }
         else{
-            if($user->getStatus()==STATUS){
+            if($user->getStatus()=="bloqué"){
             
-                if($user->getProfil()==PROFIL){
+                if($user->getProfil()=="admin"){
                     $user->setRoles(["ROLE_ADMIN"]);
                 }
                 elseif ($user->getProfil()=="user") {
@@ -236,20 +236,20 @@ class SecurityController extends AbstractController
 
                 $entityManager->flush();
                 $data = [
-                    JSONSTATUS => 200,
-                    MESSAGE => 'utilisateur debloqué'
+                    'status' => 200,
+                    'message' => 'utilisateur debloqué'
                 ];
                 return new JsonResponse($data);
                 
             }
             else {
-                $user->setStatus(STATUS);
+                $user->setStatus("bloqué");
                 $user->setRoles(["ROLE_USERLOCK"]);
 
                 $entityManager->flush();
                 $data = [
-                    JSONSTATUS => 200,
-                    MESSAGE => 'utilisateur bloqué'
+                    'status' => 200,
+                    'message' => 'utilisateur bloqué'
                 ];
                 return new JsonResponse($data);
             }

@@ -24,11 +24,6 @@ class Partenaire
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $matricule;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $nomComplet;
 
     /**
@@ -79,17 +74,6 @@ class Partenaire
         return $this->id;
     }
 
-    public function getMatricule(): ?string
-    {
-        return $this->matricule;
-    }
-
-    public function setMatricule(string $matricule): self
-    {
-        $this->matricule = $matricule;
-
-        return $this;
-    }
 
     public function getNomComplet(): ?string
     {

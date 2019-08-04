@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BankAccountControllerTest extends WebTestCase
 {
-    public function testAjout()
+    /* public function testAjout()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -17,16 +17,16 @@ class BankAccountControllerTest extends WebTestCase
         '{
             "numeroCompte":"ma01475",
             "solde":5000000,
-            "partenaire":46
+            "partenaire":60
 
         }'
     
     );
     $reponse=$client->getResponse();
         $this->assertSame(201,$reponse->getStatusCode());
-    }
+    } */
 
-    public function testAjoutKo()
+    /* public function testAjoutKo()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -37,24 +37,24 @@ class BankAccountControllerTest extends WebTestCase
         '{
             "numeroCompte":"ma0147555",
             "solde":"4000000",
-            "partenaire":47
+            "partenaire":61
         }');
         $rep=$client->getResponse();
         var_dump($rep);
         $this->assertSame(201,$client->getResponse()->getStatusCode());
-    }
-    public function testShow()
+    } */
+    /* public function testShow()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
             'PHP_AUTH_PW'   => '123',
         ]);
-        $crawler = $client->request('GET', '/api/bankAccount/40',[],[],
+        $crawler = $client->request('GET', '/api/bankAccount/3',[],[],
         ['CONTENT_TYPE'=>"application/json"]
     
     );
     $reponse=$client->getResponse();
         $this->assertSame(200,$reponse->getStatusCode());
-    }
+    } */
    
 }

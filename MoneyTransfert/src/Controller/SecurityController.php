@@ -31,12 +31,12 @@ class SecurityController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator):Response
     {
-        define("PROFIL","admin");
+       /*  define("PROFIL","admin");
         define("STATUS","bloqué");
         define("CONTENT_TYPE",'content_type');
         define("TYPE",'application/json');
         define("JSONSTATUS",'status');
-        define("MESSAGE",'message');
+        define("MESSAGE",'message'); */
         $user = new User();
         
         $form = $this->createForm(UserType::class, $user);
@@ -57,7 +57,7 @@ class SecurityController extends AbstractController
             $user->setImageFile($image);
             $profil=$values["profil"];
             $roles=[];
-            if($profil==PROFIL){
+            if($profil=="admin"){
                 $roles=["ROLE_ADMIN"];
             }
             elseif ($profil=="user") {
@@ -74,7 +74,7 @@ class SecurityController extends AbstractController
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
                 return new Response($errors, 500, [
-                    CONTENT_TYPE => TYPE
+                    'content_type '=> 'application/json'
                 ]);
             }
 
@@ -83,8 +83,8 @@ class SecurityController extends AbstractController
             $entityManager->flush();
        
                 $data = [
-                    JSONSTATUS => 201,
-                    MESSAGE => 'L\'utilisateur a été créé'
+                    'status' => 201,
+                    'message' => 'L\'utilisateur a été créé'
                 ];
 
                 return new JsonResponse($data, 201); 

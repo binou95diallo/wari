@@ -23,16 +23,20 @@ class UserControllerTest extends WebTestCase
             "email":"malick@malick.fr",
             "profil":"admin",
             "status":"debloquer",
-            "partenaire":47
+            "partenaire":61,
+            "bankAccount":3,
+            "updated_at":"2019-08-02 09:05:37",
+            "imageName":""
 
         }'
     
     );
     $reponse=$client->getResponse();
+    var_dump($reponse);
         $this->assertSame(201,$reponse->getStatusCode());
     }
 
-    public function testAjoutKo()
+ /*    public function testAjoutKo()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -49,14 +53,17 @@ class UserControllerTest extends WebTestCase
             "email":"malick@malick.fr",
             "profil":"admin",
             "status":"debloquer",
-            "partenaire":"46"
+            "updated_at":"2019-08-02 09:05:37",
+            "partenaire":"60",
+            "bankAccount":"2",
+            "imageName":""
         }');
         $rep=$client->getResponse();
         var_dump($rep);
         $this->assertSame(201,$client->getResponse()->getStatusCode());
-    }
+    } */
 
-    public function testListAction()
+   /*  public function testListAction()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -68,5 +75,5 @@ class UserControllerTest extends WebTestCase
     );
     $reponse=$client->getResponse();
         $this->assertSame(200,$reponse->getStatusCode());
-    }
+    } */
 }

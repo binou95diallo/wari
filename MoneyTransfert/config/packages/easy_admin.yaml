@@ -1,6 +1,50 @@
 easy_admin:
+    user:
+        display_name: true
+        display_avatar: true
     entities:
 #        # List the entity class name you want to manage
-        - App\Entity\Partenaire
-        - App\Entity\BankAccount
-        - App\Entity\User
+        User:
+            class: App\Entity\User
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                fields:
+                    - {property: 'username'}
+                    - {property: 'password', type: 'password'}
+                    - {property: 'nomComplet'}
+                    - {property: 'profil'}
+                    - {property: 'status'}
+                    - {property: 'adresse'}
+                    - {property: 'telephone'}
+                    - {property: 'email', type: 'email', label: 'email' }
+                    - {property: 'imageFile', type: 'file'}
+                    - {property: 'partenaire'}
+                    - {property: 'bankAccount'}
+            list:
+               actions:
+                    - {name: 'edit',icon: 'pencil', label: false, css_class: 'btn btn-secondary'}
+                    - {name: 'delete',icon: 'trash', label: false, css_class: 'btn btn-danger'}
+        Partenaire:
+            class: App\Entity\Partenaire
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                fields:
+                    - {property: 'nomComplet'}
+                    - {property: 'ninea'}
+                    - {property: 'raisonSocial'}
+                    - {property: 'adresse'}
+                    - {property: 'telephone'}
+                    - {property: 'email', type: 'email', label: 'email' }
+            list:
+               actions:
+                    - {name: 'edit',icon: 'pencil', label: false, css_class: 'btn btn-secondary'}
+                    - {name: 'delete',icon: 'trash', label: false, css_class: 'btn btn-danger'}
+        BankAccount:
+            class: App\Entity\BankAccount
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                fields:
+                    - {property: 'numeroCompte'}
+                    - {property: 'solde'}
+                    - {property: 'partenaire'}
+            list:
+               actions:
+                    - {name: 'edit',icon: 'pencil', label: false, css_class: 'btn btn-secondary'}
+                    - {name: 'delete',icon: 'trash', label: false, css_class: 'btn btn-danger'}

@@ -38,21 +38,27 @@ class PartenaireController extends AbstractController
 
     /**
      * @Route("/partenaire/ajout", name="PartenaireAjout", methods={"POST","GET"})
-     * @IsGranted("ROLE_ADMIN")
      */
-    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager): Response
-    {
+    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
+    {       
             $Partenaire=$serializer->deserialize($request->getContent(), Partenaire::class, 'json');
             $entityManager = $this->getDoctrine()->getManager();
+            
+            $errors = $validator->validate($Partenaire);
+        if(count($errors)) {
+            $errors = $serializer->serialize($errors, 'json');
+            return new Response($errors, 500, [
+                'Content-Type' => 'application/json'
+            ]);
+        }
             $entityManager->persist($Partenaire);
             $entityManager->flush();
-          
-           $data = [
-            'status' => 201,
-            'message' => 'L\'utilisateur a été créé'
-        ];
-
-        return new JsonResponse($data, 201);
+            $values=json_decode($request->getContent());
+            $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values->ninea);
+            $partId=$part->getId();
+            $compte=$values->numeroCompte;
+            $solde=$values->solde;
+            return new RedirectResponse('../bankAccount/ajout?id='.$partId.'&compte='.$compte.'&solde='.$solde);
 }
 
     /**

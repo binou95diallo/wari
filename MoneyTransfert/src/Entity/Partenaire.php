@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -51,12 +52,9 @@ class Partenaire
     private $email;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\BankAccount", mappedBy="partenaire", cascade={"persist", "remove"})
-     */
-    private $bankAccount;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2", max="255",minMessage="Ce champ doit contenir un minimum de {{ limit }} caractères", max="255", maxMessage="Ce champ doit contenir un maximum de {{ limit }} caractères")
      */
     private $raisonSocial;
 
@@ -65,9 +63,15 @@ class Partenaire
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BankAccount", mappedBy="partenaire")
+     */
+    private $bankAccount;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->bankAccount = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -188,6 +192,41 @@ class Partenaire
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|BankAccount[]
+     */
+    public function getBankAccount(): Collection
+    {
+        return $this->bankAccount;
+    }
+
+    public function addBankAccount(BankAccount $bankAccount): self
+    {
+        if (!$this->bankAccount->contains($bankAccount)) {
+            $this->bankAccount[] = $bankAccount;
+            $bankAccount->setPartenaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBankAccount(BankAccount $bankAccount): self
+    {
+        if ($this->bankAccount->contains($bankAccount)) {
+            $this->bankAccount->removeElement($bankAccount);
+            // set the owning side to null (unless already changed)
+            if ($bankAccount->getPartenaire() === $this) {
+                $bankAccount->setPartenaire(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->raisonSocial;
     }
 
 }

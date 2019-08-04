@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
  * @method User|null findOneBy(array $criteria, array $orderBy = null)
  * @method User[]    findAll()
+ * @method countByUsername()[]
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class UserRepository extends ServiceEntityRepository
@@ -57,4 +58,16 @@ class UserRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+    public function countByUsername()
+{
+    $qb = $this->createQueryBuilder('u')
+          ->andWhere('u.profil = :val')
+          ->setParameter('val',"admin");
+ 
+    $qb ->select($qb->expr()->count('u'));
+ 
+    return (int) $qb->getQuery()->getSingleScalarResult();
+}
+
+
 }

@@ -3,51 +3,61 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Partenaire;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Form\UserType;
 use App\Repository\UserRepository;
-use App\Repository\PartenaireRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/api")
  */
 class SecurityController extends AbstractController
 {
+    
      /**
      * @Route("/register", name="register", methods={"POST"})
-     * @IsGranted("ROLE_ADMIN")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator)
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator):Response
     {
-        $values = json_decode($request->getContent());
-        if(isset($values->username,$values->password)) {
-            $user = new User();
-            $user->setUsername($values->username);
-            $user->setPassword($passwordEncoder->encodePassword($user, $values->password));
-            $user->setProfil($values->profil);
-            $user->setStatus($values->status);
-            $user->setNomComplet($values->nomComplet);
-            $user->setAdresse($values->adresse);
-            $user->setTelephone($values->telephone);
-            $user->setEmail($values->email);
-            $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
-            $user->setPartenaire($partenaire);
-            $profil=$values->profil;
+        define("PROFIL","admin");
+        define("STATUS","bloqué");
+        define("CONTENT_TYPE",'content_type');
+        define("TYPE",'application/json');
+        define("JSONSTATUS",'status');
+        define("MESSAGE",'message');
+        $user = new User();
+        
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        $values=$request->request->all();
+        $form->submit($values);
+        $image=$request->files->all()['imageName'];
+        
+       // if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            
+            $user->setImageFile($image);
+            $profil=$values["profil"];
             $roles=[];
-            if($profil=="admin"){
+            if($profil==PROFIL){
                 $roles=["ROLE_ADMIN"];
             }
             elseif ($profil=="user") {
@@ -56,29 +66,29 @@ class SecurityController extends AbstractController
             elseif ($profil=="partenaire" || $profil=="adminPartenaire") {
                 $roles=["ROLE_ADMINPARTENAIRE"];
             }
+            elseif ($profil=="caissier") {
+                $roles=["ROLE_CAISSIER"];
+            }
             $user->setRoles($roles);
             $errors = $validator->validate($user);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
                 return new Response($errors, 500, [
-                    'Content-Type' => 'application/json'
+                    CONTENT_TYPE => TYPE
                 ]);
             }
+
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+       
+                $data = [
+                    JSONSTATUS => 201,
+                    MESSAGE => 'L\'utilisateur a été créé'
+                ];
 
-            $data = [
-                'status' => 201,
-                'message' => 'L\'utilisateur a été créé'
-            ];
-
-            return new JsonResponse($data, 201);
-        }
-        $data = [
-            'status' => 500,
-            'message' => 'Vous devez renseigner les clés username et password'
-        ];
-        return new JsonResponse($data, 500);
+                return new JsonResponse($data, 201); 
+       // }
     }
 
     /**
@@ -103,7 +113,7 @@ class SecurityController extends AbstractController
             $normalizers = [
                 (new ObjectNormalizer())
                     ->setIgnoredAttributes([
-                        //'updateAt'
+                        'updated_at'
                     ])
             ];
             $serializer = new Serializer($normalizers, $encoders);
@@ -112,60 +122,66 @@ class SecurityController extends AbstractController
                     return $object->getId();
                 }
             ]);
+            
         return new Response($jsonObject, 200, [
-            'Content-Type' => 'application/json'
+            'content_type' => 'application/json'
         ]);
     }
 
      /**
      * @Route("/users/{id}/edit", name="usersEdit", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN")
      */
     
     public function edit(Request $request, User $user,SerializerInterface $serializer,ValidatorInterface $validator,
                          EntityManagerInterface $entityManager): Response
     {
+        $values=$request->request->all();
+        $image=$request->files->all()['imageName'];
         $data=[];
+        $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->find($user->getId());
         $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        //'updateAt'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($user, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
+        $normalizers = [
+            (new ObjectNormalizer())
+                ->setIgnoredAttributes([
+                    'updated_at'
+                ])
+        ];
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonObject = $serializer->serialize($user, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
 
-        $data = json_decode($jsonObject,true);
+    $data = json_decode($jsonObject,true);
         foreach ($data as $key => $value){
          
             if($key!="id" && !empty($value)) {
 
                 if ($key=="username") {
-                    $user->setUsername("yacine");
+                    $user->setUsername($values["username"]);
                 }
-                elseif ($key=="passWord") {
-                    $user->setPassWord("124");
+                elseif ($key=="plainPassword") {
+                    $user->setPassWord($values["plainPassword"]);
                 }
                 elseif ($key=="profil") {
-                    $user->setProfil("user");
+                    $user->setProfil($values["profil"]);
                 }
                 elseif ($key=="status") {
-                    $user->setStatus("bloqué");
+                    $user->setStatus($values["status"]);
                 }
                 elseif ($key=="nomComplet") {
-                    $user->setNomComplet("diallo");
+                    $user->setNomComplet($values["nomComplet"]);
                 }
                 elseif ($key=="adresse") {
-                    $user->setAdresse("fann hock");
+                    $user->setAdresse($values["adresse"]);
                 }
                 elseif ($key=="telephone") {
-                    $user->setTelephone("7746200018200");
+                    $user->setTelephone($values["telephone"]);
+                }
+                elseif ($key=="imageName") {
+                    $user->setImageFile($image);
                 }
                
             }
@@ -174,7 +190,7 @@ class SecurityController extends AbstractController
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
             return new Response($errors, 500, [
-                'Content-Type' => 'application/json'
+                CONTENT => TYPE
             ]);
         }
         $entityManager->flush();
@@ -191,32 +207,52 @@ class SecurityController extends AbstractController
      */
     public function userBloquer(Request $request, UserRepository $userRepo,EntityManagerInterface $entityManager): Response
     {
+        $tableUsers=$this->getDoctrine()->getRepository('App:User')->countByUsername();
         $values = json_decode($request->getContent());
         $user=$userRepo->findOneByUsername($values->username);
         echo $user->getStatus();
-        if($user->getStatus()=="bloqué"){
+        if($user->getProfil()==PROFIL && $tableUsers<=1){
+
+                  $data = [
+                    JSONSTATUS => 200,
+                    MESSAGE=> 'Il n\'y à qu\'un super-administrateur dans le système une fois bloquer 
+                    la plateforme risque de ne plus fonctionner'
+                ];
+                return new JsonResponse($data);
+        }
+        else{
+            if($user->getStatus()==STATUS){
             
-            if($user->getProfil()=="admin"){
-                $user->setRoles(["ROLE_ADMIN"]);
+                if($user->getProfil()==PROFIL){
+                    $user->setRoles(["ROLE_ADMIN"]);
+                }
+                elseif ($user->getProfil()=="user") {
+                    $user->setRoles(["ROLE_USER"]);
+                }
+                elseif ($user->getProfil()=="adminPartenaire") {
+                    $user->setRoles(["ROLE_ADMINPARTENAIRE"]);
+                }
+                $user->setStatus("debloqué");
+
+                $entityManager->flush();
+                $data = [
+                    JSONSTATUS => 200,
+                    MESSAGE => 'utilisateur debloqué'
+                ];
+                return new JsonResponse($data);
+                
             }
-            elseif ($user->getProfil()=="user") {
-                $user->setRoles(["ROLE_USER"]);
+            else {
+                $user->setStatus(STATUS);
+                $user->setRoles(["ROLE_USERLOCK"]);
+
+                $entityManager->flush();
+                $data = [
+                    JSONSTATUS => 200,
+                    MESSAGE => 'utilisateur bloqué'
+                ];
+                return new JsonResponse($data);
             }
-            elseif ($user->getProfil()=="adminPartenaire") {
-                $user->setRoles(["ROLE_ADMINPARTENAIRE"]);
-            }
-            $user->setStatus("debloqué");
         }
-        else {
-            $user->setStatus("bloqué");
-            $user->setRoles(["ROLE_USERLOCK"]);
-        }
-        
-        $entityManager->flush();
-        $data = [
-            'status' => 200,
-            'message' => 'utilisateur bloqué'
-        ];
-        return new JsonResponse($data);
     }
 }

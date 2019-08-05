@@ -45,12 +45,12 @@ class BankAccountController extends AbstractController
     {
         
         $bankAccount = new BankAccount();
-        $values=json_decode($request->getContent());
-        $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
-        $bankAccount->setNumeroCompte($values->numeroCompte);
-        $solde=$values->solde;
-        if($solde<=0){
-            return new Response('le solde ne peut-être négatif ou null', Response::HTTP_CREATED);
+        $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($_GET['id']);
+        $compte=$_GET['compte'];
+        $bankAccount->setNumeroCompte($compte);
+        $solde=$_GET['solde'];
+        if($solde<75000){
+            return new Response('le solde ne peut-être inférieur à 75000', Response::HTTP_CREATED);
         }
         $bankAccount->setSolde($solde);
         $errors = $validator->validate($bankAccount);
@@ -60,12 +60,11 @@ class BankAccountController extends AbstractController
                     'Content-Type' => 'application/json'
                 ]);
             }
-        //$bankAccount->setPartenaire($bankAccount->getId());
         $bankAccount->setPartenaire($partenaire);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($bankAccount);
         $entityManager->flush();
-    return new Response('solde ajouté', Response::HTTP_CREATED);
+    return new Response('compte créé', Response::HTTP_CREATED);
 }
 
     /**
@@ -105,11 +104,12 @@ class BankAccountController extends AbstractController
             ]);
 
         $data = json_decode($jsonObject,true);
+        $values=json_decode($request->getContent());
         foreach ($data as $key => $value){
          
             if($key!="id" && !empty($value)) {
 
-                $bankA->setSolde(2000000);
+                $bankA->setSolde($values->solde);
                
             }
         }

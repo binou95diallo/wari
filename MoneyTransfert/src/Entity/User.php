@@ -104,6 +104,16 @@ class User implements UserInterface
      */
     private $bankAccount;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Depot", mappedBy="caissier")
+     */
+    private $depots;
+
+    public function __construct()
+    {
+        $this->depots = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -321,6 +331,34 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->username;
+    }
+
+    /**
+     * @return Collection|Depot[]
+     */
+    public function getDepots(): Collection
+    {
+        return $this->depots;
+    }
+
+    public function addDepot(Depot $depot): self
+    {
+        if (!$this->depots->contains($depot)) {
+            $this->depots[] = $depot;
+            $depot->addCaissier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDepot(Depot $depot): self
+    {
+        if ($this->depots->contains($depot)) {
+            $this->depots->removeElement($depot);
+            $depot->removeCaissier($this);
+        }
+
+        return $this;
     }
     
 }

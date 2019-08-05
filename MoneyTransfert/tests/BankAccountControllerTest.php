@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BankAccountControllerTest extends WebTestCase
 {
-    /* public function testAjout()
+   /*  public function testAjout()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -15,7 +15,6 @@ class BankAccountControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/bankAccount/ajout',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "numeroCompte":"ma01475",
             "solde":5000000,
             "partenaire":60
 
@@ -35,7 +34,7 @@ class BankAccountControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/bankAccount/ajout',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "numeroCompte":"ma0147555",
+            "numeroCompte":"ma0147555a",
             "solde":"4000000",
             "partenaire":61
         }');
@@ -43,7 +42,7 @@ class BankAccountControllerTest extends WebTestCase
         var_dump($rep);
         $this->assertSame(201,$client->getResponse()->getStatusCode());
     } */
-    /* public function testShow()
+    public function testShow()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -55,6 +54,6 @@ class BankAccountControllerTest extends WebTestCase
     );
     $reponse=$client->getResponse();
         $this->assertSame(200,$reponse->getStatusCode());
-    } */
+    }
    
 }

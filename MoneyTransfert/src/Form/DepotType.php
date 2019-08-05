@@ -2,29 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\Partenaire;
+use App\Entity\User;
+use App\Entity\Depot;
+use App\Entity\BankAccount;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PartenaireType extends AbstractType
+class DepotType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomComplet')
-            ->add('adresse')
-            ->add('telephone')
-            ->add('ninea')
-            ->add('email')
-            ->add('raisonSocial')
+            ->add('montant')
+            ->add('dateDepot')
+            ->add('bankAccount',EntityType::class,['class'=>BankAccount::class])
+            ->add('caissier',EntityType::class,['class'=>User::class])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Partenaire::class,
+            'data_class' => Depot::class,
             'csrf_protection'=>false
         ]);
     }

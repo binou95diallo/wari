@@ -39,36 +39,27 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/ajout", name="bankAccountAjout", methods={"POST","GET"})
-     * isGranted("ROLES_ADMIN")
+     * isGranted("ROLES_ADMINPARTENAIRE")
      */
     public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {
         
+       
         $bankAccount = new BankAccount();
-        $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($_GET['id']);
-        $compte=$_GET['compte'];
-        $bankAccount->setNumeroCompte($compte);
-        $solde=$_GET['solde'];
-        if($solde<75000){
-            return new Response('le solde ne peut-être inférieur à 75000', Response::HTTP_CREATED);
-        }
-        $bankAccount->setSolde($solde);
-        $errors = $validator->validate($bankAccount);
-            if(count($errors)) {
-                $errors = $serializer->serialize($errors, 'json');
-                return new Response($errors, 500, [
-                    'Content-Type' => 'application/json'
-                ]);
-            }
+        $values=json_decode($request->getContent());
+        $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
+        $bankAccount->setNumeroCompte($values->numeroCompte);
+        $bankAccount->setSolde($values->solde);
         $bankAccount->setPartenaire($partenaire);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($bankAccount);
         $entityManager->flush();
-    return new Response('compte créé', Response::HTTP_CREATED);
+    return new Response('users adding', Response::HTTP_CREATED);
 }
 
     /**
      * @Route("/bankAccount/{id}", name="bankAccountShow", methods={"GET"})
+     * isGranted("ROLES_ADMINPARTENAIRE")
      */
     public function show(BankAccount $bankAcc,BankAccountRepository $bankARepo,SerializerInterface $serializer): Response
     {
@@ -81,7 +72,7 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/{id}/edit", name="BankAEdit", methods={"GET","POST"})
-     * @IsGranted("ROLE_CAISSIER")
+     * isGranted("ROLES_ADMINPARTENAIRE")
      */
     
     public function edit(Request $request, BankAccount $bankA,SerializerInterface $serializer,ValidatorInterface $validator,
@@ -131,6 +122,7 @@ class BankAccountController extends AbstractController
 
      /**
      * @Rest\Get("/bankAccount", name="compteList")
+     * isGranted("ROLES_ADMINPARTENAIRE")
      */
     public function listAction(SerializerInterface $serializer):Response
     {

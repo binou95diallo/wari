@@ -44,9 +44,15 @@ class BankAccount
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Depot", mappedBy="bankAccount")
+     */
+    private $depots;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->depots = new ArrayCollection();
     }
 
 
@@ -125,6 +131,37 @@ class BankAccount
     public function __toString()
     {
         return $this->numeroCompte;
+    }
+
+    /**
+     * @return Collection|Depot[]
+     */
+    public function getDepots(): Collection
+    {
+        return $this->depots;
+    }
+
+    public function addDepot(Depot $depot): self
+    {
+        if (!$this->depots->contains($depot)) {
+            $this->depots[] = $depot;
+            $depot->setBankAccount($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDepot(Depot $depot): self
+    {
+        if ($this->depots->contains($depot)) {
+            $this->depots->removeElement($depot);
+            // set the owning side to null (unless already changed)
+            if ($depot->getBankAccount() === $this) {
+                $depot->setBankAccount(null);
+            }
+        }
+
+        return $this;
     }
 
 

@@ -2,24 +2,28 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserType;
 use App\Entity\Partenaire;
+use App\Entity\BankAccount;
 use App\Form\PartenaireType;
+use App\Form\BankAccountType;
 use App\Repository\PartenaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Serializer\Serializer;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/api")
@@ -39,11 +43,21 @@ class PartenaireController extends AbstractController
     /**
      * @Route("/partenaire/ajout", name="PartenaireAjout", methods={"POST","GET"})
      */
-    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
+    public function ajout(Request $request,SerializerInterface $serializer, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {       
-            $Partenaire=$serializer->deserialize($request->getContent(), Partenaire::class, 'json');
+            $values=$request->request->all();
+            $Partenaire=new Partenaire();
             $entityManager = $this->getDoctrine()->getManager();
-            
+            $Partenaire->setRaisonSocial($values["raisonSocial"]);
+            $Partenaire->setNomComplet($values["nomComplet"]);
+            $Partenaire->setAdresse($values["adresse"]);
+            $Partenaire->setTelephone($values["telephone"]);
+            $Partenaire->setEmail($values["email"]);
+            $Partenaire->setNinea($values["ninea"]);
+
+            $form = $this->createForm(PartenaireType::class, $Partenaire);
+            $form->handleRequest($request);
+           
             $errors = $validator->validate($Partenaire);
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
@@ -53,12 +67,52 @@ class PartenaireController extends AbstractController
         }
             $entityManager->persist($Partenaire);
             $entityManager->flush();
-            $values=json_decode($request->getContent());
-            $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values->ninea);
-            $partId=$part->getId();
-            $compte=$values->numeroCompte;
-            $solde=$values->solde;
-            return new RedirectResponse('../bankAccount/ajout?id='.$partId.'&compte='.$compte.'&solde='.$solde);
+            /**
+             * Ajout d'un admin partenaire
+             */
+            $user = new User();
+            $form = $this->createForm(UserType::class, $user);
+            $form->handleRequest($request);
+            $form->submit($values);
+            $image=$request->files->all()['imageName'];
+            
+                // encode the plain password
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+                
+                $user->setImageFile($image);
+                $user->setProfil("adminPartenaire");
+                $user->setRoles(["ADMIN_PARTENAIRE"]);
+                $user->setStatus("débloqué");
+                $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
+                $user->setPartenaire($part);
+                $entityManager->persist($user);
+                
+             /**
+             * Ajout d'un compte
+             */
+            $compte =new BankAccount();
+            $form = $this->createForm(BankAccountType::class, $compte);
+            $form->handleRequest($request);
+            $random=random_int(100,1000000);
+            $numeroCompte=$random.''.$values["ninea"];
+            $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
+            $compte->setNumeroCompte($numeroCompte);
+            $compte->setSolde($values["solde"]);
+            $compte->setPartenaire($part);
+            $entityManager->persist($compte);
+
+            $entityManager->flush();
+            $data = [
+                'status' => 201,
+                'message' => 'partenaire ajouté'
+            ];
+    
+            return new JsonResponse($data, 201);
 }
 
     /**

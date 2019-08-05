@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PartenaireControllerTest extends WebTestCase
 {
-    /* public function testAjout()
+    public function testAjout()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -15,13 +15,12 @@ class PartenaireControllerTest extends WebTestCase
         $crawler = $client->request('POST', '/api/partenaire/ajout',[],[],
         ['CONTENT_TYPE'=>"application/json"],
         '{
-            "nomComplet":"Diye",
+            "nomComplet":"Diana",
             "adresse":"mbour",
-            "ninea":"QSDQRTZ11478bb",
+            "ninea":"ger147",
             "telephone":"2214478920",
-            "email":"malick@malick.fr",
+            "email":"diana@diana.fr",
             "raisonSocial":"SA",
-            "numeroCompte":"ab14569",
             "solde":15000000
 
         }'
@@ -30,9 +29,9 @@ class PartenaireControllerTest extends WebTestCase
     $reponse=$client->getResponse();
     var_dump($reponse);
         $this->assertSame(302,$reponse->getStatusCode());
-    } */
+    }
 
-/* public function testShow()
+public function testShow()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binou',
@@ -44,5 +43,5 @@ class PartenaireControllerTest extends WebTestCase
     );
     $reponse=$client->getResponse();
         $this->assertSame(200,$reponse->getStatusCode());
-    } */
+    }
 }

@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\BankAccount;
 
 /**
  * @Route("/api")
@@ -31,21 +32,13 @@ class SecurityController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator):Response
     {
-       /*  define("PROFIL","admin");
-        define("STATUS","bloqué");
-        define("CONTENT_TYPE",'content_type');
-        define("TYPE",'application/json');
-        define("JSONSTATUS",'status');
-        define("MESSAGE",'message'); */
         $user = new User();
-        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $values=$request->request->all();
         $form->submit($values);
         $image=$request->files->all()['imageName'];
         
-       // if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -87,8 +80,7 @@ class SecurityController extends AbstractController
                     'message' => 'L\'utilisateur a été créé'
                 ];
 
-                return new JsonResponse($data, 201); 
-       // }
+                return new JsonResponse($data, 201);
     }
 
     /**
@@ -138,6 +130,7 @@ class SecurityController extends AbstractController
         $values=$request->request->all();
         $image=$request->files->all()['imageName'];
         $data=[];
+        $username="username";
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->find($user->getId());
         $encoders = [new JsonEncoder()];
@@ -159,7 +152,7 @@ class SecurityController extends AbstractController
          
             if($key!="id" && !empty($value)) {
 
-                if ($key=="username") {
+                if ($key==$username) {
                     $user->setUsername($values["username"]);
                 }
                 elseif ($key=="plainPassword") {

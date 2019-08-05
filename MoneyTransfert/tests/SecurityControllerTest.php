@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserControllerTest extends WebTestCase
 {
-    public function testRegister()
+    /* public function testRegister()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -34,7 +34,7 @@ class UserControllerTest extends WebTestCase
     $reponse=$client->getResponse();
     var_dump($reponse);
         $this->assertSame(201,$reponse->getStatusCode());
-    }
+    } */
 
  /*    public function testAjoutKo()
     {
@@ -63,7 +63,7 @@ class UserControllerTest extends WebTestCase
         $this->assertSame(201,$client->getResponse()->getStatusCode());
     } */
 
-   /*  public function testListAction()
+    public function testListAction()
     {
         $client = static::createClient([],[
             'PHP_AUTH_USER' => 'binousha',
@@ -75,5 +75,5 @@ class UserControllerTest extends WebTestCase
     );
     $reponse=$client->getResponse();
         $this->assertSame(200,$reponse->getStatusCode());
-    } */
+    }
 }

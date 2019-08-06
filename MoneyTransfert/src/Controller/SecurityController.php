@@ -36,7 +36,6 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $values=$request->request->all();
-        $form->submit($values);
         $image=$request->files->all()['imageName'];
         
             // encode the plain password

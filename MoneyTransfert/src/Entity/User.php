@@ -38,7 +38,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Vous devez insérer un mot de passe")
+     * @Assert\Regex(
+     *     pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{7,}$/",
+     *     match=true,
+     *     message="Votre mot de passe doit contenir au moins 7 caractères, un majuscule et un caractère spéciale"
+     * )
      */
+    
     private $password;
 
     /**
@@ -63,6 +70,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez insérer un téléphone")
+     * @Assert\Regex(
+     *     pattern="/^(\+[1-9][0-9]*(\([0-9]*\)|-[0-9]*-))?[0]?[1-9][0-9\-]*$/",
+     *     match=true,
+     *     message="Votre numero ne doit pas contenir de lettre"
+     * )
      */
     private $telephone;
 
@@ -109,9 +122,15 @@ class User implements UserInterface
      */
     private $depots;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="user")
+     */
+    private $transactions;
+
     public function __construct()
     {
         $this->depots = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -356,6 +375,37 @@ class User implements UserInterface
         if ($this->depots->contains($depot)) {
             $this->depots->removeElement($depot);
             $depot->removeCaissier($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getTransactions(): Collection
+    {
+        return $this->transactions;
+    }
+
+    public function addTransaction(Transaction $transaction): self
+    {
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transaction $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getUser() === $this) {
+                $transaction->setUser(null);
+            }
         }
 
         return $this;

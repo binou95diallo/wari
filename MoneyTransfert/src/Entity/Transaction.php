@@ -73,6 +73,16 @@ class Transaction
      */
     private $recepteur;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateTransaction;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +216,30 @@ class Transaction
     public function setRecepteur(?Recpteur $recepteur): self
     {
         $this->recepteur = $recepteur;
+
+        return $this;
+    }
+
+    public function getDateTransaction(): ?\DateTimeInterface
+    {
+        return $this->dateTransaction;
+    }
+
+    public function setDateTransaction(\DateTimeInterface $dateTransaction): self
+    {
+        $this->dateTransaction = $dateTransaction;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

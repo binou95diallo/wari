@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Entity\Partenaire;
@@ -26,18 +28,40 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/api")
+ * @Route("/partenaire")
  */
 class PartenaireController extends AbstractController
 {
     /**
      * @Route("/", name="partenaireIndex", methods={"GET"})
      */
-    public function index(PartenaireRepository $partenaireRepository): Response
+    public function index(PartenaireRepository $partenaireRepository)
     {
-        return $this->render('partenaire/index.html.twig', [
+             // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('partenaire/index.html.twig', [
             'partenaires' => $partenaireRepository->findAll(),
         ]);
+        
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("partenaire.pdf", [
+            "Attachment" => false
+        ]);
+
     }
 
     /**
@@ -119,13 +143,18 @@ class PartenaireController extends AbstractController
      * @Route("/partenaire/{id}", name="PartenaireShow", methods={"GET"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function show(Partenaire $partenaire,PartenaireRepository $partenaireRepo,SerializerInterface $serializer): Response
+    public function show(Partenaire $partenaire,PartenaireRepository $partenaireRepo,SerializerInterface $serializer)
     {
-        $partenaire= $partenaireRepo->find($partenaire->getId());
+        /* $partenaire= $partenaireRepo->find($partenaire->getId());
         $data = $serializer->serialize($partenaire, 'json');
         return new Response($data, 200, [
             'Content-Type' => 'application/json'
+        ]); */
+        return $this->render('employe/add.html.twig', [
+            'formAjout' => $form->createView(),
+            'editMode'=>$employe->getId()!== null
         ]);
+
     }
 
     /**

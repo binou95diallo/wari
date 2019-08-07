@@ -2,25 +2,28 @@
 
 namespace App\Controller;
 
-use App\Entity\BankAccount;
+use App\Entity\User;
+use App\Entity\Depot;
+use App\Form\DepotType;
 use App\Entity\Partenaire;
+use App\Entity\BankAccount;
 use App\Form\BankAccountType;
+use App\Repository\DepotRepository;
+use App\Repository\PartenaireRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\BankAccountRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\PartenaireRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Serializer\Serializer;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/api")
@@ -45,16 +48,22 @@ class BankAccountController extends AbstractController
     {
         
        
-        $bankAccount = new BankAccount();
-        $values=json_decode($request->getContent());
-        $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
-        $bankAccount->setNumeroCompte($values->numeroCompte);
-        $bankAccount->setSolde($values->solde);
-        $bankAccount->setPartenaire($partenaire);
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($bankAccount);
-        $entityManager->flush();
-    return new Response('users adding', Response::HTTP_CREATED);
+            $bankAccount = new BankAccount();
+            $form = $this->createForm(BankAccountType::class, $bankAccount);
+            $form->handleRequest($request);
+            $values=json_decode($request->getContent());
+            $form->submit($values);
+            $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
+            $ninea=$partenaire->getNinea();
+            $random=random_int(100,1000000);
+            $numeroCompte=$random.''.$ninea;
+            $bankAccount->setNumeroCompte($numeroCompte);
+            $bankAccount->setSolde($values->solde);
+            $bankAccount->setPartenaire($partenaire);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($bankAccount);
+            $entityManager->flush();
+        return new Response('nouveau compte ajouté', Response::HTTP_CREATED);
 }
 
     /**
@@ -143,5 +152,49 @@ class BankAccountController extends AbstractController
         return new Response($jsonObject, 200, [
             'Content-Type' => 'application/json'
         ]);
+    }
+
+    #####################################################################################################
+    #####################################################################################################
+
+      /**
+     * @Route("/depot/ajout", name="depotAjout", methods={"POST"})
+     * isGranted("ROLES_CAISSIER")
+     */
+    public function new(Request $request): Response
+    {
+        $depot = new Depot();
+        $values=json_decode($request->getContent());
+        $caissier=$this->getDoctrine()->getManager()->getRepository(User::class)->find($values->caissier);
+        $compteId=$caissier->getBankAccount();
+        $compte=$this->getDoctrine()->getManager()->getRepository(BankAccount::class)->find($compteId);
+        $depot->setCaissier($caissier);
+        $depot->setBankAccount($compte);
+        $depot->setDateDepot(new \DateTime('now'));
+        $depot->setMontant($values->montant);
+        $solde=$compte->getSolde() + $depot->getMontant();
+        $compte->setSolde($solde);
+        $form = $this->createForm(DepotType::class, $depot);
+        $form->handleRequest($request);
+        $form->submit($values);
+        $form = $this->createForm(BankAccountType::class, $compte);
+        $form->handleRequest($request);
+        $form->submit($values);
+            $entityManager = $this->getDoctrine()->getManager();
+            $em= $this->getDoctrine()->getManager();
+            $entityManager->persist($depot);
+            $em->persist($compte);
+            $em->flush();
+            $entityManager->flush();
+
+           
+
+        
+        $data = [
+            'status' => 201,
+            'message' => 'dépot ajouté'
+        ];
+
+        return new JsonResponse($data, 201);
     }
 }

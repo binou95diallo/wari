@@ -26,6 +26,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\Depot;
 
 /**
  * @Route("/partenaire")
@@ -69,18 +70,12 @@ class PartenaireController extends AbstractController
      */
     public function ajout(Request $request,SerializerInterface $serializer, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {       
-            $values=$request->request->all();
             $Partenaire=new Partenaire();
-            $entityManager = $this->getDoctrine()->getManager();
-            $Partenaire->setRaisonSocial($values["raisonSocial"]);
-            $Partenaire->setNomComplet($values["nomComplet"]);
-            $Partenaire->setAdresse($values["adresse"]);
-            $Partenaire->setTelephone($values["telephone"]);
-            $Partenaire->setEmail($values["email"]);
-            $Partenaire->setNinea($values["ninea"]);
-
             $form = $this->createForm(PartenaireType::class, $Partenaire);
             $form->handleRequest($request);
+            $values=$request->request->all();
+            $form->submit($values);
+            $entityManager = $this->getDoctrine()->getManager();
            
             $errors = $validator->validate($Partenaire);
         if(count($errors)) {
@@ -91,6 +86,21 @@ class PartenaireController extends AbstractController
         }
             $entityManager->persist($Partenaire);
             $entityManager->flush();
+
+             /**
+             * Ajout d'un compte
+             */
+            $compte =new BankAccount();
+            $form = $this->createForm(BankAccountType::class, $compte);
+            $form->handleRequest($request);
+            $form->submit($values);
+            $random=random_int(100,1000000);
+            $numeroCompte=$random.''.$values["ninea"];
+            $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
+            $compte->setNumeroCompte($numeroCompte);
+            $compte->setPartenaire($part);
+            $entityManager->persist($compte);
+
             /**
              * Ajout d'un admin partenaire
              */
@@ -114,22 +124,10 @@ class PartenaireController extends AbstractController
                 $user->setStatus("débloqué");
                 $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
                 $user->setPartenaire($part);
+                $user->setBankAccount($compte);
                 $entityManager->persist($user);
                 
-             /**
-             * Ajout d'un compte
-             */
-            $compte =new BankAccount();
-            $form = $this->createForm(BankAccountType::class, $compte);
-            $form->handleRequest($request);
-            $random=random_int(100,1000000);
-            $numeroCompte=$random.''.$values["ninea"];
-            $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
-            $compte->setNumeroCompte($numeroCompte);
-            $compte->setSolde($values["solde"]);
-            $compte->setPartenaire($part);
-            $entityManager->persist($compte);
-
+            
             $entityManager->flush();
             $data = [
                 'status' => 201,
@@ -141,18 +139,14 @@ class PartenaireController extends AbstractController
 
     /**
      * @Route("/partenaire/{id}", name="PartenaireShow", methods={"GET"})
-     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Partenaire $partenaire,PartenaireRepository $partenaireRepo,SerializerInterface $serializer)
     {
-        /* $partenaire= $partenaireRepo->find($partenaire->getId());
+         
+         $partenaire= $partenaireRepo->find($partenaire->getId());
         $data = $serializer->serialize($partenaire, 'json');
         return new Response($data, 200, [
             'Content-Type' => 'application/json'
-        ]); */
-        return $this->render('employe/add.html.twig', [
-            'formAjout' => $form->createView(),
-            'editMode'=>$employe->getId()!== null
         ]);
 
     }
@@ -250,4 +244,18 @@ class PartenaireController extends AbstractController
             'Content-Type' => 'application/json'
         ]);
     }
+
+    /**
+     * @Rest\Get("/partenaireOp", name="partenaireList")
+     */
+
+     public function listPartOp(PartenaireRepository $partenaireRepo,SerializerInterface $serializer){
+         $partenaire=$partenaireRepo->findPartOp();
+         $data = $serializer->serialize($partenaire, 'json');
+        return new Response($data, 200, [
+            'Content-Type' => 'application/json'
+        ]);
+         
+     }
+
 }

@@ -46,4 +46,27 @@ class PartenaireRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findPartOp(){
+       
+      /*  $qb=$this->createQueryBuilder('p')
+        ->select('p.raison_social', 'p.ninea', $bankAccount->getNumeroCompte(),$bankAccount->getSolde(),$depot->getMontant(),$depot->getDateDepot())
+        ->innerJoin($bankAccount, 'p.id ='.$bankAccount->getPartenaire())
+        ->innerJoin($depot,$bankAccount->getId().'='. $depot->getBankAccount())
+        ->getQuery()
+        ;
+        return $qb->execute(); */
+
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT raison_social,ninea,numero_compte,solde,montant,date_depot FROM partenaire as p, bank_account as b, depot as d
+            WHERE p.id = b.partenaire_id and b.id = d.bank_account_id
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+    }
 }

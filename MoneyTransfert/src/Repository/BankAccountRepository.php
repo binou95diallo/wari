@@ -59,5 +59,21 @@ class BankAccountRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findAllPartCompte($value): BankAccount
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+        $qb = $this->createQueryBuilder('b')
+            ->andWhere('b.partenaire = :id')
+            ->setParameter('id', $value)
+            ->orderBy('b.id', 'ASC')
+            ->getQuery();
+
+        $qb->execute();
+
+        // to get just one result:
+        return   $qb->setMaxResults(1)->getOneOrNullResult();
+    }
     
 }

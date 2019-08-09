@@ -53,34 +53,10 @@ class SecurityController extends AbstractController
             
             $user->setImageFile($image);
             $entityManager = $this->getDoctrine()->getManager();
-            //$part=$partenaireRepo->find($values["partenaire"]);
-            $compteId=$uti->getBankAccount();
-            $user->setBankAccount($compteId);
-            //var_dump($part);die();
-            $comptes=$entityManager->getRepository(BankAccount::class)->findById($compteId);
-            $data=[];
-            $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'update_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($comptes, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
-
-        $data = json_decode($jsonObject,true);
-            foreach ($data as $key => $value) {
-                if($value->getNombreUsers() <= 5){
-                    $user->setBankAccount($value);
-                }
-            }
-            //$nbUsers=$comptes->getNombreUsers();
-            //echo $nbUsers;
+            $part=$partenaireRepo->find($values["partenaire"]);
+            $compte=$entityManager->getRepository(BankAccount::class)->findAllPartCompte($part->getId());
+            $user->setBankAccount($compte);
+            $compte->setNombreUsers($compte->getNombreUsers()+1);
             $profil=$values["profil"];
             $roles=[];
             if($profil=="admin"){
@@ -106,6 +82,7 @@ class SecurityController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $entityManager->persist($compte);
             $entityManager->flush();
        
                 $data = [
@@ -162,8 +139,6 @@ class SecurityController extends AbstractController
     {
         $values=$request->request->all();
         $image=$request->files->all()['imageName'];
-        $data=[];
-        $username="username";
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->find($user->getId());
         $encoders = [new JsonEncoder()];

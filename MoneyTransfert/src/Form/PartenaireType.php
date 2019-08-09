@@ -18,6 +18,7 @@ class PartenaireType extends AbstractType
             ->add('ninea')
             ->add('email')
             ->add('raisonSocial')
+            ->add('status')
         ;
     }
 

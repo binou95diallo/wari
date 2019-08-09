@@ -29,7 +29,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Depot;
 
 /**
- * @Route("/partenaire")
+ * @Route("/api/partenaire")
  */
 class PartenaireController extends AbstractController
 {
@@ -68,7 +68,7 @@ class PartenaireController extends AbstractController
     }
 
     /**
-     * @Route("/partenaire/ajout", name="PartenaireAjout", methods={"POST","GET"})
+     * @Route("/ajout", name="PartenaireAjout", methods={"POST","GET"})
      */
     public function ajout(Request $request,SerializerInterface $serializer, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {       
@@ -141,7 +141,7 @@ class PartenaireController extends AbstractController
 }
 
     /**
-     * @Route("/partenaire/{id}", name="PartenaireShow", methods={"GET"})
+     * @Route("/show/{id}", name="PartenaireShow", methods={"GET"})
      */
     public function show(Partenaire $partenaire,PartenaireRepository $partenaireRepo,SerializerInterface $serializer)
     {
@@ -245,5 +245,34 @@ class PartenaireController extends AbstractController
         ]);
          
      }
+
+     /**
+     * @Route("/bloquer", name="partenairelocked", methods={"GET","POST"})
+     */
+    public function partenaireBloquer(Request $request, PartenaireRepository $partRepo,EntityManagerInterface $entityManager): Response
+    {
+        $values = json_decode($request->getContent());
+        $part=$partRepo->findOneByNinea($values->ninea);
+        
+            if($part->getStatus()=="inactif"){
+                $part->setStatus("actif");
+                $entityManager->flush();
+                $data = [
+                    'status' => 200,
+                    'message' => 'partenaire debloqué'
+                ];
+                return new JsonResponse($data);
+                
+            }
+            else {
+                $part->setStatus("inactif");
+                $entityManager->flush();
+                $data = [
+                    'status' => 200,
+                    'message' => 'partenaire bloqué'
+                ];
+                return new JsonResponse($data);
+            }
+    }
 
 }

@@ -8,8 +8,8 @@ use App\Entity\Partenaire;
 use App\Entity\BankAccount;
 use App\Repository\UserRepository;
 use App\Repository\PartenaireRepository;
-use App\Repository\BankAccountRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\BankAccountRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +22,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -29,6 +30,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class SecurityController extends AbstractController
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+      $this->passwordEncoder = $passwordEncoder;
+    }
     
      /**
      * @Route("/register", name="register", methods={"POST"})
@@ -54,10 +61,6 @@ class SecurityController extends AbstractController
             
             $user->setImageFile($image);
             $entityManager = $this->getDoctrine()->getManager();
-            $part=$partenaireRepo->find($values["partenaire"]);
-            $compte=$entityManager->getRepository(BankAccount::class)->findAllPartCompte($part->getId());
-            $user->setBankAccount($compte);
-            $compte->setNombreUsers($compte->getNombreUsers()+1);
             $profil=$values["profil"];
             $roles=[];
             if($profil=="admin"){
@@ -83,7 +86,7 @@ class SecurityController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
-            $entityManager->persist($compte);
+            //$entityManager->persist($compte);
             $entityManager->flush();
        
                 $data = [
@@ -136,7 +139,7 @@ class SecurityController extends AbstractController
      */
     
     public function edit(Request $request, User $user,SerializerInterface $serializer,ValidatorInterface $validator,
-                         EntityManagerInterface $entityManager): Response
+                         EntityManagerInterface $entityManager, PartenaireRepository $partenaireRepo): Response
     {
         $values=$request->request->all();
         $image=$request->files->all()['imageName'];
@@ -159,6 +162,10 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
         $form->submit($values);
         $user->setImageFile($image);
+        $part=$partenaireRepo->find($values["partenaire"]);
+        $compte=$entityManager->getRepository(BankAccount::class)->findAllPartCompte($part->getId());
+        $user->setBankAccount($compte);
+        $compte->setNombreUsers($compte->getNombreUsers()+1);
         $errors = $validator->validate($user);
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
@@ -166,6 +173,8 @@ class SecurityController extends AbstractController
                 CONTENT => TYPE
             ]);
         }
+        $entityManager->persist($user);
+        $entityManager->persist($compte);
         $entityManager->flush();
         $data = [
             'status' => 200,
@@ -174,6 +183,7 @@ class SecurityController extends AbstractController
         return new JsonResponse($data);
  
     }
+    
     /**
      * @Route("/users/bloquer", name="userBlock", methods={"GET","POST"})
      */
@@ -227,4 +237,45 @@ class SecurityController extends AbstractController
             }
         }
     }
-}
+
+     /**
+     * @Route("/login_check", name="login", methods={"POST"})
+     * @param JWTEncoderInterface $JWTEncoder
+     * @throws \Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTEncodeFailureException
+     */
+    public function log(Request $request, JWTEncoderInterface  $JWTEncoder)
+    { 
+   
+       $values = json_decode($request->getContent());
+        $username   = $values->username; 
+        $password   = $values->password; 
+            $repo = $this->getDoctrine()->getRepository(User::class);
+            $user = $repo-> findOneBy(['username' => $username]);
+            if(!$user){
+                return $this->json([
+                        'message' => 'Username incorrect'
+                    ]);
+            }
+
+            $isValid = $this->passwordEncoder
+            ->isPasswordValid($user, $password);
+            if(!$isValid){ 
+                return $this->json([
+                    'message' => 'Mot de passe incorect'
+                ]);
+            }
+            if($user->getStatus()=="bloqué"){
+                return $this->json([
+                    'message' => 'ACCÈS REFUSÉ veuillez-contacter l\'administrateur!'
+                ]);
+            }
+            $token = $JWTEncoder->encode([
+                'username' => $user->getUsername(),
+                'exp' => time() + 86400 // 1 day expiration
+            ]);
+
+            return $this->json([
+                'token' => $token
+            ]);
+    }
+ }

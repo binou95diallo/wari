@@ -211,6 +211,7 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/transaction/envoie", name="transaction", methods={"POST"})
+     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
 
      public function envoie(Request $request,EntityManagerInterface $entityManager):Response

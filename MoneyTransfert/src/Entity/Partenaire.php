@@ -63,6 +63,11 @@ class Partenaire
      */
     private $bankAccount;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -211,6 +216,18 @@ class Partenaire
     public function __toString()
     {
         return $this->raisonSocial;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 
 }

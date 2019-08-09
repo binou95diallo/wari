@@ -32,6 +32,7 @@ class SecurityController extends AbstractController
     
      /**
      * @Route("/register", name="register", methods={"POST"})
+     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, 
                             PartenaireRepository $partenaireRepo,SerializerInterface $serializer, ValidatorInterface $validator):Response
@@ -175,7 +176,6 @@ class SecurityController extends AbstractController
     }
     /**
      * @Route("/users/bloquer", name="userBlock", methods={"GET","POST"})
-     *  @Route("/users/debloquer", name="userDeblock", methods={"GET","POST"})
      */
     public function userBloquer(Request $request, UserRepository $userRepo,EntityManagerInterface $entityManager): Response
     {

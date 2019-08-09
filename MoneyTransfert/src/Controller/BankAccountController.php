@@ -50,7 +50,7 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/ajout", name="bankAccountAjout", methods={"POST","GET"})
-     * isGranted("ROLES_ADMINPARTENAIRE")
+     * @IsGranted("ROLE_ADMINPARTENAIRE")
      */
     public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {
@@ -76,7 +76,7 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/{id}", name="bankAccountShow", methods={"GET"})
-     * isGranted("ROLES_ADMINPARTENAIRE")
+     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     public function show(BankAccount $bankAcc,BankAccountRepository $bankARepo,SerializerInterface $serializer): Response
     {
@@ -89,7 +89,7 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/{id}/edit", name="BankAEdit", methods={"GET","POST"})
-     * isGranted("ROLES_ADMINPARTENAIRE")
+     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     
     public function edit(Request $request, BankAccount $bankA,SerializerInterface $serializer,ValidatorInterface $validator,
@@ -139,7 +139,7 @@ class BankAccountController extends AbstractController
 
      /**
      * @Rest\Get("/bankAccount", name="compteList")
-     * isGranted("ROLES_ADMINPARTENAIRE")
+     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     public function listAction(SerializerInterface $serializer):Response
     {
@@ -167,7 +167,7 @@ class BankAccountController extends AbstractController
 
       /**
      * @Route("/depot/ajout", name="depotAjout", methods={"POST"})
-     * isGranted("ROLES_CAISSIER")
+     * @isGranted("ROLE_CAISSIER")
      */
     public function new(Request $request): Response
     {
@@ -338,6 +338,7 @@ class BankAccountController extends AbstractController
 
     /**
      * @Rest\Get("/usersOp", name="userListOp")
+     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
 
     public function listUserOp(TransactionRepository $transactRepo,SerializerInterface $serializer){

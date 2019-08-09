@@ -47,4 +47,28 @@ class TransactionRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findOneByCode($value): ?Transaction
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.code = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function findUserOp(){
+        
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT username,montant,date_transaction,type FROM user as u, transaction as t
+            WHERE u.id = t.user_id
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+    }
 }

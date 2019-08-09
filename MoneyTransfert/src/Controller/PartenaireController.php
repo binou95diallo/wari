@@ -36,33 +36,35 @@ class PartenaireController extends AbstractController
     /**
      * @Route("/", name="partenaireIndex", methods={"GET"})
      */
-    public function index(PartenaireRepository $partenaireRepository)
+    public function index(PartenaireRepository $partenaireRepository,EntityManagerInterface $entityManager)
     {
-             // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
-        
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('partenaire/index.html.twig', [
-            'partenaires' => $partenaireRepository->findAll(),
+         // Configure Dompdf according to your needs
+         $pdfOptions = new Options();
+         $pdfOptions->set('defaultFont', 'Arial');
+         
+         // Instantiate Dompdf with our options
+         $dompdf = new Dompdf($pdfOptions);
+         $date= new \DateTime('now');
+         // Retrieve the HTML generated in our twig file
+         $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea("anre101");
+         $html = $this->renderView('partenaire/contrat.html.twig', [
+            'partenaires' => $partenaireRepository->find($part->getId()),
+            'dateContrat'=> $date
         ]);
-        
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-        
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser (force download)
-        $dompdf->stream("partenaire.pdf", [
-            "Attachment" => false
-        ]);
-
+         
+         // Load HTML to Dompdf
+         $dompdf->loadHtml($html);
+         
+         // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+         $dompdf->setPaper('A4', 'portrait');
+ 
+         // Render the HTML as PDF
+         $dompdf->render();
+ 
+         // Output the generated PDF to Browser (force download)
+         $dompdf->stream("listePartenaire.pdf", [
+             "Attachment" => false
+         ]);
     }
 
     /**
@@ -97,6 +99,7 @@ class PartenaireController extends AbstractController
             $random=random_int(100,1000000);
             $numeroCompte=$random.''.$values["ninea"];
             $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
+            $compte->setNombreUsers(1);
             $compte->setNumeroCompte($numeroCompte);
             $compte->setPartenaire($part);
             $entityManager->persist($compte);
@@ -144,8 +147,20 @@ class PartenaireController extends AbstractController
     {
          
          $partenaire= $partenaireRepo->find($partenaire->getId());
-        $data = $serializer->serialize($partenaire, 'json');
-        return new Response($data, 200, [
+        $encoders = [new JsonEncoder()];
+        $normalizers = [
+            (new ObjectNormalizer())
+                ->setIgnoredAttributes([
+                    'updated_at'
+                ])
+        ];
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonObject = $serializer->serialize($partenaire, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
+        return new Response($jsonObject, 200, [
             'Content-Type' => 'application/json'
         ]);
 
@@ -153,7 +168,6 @@ class PartenaireController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="adminPartenaireEdit", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN")
      */
     
     public function edit(Request $request, Partenaire $partenaire,SerializerInterface $serializer,ValidatorInterface $validator,
@@ -165,7 +179,7 @@ class PartenaireController extends AbstractController
             $normalizers = [
                 (new ObjectNormalizer())
                     ->setIgnoredAttributes([
-                        //'updateAt'
+                        'updated_at'
                     ])
             ];
             $serializer = new Serializer($normalizers, $encoders);
@@ -174,37 +188,10 @@ class PartenaireController extends AbstractController
                     return $object->getId();
                 }
             ]);
-
-        $data = json_decode($jsonObject,true);
-        $values = json_decode($request->getContent());
-        foreach ($data as $key => $value){
-         
-            if($key!="id" && !empty($value)) {
-                if($key=="matriculePartenaire"){
-                    $partenaire->setMatriculePartenaire($values->matricule);
-                }
-                elseif ($key=="nomComplet") {
-                    $partenaire->setNomComplet($values->nomComplet);
-                }
-               
-                elseif ($key=="ninea") {
-                    $partenaire->setNinea($values->ninea);
-                }
-                elseif ($key=="adresse") {
-                    $partenaire->setAdresse($values->adresse);
-                }
-                elseif ($key=="telephone") {
-                    $partenaire->setTelephone($values->telephone);
-                }
-                elseif ($key=="email") {
-                    $partenaire->setEmail($values->email);
-                }
-                elseif ($key=="status") {
-                    $partenaire->setStatus($values->status);
-                }
-               
-            }
-        }
+            $form = $this->createForm(PartenaireType::class, $partenaire);
+            $form->handleRequest($request);
+            $values=$request->request->all();
+            $form->submit($values);
         $errors = $validator->validate($partenaire);
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
@@ -215,27 +202,27 @@ class PartenaireController extends AbstractController
         $entityManager->flush();
         $data = [
             'status' => 200,
-            'message' => 'L \'utilisateur a bien été mis à jour'
+            'message' => 'Le partenaire a bien été mis à jour'
         ];
         return new JsonResponse($data);
  
     }
 
     /**
-     * @Rest\Get("/partenaire", name="partenaireList")
+     * @Rest\Get("/partenaires", name="partenaireList")
      */
     public function listAction(SerializerInterface $serializer):Response
     {
-        $users = $this->getDoctrine()->getRepository('App:Partenaire')->findAll();
+        $partenaire = $this->getDoctrine()->getRepository('App:Partenaire')->findAll();
         $encoders = [new JsonEncoder()];
             $normalizers = [
                 (new ObjectNormalizer())
                     ->setIgnoredAttributes([
-                        //'updateAt'
+                        'updated_at'
                     ])
             ];
             $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($users, 'json', [
+            $jsonObject = $serializer->serialize($partenaire, 'json', [
                 'circular_reference_handler' => function ($object) {
                     return $object->getId();
                 }
@@ -243,10 +230,11 @@ class PartenaireController extends AbstractController
         return new Response($jsonObject, 200, [
             'Content-Type' => 'application/json'
         ]);
+        
     }
 
     /**
-     * @Rest\Get("/partenaireOp", name="partenaireList")
+     * @Rest\Get("/partenaireOp", name="partenaireListOp")
      */
 
      public function listPartOp(PartenaireRepository $partenaireRepo,SerializerInterface $serializer){

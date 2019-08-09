@@ -47,4 +47,17 @@ class BankAccountRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByPartId($value)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.partenaire = :val')
+            ->setParameter('val', $value)
+            ->orderBy('b.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
 }

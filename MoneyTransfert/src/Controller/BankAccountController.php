@@ -4,10 +4,17 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Depot;
+use App\Entity\Tarifs;
 use App\Form\DepotType;
+use App\Entity\Recepteur;
+use App\Entity\Expediteur;
 use App\Entity\Partenaire;
 use App\Entity\BankAccount;
+use App\Entity\Transaction;
+use App\Form\RecepteurType;
+use App\Form\ExpediteurType;
 use App\Form\BankAccountType;
+use App\Form\TransactionType;
 use App\Repository\DepotRepository;
 use App\Repository\PartenaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,6 +31,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\TransactionRepository;
 
 /**
  * @Route("/api")
@@ -197,4 +205,148 @@ class BankAccountController extends AbstractController
 
         return new JsonResponse($data, 201);
     }
+
+    ######################################################################################################
+    ######################################################################################################
+
+    /**
+     * @Route("/transaction/envoie", name="transaction", methods={"POST"})
+     */
+
+     public function envoie(Request $request,EntityManagerInterface $entityManager):Response
+     {
+     ##############################################################################################
+     ################################ Infos Expediteur ##############################################
+        $values=$request->request->all();
+        print_r($values);
+        $exp=new Expediteur();
+        $form = $this->createForm(ExpediteurType::class, $exp);
+        $form->handleRequest($request);
+        $form->submit($values);
+        $entityManager->persist($exp);
+     ##############################################################################################
+     ################################ Infos Recepteur ##############################################
+        $recep= new Recepteur();
+        $form = $this->createForm(RecepteurType::class, $recep);
+        $form->handleRequest($request);
+        $form->submit($values);
+        $entityManager->persist($recep);
+     #################################################################################################
+     ################################ Infos Transaction ##############################################
+        $transact=new Transaction();
+        $form = $this->createForm(TransactionType::class, $transact);
+        $transact->setDateTransaction(new \DateTime('now'));
+        $form->handleRequest($request);
+        $form->submit($values);
+        
+        
+        
+        $montant=$values["montant"];
+        $tarif=$entityManager->getRepository(Tarifs::class)->findAll();
+             $data=[];
+            $encoders = [new JsonEncoder()];
+            $normalizers = [
+                (new ObjectNormalizer())
+                    ->setIgnoredAttributes([
+                        'updated_at'
+                    ])
+            ];
+            $serializer = new Serializer($normalizers, $encoders);
+            $jsonObject = $serializer->serialize($tarif, 'json', [
+                'circular_reference_handler' => function ($object) {
+                    return $object->getId();
+                }
+            ]);
+
+        $data = json_decode($jsonObject,true);
+            foreach ($data as $key) {
+                if($montant >= $key["borneInferieure"] && $montant <= $key["borneSuperieure"]){
+                    $transact->setFrais($key["valeur"]);
+                    break;
+                }
+            }
+            $frais=$transact->getFrais();
+            $gain=($frais*40)/100;
+            $taxeEtat=($frais*30)/100;
+            $comPart=($frais*10)/100;
+            $transact->setGain($gain);
+            $transact->setTaxeEtat($taxeEtat);
+            $transact->setCommissionPartenaire($comPart);
+            $transact->setType("envoie");
+            $transact->setDateEnvoie(new \DateTime('now'));
+            
+            $transact->setExpediteur($exp);
+            $transact->setRecepteur($recep);
+            $random=random_int(100,1000000);
+            $user=$this->getUser();
+            $transact->setUser($user);
+            $code=$random.''.$montant;
+            $transact->setCode($code);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($transact);
+            $entityManager->flush();
+
+
+
+        $data = [
+            'status' => 201,
+            'message' => 'Envoie effectuée'
+        ];
+        return new JsonResponse($data, 201);
+     }
+
+     /**
+     * @Route("/transaction/retrait", name="transactionRetrait", methods={"POST"})
+     */
+
+    public function retrait(Request $request,EntityManagerInterface $entityManager,TransactionRepository $tranRepo):Response{
+
+        $values=json_decode($request->getContent());
+        $transact=new Transaction();
+        $transaction=$tranRepo->findOneByCode($values->code);
+        if($transaction==NULL){
+            $data = [
+                'status' => 201,
+                'message' => 'Code invalide'
+            ];
+        }
+        else{
+            $transact->setExpediteur($transaction->getExpediteur());
+            $transact->setRecepteur($transaction->getRecepteur());
+            $transact->setMontant($transaction->getMontant());
+            $transact->setCode($values->code);
+            $user=$this->getUser();
+            $transact->setUser($user);
+            $frais=$transaction->getFrais();
+            $comPart=($frais*20)/100;
+            $transact->setCommissionPartenaire($comPart);
+            $transact->setType("retrait");
+            $transact->setDateRetrait(new \DateTime('now'));
+            $transact->setDateTransaction(new \DateTime('now'));
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($transact);
+            $entityManager->flush();
+            $data = [
+                'status' => 201,
+                'message' => 'Retrait effectuée'
+            ];
+        }
+        
+        return new JsonResponse($data, 201);
+    }
+
+    /**
+     * @Rest\Get("/usersOp", name="userListOp")
+     */
+
+    public function listUserOp(TransactionRepository $transactRepo,SerializerInterface $serializer){
+        $transact=$transactRepo->findUserOp();
+        $data = $serializer->serialize($transact, 'json');
+       return new Response($data, 200, [
+           'Content-Type' => 'application/json'
+       ]);
+        
+    }
+
 }

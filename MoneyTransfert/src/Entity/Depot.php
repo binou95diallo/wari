@@ -93,4 +93,5 @@ class Depot
 
         return $this;
     }
+
 }

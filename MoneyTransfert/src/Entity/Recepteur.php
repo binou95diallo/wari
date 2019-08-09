@@ -23,22 +23,22 @@ class Recepteur
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomComplet;
+    private $nomCompletR;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $adresseR;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $telephone;
+    private $telephoneR;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ncni;
+    private $ncniR;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="recepteur")
@@ -55,50 +55,50 @@ class Recepteur
         return $this->id;
     }
 
-    public function getNomComplet(): ?string
+    public function getNomCompletR(): ?string
     {
-        return $this->nomComplet;
+        return $this->nomCompletR;
     }
 
-    public function setNomComplet(string $nomComplet): self
+    public function setNomCompletR(string $nomCompletR): self
     {
-        $this->nomComplet = $nomComplet;
+        $this->nomCompletR = $nomCompletR;
 
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getAdresseR(): ?string
     {
-        return $this->adresse;
+        return $this->adresseR;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAdresseR(string $adresseR): self
     {
-        $this->adresse = $adresse;
+        $this->adresseR = $adresseR;
 
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getTelephoneR(): ?string
     {
-        return $this->telephone;
+        return $this->telephoneR;
     }
 
-    public function setTelephone(string $telephone): self
+    public function setTelephoneR(string $telephoneR): self
     {
-        $this->telephone = $telephone;
+        $this->telephoneR = $telephoneR;
 
         return $this;
     }
 
-    public function getNcni(): ?string
+    public function getNcniR(): ?string
     {
-        return $this->ncni;
+        return $this->ncniR;
     }
 
-    public function setNcni(string $ncni): self
+    public function setNcniR(string $ncniR): self
     {
-        $this->ncni = $ncni;
+        $this->ncniR = $ncniR;
 
         return $this;
     }

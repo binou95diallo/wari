@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Partenaire|null findOneBy(array $criteria, array $orderBy = null)
  * @method Partenaire[]    findAll()
  * @method Partenaire|null findByNinea($ninea)
+ * @method Partenaire[]  findById($id)
  * @method Partenaire[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class PartenaireRepository extends ServiceEntityRepository
@@ -47,16 +48,20 @@ class PartenaireRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findPartOp(){
-       
-      /*  $qb=$this->createQueryBuilder('p')
-        ->select('p.raison_social', 'p.ninea', $bankAccount->getNumeroCompte(),$bankAccount->getSolde(),$depot->getMontant(),$depot->getDateDepot())
-        ->innerJoin($bankAccount, 'p.id ='.$bankAccount->getPartenaire())
-        ->innerJoin($depot,$bankAccount->getId().'='. $depot->getBankAccount())
-        ->getQuery()
+    public function findById($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id = :val')
+            ->setParameter('val', $id)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
         ;
-        return $qb->execute(); */
+    }
 
+    public function findPartOp(){
+        
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '

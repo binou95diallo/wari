@@ -28,7 +28,7 @@ public function __construct(UserPasswordEncoderInterface $encoder)
     $user->setProfil('user');
     $user->setEmail('binou@gmail.com');
     $user->setRoles(["ROLE_USER"]);
-    $user->setUpdatedAt(new \DateTime('now'));
+    $user->setUpdated_at(new \DateTime('now'));
     $user->setImageName('/home/binetou/Images/afro1.jpg');
     $password = $this->encoder->encodePassword($user, '123');
     $user->setPassword($password);

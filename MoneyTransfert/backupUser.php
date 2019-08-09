@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use stdClass;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Entity\Partenaire;
 use App\Entity\BankAccount;
 use App\Repository\UserRepository;
 use App\Repository\PartenaireRepository;
-use App\Repository\BankAccountRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\BankAccountRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +43,7 @@ class SecurityController extends AbstractController
         $values=$request->request->all();
         $form->submit($values);
         $image=$request->files->all()['imageName'];
-        $uti=$this->getUser();
+        
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -53,17 +54,19 @@ class SecurityController extends AbstractController
             
             $user->setImageFile($image);
             $entityManager = $this->getDoctrine()->getManager();
-            //$part=$partenaireRepo->find($values["partenaire"]);
-            $compteId=$uti->getBankAccount();
-            $user->setBankAccount($compteId);
+            $part=$partenaireRepo->find($values["partenaire"]);
+            $compteId=$part->getBankAccount();
             //var_dump($part);die();
-            $comptes=$entityManager->getRepository(BankAccount::class)->findById($compteId);
+            $partId=$values["partenaire"];
             $data=[];
+            $data[]=$partId;
+            $comptes=$entityManager->getRepository(BankAccount::class)->findBy($data);
+         /*     $data=[];
             $encoders = [new JsonEncoder()];
             $normalizers = [
                 (new ObjectNormalizer())
                     ->setIgnoredAttributes([
-                        'update_at'
+                        'updated_at'
                     ])
             ];
             $serializer = new Serializer($normalizers, $encoders);
@@ -74,13 +77,25 @@ class SecurityController extends AbstractController
             ]);
 
         $data = json_decode($jsonObject,true);
-            foreach ($data as $key => $value) {
-                if($value->getNombreUsers() <= 5){
+
+        function array2Object(array $array){ 
+            $object = new BankAccount(); 
+            foreach ($array as $key => $val){ 
+                if (is_array($val)){ 
+                    $object->$key = array2Object($val); 
+                } else { 
+                    $object->$key = $val; 
+                } 
+            } 
+            return $object; 
+        }  */
+            foreach ($comptes as $key => $value) {
+                if($value["nombreUsers"] <= 5){
+
                     $user->setBankAccount($value);
                 }
+                echo $value["nombreUsers"];
             }
-            //$nbUsers=$comptes->getNombreUsers();
-            //echo $nbUsers;
             $profil=$values["profil"];
             $roles=[];
             if($profil=="admin"){
@@ -106,7 +121,7 @@ class SecurityController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
-            $entityManager->flush();
+          //  $entityManager->flush();
        
                 $data = [
                     'status' => 201,
@@ -252,4 +267,5 @@ class SecurityController extends AbstractController
             }
         }
     }
+
 }

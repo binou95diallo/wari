@@ -16,7 +16,7 @@ class RecepteurRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Recpteur::class);
+        parent::__construct($registry, Recepteur::class);
     }
 
     // /**

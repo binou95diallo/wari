@@ -34,7 +34,7 @@ class Transaction
     private $dateRetrait;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $frais;
 
@@ -44,12 +44,12 @@ class Transaction
     private $montant;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $gain;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $taxeEtat;
 
@@ -208,12 +208,12 @@ class Transaction
         return $this;
     }
 
-    public function getRecepteur(): ?Recpteur
+    public function getRecepteur(): ?Recepteur
     {
         return $this->recepteur;
     }
 
-    public function setRecepteur(?Recpteur $recepteur): self
+    public function setRecepteur(?Recepteur $recepteur): self
     {
         $this->recepteur = $recepteur;
 
@@ -243,4 +243,5 @@ class Transaction
 
         return $this;
     }
+
 }

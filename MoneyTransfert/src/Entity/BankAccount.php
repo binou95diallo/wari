@@ -49,6 +49,11 @@ class BankAccount
      */
     private $depots;
 
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $nombreUsers;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -160,6 +165,18 @@ class BankAccount
                 $depot->setBankAccount(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNombreUsers(): ?int
+    {
+        return $this->nombreUsers;
+    }
+
+    public function setNombreUsers(int $nombreUsers): self
+    {
+        $this->nombreUsers = $nombreUsers;
 
         return $this;
     }

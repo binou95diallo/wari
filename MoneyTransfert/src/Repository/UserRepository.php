@@ -68,6 +68,19 @@ class UserRepository extends ServiceEntityRepository
  
     return (int) $qb->getQuery()->getSingleScalarResult();
 }
+public function findById($id)
+{
+    $conn = $this->getEntityManager()->getConnection();
+
+    $sql = '
+        SELECT username,status FROM user as u
+        WHERE u.partenaire_id ='.$id;
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+
+    // returns an array of arrays (i.e. a raw data set)
+    return $stmt;
+}
 
 
 }

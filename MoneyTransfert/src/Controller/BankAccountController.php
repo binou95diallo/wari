@@ -169,7 +169,7 @@ class BankAccountController extends AbstractController
      * @Route("/depot/ajout", name="depotAjout", methods={"POST"})
      * @isGranted("ROLE_CAISSIER")
      */
-    public function new(Request $request): Response
+    public function depot(Request $request): Response
     {
         $depot = new Depot();
         $values=json_decode($request->getContent());
@@ -219,7 +219,6 @@ class BankAccountController extends AbstractController
      ##############################################################################################
      ################################ Infos Expediteur ##############################################
         $values=$request->request->all();
-        print_r($values);
         $exp=new Expediteur();
         $form = $this->createForm(ExpediteurType::class, $exp);
         $form->handleRequest($request);

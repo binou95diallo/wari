@@ -29,7 +29,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Depot;
 
 /**
- * @Route("/api/partenaire")
+ * @Route("/partenaire")
  */
 class PartenaireController extends AbstractController
 {
@@ -256,17 +256,44 @@ class PartenaireController extends AbstractController
         
             if($part->getStatus()=="inactif"){
                 $part->setStatus("actif");
+                $id=$part->getId();
+                $stmt=$this->getDoctrine()->getRepository('App:User')->findById($id);
+                $i=0;
+                while ($donnees=$stmt->fetchAll()) {
+                   while ($i<sizeof($donnees)) {
+                    $users=$this->getDoctrine()->getRepository('App:User')->findOneByUsername($donnees[$i]["username"]);
+                    print_r($donnees[$i]["username"]);
+                    $users->setStatus("debloqué");
+                    $entityManager->persist($users);
+                    $entityManager->flush();
+                    $i=$i+1;
+                   }
+                }
                 $entityManager->flush();
                 $data = [
                     'status' => 200,
                     'message' => 'partenaire debloqué'
                 ];
+                
                 return new JsonResponse($data);
                 
             }
             else {
                 $part->setStatus("inactif");
                 $entityManager->flush();
+                $id=$part->getId();
+                $stmt=$this->getDoctrine()->getRepository('App:User')->findById($id);
+                $i=0;
+                while ($donnees=$stmt->fetchAll()) {
+                   while ($i<sizeof($donnees)) {
+                    $users=$this->getDoctrine()->getRepository('App:User')->findOneByUsername($donnees[$i]["username"]);
+                    print_r($donnees[$i]["username"]);
+                    $users->setStatus("bloqué");
+                    $entityManager->persist($users);
+                    $entityManager->flush();
+                    $i=$i+1;
+                   }
+                }
                 $data = [
                     'status' => 200,
                     'message' => 'partenaire bloqué'

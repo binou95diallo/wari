@@ -17,9 +17,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
             access_denied_handler: App\Security\AccessDeniedHandler
-        main: 
-            json_login:
-                check_path:    /api/login_check
+        #main: 
+            #json_login:
+               # check_path:    /api/login_check
         login:
             pattern:  ^/api/login
             stateless: true

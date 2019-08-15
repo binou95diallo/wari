@@ -86,7 +86,6 @@ class SecurityController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
-            //$entityManager->persist($compte);
             $entityManager->flush();
        
                 $data = [

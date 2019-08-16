@@ -47,17 +47,18 @@ class PartenaireRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-
-    public function findById($id)
+/*
+*Retourne le partenaire qui vient d'être enregistré 
+ */
+    public function findById(): Partenaire
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.id = :val')
-            ->setParameter('val', $id)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+        $qb=$this->createQueryBuilder('p')
+            ->select('p')
+            ->orderBy('p.id', 'DESC')
             ->getQuery()
-            ->getResult()
         ;
+        $qb->execute();
+        return   $qb->setMaxResults(1)->getOneOrNullResult();
     }
 
     public function findPartOp(){

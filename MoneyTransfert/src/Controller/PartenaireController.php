@@ -46,9 +46,9 @@ class PartenaireController extends AbstractController
          $dompdf = new Dompdf($pdfOptions);
          $date= new \DateTime('now');
          // Retrieve the HTML generated in our twig file
-         $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea("anre101");
+         $part=$entityManager->getRepository(Partenaire::class)->findById();
          $html = $this->renderView('partenaire/contrat.html.twig', [
-            'partenaires' => $partenaireRepository->find($part->getId()),
+            'partenaires' => $part,
             'dateContrat'=> $date
         ]);
          

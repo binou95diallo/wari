@@ -280,10 +280,15 @@ class BankAccountController extends AbstractController
             $random=random_int(100,1000000);
             $user=$this->getUser();
             $transact->setUser($user);
+            $compteId=$this->getDoctrine()->getManager()->getRepository(User::class)->find($user->getBankAccount());
+            $compte=$this->getDoctrine()->getManager()->getRepository(BankAccount::class)->find($compteId);
+            $solde=$compte->getSolde()+$gain;
+            $compte->setSolde($solde);
             $code=$random.''.$montant;
             $transact->setCode($code);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($transact);
+            $entityManager->persist($compte);
             $entityManager->flush();
 
 

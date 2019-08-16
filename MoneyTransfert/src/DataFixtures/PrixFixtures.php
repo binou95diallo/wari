@@ -1,12 +1,7 @@
 <?php
 
 namespace App\DataFixtures;
-
-use App\Entity\Compte;
 use App\Entity\Tarifs;
-use App\Entity\Profil;
-use App\Entity\Entreprise;
-use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 

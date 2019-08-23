@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PartenaireComponent } from './partenaire/partenaire.component';
@@ -14,6 +14,10 @@ import {AuthGuard} from './auth.guard';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AuthService } from './auth.service';
+import { AddPartenaireComponent } from './add-partenaire/add-partenaire.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { DataService } from './data.service';
+
 
 const routes: Routes = [
   {path: 'login', component : LoginComponent},
@@ -25,7 +29,9 @@ const routes: Routes = [
     UsersComponent,
     CompteComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AddPartenaireComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +39,10 @@ const routes: Routes = [
     RouterModule.forRoot( routes ),
     HttpModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthGuard,AuthService],
+  providers: [AuthGuard,AuthService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,7 +13,7 @@ import {AuthService} from './auth.service';
 export class DataService {
 
   private uri= 'http://127.0.0.1:8000/partenaire';
-
+  private _registerUrl = "http://localhost:8000/api/register";
 
 
   constructor(private http: Http, private authenticationService: AuthService  ) {}
@@ -47,7 +47,16 @@ export class DataService {
     return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res.json());
   }
 
-
+  registerUser(user: {}) {
+    const  headers = new Headers();
+    console.log(this.authenticationService.token);
+    console.log(user);
+    headers.append('content-type', 'application/json');
+    headers.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('token')));
+    console.log(headers);
+    return this.http.post(this._registerUrl, JSON.stringify(user), {headers : headers}).map(res => res.json()).catch(this.handelError);
+  
+  }
   private handelError(error: Response) {
 
     return Observable.throw(error.json().errors || 'server error');

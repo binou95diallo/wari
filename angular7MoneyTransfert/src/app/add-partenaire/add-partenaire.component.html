@@ -1,0 +1,108 @@
+<h1>Add partenaireData</h1>
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+<h5 *ngIf="success">Your form is valid!</h5>
+
+<div class="row">
+  <div class="col-md-6">
+      <div class="form-group">
+          <label>
+            NomComplet:
+            <input type="text" [(ngModel)]="partenaireData.name" [ngModelOptions]="{standalone: true}"  name="name"  class="form-control">
+          </label>
+          <label>
+              Ninea:
+              <input type="text" [(ngModel)]="partenaireData.ninea" [ngModelOptions]="{standalone: true}" name="ninea"  class="form-control">
+            </label>
+        </div>
+        <div class="form-group">
+          <label>
+            RaisonSocial:
+            <input type="text" [(ngModel)]="partenaireData.raisonSocial" [ngModelOptions]="{standalone: true}" name="raisonSocial"  class="form-control">
+          </label>
+          <label>
+              Adresse:
+              <input type="text" [(ngModel)]="partenaireData.adresse" [ngModelOptions]="{standalone: true}" name="adresse"  class="form-control">
+            </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Email:
+            <input type="text" [(ngModel)]="partenaireData.email" [ngModelOptions]="{standalone: true}" name="email"  class="form-control">
+          </label>
+          <label>
+              Telephone:
+              <input type="text" [(ngModel)]="partenaireData.telephone" [ngModelOptions]="{standalone: true}" name="telephone"  class="form-control">
+          </label>
+      </div>
+      <div class="form-group">
+          <label>
+              Solde du compte:
+              <input type="number" [(ngModel)]="partenaireData.solde" [ngModelOptions]="{standalone: true}" name="solde"  class="form-control">
+          </label>
+      </div>
+    </div>
+  <div class="col-md-6">
+      <div class="form-group">
+          <label>
+            Username:
+            <input type="text" [(ngModel)]="partenaireData.username" [ngModelOptions]="{standalone: true}" name="username"  class="form-control">
+          </label>
+          <label>
+              Password:
+              <input type="password" [(ngModel)]="partenaireData.password" [ngModelOptions]="{standalone: true}" name="password"  class="form-control">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+              NomComplet:
+              <input type="text" [(ngModel)]="partenaireData.nomUser" [ngModelOptions]="{standalone: true}" name="nomUser"  class="form-control">
+            </label>
+            <label>
+                adresse:
+                <input type="text" [(ngModel)]="partenaireData.adresseUser" [ngModelOptions]="{standalone: true}" name="adresseUser"  class="form-control">
+              </label>
+        </div>
+        <div class="form-group">
+            <label>
+              Email:
+              <input type="text" [(ngModel)]="partenaireData.emailUser" [ngModelOptions]="{standalone: true}" name="emailUser"  class="form-control">
+            </label>
+            <label>
+                Telephone:
+                <input type="text" [(ngModel)]="partenaireData.telephoneUser" [ngModelOptions]="{standalone: true}" name="telephoneUser"  class="form-control">
+              </label>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Profil
+          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="partenaireData.profil" [ngModelOptions]="{standalone: true}" name="profil">
+            <option selected value="adminpartenaire">admin partenaire</option>
+            <option value="caissier">caissier</option>
+            <option value="user">user</option>
+          </select>
+        </label>
+        <label for="exampleFormControlFile1">photo
+            <input type="file" [(ngModel)]="partenaireData.photo" [ngModelOptions]="{standalone: true}" name="photo" class="form-control-file" id="exampleFormControlFile1">
+      </label>
+      <div class="form-group">
+        <label for="">Status
+          <input class="form-check-input" type="text" [(ngModel)]="partenaireData.status" [ngModelOptions]="{standalone: true}" id="inlineCheckbox1" value="bloqué" name="status">
+        </label>
+      </div>
+       <!--  <div class="form-check form-check-inline">Status
+            <input class="form-check-input" type="checkbox" [(ngModel)]="partenaireData.status" [ngModelOptions]="{standalone: true}" id="inlineCheckbox1" value="bloqué" name="status">
+            <label class="form-check-label" for="inlineCheckbox1">bloqué</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="partenaire.status" [ngModelOptions]="{standalone: true}" value="debloqué" name="status">
+            <label class="form-check-label" for="inlineCheckbox2">debloqué</label>
+          </div>
+      </div> -->
+</div>
+</div>
+</div>
+<div *ngFor="let error of errors" class="alert alert-danger">
+    <div>There is an error in :{{error.field}} field</div>
+    <div>{{error.message}}</div>
+  </div>
+<button type="submit" class="btn btn-primary" value="Send message" >Login</button>
+
+</form>

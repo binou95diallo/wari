@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 export class AuthService {
 
   public token: string;
-
+  private _registerUrl = "http://localhost:8000/api/register";
   constructor(private http: Http) {
     //localStorage permet de garder les infos de l'utilisateur durant sa connexion un peu comme les sessions
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -45,7 +45,16 @@ ngOnInit(){
       }).catch(this.handelError);
   }
 
-
+ /*  registerUser(user: {}) {
+    const  headers = new Headers();
+    console.log(this.token);
+    console.log(user);
+    headers.append('content-type', 'application/x-www-form-urlencoded');
+    headers.append('Authorization', 'Bearer ' + this.token);
+    console.log(headers);
+    return this.http.post(this._registerUrl, JSON.stringify(user), {headers : headers}).map(res => res.json()).catch(this.handelError);
+  
+  } */
 
 
   logout(): void {

@@ -55,9 +55,9 @@ export class DataService {
     console.log(this.authenticationService.token);
     console.log(user);
     headers.append('content-type', 'application/json');
-    headers.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('token')));
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
     console.log(headers);
-    return this.http.post(this._registerUrl, JSON.stringify(user), {headers : headers}).map(res => res).catch(this.handelError);
+    return this.http.post(this._registerUrl, user, {headers : headers}).map(res => res).catch(this.handelError);
   
   }
   getUser(): Observable<any[]> {

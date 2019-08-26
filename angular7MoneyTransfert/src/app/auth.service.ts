@@ -1,23 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {Http, Headers, Response, URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-@Injectable()
-export class AuthService {
+import { JwtHelperService } from "@auth0/angular-jwt";
 
+@Injectable()
+export class AuthService{
+ 
   public token: string;
+  roles: Array<string>;
   private _registerUrl = "http://localhost:8000/api/register";
   constructor(private http: Http) {
     //localStorage permet de garder les infos de l'utilisateur durant sa connexion un peu comme les sessions
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(currentUser);
+   // this.parseJWT();
   }
   public getToken(): string {
+    /* let payload=JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+    console.log(payload.role); */
     return localStorage.getItem('token');
   }
 ngOnInit(){
+ 
 }
 
   login(username: string, password: string): Observable<boolean> {
@@ -36,7 +43,7 @@ ngOnInit(){
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ username: username}));
           localStorage.setItem('token',token);
-
+          this.parseJWT();
           // return true to indicate successful login
           return true;
         } else {
@@ -44,6 +51,23 @@ ngOnInit(){
           return false;
         }
       }).catch(this.handelError);
+  }
+  parseJWT(){
+    const JWThelper = new JwtHelperService();
+    const objJWT = JWThelper.decodeToken(this.token);
+    this.roles=objJWT.roles;
+    console.log(objJWT);
+  }
+  isAdmin(){
+    return this.roles.indexOf('ROLE_ADMIN')>=0;
+  }
+
+  isUser(){
+    return this.roles.indexOf('USER')>=0;
+  }
+
+  isAuthenticated(){
+    return this.roles && this.isAdmin();
   }
 
  /*  registerUser(user: {}) {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,15 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
   title = 'angular7MoneyTransfert';
   faCoffee = faCoffee;
+constructor(private authenticationService:AuthService){}
+  isAdmin(){
+    return this.authenticationService.isAdmin();
+  }
+  
+  isUser(){
+    return this.authenticationService.isUser();
+  }
+  isAuthenticated(){
+    return this.authenticationService.isAuthenticated();
+  }
 }

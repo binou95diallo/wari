@@ -17,6 +17,10 @@ import { AuthService } from './auth.service';
 import { AddPartenaireComponent } from './add-partenaire/add-partenaire.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { DataService } from './data.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { httpInterceptorProviders, AuthInterceptor } from './auth-interceptor.service';
+import { HistoriqueOperationComponent } from './historique-operation/historique-operation.component';
+import { Partenaire } from './partenaire';
 
 
 const routes: Routes = [
@@ -31,18 +35,26 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     AddPartenaireComponent,
-    AddUserComponent
+    AddUserComponent,
+    HistoriqueOperationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot( routes ),
     HttpModule,
+    HttpClientModule,
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard,AuthService,DataService],
+  providers: [AuthGuard,AuthService,DataService,Partenaire,
+    { provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true 
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

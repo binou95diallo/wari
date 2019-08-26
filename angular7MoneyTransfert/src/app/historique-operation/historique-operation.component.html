@@ -3,16 +3,19 @@
     <table class="fl-table">
         <thead>
         <tr>
+            <th id="">Caissier</th>
+            <th id="">Montant</th>
             <th id="">Numéro Compte</th>
-            <th id="">Solde</th>
+            <th id="">Date dépôt</th>
         </tr>
         </thead>
-        <ng-container *ngFor="let c of  comptes">
+        <ng-container *ngFor="let u of  users">
           <tbody >
           <tr>
-            <td>{{c.numeroCompte}}</td>
-            <td>{{c.solde}}</td>
-            <td><a href="/editcomptes/{{c.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
+            <td>{{u.caissier}}</td>
+            <td>{{u.montant}}</td>
+            <td>{{u.numeroCompte}}</td>
+            <td>{{u.dateDepot}}</td>
             
           </tr>
           </tbody>

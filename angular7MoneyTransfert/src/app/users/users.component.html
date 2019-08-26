@@ -1,3 +1,35 @@
-<p>
-  users works!
-</p>
+<h2>Responsive Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th id="">NomComplet</th>
+            <th id="">Username</th>
+            <th id="">Adresse</th>
+            <th id="">Profil</th>
+            <th id="">Statu</th>
+            <th id="">Photo</th>
+            <th id="">Editer</th>
+        </tr>
+        </thead>
+        <ng-container *ngFor="let u of  users">
+          <tbody >
+          <tr>
+            <td>{{u.nomComplet}}</td>
+            <td>{{u.username}}</td>
+            <td>{{u.adresse}}</td>
+            <td>{{u.profil}}</td>
+            <td>{{u.status}}</td>
+            <td>{{u.imageName}}</td>
+            <td><a href="/editusers/{{u.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
+            <p>
+              <td *ngIf="u.status===inactif">
+                    <button class="btn-danger">{{u.status}}</button>
+              </td>
+              </p>
+            
+          </tr>
+          </tbody>
+          </ng-container>
+    </table>
+</div>

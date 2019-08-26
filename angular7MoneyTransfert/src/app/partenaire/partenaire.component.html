@@ -1,31 +1,33 @@
-<h1 class="text-primary">Partenaires </h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Ninea</th>
-      <th scope="col">RaisonSocial</th>
-      <th scope="col">Telephone</th>
-      <th scope="col">NomComplet</th>
-      <th scope="col">Statu</th>
-      <th scope="col">Editer</th>
-    </tr>
-  </thead>
-  <ng-container *ngFor="let p of  partenaires">
-  <tbody >
-  <tr>
-    <td>{{p.ninea}}</td>
-    <td>{{p.raisonSocial}}</td>
-    <td>{{p.telephone}}</td>
-    <td>{{p.nomComplet}}</td>
-    <td>{{p.status}}</td>
-    <td><a href="/editPartenaire/{{p.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
-    <p>
-      <td *ngIf="p.status===inactif">
-            <button class="btn-danger">{{p.status}}</button>
-      </td>
-      </p>
-    
-  </tr>
-  </tbody>
-  </ng-container>
-</table>
+<h2>Responsive Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+          <tr>
+            <th scope="col">Ninea</th>
+            <th scope="col">RaisonSocial</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">NomComplet</th>
+            <th scope="col">Statu</th>
+            <th scope="col">Editer</th>
+          </tr>
+        </thead>
+        <ng-container *ngFor="let p of  partenaires">
+          <tbody >
+          <tr>
+            <td>{{p.ninea}}</td>
+            <td>{{p.raisonSocial}}</td>
+            <td>{{p.telephone}}</td>
+            <td>{{p.nomComplet}}</td>
+            <td>{{p.status}}</td>
+            <td><a href="/editPartenaire/{{p.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
+            <p>
+              <td *ngIf="p.status===inactif">
+                    <button class="btn-danger">{{p.status}}</button>
+              </td>
+              </p>
+            
+          </tr>
+          </tbody>
+          </ng-container>
+    </table>
+</div>

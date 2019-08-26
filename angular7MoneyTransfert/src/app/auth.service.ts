@@ -12,10 +12,11 @@ export class AuthService {
   constructor(private http: Http) {
     //localStorage permet de garder les infos de l'utilisateur durant sa connexion un peu comme les sessions
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.token;
     console.log(currentUser);
   }
-
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }
 ngOnInit(){
 }
 
@@ -27,14 +28,14 @@ ngOnInit(){
     return this.http.post('http://127.0.0.1:8000/api/login_check', {'username':username,'password':password},{headers : headers} )
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        const token = response.json();
+        const token = response.json().token;
         console.log(token);
         if (token) {
           // set token property
           this.token = token;
-
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username: username}));
+          localStorage.setItem('token',token);
 
           // return true to indicate successful login
           return true;
@@ -61,6 +62,7 @@ ngOnInit(){
     // clear token remove user from local storage to log user out
     this.token = null;
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
   }
 
   private handelError(error: Response) {

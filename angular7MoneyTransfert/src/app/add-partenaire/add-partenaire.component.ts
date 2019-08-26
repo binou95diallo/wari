@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Route, Router } from '@angular/router';
+import { Partenaire } from '../partenaire';
 
 @Component({
   selector: 'app-add-partenaire',
@@ -14,25 +15,9 @@ export class AddPartenaireComponent implements OnInit {
   submitted = false;
   success = false;
   errors=[];
-  name:string
-  ninea: string
-  raisonSocial: string
-  adresse: string
-  email: string
-  telephone: string
-  solde: string
-  username: string
-  password: string
-  nomUser: string
-  adresseUser: string
-  emailUser: string
-  telephoneUser: string
-  profil: string
-  photo : string
-  status:string
-  partenaireData={};
+  partenaireData;
 
-  constructor(private formBuilder: FormBuilder, private data: DataService,private router:Router) { 
+  constructor(private formBuilder: FormBuilder, private data: DataService,private router:Router,partenaire:Partenaire) { 
     this.messageForm = this.formBuilder.group({
       name: ['', Validators.required],
       ninea: ['', Validators.required],
@@ -54,18 +39,17 @@ export class AddPartenaireComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    console.log(this.name);
     if (!this.messageForm.invalid) {
       console.log("non valider");
       return false;
     }
     console.log(this.partenaireData);
-      let partenaire: any;
+      /* let partenaire: any;
       partenaire = {'ninea':this.ninea, 'raisonSocial':this.raisonSocial,'name':this.name,'adresse':this.adresse,'email':this.email,
                     'telephone':this.telephone,'solde':this.solde,'username':this.username,'password':this.password,'nomUser':this.nomUser,
                     'adresseUser':this.adresseUser,'emailUser':this.emailUser,'telephoneUser':this.telephoneUser,'profil':this.profil,'photo':this.photo
                   };
-                  console.log(partenaire);
+                  console.log(partenaire); */
       this.data.addPartenaire(this.partenaireData).subscribe(( (result: any) => {
         
         console.log(result);

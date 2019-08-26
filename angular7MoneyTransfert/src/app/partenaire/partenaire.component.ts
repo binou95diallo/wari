@@ -10,16 +10,16 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 export class PartenaireComponent implements OnInit {
 
   faEdit = faEdit;
-  partenaires: Array<Partenaire>= [] ;
+  partenaires: Partenaire[] ;
      errorMessage: string;
      statut:string;
   constructor(private data: DataService) { }
 
   getPartenaire() {
     this.data.getPartenaire().subscribe(
-      partenaires => this.partenaires = partenaires, error => this.errorMessage = error,
+     data => {this.partenaires = data}, error => this.errorMessage = error,
     );
-    return this.partenaires;
+    console.log(this.partenaires);
   }
 
   ngOnInit() {

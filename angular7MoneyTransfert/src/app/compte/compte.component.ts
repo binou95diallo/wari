@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Compte} from '../compte';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-compte',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./compte.component.css']
 })
 export class CompteComponent implements OnInit {
+  faEdit = faEdit;
+  comptes: Compte[] ;
+     errorMessage: string;
+     statut:string;
+  constructor(private data: DataService) { }
 
-  constructor() { }
+  getCompte() {
+    this.data.getCompte().subscribe(
+     data => {this.comptes = data}, error => this.errorMessage = error,
+    );
+    console.log(this.comptes);
+  }
 
   ngOnInit() {
+    this.getCompte();
   }
 
 }

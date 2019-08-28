@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
      .subscribe(data=> {
      /*  this.tokenStorage.saveAuthorities(data.Authorization);
       this.roles = this.tokenStorage.getAuthorities(); */
-        this.reloadPage();
+        //this.reloadPage();
        
        this.router.navigate(['/partenaires']);
 

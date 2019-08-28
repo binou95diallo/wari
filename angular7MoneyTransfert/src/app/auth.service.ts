@@ -19,8 +19,6 @@ export class AuthService{
    // this.parseJWT();
   }
   public getToken(): string {
-    /* let payload=JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
-    console.log(payload.role); */
     return localStorage.getItem('token');
   }
 ngOnInit(){
@@ -43,6 +41,8 @@ ngOnInit(){
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ username: username}));
           localStorage.setItem('token',token);
+          sessionStorage.setItem('currentUser', JSON.stringify({ username: username}));
+          sessionStorage.setItem('token',token);
           this.parseJWT();
           // return true to indicate successful login
           return true;
@@ -54,20 +54,21 @@ ngOnInit(){
   }
   parseJWT(){
     const JWThelper = new JwtHelperService();
-    const objJWT = JWThelper.decodeToken(this.token);
+    const objJWT = JWThelper.decodeToken(this.getToken());
     this.roles=objJWT.roles;
+    console.log(this.roles.indexOf("ROLE_USER"));
     console.log(objJWT);
   }
   isAdmin(){
-    return this.roles.indexOf('ROLE_ADMIN')>=0;
+    return this.roles && this.roles.indexOf("ROLE_ADMIN")>=0;
   }
 
   isUser(){
-    return this.roles.indexOf('USER')>=0;
+    return this.roles && this.roles.indexOf("ROLE_USER")>=0;
   }
 
   isAuthenticated(){
-    return this.roles && this.isAdmin();
+    return this.roles && (this.isUser());
   }
 
  /*  registerUser(user: {}) {

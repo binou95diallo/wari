@@ -21,10 +21,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { httpInterceptorProviders, AuthInterceptor } from './auth-interceptor.service';
 import { HistoriqueOperationComponent } from './historique-operation/historique-operation.component';
 import { Partenaire } from './partenaire';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 
 const routes: Routes = [
   {path: 'login', component : LoginComponent},
+  {path: 'logout', component : LoginComponent},
 ];
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ const routes: Routes = [
     LoginComponent,
     AddPartenaireComponent,
     AddUserComponent,
-    HistoriqueOperationComponent
+    HistoriqueOperationComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,

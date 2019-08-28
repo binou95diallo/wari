@@ -1,45 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">WebiTransfert</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['']">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item"  *ngIf="isAuthenticated()">
-        <a class="nav-link" [routerLink]="['/partenaires']">Partenaires</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/utilisateurs']">Utilisateurs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " [routerLink]="['/compte']">Compte</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link " [routerLink]="['/login']">login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " [routerLink]="['/addPartenaire']">Ajouter Partenaire</a>
+<nav class="menu">
+  <ol>
+    <li class="menu-item"><a [routerLink]="['']">Home</a></li>
+    <li class="menu-item"><a [routerLink]="['/about']">About</a></li>
+    <li class="menu-item" *ngIf="isAuthenticated()">
+      <a [routerLink]="['/partenaires']">Partenaire</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a [routerLink]="['/addPartenaire']">Ajout</a></li>
+        <li class="menu-item"><a href="#0">Bigger Widgets</a></li>
+        <li class="menu-item"><a href="#0">Huge Widgets</a></li>
+      </ol>
     </li>
-    <li class="nav-item">
-      <a class="nav-link " [routerLink]="['/addUser']">Ajouter user</a>
-  </li>
-    </ul>
-  </div>
+    <li class="menu-item" *ngIf="isAdmin()">
+      <a [routerLink]="['/utilisateurs']">Utilisateurs</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a [routerLink]="['/addUser']">Ajout</a></li>
+        <li class="menu-item"><a href="#0">BBQ kabobs</a></li>
+        <li class="menu-item"><a href="#0">Summer kabobs</a></li>
+      </ol>
+    </li>
+    <li class="menu-item" >
+      <a [routerLink]="['/compte']">Comptes</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a href="#0">Shishkabobs</a></li>
+        <li class="menu-item"><a href="#0">BBQ kabobs</a></li>
+        <li class="menu-item" ><a href="#0">Summer kabobs</a></li>
+      </ol>
+    </li>
+    <li class="menu-item"><a href="#0">Contact</a></li>
+    <li class="menu-item"><a [routerLink]="['/login']">login</a></li>
+    <!-- <li class="menu-item"><a [routerLink]="['/logout']">logout</a></li> -->
+  </ol>
 </nav>
 <router-outlet></router-outlet>
-
-</body>
-</html>

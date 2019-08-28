@@ -50,15 +50,33 @@ export class DataService {
     return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res);
   }
 
-  registerUser(user: {}) {
+  registerUser(user) {
+    const formData = new FormData();
+
+    formData.append('imageName', user.imageName);
+    formData.append('username',user.username);
+    formData.append('password',user.password);
+    formData.append('nomComplet',user.nomComplet);
+    formData.append('adresse',user.adresse);
+    formData.append('telephone',user.telephone);
+    formData.append('email',user.email);
+    formData.append('status',user.status);
+    formData.append('profil',user.profil);
     const  headers = new HttpHeaders();
     console.log(this.authenticationService.token);
     console.log(user);
-    headers.append('content-type', 'application/json');
-    headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    /* headers.append('content-type', 'application/json');
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem('token')); */
     console.log(headers);
-    return this.http.post(this._registerUrl, user, {headers : headers}).map(res => res).catch(this.handelError);
+   return this.http.post(this._registerUrl, formData).map(res => res).catch(this.handelError);
   
+  }
+  public uploadImage(image: File): Observable<any> {
+    const formData = new FormData();
+
+    formData.append('imageName', image);
+
+    return this.http.post(this.uri+'/uploadImage', formData);
   }
   getUser(): Observable<any[]> {
     console.log(this.headers);

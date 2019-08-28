@@ -11,18 +11,7 @@ const TOKEN_HEADER_KEY = 'Authorization';
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private token: TokenStorageService, private injector:Injector) { }
-
-    /* intercept(req: HttpRequest<any>, next: HttpHandler) {
-        let authReq = req;
-        const token = this.token.getToken();
-        if (token != null) {
-            authReq = req.clone({setHeaders: {TOKEN_HEADER_KEY: 'Bearer ${token}'}
-
-            });
-           // authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-        }
-        return next.handle(authReq);
-    } */
+    
     intercept(request: HttpRequest<any>, next: HttpHandler) {
         let authService = this.injector.get(AuthService)
         console.log(authService.getToken());
@@ -33,12 +22,6 @@ export class AuthInterceptor implements HttpInterceptor {
         }
        })
        return next.handle(tokenizedReq);
-       /*  if(this.token.getToken()){
-            request=this.addToken(request,this.token.getToken());
-
-           // authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-        }
-        return next.handle(request); */
     }
 
     private addToken(request: HttpRequest<any>,token: string){

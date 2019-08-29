@@ -16,10 +16,14 @@ export class AuthService{
     //localStorage permet de garder les infos de l'utilisateur durant sa connexion un peu comme les sessions
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(currentUser);
-   // this.parseJWT();
   }
   public getToken(): string {
-    return localStorage.getItem('token');
+    let token=localStorage.getItem('token');
+    const JWThelper = new JwtHelperService();
+    const objJWT = JWThelper.decodeToken(localStorage.getItem('token'));
+    this.roles=objJWT.roles;
+    //this.parseJWT();
+    return token;
   }
 ngOnInit(){
  
@@ -41,8 +45,6 @@ ngOnInit(){
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ username: username}));
           localStorage.setItem('token',token);
-          sessionStorage.setItem('currentUser', JSON.stringify({ username: username}));
-          sessionStorage.setItem('token',token);
           this.parseJWT();
           // return true to indicate successful login
           return true;
@@ -66,22 +68,13 @@ ngOnInit(){
   isUser(){
     return this.roles && this.roles.indexOf("ROLE_USER")>=0;
   }
+  isCaissier(){
+    return this.roles && this.roles.indexOf("ROLE_CAISSIER")>=0;
+  }
 
   isAuthenticated(){
     return this.roles && (this.isUser());
   }
-
- /*  registerUser(user: {}) {
-    const  headers = new Headers();
-    console.log(this.token);
-    console.log(user);
-    headers.append('content-type', 'application/x-www-form-urlencoded');
-    headers.append('Authorization', 'Bearer ' + this.token);
-    console.log(headers);
-    return this.http.post(this._registerUrl, JSON.stringify(user), {headers : headers}).map(res => res.json()).catch(this.handelError);
-  
-  } */
-
 
   logout(): void {
     // clear token remove user from local storage to log user out

@@ -82,5 +82,19 @@ public function findById($id)
     return $stmt;
 }
 
+/*
+*Retourne le partenaire qui vient d'être enregistré 
+ */
+public function findLastUser(): User
+{
+    $qb=$this->createQueryBuilder('u')
+        ->select('u')
+        ->orderBy('u.id', 'DESC')
+        ->getQuery()
+    ;
+    $qb->execute();
+    return   $qb->setMaxResults(1)->getOneOrNullResult();
+}
+
 
 }

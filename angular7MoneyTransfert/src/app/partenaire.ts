@@ -1,5 +1,5 @@
 export class Partenaire{
-    name:string;
+  nomComplet:string;
   ninea: string;
   raisonSocial: string;
   adresse: string;

@@ -50,7 +50,6 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/ajout", name="bankAccountAjout", methods={"POST","GET"})
-     * @IsGranted("ROLE_ADMINPARTENAIRE")
      */
     public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {
@@ -76,7 +75,6 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/{id}", name="bankAccountShow", methods={"GET"})
-     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     public function show(BankAccount $bankAcc,BankAccountRepository $bankARepo,SerializerInterface $serializer): Response
     {
@@ -89,7 +87,6 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/bankAccount/{id}/edit", name="BankAEdit", methods={"GET","POST"})
-     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     
     public function edit(Request $request, BankAccount $bankA,SerializerInterface $serializer,ValidatorInterface $validator,
@@ -139,7 +136,6 @@ class BankAccountController extends AbstractController
 
      /**
      * @Rest\Get("/bankAccount", name="compteList")
-     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     public function listAction(SerializerInterface $serializer):Response
     {
@@ -148,7 +144,7 @@ class BankAccountController extends AbstractController
             $normalizers = [
                 (new ObjectNormalizer())
                     ->setIgnoredAttributes([
-                        //'updateAt'
+                        'updated_at'
                     ])
             ];
             $serializer = new Serializer($normalizers, $encoders);
@@ -166,32 +162,31 @@ class BankAccountController extends AbstractController
     #####################################################################################################
 
       /**
-     * @Route("/depot/ajout", name="depotAjout", methods={"POST"})
-     * @isGranted("ROLE_CAISSIER")
+     * @Route("/bankAccount/depot/ajout", name="depotAjout", methods={"POST"})
      */
     public function depot(Request $request): Response
     {
         $depot = new Depot();
-        $values=json_decode($request->getContent());
-        $caissier=$this->getDoctrine()->getManager()->getRepository(User::class)->find($values->caissier);
-        $compteId=$caissier->getBankAccount();
-        $compte=$this->getDoctrine()->getManager()->getRepository(BankAccount::class)->find($compteId);
+        $values=$request->request->all();
+        $caissier=$this->getUser();
+        $idCompte=$caissier->getBankAccount();
         $depot->setCaissier($caissier);
-        $depot->setBankAccount($compte);
+        $depot->setBankAccount($idCompte);
         $depot->setDateDepot(new \DateTime('now'));
-        $depot->setMontant($values->montant);
-        $solde=$compte->getSolde() + $depot->getMontant();
-        $compte->setSolde($solde);
+        $depot->setMontant($values["montant"]);
+        var_dump($idCompte->getSolde());
+        $solde=$idCompte->getSolde() + $depot->getMontant();
+        $idCompte->setSolde($solde);
         $form = $this->createForm(DepotType::class, $depot);
         $form->handleRequest($request);
         $form->submit($values);
-        $form = $this->createForm(BankAccountType::class, $compte);
+        $form = $this->createForm(BankAccountType::class, $idCompte);
         $form->handleRequest($request);
         $form->submit($values);
             $entityManager = $this->getDoctrine()->getManager();
             $em= $this->getDoctrine()->getManager();
             $entityManager->persist($depot);
-            $em->persist($compte);
+            $em->persist($idCompte);
             $em->flush();
             $entityManager->flush();
 
@@ -211,7 +206,6 @@ class BankAccountController extends AbstractController
 
     /**
      * @Route("/transaction/envoie", name="transaction", methods={"POST"})
-     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
 
      public function envoie(Request $request,EntityManagerInterface $entityManager):Response
@@ -297,7 +291,7 @@ class BankAccountController extends AbstractController
             'status' => 201,
             'message' => 'Envoie effectuée'
         ];
-        return new JsonResponse($data, 201);
+        return new Response($data, 201);
      }
 
      /**
@@ -343,7 +337,6 @@ class BankAccountController extends AbstractController
 
     /**
      * @Rest\Get("/usersOp", name="userListOp")
-     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
 
     public function listUserOp(TransactionRepository $transactRepo,SerializerInterface $serializer){

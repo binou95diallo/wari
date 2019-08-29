@@ -20,7 +20,7 @@ export class AddUserComponent implements OnInit {
   imageUrl:string ="/assets/img/afro3.png";
   fileToUpload:File= null;
   constructor(private  data: DataService,
-              private _router: Router) { 
+              private router: Router) { 
               }
 
               getPartenaire() {
@@ -51,23 +51,12 @@ export class AddUserComponent implements OnInit {
     ]
   }
 
-  /* onSelectedFile(imageInput :any){
-    this.selectedFile =<File>imageInput.files.item(0);
-    console.log(this.selectedFile);
-    this.imageName= this.selectedFile;
-  } */
-
   registerUser() {
-    //this.onSelectedFile(this.imageName);
-     //this.selectedFile=this.onSelectedFile(imageInpu);
-    //this.selectedFile =<File>event.target.files[0];
-    //console.log(event.files[0]);
-   // console.log(this.selectedFile);
     console.log(this.registerUserData);
    this.data.registerUser(this.registerUserData)
     .subscribe(
       res => {
-        this._router.navigate(['/utilisateurs'])
+        this.router.navigate(['/utilisateurs'])
       },
       err => console.log(err)
     )   

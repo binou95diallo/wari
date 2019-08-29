@@ -31,7 +31,7 @@ class DepotController extends AbstractController
     }
 
     /**
-     * @Route("/depot/ajout", name="depotAjout", methods={"POST"})
+     * @Route("/depot/ajouts", name="depotAjouts", methods={"POST"})
      * isGranted("ROLES_CAISSIER")
      */
     public function new(Request $request): Response

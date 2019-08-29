@@ -1,35 +1,61 @@
-<h2>Responsive Table</h2>
-<div class="table-wrapper">
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th id="">NomComplet</th>
-            <th id="">Username</th>
-            <th id="">Adresse</th>
-            <th id="">Profil</th>
-            <th id="">Statu</th>
-            <th id="">Photo</th>
-            <th id="">Editer</th>
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="mat-elevation-z8" class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort class="fl-table">
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Username </th>
+          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="adresse">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Adresse </th>
+          <td mat-cell *matCellDef="let row"> {{row.adresse}}% </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="nomComplet">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NomComplet</th>
+          <td mat-cell *matCellDef="let row"> {{row.nomComplet}} </td>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="profil">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Profil </th>
+          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.profil}} </td>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Status </th>
+          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.status}} </td>
+        </ng-container>
+    <!-- Color Column -->
+    <ng-container matColumnDef="photo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Photo </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.photo}} </td>
+    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
         </tr>
-        </thead>
-        <ng-container *ngFor="let u of  users">
-          <tbody >
-          <tr>
-            <td>{{u.nomComplet}}</td>
-            <td>{{u.username}}</td>
-            <td>{{u.adresse}}</td>
-            <td>{{u.profil}}</td>
-            <td>{{u.status}}</td>
-            <td>{{u.imageName}}</td>
-            <td><a href="/editusers/{{u.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
-            <p>
-              <td *ngIf="u.status===inactif">
-                    <button class="btn-danger">{{u.status}}</button>
-              </td>
-              </p>
-            
-          </tr>
-          </tbody>
-          </ng-container>
-    </table>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
 </div>

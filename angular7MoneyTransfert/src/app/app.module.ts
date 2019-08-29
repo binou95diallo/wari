@@ -22,10 +22,16 @@ import { httpInterceptorProviders, AuthInterceptor } from './auth-interceptor.se
 import { HistoriqueOperationComponent } from './historique-operation/historique-operation.component';
 import { Partenaire } from './partenaire';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { from } from 'rxjs';
+import { LogoutComponent } from './logout/logout.component';
+import { DepotComponent } from './depot/depot.component';
 
 
 const routes: Routes = [
-  {path: 'login', component : LoginComponent},
+  
   {path: 'logout', component : LoginComponent},
 ];
 @NgModule({
@@ -39,7 +45,10 @@ const routes: Routes = [
     AddPartenaireComponent,
     AddUserComponent,
     HistoriqueOperationComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    NavbarComponent,
+    LogoutComponent,
+    DepotComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +58,13 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [AuthGuard,AuthService,DataService,Partenaire,
     { provide: HTTP_INTERCEPTORS,

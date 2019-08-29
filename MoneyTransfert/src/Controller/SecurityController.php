@@ -39,7 +39,6 @@ class SecurityController extends AbstractController
     
      /**
      * @Route("/register", name="register", methods={"POST"})
-     * @isGranted("ROLE_ADMINPARTENAIRE")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager, 
                             PartenaireRepository $partenaireRepo,SerializerInterface $serializer, ValidatorInterface $validator):Response
@@ -48,14 +47,15 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $values=$request->request->all();
+        var_dump($values);
         $form->submit($values);
         $image=$request->files->all()['imageName'];
         $uti=$this->getUser();
-            // encode the plain password
+       $idPart= $uti->getPartenaire();
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
             
@@ -76,6 +76,15 @@ class SecurityController extends AbstractController
                 $roles=["ROLE_CAISSIER"];
             }
             $user->setRoles($roles);
+            /* $user->setUsername($values->username);
+            $user->setAdresse($values->adresse);
+            $user->setEmail($values->email);
+            $user->setTelephone($values->telephone);
+            $user->setStatus($values->status); */
+            //$partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values["partenaire"]);
+            $user->setPartenaire($idPart);
+           // $user->setProfil($values->profil);
+            //$user->setNomComplet($values->nomComplet);
             $errors = $validator->validate($user);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
@@ -97,6 +106,24 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/uploadImage", name="uploadImage", methods={"POST"})
+     */
+    public function uploadImage(Request $request, UserRepository $userRepo){
+        $user=$userRepo->findLastUser();
+        $image=$request->files->all()['imageName'];
+        $user->setImageFile($image);
+        $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+       
+                $data = [
+                    'status' => 201,
+                    'message' => 'image ajouté'
+                ];
+
+                return new JsonResponse($data, 201);
+    }
+
+    /**
      * @Route("/login", name="login", methods={"POST"})
      */
     public function login(Request $request)
@@ -109,7 +136,7 @@ class SecurityController extends AbstractController
     }
 
      /**
-     * @Rest\Get("/users", name="usersList")
+     * @Rest\Get("/user/users", name="usersList")
      */
     public function listAction(SerializerInterface $serializer):Response
     {
@@ -252,6 +279,7 @@ class SecurityController extends AbstractController
             $user = $repo-> findOneBy(['username' => $username]);
             if(!$user){
                 return $this->json([
+                        'status'=>'ok',
                         'message' => 'Username incorrect'
                     ]);
             }
@@ -260,16 +288,19 @@ class SecurityController extends AbstractController
             ->isPasswordValid($user, $password);
             if(!$isValid){ 
                 return $this->json([
+                    'status'=>'ok',
                     'message' => 'Mot de passe incorect'
                 ]);
             }
             if($user->getStatus()=="bloqué"){
                 return $this->json([
+                    'status'=>'ok',
                     'message' => 'ACCÈS REFUSÉ veuillez-contacter l\'administrateur!'
                 ]);
             }
             $token = $JWTEncoder->encode([
                 'username' => $user->getUsername(),
+                'roles'=>$user->getRoles(),
                 'exp' => time() + 86400 // 1 day expiration
             ]);
 

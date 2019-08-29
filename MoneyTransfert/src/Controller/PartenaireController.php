@@ -29,7 +29,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Depot;
 
 /**
- * @Route("/partenaire")
+ * @Route("/api")
  */
 class PartenaireController extends AbstractController
 {
@@ -68,7 +68,7 @@ class PartenaireController extends AbstractController
     }
 
     /**
-     * @Route("/ajout", name="PartenaireAjout", methods={"POST","GET"})
+     * @Route("/partenaire/ajout", name="PartenaireAjout", methods={"POST","GET"})
      */
     public function ajout(Request $request,SerializerInterface $serializer, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {       
@@ -79,6 +79,9 @@ class PartenaireController extends AbstractController
             $form->submit($values);
             $entityManager = $this->getDoctrine()->getManager();
            
+            $entityManager->persist($Partenaire);
+            
+
             $errors = $validator->validate($Partenaire);
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
@@ -86,9 +89,6 @@ class PartenaireController extends AbstractController
                 'Content-Type' => 'application/json'
             ]);
         }
-            $entityManager->persist($Partenaire);
-            $entityManager->flush();
-
              /**
              * Ajout d'un compte
              */
@@ -98,10 +98,10 @@ class PartenaireController extends AbstractController
             $form->submit($values);
             $random=random_int(100,1000000);
             $numeroCompte=$random.''.$values["ninea"];
-            $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
+           // $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
             $compte->setNombreUsers(1);
             $compte->setNumeroCompte($numeroCompte);
-            $compte->setPartenaire($part);
+            $compte->setPartenaire($Partenaire);
             $entityManager->persist($compte);
 
             /**
@@ -117,7 +117,7 @@ class PartenaireController extends AbstractController
                 $user->setPassword(
                     $passwordEncoder->encodePassword(
                         $user,
-                        $form->get('plainPassword')->getData()
+                        $form->get('password')->getData()
                     )
                 );
                 
@@ -125,8 +125,8 @@ class PartenaireController extends AbstractController
                 $user->setProfil("adminPartenaire");
                 $user->setRoles(["ADMIN_PARTENAIRE"]);
                 $user->setStatus("débloqué");
-                $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
-                $user->setPartenaire($part);
+                //$part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
+                $user->setPartenaire($Partenaire);
                 $user->setBankAccount($compte);
                 $entityManager->persist($user);
                 
@@ -209,7 +209,7 @@ class PartenaireController extends AbstractController
     }
 
     /**
-     * @Rest\Get("/partenaires", name="partenaireList")
+     * @Rest\Get("/partenaire/partenaires", name="partenaireList")
      */
     public function listAction(SerializerInterface $serializer):Response
     {

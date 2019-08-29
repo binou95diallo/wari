@@ -44,6 +44,7 @@ class UserType extends AbstractType
             ->add('imageFile',VichImageType::class)
             ->add('profil')
             ->add('status')
+            ->add('password',PasswordType::class)
         ;
     }
 

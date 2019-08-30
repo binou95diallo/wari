@@ -56,6 +56,7 @@ export class AddUserComponent implements OnInit {
    this.data.registerUser(this.registerUserData)
     .subscribe(
       res => {
+        
         this.router.navigate(['/utilisateurs'])
       },
       err => console.log(err)

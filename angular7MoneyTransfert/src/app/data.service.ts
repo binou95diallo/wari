@@ -96,11 +96,19 @@ export class DataService {
   depot(montant) {
     const formData = new FormData();
     formData.append('montant',montant);
-    const  headers = new HttpHeaders();
     console.log(this.authenticationService.token);
     console.log(montant);
-    console.log(headers);
    return this.http.post(this.uri+'/bankAccount/depot/ajout', formData).map(res => res).catch(this.handelError);
+  
+  }
+
+  passwordChange(userData) {
+    console.log(userData);
+    const formData = new FormData();
+    formData.append('password',userData.password);
+    formData.append('username',userData.username);
+    console.log(formData);
+   return this.http.post(this.uri+'/user/passwordReset', formData).map(res => res).catch(this.handelError);
   
   }
   getUser(): Observable<any[]> {

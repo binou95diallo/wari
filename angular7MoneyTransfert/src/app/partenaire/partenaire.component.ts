@@ -3,7 +3,6 @@ import {DataService} from '../data.service';
 import {Partenaire} from '../partenaire';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { User } from '../users';
 @Component({
   selector: 'app-partenaire',
   templateUrl: './partenaire.component.html',

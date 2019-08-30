@@ -18,21 +18,22 @@ import { AddPartenaireComponent } from './add-partenaire/add-partenaire.componen
 import { AddUserComponent } from './add-user/add-user.component';
 import { DataService } from './data.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { httpInterceptorProviders, AuthInterceptor } from './auth-interceptor.service';
+import { AuthInterceptor } from './auth-interceptor.service';
 import { HistoriqueOperationComponent } from './historique-operation/historique-operation.component';
 import { Partenaire } from './partenaire';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { from } from 'rxjs';
 import { LogoutComponent } from './logout/logout.component';
 import { DepotComponent } from './depot/depot.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 
 const routes: Routes = [
   
-  {path: 'logout', component : LoginComponent},
+  {path: 'logout', component : LogoutComponent},
 ];
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ const routes: Routes = [
     ImageUploadComponent,
     NavbarComponent,
     LogoutComponent,
-    DepotComponent
+    DepotComponent,
+    PasswordChangeComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,9 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [AuthGuard,AuthService,DataService,Partenaire,
     { provide: HTTP_INTERCEPTORS,

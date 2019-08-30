@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from './auth.service';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +12,7 @@ export class AppComponent  implements OnInit{
   title = 'angular7MoneyTransfert';
   faCoffee = faCoffee;
 constructor(private authenticationService:AuthService, router: Router){
-  router.navigate(['/home']);
+  //router.navigate(['/home']);
 }
   
 ngOnInit():void{

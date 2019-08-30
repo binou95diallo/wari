@@ -25,16 +25,24 @@ export class LoginComponent implements OnInit {
 
 
  login(e: { preventDefault: () => void; }) {
-
+  let numberConnect=Number(localStorage.getItem('numberConnexion'));
    this.authenticationService.login(this.username, this.password)
      .subscribe(data=> {
-     /*  this.tokenStorage.saveAuthorities(data.Authorization);
-      this.roles = this.tokenStorage.getAuthorities(); */
-        //this.reloadPage();
-       
-       this.router.navigate(['/partenaires']);
-
-     }, loginError => this.error = loginError.message + ' : verify  your username or password !  ');
+      alert(data);
+      if(!data.code){
+        //alert(data);
+      }
+      if(numberConnect<1){
+        this.router.navigate(['/passwordChange']);
+      }
+      else if(numberConnect>=1){
+        this.router.navigate(['/home']);
+      }
+     }, code => {
+        this.error = code.message + ' : verify  your username or password !  '
+        console.log(code.message);
+      }
+     );
  }
 
  reloadPage() {

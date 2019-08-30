@@ -9,6 +9,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DepotComponent } from './depot/depot.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login',pathMatch:'full'},
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'compte', component: CompteComponent},
   { path: 'addPartenaire', component: AddPartenaireComponent},
   { path: 'addUser', component: AddUserComponent,canActivate:[AuthGuard]},
-  { path: 'depot', component: DepotComponent}
+  { path: 'depot', component: DepotComponent},
+  { path: 'passwordChange', component: PasswordChangeComponent}
 ];
 
 @NgModule({

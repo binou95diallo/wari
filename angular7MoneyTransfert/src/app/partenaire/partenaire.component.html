@@ -51,11 +51,19 @@
      <!-- status Column -->
      <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> status </th>
-        <td mat-cell *matCellDef="let row" [style.color]="row.status"> {{row.status}} </td>
+        <td mat-cell *matCellDef="let row" [style.color]="row.status">
+          <span *ngIf="row.status=='actif'">
+              <button mat-raised-button color="accent" (click)="bloquerPartenaire(row)">Actif</button>
+          </span>
+          <span *ngIf="row.status=='inactif'">
+              <button mat-raised-button color="warn" (click)="bloquerPartenaire(row)">Inactif</button>
+          </span>
+            
+        </td>
       </ng-container>
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
-      <td mat-cell *matCellDef="let row" [style.color]="row.color"><a [routerLink]="['/partenaires']"><fa-icon [icon]="faEdit" (click)="bloquerPartenaire(ninea)"></fa-icon></a></td>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"><a [routerLink]="['/partenaires']"><fa-icon [icon]="faEdit"></fa-icon></a></td>
     </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;">

@@ -32,6 +32,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\TransactionRepository;
+use App\Repository\UserRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @Route("/api")
@@ -164,30 +166,34 @@ class BankAccountController extends AbstractController
       /**
      * @Route("/bankAccount/depot/ajout", name="depotAjout", methods={"POST"})
      */
-    public function depot(Request $request): Response
+    public function depot(Request $request,BankAccountRepository $bankARepo, ValidatorInterface $validator, SerializerInterface $serializer): Response
     {
         $depot = new Depot();
         $values=$request->request->all();
         $caissier=$this->getUser();
-        $idCompte=$caissier->getBankAccount();
+       $idCompte=$values["compte"];
+       $compte=$bankARepo->find($idCompte);
         $depot->setCaissier($caissier);
-        $depot->setBankAccount($idCompte);
+        $depot->setBankAccount($compte);
         $depot->setDateDepot(new \DateTime('now'));
         $depot->setMontant($values["montant"]);
-        var_dump($idCompte->getSolde());
-        $solde=$idCompte->getSolde() + $depot->getMontant();
-        $idCompte->setSolde($solde);
+        $solde=$compte->getSolde() + $depot->getMontant();
+        $compte->setSolde($solde);
         $form = $this->createForm(DepotType::class, $depot);
         $form->handleRequest($request);
         $form->submit($values);
-        $form = $this->createForm(BankAccountType::class, $idCompte);
-        $form->handleRequest($request);
-        $form->submit($values);
+        $errors = $validator->validate($depot);
+        if(count($errors)) {
+            $errors = $serializer->serialize($errors, 'json');
+            
+            return new Response($errors, 500, [
+                'Content-Type' => 'application/json',
+                'message'=>'La valeur minimum autorisée est 75000'
+            ]);
+        }
             $entityManager = $this->getDoctrine()->getManager();
-            $em= $this->getDoctrine()->getManager();
             $entityManager->persist($depot);
-            $em->persist($idCompte);
-            $em->flush();
+            $entityManager->persist($compte);
             $entityManager->flush();
 
            
@@ -199,6 +205,32 @@ class BankAccountController extends AbstractController
         ];
 
         return new JsonResponse($data, 201);
+    }
+
+    /**
+     * @Route("/bankAccount/partenaireCompte", name="BankAPartCompte", methods={"GET","POST"})
+     */
+    public function compteParte(SerializerInterface $serializer, Request $request,UserRepository $userRepo):Response{
+        $values=$request->request->all();
+        $user=$userRepo->findOneByUsername($values["username"]);
+        $idPart=$user->getPartenaire();
+        $compte = $this->getDoctrine()->getRepository('App:BankAccount')->findBy(['partenaire'=>$idPart]);
+        $encoders = [new JsonEncoder()];
+            $normalizers = [
+                (new ObjectNormalizer())
+                    ->setIgnoredAttributes([
+                        'updated_at'
+                    ])
+            ];
+            $serializer = new Serializer($normalizers, $encoders);
+            $jsonObject = $serializer->serialize($compte, 'json', [
+                'circular_reference_handler' => function ($object) {
+                    return $object->getId();
+                }
+            ]);
+        return new Response($jsonObject, 200, [
+            'Content-Type' => 'application/json'
+        ]);
     }
 
     ######################################################################################################
@@ -341,10 +373,22 @@ class BankAccountController extends AbstractController
 
     public function listUserOp(TransactionRepository $transactRepo,SerializerInterface $serializer){
         $transact=$transactRepo->findUserOp();
-        $data = $serializer->serialize($transact, 'json');
-       return new Response($data, 200, [
-           'Content-Type' => 'application/json'
-       ]);
+        $encoders = [new JsonEncoder()];
+            $normalizers = [
+                (new ObjectNormalizer())
+                    ->setIgnoredAttributes([
+                        'updated_at'
+                    ])
+            ];
+            $serializer = new Serializer($normalizers, $encoders);
+            $jsonObject = $serializer->serialize($transact, 'json', [
+                'circular_reference_handler' => function ($object) {
+                    return $object->getId();
+                }
+            ]);
+        return new Response($jsonObject, 200, [
+            'Content-Type' => 'application/json'
+        ]);
         
     }
 

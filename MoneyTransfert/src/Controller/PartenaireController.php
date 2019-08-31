@@ -125,7 +125,6 @@ class PartenaireController extends AbstractController
                 $user->setProfil("adminPartenaire");
                 $user->setRoles(["ADMIN_PARTENAIRE"]);
                 $user->setStatus("débloqué");
-                //$part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
                 $user->setPartenaire($Partenaire);
                 $user->setBankAccount($compte);
                 $entityManager->persist($user);
@@ -247,13 +246,14 @@ class PartenaireController extends AbstractController
      }
 
      /**
-     * @Route("/bloquer", name="partenairelocked", methods={"GET","POST"})
+     * @Route("/bloquer/partenaire", name="partenairelocked", methods={"GET","POST"})
      */
     public function partenaireBloquer(Request $request, PartenaireRepository $partRepo,EntityManagerInterface $entityManager): Response
     {
-        $values = json_decode($request->getContent());
-        $part=$partRepo->findOneByNinea($values->ninea);
-        
+        $values = $request->request->all();
+        var_dump($request->request);
+        $part=$partRepo->findOneByNinea($values["ninea"]);
+         
             if($part->getStatus()=="inactif"){
                 $part->setStatus("actif");
                 $id=$part->getId();

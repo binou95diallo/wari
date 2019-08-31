@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method BankAccount|null find($id, $lockMode = null, $lockVersion = null)
  * @method BankAccount|null findOneBy(array $criteria, array $orderBy = null)
  * @method BankAccount[]    findAll()
+ * @method BankAccount|null findAllPartCompte
  * @method BankAccount[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class BankAccountRepository extends ServiceEntityRepository
@@ -61,6 +62,20 @@ class BankAccountRepository extends ServiceEntityRepository
     }
 
     public function findAllPartCompte($value): BankAccount
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+        $qb = $this->createQueryBuilder('b')
+            ->andWhere('b.partenaire = :id')
+            ->setParameter('id', $value)
+            ->orderBy('b.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+       return  $qb->execute();
+    }
+
+    public function findPartCompte($value): BankAccount
     {
         // automatically knows to select Products
         // the "p" is an alias you'll use in the rest of the query

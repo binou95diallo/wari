@@ -14,6 +14,7 @@ class PartenaireType extends AbstractType
         $builder
             ->add('nomComplet')
             ->add('adresse')
+            ->add('id')
             ->add('telephone')
             ->add('ninea')
             ->add('email')

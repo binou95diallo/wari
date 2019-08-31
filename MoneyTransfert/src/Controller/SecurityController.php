@@ -76,15 +76,7 @@ class SecurityController extends AbstractController
                 $roles=["ROLE_CAISSIER"];
             }
             $user->setRoles($roles);
-            /* $user->setUsername($values->username);
-            $user->setAdresse($values->adresse);
-            $user->setEmail($values->email);
-            $user->setTelephone($values->telephone);
-            $user->setStatus($values->status); */
-            //$partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values["partenaire"]);
             $user->setPartenaire($idPart);
-           // $user->setProfil($values->profil);
-            //$user->setNomComplet($values->nomComplet);
             $errors = $validator->validate($user);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
@@ -100,6 +92,33 @@ class SecurityController extends AbstractController
                 $data = [
                     'status' => 201,
                     'message' => 'L\'utilisateur a été créé'
+                ];
+
+                return new JsonResponse($data, 201);
+    }
+
+    /**
+     * @Route("/user/passwordReset", name="passwordChange", methods={"POST"})
+     */
+    public function passwordReset(Request $request, UserRepository $userRepo,UserPasswordEncoderInterface $passwordEncoder){
+        $utilisateur = new User();
+        $form = $this->createForm(UserType::class, $utilisateur);
+        $form->handleRequest($request);
+        $values=$request->request->all();
+        $form->submit($values);
+        $utilisateur=$userRepo->findOneByUsername($values["username"]);
+        $utilisateur->setPassword(
+            $passwordEncoder->encodePassword(
+                $utilisateur,
+                $form->get('password')->getData()
+            )
+        );
+        $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+       
+                $data = [
+                    'status' => 201,
+                    'message' => 'mot de pass modifié'
                 ];
 
                 return new JsonResponse($data, 201);
@@ -178,12 +197,12 @@ class SecurityController extends AbstractController
                     'updated_at'
                 ])
         ];
-        $serializer = new Serializer($normalizers, $encoders);
+        /* $serializer = new Serializer($normalizers, $encoders);
         $jsonObject = $serializer->serialize($user, 'json', [
             'circular_reference_handler' => function ($object) {
                 return $object->getId();
             }
-        ]);
+        ]); */
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form->submit($values);
@@ -265,7 +284,7 @@ class SecurityController extends AbstractController
     }
 
      /**
-     * @Route("/login_check", name="login", methods={"POST"})
+     * @Route("/login_check", name="login_check", methods={"POST"})
      * @param JWTEncoderInterface $JWTEncoder
      * @throws \Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTEncodeFailureException
      */
@@ -278,25 +297,27 @@ class SecurityController extends AbstractController
             $repo = $this->getDoctrine()->getRepository(User::class);
             $user = $repo-> findOneBy(['username' => $username]);
             if(!$user){
-                return $this->json([
-                        'status'=>'ok',
-                        'message' => 'Username incorrect'
-                    ]);
+                $data = [
+                    'code' => 'ko',
+                    'message' => 'Username incorrect'
+                ];
+                return new JsonResponse($data);
             }
 
             $isValid = $this->passwordEncoder
             ->isPasswordValid($user, $password);
-            if(!$isValid){ 
-                return $this->json([
-                    'status'=>'ok',
+            if(!$isValid){
+                $data = [
+                    'code' => 'ko',
                     'message' => 'Mot de passe incorect'
-                ]);
+                ];
+                return new JsonResponse($data);
             }
             if($user->getStatus()=="bloqué"){
-                return $this->json([
-                    'status'=>'ok',
+                return new JsonResponse($this->json([
+                    'code' => 'ko',
                     'message' => 'ACCÈS REFUSÉ veuillez-contacter l\'administrateur!'
-                ]);
+                ]));
             }
             $token = $JWTEncoder->encode([
                 'username' => $user->getUsername(),

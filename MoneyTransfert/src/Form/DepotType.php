@@ -16,7 +16,6 @@ class DepotType extends AbstractType
     {
         $builder
             ->add('montant')
-            ->add('dateDepot')
             ->add('bankAccount',EntityType::class,['class'=>BankAccount::class])
             ->add('caissier',EntityType::class,['class'=>User::class])
         ;

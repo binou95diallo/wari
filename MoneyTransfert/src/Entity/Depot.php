@@ -24,7 +24,7 @@ class Depot
     private $bankAccount;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=true)
      */
     private $dateDepot;
 

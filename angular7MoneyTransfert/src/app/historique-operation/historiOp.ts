@@ -1,6 +1,6 @@
 export class HistoriqueOp{
-    caissier:string;
-    montant: string
-    numeroCompte: string
-    dateDepo: Date;
+    username:string;
+    montant: number
+    type: string
+    date_transaction: Date;
 }

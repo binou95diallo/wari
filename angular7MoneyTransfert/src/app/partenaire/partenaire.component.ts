@@ -10,7 +10,7 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 })
 export class PartenaireComponent implements OnInit {
   displayedColumns: string[] = [
-    'raisonSocial','nomComplet','ninea','telephone','adresse','email'];
+    'id','raisonSocial','nomComplet','ninea','telephone','adresse','email','status'];
   dataSource: MatTableDataSource<Partenaire>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -18,6 +18,7 @@ export class PartenaireComponent implements OnInit {
   partenaires: Partenaire[] ;
      errorMessage: string;
      statut:string;
+     ninea: string;
   constructor(private data: DataService) { }
 
   load(data){
@@ -32,6 +33,12 @@ export class PartenaireComponent implements OnInit {
     }, error => this.errorMessage = error,
     );
     console.log(this.partenaires);
+  }
+
+  bloquerPartenaire(ninea){
+
+    this.data.bloquerPartenaire(ninea)
+
   }
 
   ngOnInit() {

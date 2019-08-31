@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <h2>Responsive Table</h2>
 <div class="table-wrapper">
     <table class="fl-table">
@@ -5,17 +6,17 @@
         <tr>
             <th id="">Caissier</th>
             <th id="">Montant</th>
-            <th id="">Numéro Compte</th>
-            <th id="">Date dépôt</th>
+            <th id="">Date transaction</th>
+            <th id="">Type</th>
         </tr>
         </thead>
-        <ng-container *ngFor="let u of  users">
+        <ng-container *ngFor="let h of  histo">
           <tbody >
           <tr>
-            <td>{{u.caissier}}</td>
-            <td>{{u.montant}}</td>
-            <td>{{u.numeroCompte}}</td>
-            <td>{{u.dateDepot}}</td>
+            <td>{{h.username}}</td>
+            <td>{{h.montant}}</td>
+            <td>{{h.date_transaction}}</td>
+            <td>{{h.type}}</td>
             
           </tr>
           </tbody>

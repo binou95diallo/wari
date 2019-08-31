@@ -1,3 +1,4 @@
+
 import { Injectable, OnInit } from '@angular/core';
 import {Http, Headers, Response, URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -45,14 +46,11 @@ ngOnInit(){
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         const token = response.json().token;
-        
         console.log(token);
         if (token) {
           // set token property
           this.token = token;
-          if(!response.status){
-            alert(response);
-          }
+          
           // store username and jwt token in local storage to keep user logged in between page refreshes
           nbConnex=localStorage.getItem('numberConnexion');
           if(nbConnex== null){
@@ -68,11 +66,8 @@ ngOnInit(){
           localStorage.setItem('token',token);
           localStorage.setItem('numberConnexion',this.numberConnexion);
           this.parseJWT();
-          // return true to indicate successful login
-          return true;
         } else {
-          // return false to indicate failed login
-          return false;
+          return response.json().message;
         }
       }).catch(this.handelError);
   }

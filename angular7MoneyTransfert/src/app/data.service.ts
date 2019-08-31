@@ -6,8 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import {Partenaire} from './partenaire';
 import {AuthService} from './auth.service';
-import { throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -79,10 +77,8 @@ export class DataService {
     formData.append('email',user.email);
     formData.append('status',user.status);
     formData.append('profil',user.profil);
-    const  headers = new HttpHeaders();
     console.log(this.authenticationService.token);
     console.log(user);
-    console.log(headers);
    return this.http.post(this._registerUrl, formData).map(res => res).catch(this.handelError);
   
   }
@@ -93,13 +89,19 @@ export class DataService {
 
     return this.http.post(this.uri+'/uploadImage', formData);
   }
-  depot(montant) {
+  depot(montant,compteId) {
     const formData = new FormData();
     formData.append('montant',montant);
+    formData.append('compte',compteId);
     console.log(this.authenticationService.token);
     console.log(montant);
    return this.http.post(this.uri+'/bankAccount/depot/ajout', formData).map(res => res).catch(this.handelError);
   
+  }
+  getPartenaireCompte(){
+    const formData=new FormData();
+    formData.append('username',localStorage.getItem('currentUser'));
+    return this.http.post(this.uri+'/bankAccount/partenaireCompte',formData).map(res => res).catch(this.handelError);
   }
 
   passwordChange(userData) {
@@ -111,9 +113,15 @@ export class DataService {
    return this.http.post(this.uri+'/user/passwordReset', formData).map(res => res).catch(this.handelError);
   
   }
+
+  bloquerPartenaire(ninea){
+    const formData=new FormData();
+    formData.append('ninea',ninea);
+    return this.http.post(this.uri+'/bloquer/partenaire',formData).map(res => res).catch(this.handelError);
+  }
   getUser(): Observable<any[]> {
-    console.log(this.headers);
-    return  this.http.get<any>(this.uriU+'/users' , this.headers)
+    //console.log(this.headers);
+    return  this.http.get<any>(this.uriU+'/users')
   }
 
   getCompte(): Observable<any[]> {
@@ -122,8 +130,7 @@ export class DataService {
   }
 
   getHistoOp(): Observable<any[]> {
-    console.log(this.headers);
-    return  this.http.get<any>(this.uri+'/usersOp' , this.headers)
+    return  this.http.get<any>(this.uri+'/usersOp')
   }
   private handelError(error: Response) {
 

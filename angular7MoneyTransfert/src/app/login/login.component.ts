@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   username: string;
   password: string;
-  error: string;
+  errorMessage: string;
 
  constructor( private router: Router,
               private authenticationService: AuthService,private tokenStorage:TokenStorageService) {}
@@ -28,21 +28,20 @@ export class LoginComponent implements OnInit {
   let numberConnect=Number(localStorage.getItem('numberConnexion'));
    this.authenticationService.login(this.username, this.password)
      .subscribe(data=> {
-      alert(data);
-      if(!data.code){
-        //alert(data);
-      }
-      if(numberConnect<1){
+     //alert(data)
+     this.errorMessage=data
+      if(numberConnect<1 && !this.errorMessage){
+       
         this.router.navigate(['/passwordChange']);
       }
-      else if(numberConnect>=1){
+      else if(numberConnect>=1 && !this.errorMessage){
+        //this.errorMessage=data
         this.router.navigate(['/home']);
       }
-     }, code => {
-        this.error = code.message + ' : verify  your username or password !  '
-        console.log(code.message);
-      }
+     }, err => err
+     
      );
+     //alert(this.errorMessage);
  }
 
  reloadPage() {

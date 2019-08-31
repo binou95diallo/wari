@@ -22,7 +22,6 @@ export class AddUserComponent implements OnInit {
   constructor(private  data: DataService,
               private router: Router) { 
               }
-
               getPartenaire() {
                 this.data.getPartenaire().subscribe(
                  data => {this.partenaires = data}

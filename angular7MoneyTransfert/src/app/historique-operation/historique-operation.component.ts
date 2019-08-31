@@ -16,13 +16,17 @@ export class HistoriqueOperationComponent implements OnInit {
 
   getHistoOp() {
     this.data.getHistoOp().subscribe(
-     data => {this.histo = data}, error => this.errorMessage = error,
+     data => {
+       this.histo = data
+       
+    }, error => this.errorMessage = error,
     );
-    console.log(this.histo);
+    
   }
 
   ngOnInit() {
     this.getHistoOp();
+    
   }
 
 }

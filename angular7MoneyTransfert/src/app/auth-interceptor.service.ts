@@ -19,7 +19,3 @@ export class AuthInterceptor implements HttpInterceptor {
        return next.handle(tokenizedReq);
     }
 }
-
-/* export const httpInterceptorProviders = [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
-]; */

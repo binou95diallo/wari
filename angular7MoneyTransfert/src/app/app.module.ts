@@ -70,7 +70,7 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule
   ],
-  providers: [AuthGuard,AuthService,DataService,Partenaire,
+  providers: [AuthGuard,AuthService,Partenaire,
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true 

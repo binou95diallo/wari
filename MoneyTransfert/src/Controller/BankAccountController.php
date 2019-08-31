@@ -306,8 +306,10 @@ class BankAccountController extends AbstractController
             $random=random_int(100,1000000);
             $user=$this->getUser();
             $transact->setUser($user);
-            $compteId=$this->getDoctrine()->getManager()->getRepository(User::class)->find($user->getBankAccount());
-            $compte=$this->getDoctrine()->getManager()->getRepository(BankAccount::class)->find($compteId);
+            $compte=$user->getBankAccount();
+            //$compteId=$this->getDoctrine()->getManager()->getRepository(User::class)->find($compteId);
+            //$compteId=$bankA->getId();
+            //$compte=$this->getDoctrine()->getManager()->getRepository(BankAccount::class)->find($compteId);
             $solde=$compte->getSolde()+$gain;
             $compte->setSolde($solde);
             $code=$random.''.$montant;
@@ -323,7 +325,7 @@ class BankAccountController extends AbstractController
             'status' => 201,
             'message' => 'Envoie effectuée'
         ];
-        return new Response($data, 201);
+        return new JsonResponse($data, 201);
      }
 
      /**

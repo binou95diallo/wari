@@ -77,6 +77,7 @@ class SecurityController extends AbstractController
             }
             $user->setRoles($roles);
             $user->setPartenaire($idPart);
+            $user->setStatus("débloqué");
             $errors = $validator->validate($user);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
@@ -125,10 +126,10 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/uploadImage", name="uploadImage", methods={"POST"})
+     * @Route("/updateImage/{id}", name="uploadImage", methods={"POST"})
      */
-    public function uploadImage(Request $request, UserRepository $userRepo){
-        $user=$userRepo->findLastUser();
+    public function updateImage(Request $request, UserRepository $userRepo,User $user){
+        $user=$userRepo->find($user->getId());
         $image=$request->files->all()['imageName'];
         $user->setImageFile($image);
         $entityManager = $this->getDoctrine()->getManager();
@@ -143,16 +144,16 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="login", methods={"POST"})
+     * @Route("/logina", name="login", methods={"POST"})
      */
-    public function login(Request $request)
+   /*  public function login(Request $request)
     {
         $user = $this->getUser();
         return $this->json([
             'username' => $user->getUsername(),
             'roles' => $user->getRoles()
         ]);
-    }
+    } */
 
      /**
      * @Rest\Get("/user/users", name="usersList")
@@ -183,39 +184,35 @@ class SecurityController extends AbstractController
      * @Route("/users/{id}/edit", name="usersEdit", methods={"GET","POST"})
      */
     
-    public function edit(Request $request, User $user,SerializerInterface $serializer,ValidatorInterface $validator,
-                         EntityManagerInterface $entityManager, PartenaireRepository $partenaireRepo): Response
+    public function edit(Request $request,UserPasswordEncoderInterface $passwordEncoder, User $user,SerializerInterface $serializer,ValidatorInterface $validator,
+                         EntityManagerInterface $entityManager,UserRepository $userRepo): Response
     {
         $values=$request->request->all();
-        $image=$request->files->all()['imageName'];
         $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(User::class)->find($user->getId());
-        $encoders = [new JsonEncoder()];
-        $normalizers = [
-            (new ObjectNormalizer())
-                ->setIgnoredAttributes([
-                    'updated_at'
-                ])
-        ];
-        /* $serializer = new Serializer($normalizers, $encoders);
-        $jsonObject = $serializer->serialize($user, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
-        ]); */
+        $user = $userRepo->findOneByUsername($values["username"]);
+        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form->submit($values);
-        $user->setImageFile($image);
-        $part=$partenaireRepo->find($values["partenaire"]);
-        $compte=$entityManager->getRepository(BankAccount::class)->findAllPartCompte($part->getId());
-        $user->setBankAccount($compte);
-        $compte->setNombreUsers($compte->getNombreUsers()+1);
+        $user->setPassword(
+            $passwordEncoder->encodePassword(
+                $user,
+                $form->get('password')->getData()
+            )
+        );
+        if($user->getProfil()!="caissier" || $user->getProfil()!="adminPartenaire"){
+            $compte=$entityManager->getRepository(BankAccount::class)->find($values["compteId"]);
+            
+            $user->setBankAccount($compte);
+            $compte->setNombreUsers($compte->getNombreUsers()+1);
+        }
+        
+       
         $errors = $validator->validate($user);
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
             return new Response($errors, 500, [
-                CONTENT => TYPE
+                'content_type' => 'application/json'
             ]);
         }
         $entityManager->persist($user);
@@ -235,8 +232,8 @@ class SecurityController extends AbstractController
     public function userBloquer(Request $request, UserRepository $userRepo,EntityManagerInterface $entityManager): Response
     {
         $tableUsers=$this->getDoctrine()->getRepository('App:User')->countByUsername();
-        $values = json_decode($request->getContent());
-        $user=$userRepo->findOneByUsername($values->username);
+        $values = $request->request->all();
+        $user=$userRepo->findOneByUsername($values["username"]);
         echo $user->getStatus();
         if($user->getProfil()=="admin" && $tableUsers<=1){
 
@@ -283,8 +280,35 @@ class SecurityController extends AbstractController
         }
     }
 
+
      /**
-     * @Route("/login_check", name="login_check", methods={"POST"})
+     * @Route("/users/show/{id}", name="userShow", methods={"GET"})
+     */
+    public function show(User $user,UserRepository $userRepo,SerializerInterface $serializer)
+    {
+         
+         $user= $userRepo->find($user->getId());
+        $encoders = [new JsonEncoder()];
+        $normalizers = [
+            (new ObjectNormalizer())
+                ->setIgnoredAttributes([
+                    'updated_at'
+                ])
+        ];
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonObject = $serializer->serialize($user, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
+        return new Response($jsonObject, 200, [
+            'Content-Type' => 'application/json'
+        ]);
+
+    }
+
+     /**
+     * @Route("/login", name="login", methods={"POST"})
      * @param JWTEncoderInterface $JWTEncoder
      * @throws \Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTEncodeFailureException
      */
@@ -328,5 +352,31 @@ class SecurityController extends AbstractController
             return $this->json([
                 'token' => $token
             ]);
+    }
+
+     /**
+     * @Route("/users/PartenaireUsers", name="PartenaireUsers", methods={"GET","POST"})
+     */
+    public function partenaireUsers(SerializerInterface $serializer, Request $request,UserRepository $userRepo):Response{
+       
+        $user=$this->getUser();
+        $idPart=$user->getPartenaire();
+        $users = $this->getDoctrine()->getRepository('App:User')->findBy(['partenaire'=>$idPart]);
+        $encoders = [new JsonEncoder()];
+            $normalizers = [
+                (new ObjectNormalizer())
+                    ->setIgnoredAttributes([
+                        'updated_at'
+                    ])
+            ];
+            $serializer = new Serializer($normalizers, $encoders);
+            $jsonObject = $serializer->serialize($users, 'json', [
+                'circular_reference_handler' => function ($object) {
+                    return $object->getId();
+                }
+            ]);
+        return new Response($jsonObject, 200, [
+            'Content-Type' => 'application/json'
+        ]);
     }
  }

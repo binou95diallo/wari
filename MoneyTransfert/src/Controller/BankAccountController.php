@@ -307,9 +307,6 @@ class BankAccountController extends AbstractController
             $user=$this->getUser();
             $transact->setUser($user);
             $compte=$user->getBankAccount();
-            //$compteId=$this->getDoctrine()->getManager()->getRepository(User::class)->find($compteId);
-            //$compteId=$bankA->getId();
-            //$compte=$this->getDoctrine()->getManager()->getRepository(BankAccount::class)->find($compteId);
             $solde=$compte->getSolde()+$gain;
             $compte->setSolde($solde);
             $code=$random.''.$montant;
@@ -334,20 +331,16 @@ class BankAccountController extends AbstractController
 
     public function retrait(Request $request,EntityManagerInterface $entityManager,TransactionRepository $tranRepo):Response{
 
-        $values=json_decode($request->getContent());
+        $values=$request->request->all();
         $transact=new Transaction();
-        $transaction=$tranRepo->findOneByCode($values->code);
-        if($transaction==NULL){
-            $data = [
-                'status' => 201,
-                'message' => 'Code invalide'
-            ];
-        }
-        else{
-            $transact->setExpediteur($transaction->getExpediteur());
+        $nbCode=$tranRepo->countByCode($values["code"]);
+        //var_dump($nbCode);die();
+        $transaction=$tranRepo->findOneByCode($values["code"]);
+
+        $transact->setExpediteur($transaction->getExpediteur());
             $transact->setRecepteur($transaction->getRecepteur());
             $transact->setMontant($transaction->getMontant());
-            $transact->setCode($values->code);
+            $transact->setCode($values["code"]);
             $user=$this->getUser();
             $transact->setUser($user);
             $frais=$transaction->getFrais();
@@ -364,7 +357,7 @@ class BankAccountController extends AbstractController
                 'status' => 201,
                 'message' => 'Retrait effectuée'
             ];
-        }
+       
         
         return new JsonResponse($data, 201);
     }
@@ -374,7 +367,9 @@ class BankAccountController extends AbstractController
      */
 
     public function listUserOp(TransactionRepository $transactRepo,SerializerInterface $serializer){
-        $transact=$transactRepo->findUserOp();
+        $user=$this->getUser();
+        $part=$user->getPartenaire();
+        $transact=$transactRepo->findUserOp($part->getId());
         $encoders = [new JsonEncoder()];
             $normalizers = [
                 (new ObjectNormalizer())
@@ -392,6 +387,65 @@ class BankAccountController extends AbstractController
             'Content-Type' => 'application/json'
         ]);
         
+    }
+
+    /**
+     * @Rest\Post("/recupBeneficiaire", name="recupBeneficiaire")
+     */
+
+    public function recupBeneficiaire(TransactionRepository $transactRepo,SerializerInterface $serializer, Request $request){
+        $values=$request->request->all();
+        $nbCode=$transactRepo->countByCode($values["code"]);
+        
+            if($nbCode>1){
+                
+                $lastCode=$transactRepo->findTransactCode($values["code"]);
+                if($lastCode->getType()=="retrait"){
+                    $data = [
+                        'status' => 400,
+                        'message' => 'Argent retiré'
+                    ];
+                }
+                elseif($lastCode->getType()=="retourné"){
+                    $data = [
+                        'status' => 400,
+                        'message' => 'Argent retourné'
+                    ];
+                    
+                }
+                return new JsonResponse($data,400);
+            }
+            elseif ($nbCode==1) {
+                $transact=$transactRepo->findOneByCode($values["code"]);
+                $beneficiaire=$transact->getRecepteur();
+                $encoders = [new JsonEncoder()];
+            $normalizers = [
+                (new ObjectNormalizer())
+                    ->setIgnoredAttributes([
+                        'updated_at'
+                    ])
+            ];
+            $serializer = new Serializer($normalizers, $encoders);
+            $jsonObject = $serializer->serialize($beneficiaire, 'json', [
+                'circular_reference_handler' => function ($object) {
+                    return $object->getId();
+                }
+            ]);
+            return new Response($jsonObject, 200, [
+                'Content-Type' => 'application/json'
+            ]);
+            }
+
+            else{
+                $data = [
+                    'status' => 400,
+                    'message' => 'Code invalide'
+                ];
+
+                return new JsonResponse($data,400);
+            }
+        
+       
     }
 
 }

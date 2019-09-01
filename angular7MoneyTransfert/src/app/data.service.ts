@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import {Partenaire} from './partenaire';
 import {AuthService} from './auth.service';
+import { User } from './users';
 
 @Injectable({
   providedIn: 'root'
@@ -119,10 +120,42 @@ export class DataService {
     formData.append('ninea',ninea);
     return this.http.post(this.uri+'/bloquer/partenaire',formData).map(res => res).catch(this.handelError);
   }
+
+  bloquerUser(username){
+    const formData=new FormData();
+    formData.append('username',username);
+    return this.http.post(this.uri+'/users/bloquer',formData).map(res => res).catch(this.handelError);
+  }
+
+  editUser(id,user){
+    const formData=new FormData();
+    formData.append('compteId',user.compte);
+    formData.append('username',user.username);
+    formData.append('password',user.password);
+    formData.append('nomComplet',user.nomComplet);
+    formData.append('adresse',user.adresse);
+    formData.append('telephone',user.telephone);
+    formData.append('email',user.email);
+    formData.append('status',user.status);
+    formData.append('profil',user.profil);
+    return this.http.post(this.uri+'/users/'+id+'/edit',formData).map(res => res).catch(this.handelError);
+  }
+
+  showUser(id):Observable<User[]> {
+    return this.http.get<User[]>(this.uri+'/users/show/'+id).map(res => res).catch(this.handelError);
+  }
+
   getUser(): Observable<any[]> {
     //console.log(this.headers);
-    return  this.http.get<any>(this.uriU+'/users')
+    return  this.http.get<any>(this.uri+'/users/PartenaireUsers')
   }
+
+  recupBeneficiaire(code):Observable<any[]> {
+   let formData=new FormData();
+   formData.append('code',code);
+   return this.http.post<any>(this.uri+'/recupBeneficiaire',formData).catch(this.handelError);
+  }
+  
 
   getCompte(): Observable<any[]> {
     console.log(this.headers);
@@ -132,9 +165,30 @@ export class DataService {
   getHistoOp(): Observable<any[]> {
     return  this.http.get<any>(this.uri+'/usersOp')
   }
+
+  retraitTransact(code){
+    let formData=new FormData();
+    formData.append('code',code);
+    return this.http.post(this.uri+'/transaction/retrait',formData).catch(this.handelError);
+  }
+
+  envoiTransact(expediteur,beneficiaire){
+    const formData=new FormData();
+    formData.append('nomComplet',expediteur.nomComplet);
+    formData.append('adresse',expediteur.adresse);
+    formData.append('telephone',expediteur.telephone);
+    formData.append('ncni',expediteur.ncni);
+    formData.append('nomCompletR',beneficiaire.nomComplet);
+    formData.append('adresseR',beneficiaire.adresse);
+    formData.append('telephoneR',beneficiaire.telephone);
+    formData.append('ncniR',beneficiaire.ncni);
+    formData.append('montant',beneficiaire.montant);
+
+    return this.http.post(this.uri+'/transaction/envoie',formData).map(res => res).catch(this.handelError);
+  }
   private handelError(error: Response) {
 
-    return Observable.throw(error || 'server error');
+    return Observable.throw(error.error.message || 'server error');
 
   }
 

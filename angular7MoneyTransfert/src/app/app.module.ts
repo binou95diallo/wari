@@ -24,11 +24,14 @@ import { Partenaire } from './partenaire';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatOptionModule, MatSelectModule, MatToolbarModule, MatExpansionModule } from '@angular/material';
 import { from } from 'rxjs';
 import { LogoutComponent } from './logout/logout.component';
 import { DepotComponent } from './depot/depot.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionRetraitComponent } from './transaction-retrait/transaction-retrait.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -50,7 +53,10 @@ const routes: Routes = [
     NavbarComponent,
     LogoutComponent,
     DepotComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    TransactionComponent,
+    TransactionRetraitComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,11 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [AuthGuard,AuthService,Partenaire,
     { provide: HTTP_INTERCEPTORS,

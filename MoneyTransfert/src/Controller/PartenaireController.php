@@ -78,7 +78,7 @@ class PartenaireController extends AbstractController
             $values=$request->request->all();
             $form->submit($values);
             $entityManager = $this->getDoctrine()->getManager();
-           
+           $Partenaire->setStatus("actif");
             $entityManager->persist($Partenaire);
             
 
@@ -98,7 +98,6 @@ class PartenaireController extends AbstractController
             $form->submit($values);
             $random=random_int(100,1000000);
             $numeroCompte=$random.''.$values["ninea"];
-           // $part=$entityManager->getRepository(Partenaire::class)->findOneByNinea($values["ninea"]);
             $compte->setNombreUsers(1);
             $compte->setNumeroCompte($numeroCompte);
             $compte->setPartenaire($Partenaire);

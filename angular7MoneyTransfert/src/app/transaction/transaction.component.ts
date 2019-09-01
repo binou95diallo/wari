@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-transaction',
+  templateUrl: './transaction.component.html',
+  styleUrls: ['./transaction.component.css']
+})
+export class TransactionComponent implements OnInit {
+  adresse = new FormControl('', [Validators.required]);
+  telephone= new FormControl('', [Validators.required]);
+  nomComplet= new FormControl('', [Validators.required]);
+  ncni= new FormControl('', [Validators.required]);
+  montant= new FormControl('',[Validators.required]);
+
+  expediteur= {};
+  beneficiaire= {};
+  errorMessage: string;
+  getErrorMessage() {
+    return this.adresse.hasError('required') ? 'You must enter a value' :
+            this.telephone.hasError('required')? 'You must enter a value':
+            this.nomComplet.hasError('required')?'You must enter a value':
+            this.ncni.hasError('required')? 'You must enter a value':
+            this.montant.hasError('required')?'You must enter a value':
+            '';
+  }
+  constructor(private data:DataService, private router:Router) { }
+
+  ngOnInit() {
+  }
+
+  envoiTransact(){
+    this.data.envoiTransact(this.expediteur,this.beneficiaire).subscribe(
+      data=>{
+        this.router.navigate(['/home'])
+    })
+
+  }
+
+}

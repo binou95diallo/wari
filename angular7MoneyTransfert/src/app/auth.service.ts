@@ -39,10 +39,13 @@ ngOnInit(){
 
   login(username: string, password: string):Observable<any>{
     let headers = new Headers();
+    /* let formdata=new FormData();
+    formdata.append('username',username);
+    formdata.append('password',password); */
     let nbConnex;
     headers.append('content-type', 'application/x-www-form-urlencoded');
 
-    return this.http.post('http://127.0.0.1:8000/api/login_check', {'username':username,'password':password},{headers : headers} )
+    return this.http.post('http://127.0.0.1:8000/api/login', {'username':username,'password':password},{headers : headers} )
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         const token = response.json().token;

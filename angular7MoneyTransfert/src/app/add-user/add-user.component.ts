@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 import { Partenaire } from '../partenaire';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -11,14 +12,30 @@ import { Partenaire } from '../partenaire';
 export class AddUserComponent implements OnInit {
 
   registerUserData = { imageName:File=null};
-  username:string;
-  password:string;
   imageName: File;
   statusData = <any>{};
   partenaires: Partenaire[] ;
   selectedFile=null;
   imageUrl:string ="/assets/img/afro3.png";
   fileToUpload:File= null;
+
+  adresse = new FormControl('', [Validators.required]);
+  telephone= new FormControl('', [Validators.required]);
+  nomComplet= new FormControl('', [Validators.required]);
+  username= new FormControl('', [Validators.required]);
+  password= new FormControl('', [Validators.required, Validators.email]);
+  email= new FormControl('', [Validators.required]);
+  getErrorMessage() {
+    return this.adresse.hasError('required') ? 'You must enter a value' :
+            this.telephone.hasError('required')? 'You must enter a value':
+            this.nomComplet.hasError('required')?'You must enter a value':
+            this.username.hasError('required')?'You must enter a value':
+            this.password.hasError('required')?'You must enter a value':
+            this.email.hasError('required')?'You must enter a value':
+            this.email.hasError('email')?'Email not valid':
+            '';
+  }
+  
   constructor(private  data: DataService,
               private router: Router) { 
               }

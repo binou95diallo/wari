@@ -18,4 +18,33 @@ constructor(private authenticationService:AuthService, router: Router){
 ngOnInit():void{
 this.authenticationService.getToken();
 }
+
+isUserPart(){
+  return this.authenticationService.isUserPart();
+}
+
+isCaissier(){
+  return this.authenticationService.isCaissier();
+}
+
+isPartenaire(){
+  return this.authenticationService.isAdminPartenaire();
+}
+isPartenaireOrUser(){
+  return this.authenticationService.isPartenaireOrUser();
+}
+isAdminPartenaireOrCaissier(){
+  return this.authenticationService.isAdminPartenaireOrCaissier();
+}
+
+isAdminPartenaire(){
+  return this.authenticationService.isAdminPartenaire();
+}
+isAuthenticated(){
+  return this.authenticationService.isAuthenticated();
+}
+isAdmin(){
+  return this.authenticationService.isAdmin();
+}
+
 }

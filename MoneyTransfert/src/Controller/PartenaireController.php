@@ -139,7 +139,7 @@ class PartenaireController extends AbstractController
 }
 
     /**
-     * @Route("/show/{id}", name="PartenaireShow", methods={"GET"})
+     * @Route("/partenaire/show/{id}", name="PartenaireShow", methods={"GET"})
      */
     public function show(Partenaire $partenaire,PartenaireRepository $partenaireRepo,SerializerInterface $serializer)
     {
@@ -165,30 +165,18 @@ class PartenaireController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="adminPartenaireEdit", methods={"GET","POST"})
+     * @Route("/partenaire/edit", name="adminPartenaireEdit", methods={"GET","POST"})
      */
     
-    public function edit(Request $request, Partenaire $partenaire,SerializerInterface $serializer,ValidatorInterface $validator,
-                         EntityManagerInterface $entityManager): Response
+    public function edit(Request $request,ValidatorInterface $validator,
+                         EntityManagerInterface $entityManager,PartenaireRepository $partRepo,SerializerInterface $serializer ): Response
     {
         $data=[];
-        $partenaire = $entityManager->getRepository(Partenaire::class)->find($partenaire->getId());
-        $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($partenaire, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
+        $values=$request->request->all();
+        $partenaire = $partRepo->findOneByNinea($values["ninea"]);
+        
             $form = $this->createForm(PartenaireType::class, $partenaire);
             $form->handleRequest($request);
-            $values=$request->request->all();
             $form->submit($values);
         $errors = $validator->validate($partenaire);
         if(count($errors)) {

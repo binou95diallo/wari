@@ -32,6 +32,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionRetraitComponent } from './transaction-retrait/transaction-retrait.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditPartenaireComponent } from './edit-partenaire/edit-partenaire.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
     PasswordChangeComponent,
     TransactionComponent,
     TransactionRetraitComponent,
-    EditUserComponent
+    EditUserComponent,
+    EditPartenaireComponent
   ],
   imports: [
     BrowserModule,

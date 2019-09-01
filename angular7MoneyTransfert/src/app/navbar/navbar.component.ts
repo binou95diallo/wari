@@ -13,12 +13,26 @@ export class NavbarComponent implements OnInit {
     return this.authenticationService.isAdmin();
   }
   
-  isUser(){
-    return this.authenticationService.isUser();
+  isUserPart(){
+    return this.authenticationService.isUserPart();
   }
 
   isCaissier(){
     return this.authenticationService.isCaissier();
+  }
+
+  isPartenaire(){
+    return this.authenticationService.isAdminPartenaire();
+  }
+  isPartenaireOrUser(){
+    return this.authenticationService.isPartenaireOrUser();
+  }
+  isAdminPartenaireOrCaissier(){
+    return this.authenticationService.isAdminPartenaireOrCaissier();
+  }
+
+  isAdminPartenaire(){
+    return this.authenticationService.isAdminPartenaire();
   }
   
   isAuthenticated(){

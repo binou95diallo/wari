@@ -11,52 +11,60 @@
         </div>
         <div class="card-body">
           <form class="form">
-              <div class="form-group">
-                  <label for="uname1">Username</label>
-                  <input type="text" [(ngModel)]="registerUserData.username" name="username" class="form-control rounded-0" required>
-                </div>
             <div class="form-group">
-              <label>Password</label>
-              <input type="text" [(ngModel)]="registerUserData.password" name="password" class="form-control rounded-0"  required>
+              <label for="uname1">Username</label>
+              <input type="text" [(ngModel)]="registerUserData.username" name="username" class="form-control rounded-0" [formControl]="username" required>
+              <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+            </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="text" [(ngModel)]="registerUserData.password" name="password" class="form-control rounded-0" [formControl]="password"  required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        </div>
+        <div class="form-group">
+            <label for="uname1">Email</label>
+            <input type="text" [(ngModel)]="registerUserData.email" name="email" class="form-control rounded-0" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </div>
+          <div class="form-group">
+              <label for="uname1">NomComplet</label>
+              <input type="text" [(ngModel)]="registerUserData.nomComplet" name="nomComplet" class="form-control rounded-0" [formControl]="nomComplet" required>
+              <mat-error *ngIf="nomComplet.invalid">{{getErrorMessage()}}</mat-error>
             </div>
             <div class="form-group">
-                <label for="uname1">Email</label>
-                <input type="text" [(ngModel)]="registerUserData.email" name="email" class="form-control rounded-0" required>
+                <label for="uname1">Adresse</label>
+                <input type="text" [(ngModel)]="registerUserData.adresse" name="adresse" class="form-control rounded-0" [formControl]="adresse" required>
+                <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
               </div>
               <div class="form-group">
-                  <label for="uname1">NomComplet</label>
-                  <input type="text" [(ngModel)]="registerUserData.nomComplet" name="nomComplet" class="form-control rounded-0" required>
+                  <label for="uname1">Telephone</label>
+                  <input type="text" [(ngModel)]="registerUserData.telephone" name="telephone" class="form-control rounded-0" [formControl]="telephone" required>
+                  <mat-error *ngIf="telephone.invalid">{{getErrorMessage()}}</mat-error>
                 </div>
                 <div class="form-group">
-                    <label for="uname1">Adresse</label>
-                    <input type="text" [(ngModel)]="registerUserData.adresse" name="adresse" class="form-control rounded-0" required>
+                    <label for="uname1">Profil</label>
+                    <select [(ngModel)]="registerUserData.profil" name="profil" id="" >
+                        <option value="admin">Admin</option>
+                        <option value="user">Utilisateur</option>
+                        <option value="caissier">Caissier</option>
+                        <option value="partenaire">Partenaire</option>
+                    </select>
                   </div>
-                  <div class="form-group">
-                      <label for="uname1">Telephone</label>
-                      <input type="text" [(ngModel)]="registerUserData.telephone" name="telephone" class="form-control rounded-0" required>
+                    <div class="form-group">
+                      <label for="uname1">Status</label>
+                      <select [(ngModel)]="registerUserData.status" name="status" id="" >
+                        <option *ngFor="let s of statusData"  value="{{s.name}}">{{s.name}}</option>
+                      </select>
                     </div>
                     <div class="form-group">
-                        <label for="uname1">Profil</label>
-                        <select [(ngModel)]="registerUserData.profil" name="profil" id="" >
-                            <option value="admin">Admin</option>
-                            <option value="user">Utilisateur</option>
-                            <option value="caissier">Caissier</option>
-                            <option value="partenaire">Partenaire</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="uname1">Status</label>
-                          <select [(ngModel)]="registerUserData.status" name="status" id="" >
-                            <option *ngFor="let s of statusData"  value="{{s.name}}">{{s.name}}</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="">Photo</label>
-                          <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
-                          <input #imageName
-                            type="file" accept="image/*"  class="form-control rounded-0" required
-                             (change)="handleFileInput($event.target.files)">
-                        </div>
+                      <label for="">Photo</label>
+                      <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
+                      <input #imageName
+                        type="file" accept="image/*"  class="form-control rounded-0" required
+                         (change)="handleFileInput($event.target.files)">
+                    </div>
+                     
+                      
             <button type="button" (click)="registerUser()" class="btn btn-primary float-right">Register</button>
           </form>
         </div>

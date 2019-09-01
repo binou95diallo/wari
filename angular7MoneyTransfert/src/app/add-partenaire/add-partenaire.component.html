@@ -13,35 +13,43 @@
           <form class="form">
               <div class="form-group">
                   <label for="uname1">Raison Social</label>
-                  <input type="text" [(ngModel)]="partenaireData.raisonSocial" name="raisonSocial" class="form-control rounded-0" required>
+                  <input type="text" [(ngModel)]="partenaireData.raisonSocial" name="raisonSocial" class="form-control rounded-0" [formControl]="raisonSocial" required>
+                  <mat-error *ngIf="raisonSocial.invalid">{{getErrorMessage()}}</mat-error>
                 </div>
                 <div class="form-group">
                     <label for="uname1">Ninea</label>
-                    <input type="text" [(ngModel)]="partenaireData.ninea" name="ninea" class="form-control rounded-0" required>
+                    <input type="text" [(ngModel)]="partenaireData.ninea" name="ninea" class="form-control rounded-0" [formControl]="ninea" required>
+                    <mat-error *ngIf="ninea.invalid">{{getErrorMessage()}}</mat-error>
                   </div>
               <div class="form-group">
                   <label for="uname1">Username</label>
-                  <input type="text" [(ngModel)]="partenaireData.username" name="username" class="form-control rounded-0" required>
+                  <input type="text" [(ngModel)]="partenaireData.username" name="username" class="form-control rounded-0" [formControl]="username" required>
+                  <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
                 </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="text" [(ngModel)]="partenaireData.password" name="password" class="form-control rounded-0"  required>
+              <input type="text" [(ngModel)]="partenaireData.password" name="password" class="form-control rounded-0" [formControl]="password"  required>
+              <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
             </div>
             <div class="form-group">
                 <label for="uname1">Email</label>
-                <input type="text" [(ngModel)]="partenaireData.email" name="email" class="form-control rounded-0" required>
+                <input type="text" [(ngModel)]="partenaireData.email" name="email" class="form-control rounded-0" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
               </div>
               <div class="form-group">
                   <label for="uname1">NomComplet</label>
-                  <input type="text" [(ngModel)]="partenaireData.nomComplet" name="nomComplet" class="form-control rounded-0" required>
+                  <input type="text" [(ngModel)]="partenaireData.nomComplet" name="nomComplet" class="form-control rounded-0" [formControl]="nomComplet" required>
+                  <mat-error *ngIf="nomComplet.invalid">{{getErrorMessage()}}</mat-error>
                 </div>
                 <div class="form-group">
                     <label for="uname1">Adresse</label>
-                    <input type="text" [(ngModel)]="partenaireData.adresse" name="adresse" class="form-control rounded-0" required>
+                    <input type="text" [(ngModel)]="partenaireData.adresse" name="adresse" class="form-control rounded-0" [formControl]="adresse" required>
+                    <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
                   </div>
                   <div class="form-group">
                       <label for="uname1">Telephone</label>
-                      <input type="text" [(ngModel)]="partenaireData.telephone" name="telephone" class="form-control rounded-0" required>
+                      <input type="text" [(ngModel)]="partenaireData.telephone" name="telephone" class="form-control rounded-0" [formControl]="telephone" required>
+                      <mat-error *ngIf="telephone.invalid">{{getErrorMessage()}}</mat-error>
                     </div>
                     <div class="form-group">
                         <label for="uname1">Profil</label>
@@ -54,7 +62,8 @@
                       </div>
                         <div class="form-group">
                           <label for="uname1">Solde</label>
-                          <input type="number" [(ngModel)]="partenaireData.solde" name="solde" class="form-control rounded-0" required>
+                          <input type="number" [(ngModel)]="partenaireData.solde" name="solde" class="form-control rounded-0" [formControl]="solde"  required>
+                          <mat-error *ngIf="solde.invalid">{{getErrorMessage()}}</mat-error>
                         </div>
                         <div class="form-group">
                           <label for="">Photo</label>

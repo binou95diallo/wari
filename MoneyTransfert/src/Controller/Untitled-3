@@ -31,6 +31,14 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     private $passwordEncoder;
+     /** @var UploaderHelper */
+  protected $uploaderHelper;
+
+  /** @var array */
+  protected $placeholders;
+
+  /** @var CacheManager */
+  protected $imagineCacheManager;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -67,7 +75,7 @@ class SecurityController extends AbstractController
                 $roles=["ROLE_ADMIN"];
             }
             elseif ($profil=="user") {
-                $roles=["ROLE_USERPART"];
+                $roles=["ROLE_USER"];
             }
             elseif ($profil=="partenaire" || $profil=="adminPartenaire") {
                 $roles=["ROLE_ADMINPARTENAIRE"];
@@ -126,10 +134,10 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/updateImage/{id}", name="uploadImage", methods={"POST"})
+     * @Route("/uploadImage", name="uploadImage", methods={"POST"})
      */
-    public function updateImage(Request $request, UserRepository $userRepo,User $user){
-        $user=$userRepo->find($user->getId());
+    public function uploadImage(Request $request, UserRepository $userRepo){
+        $user=$userRepo->findLastUser();
         $image=$request->files->all()['imageName'];
         $user->setImageFile($image);
         $entityManager = $this->getDoctrine()->getManager();
@@ -184,25 +192,23 @@ class SecurityController extends AbstractController
      * @Route("/users/{id}/edit", name="usersEdit", methods={"GET","POST"})
      */
     
-    public function edit(Request $request,UserPasswordEncoderInterface $passwordEncoder, User $user,SerializerInterface $serializer,ValidatorInterface $validator,
-                         EntityManagerInterface $entityManager,UserRepository $userRepo): Response
+    public function edit(Request $request, User $user,SerializerInterface $serializer,ValidatorInterface $validator,
+                         EntityManagerInterface $entityManager, PartenaireRepository $partenaireRepo): Response
     {
         $values=$request->request->all();
+        $image=$request->files->all()['imageName'];
         $entityManager = $this->getDoctrine()->getManager();
-        $user = $userRepo->findOneByUsername($values["username"]);
+        $user = $entityManager->getRepository(User::class)->find($values["id"]);
         
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form->submit($values);
-        $user->setPassword(
-            $passwordEncoder->encodePassword(
-                $user,
-                $form->get('password')->getData()
-            )
-        );
+        $user->setImageFile($image);
         if($user->getProfil()!="caissier" || $user->getProfil()!="adminPartenaire"){
-            $compte=$entityManager->getRepository(BankAccount::class)->find($values["compteId"]);
-            
+            $uti=$this->getUser();
+            $part=$uti->getPartenaire();
+            //$part=$partenaireRepo->find($values["partenaire"]);
+            $compte=$entityManager->getRepository(BankAccount::class)->findAllPartCompte($part->getId());
             $user->setBankAccount($compte);
             $compte->setNombreUsers($compte->getNombreUsers()+1);
         }
@@ -212,7 +218,7 @@ class SecurityController extends AbstractController
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
             return new Response($errors, 500, [
-                'content_type' => 'application/json'
+                CONTENT => TYPE
             ]);
         }
         $entityManager->persist($user);
@@ -352,31 +358,5 @@ class SecurityController extends AbstractController
             return $this->json([
                 'token' => $token
             ]);
-    }
-
-     /**
-     * @Route("/users/PartenaireUsers", name="PartenaireUsers", methods={"GET","POST"})
-     */
-    public function partenaireUsers(SerializerInterface $serializer, Request $request,UserRepository $userRepo):Response{
-       
-        $user=$this->getUser();
-        $idPart=$user->getPartenaire();
-        $users = $this->getDoctrine()->getRepository('App:User')->findBy(['partenaire'=>$idPart]);
-        $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($users, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
-        return new Response($jsonObject, 200, [
-            'Content-Type' => 'application/json'
-        ]);
     }
  }

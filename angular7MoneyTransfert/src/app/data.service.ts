@@ -96,7 +96,7 @@ export class DataService {
     formData.append('compte',compteId);
     console.log(this.authenticationService.token);
     console.log(montant);
-   return this.http.post(this.uri+'/bankAccount/depot/ajout', formData).map(res => res).catch(this.handelError);
+   return this.http.post(this.uri+'/bankAccount/depot/ajout', formData).map(res => res).catch(this.handelErrorDep);
   
   }
   getPartenaireCompte(){
@@ -141,8 +141,24 @@ export class DataService {
     return this.http.post(this.uri+'/users/'+id+'/edit',formData).map(res => res).catch(this.handelError);
   }
 
+  editPartenaire(partenaire){
+    const formData = new FormData();
+    formData.append('nomComplet',partenaire.nomComplet);
+    formData.append('adresse',partenaire.adresse);
+    formData.append('telephone',partenaire.telephone);
+    formData.append('email',partenaire.email);
+    formData.append('status',partenaire.status);
+    formData.append('ninea',partenaire.ninea);
+    formData.append('raisonSocial',partenaire.raisonSocial);
+    formData.append('solde',partenaire.solde);
+    return this.http.post(this.uri+'/partenaire/edit',formData).map(res => res).catch(this.handelError);
+  }
+
   showUser(id):Observable<User[]> {
     return this.http.get<User[]>(this.uri+'/users/show/'+id).map(res => res).catch(this.handelError);
+  }
+  showPartenaire(id):Observable<Partenaire[]> {
+    return this.http.get<Partenaire[]>(this.uri+'/partenaire/show/'+id).map(res => res).catch(this.handelError);
   }
 
   getUser(): Observable<any[]> {
@@ -189,6 +205,11 @@ export class DataService {
   private handelError(error: Response) {
 
     return Observable.throw(error.error.message || 'server error');
+
+  }
+  private handelErrorDep(error: Response) {
+
+    return Observable.throw(error || 'server error');
 
   }
 

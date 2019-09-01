@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Route, Router } from '@angular/router';
 import { Partenaire } from '../partenaire';
@@ -18,6 +18,28 @@ export class AddPartenaireComponent implements OnInit {
   statusData= <any>{};
   partenaireData={ imageName:File=null};
   imageUrl:string ="/assets/img/afro3.png";
+  solde= new FormControl('',[Validators.required]);
+  adresse = new FormControl('', [Validators.required]);
+  telephone= new FormControl('', [Validators.required]);
+  nomComplet= new FormControl('', [Validators.required]);
+  ninea= new FormControl('', [Validators.required]);
+  raisonSocial= new FormControl('', [Validators.required]);
+  username= new FormControl('', [Validators.required]);
+  password= new FormControl('', [Validators.required]);
+  email= new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage() {
+    return this.adresse.hasError('required') ? 'You must enter a value' :
+            this.telephone.hasError('required')? 'You must enter a value':
+            this.nomComplet.hasError('required')?'You must enter a value':
+            this.ninea.hasError('required')? 'You must enter a value':
+            this.solde.hasError('required')?'You must enter a value':
+            this.raisonSocial.hasError('required')?'You must enter a value':
+            this.username.hasError('required')?'You must enter a value':
+            this.password.hasError('required')?'You must enter a value':
+            this.email.hasError('required')?'You must enter a value':
+            this.email.hasError('email') ? 'Not a valid email' :
+            '';
+  }
 
   constructor(private formBuilder: FormBuilder, private data: DataService,private router:Router,partenaire:Partenaire) { }
   handleFileInput(file:FileList){

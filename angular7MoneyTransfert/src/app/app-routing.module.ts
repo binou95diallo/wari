@@ -13,6 +13,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { HistoriqueOperationComponent } from './historique-operation/historique-operation.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import {EditPartenaireComponent} from './edit-partenaire/edit-partenaire.component';
 import { TransactionRetraitComponent } from './transaction-retrait/transaction-retrait.component';
 
 const routes: Routes = [
@@ -21,15 +22,16 @@ const routes: Routes = [
   {path: 'login', component : LoginComponent},
   { path: 'partenaires', component: PartenaireComponent},
   { path: 'utilisateurs', component: UsersComponent},
-  { path: 'compte', component: CompteComponent},
+  { path: 'compte', component: CompteComponent,canActivate:[AuthGuard]},
   { path: 'addPartenaire', component: AddPartenaireComponent},
-  { path: 'addUser', component: AddUserComponent,canActivate:[AuthGuard]},
+  { path: 'addUser', component: AddUserComponent},
   { path: 'depot', component: DepotComponent},
   { path: 'passwordChange', component: PasswordChangeComponent},
   { path: 'UserOperations', component: HistoriqueOperationComponent},
   { path: 'envoiTransaction', component: TransactionComponent},
   { path: 'retraitTransaction', component: TransactionRetraitComponent},
-  { path: 'editUser/:id', component: EditUserComponent}
+  { path: 'editUser/:id', component: EditUserComponent},
+  { path: 'editPartenaire/:id', component:  EditPartenaireComponent}
 ];
 
 @NgModule({

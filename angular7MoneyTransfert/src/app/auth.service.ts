@@ -88,8 +88,22 @@ ngOnInit(){
   isUser(){
     return this.roles && this.roles.indexOf("ROLE_USER")>=0;
   }
+  isUserPart(){
+    return this.roles && this.roles.indexOf("ROLE_USERPART");
+  }
   isCaissier(){
     return this.roles && this.roles.indexOf("ROLE_CAISSIER")>=0;
+  }
+  isAdminPartenaire(){
+    return this.roles && this.roles.indexOf("ROLE_ADMINPARTENAIRE")>=0;
+  }
+
+  isPartenaireOrUser(){
+    return this.roles && (this.roles.indexOf("ROLE_USERPART")>=0 || this.roles.indexOf("ROLE_ADMINPARTENAIRE")>=0);
+  }
+
+  isAdminPartenaireOrCaissier(){
+    return this.roles && (this.roles.indexOf("ROLE_ADMINPARTENAIRE")>=0 || this.roles.indexOf("ROLE_CAISSIER")>=0);
   }
 
   isAuthenticated(){
@@ -105,7 +119,7 @@ ngOnInit(){
 
   private handelError(error: Response) {
 
-    return Observable.throw(error.json() || 'server error');
+    return Observable.throw(error || 'server error');
 
   }
 

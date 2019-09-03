@@ -34,18 +34,15 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
-
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Vous devez insérer un mot de passe")
-     * @Assert\Regex(
-     *     pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{7,}$/",
-     *     match=true,
-     *     message="Votre mot de passe doit contenir au moins 7 caractères, un majuscule et un caractère spéciale"
-     * )
-     */
     
+   /**
+	* @ORM\Column(type="string")
+	* @Assert\Regex(
+	*     pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{7,}$/",
+	*     match=true,
+	*     message="Votre mot de passe doit contenir au moins 7 caractères, un majuscule et un caractère spéciale"
+	* )
+	*/
     private $password;
 
     /**

@@ -90,14 +90,20 @@ export class DataService {
 
     return this.http.post(this.uri+'/uploadImage', formData);
   }
-  depot(montant,compteId) {
+  depot(montant,id) {
     const formData = new FormData();
     formData.append('montant',montant);
-    formData.append('compte',compteId);
+    formData.append('id',id);
     console.log(this.authenticationService.token);
     console.log(montant);
    return this.http.post(this.uri+'/bankAccount/depot/ajout', formData).map(res => res).catch(this.handelErrorDep);
   
+  }
+
+  addCompte(solde){
+    const formData=new FormData();
+    formData.append("solde",solde);
+    return this.http.post(this.uri+'/bankAccount/ajout',formData).map(res=>res).catch(this.handelErrorDep);
   }
   getPartenaireCompte(){
     const formData=new FormData();
@@ -182,6 +188,10 @@ export class DataService {
     return  this.http.get<any>(this.uri+'/usersOp')
   }
 
+  listOperationsPartenaires():Observable<any[]>{
+    return this.http.get<any>(this.uri+'/partenaireOp')
+  }
+
   retraitTransact(code){
     let formData=new FormData();
     formData.append('code',code);
@@ -204,7 +214,7 @@ export class DataService {
   }
   private handelError(error: Response) {
 
-    return Observable.throw(error.error.message || 'server error');
+    return Observable.throw(error || 'server error');
 
   }
   private handelErrorDep(error: Response) {

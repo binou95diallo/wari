@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
      .subscribe(data=> {
      //alert(data)
      this.errorMessage=data
+    
       if(numberConnect<1 && !this.errorMessage){
        
         this.router.navigate(['/passwordChange']);

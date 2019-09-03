@@ -60,14 +60,16 @@ class BankAccountController extends AbstractController
             $bankAccount = new BankAccount();
             $form = $this->createForm(BankAccountType::class, $bankAccount);
             $form->handleRequest($request);
-            $values=json_decode($request->getContent());
+            $values=$request->request->all();
             $form->submit($values);
-            $partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
+            $user=$this->getUser();
+            //$partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
+            $partenaire=$user->getPartenaire();
             $ninea=$partenaire->getNinea();
             $random=random_int(100,1000000);
             $numeroCompte=$random.''.$ninea;
             $bankAccount->setNumeroCompte($numeroCompte);
-            $bankAccount->setSolde($values->solde);
+            $bankAccount->setSolde($values["solde"]);
             $bankAccount->setPartenaire($partenaire);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bankAccount);
@@ -165,13 +167,18 @@ class BankAccountController extends AbstractController
 
       /**
      * @Route("/bankAccount/depot/ajout", name="depotAjout", methods={"POST"})
+     * @isGranted("ROLE_CAISSIER")
      */
     public function depot(Request $request,BankAccountRepository $bankARepo, ValidatorInterface $validator, SerializerInterface $serializer): Response
     {
         $depot = new Depot();
         $values=$request->request->all();
+        $form = $this->createForm(DepotType::class, $depot);
+        $form->handleRequest($request);
+        $form->submit($values);
         $caissier=$this->getUser();
-       $idCompte=$values["compte"];
+       // dump($caissier);die();
+        $idCompte=$values["id"];
        $compte=$bankARepo->find($idCompte);
         $depot->setCaissier($caissier);
         $depot->setBankAccount($compte);
@@ -179,9 +186,7 @@ class BankAccountController extends AbstractController
         $depot->setMontant($values["montant"]);
         $solde=$compte->getSolde() + $depot->getMontant();
         $compte->setSolde($solde);
-        $form = $this->createForm(DepotType::class, $depot);
-        $form->handleRequest($request);
-        $form->submit($values);
+       
         $errors = $validator->validate($depot);
         if(count($errors)) {
             $errors = $serializer->serialize($errors, 'json');
@@ -195,10 +200,6 @@ class BankAccountController extends AbstractController
             $entityManager->persist($depot);
             $entityManager->persist($compte);
             $entityManager->flush();
-
-           
-
-        
         $data = [
             'status' => 201,
             'message' => 'dépot ajouté'
@@ -333,8 +334,6 @@ class BankAccountController extends AbstractController
 
         $values=$request->request->all();
         $transact=new Transaction();
-        $nbCode=$tranRepo->countByCode($values["code"]);
-        //var_dump($nbCode);die();
         $transaction=$tranRepo->findOneByCode($values["code"]);
 
         $transact->setExpediteur($transaction->getExpediteur());
@@ -342,9 +341,12 @@ class BankAccountController extends AbstractController
             $transact->setMontant($transaction->getMontant());
             $transact->setCode($values["code"]);
             $user=$this->getUser();
+            $compte=$user->getBankAccount();
             $transact->setUser($user);
             $frais=$transaction->getFrais();
             $comPart=($frais*20)/100;
+            $solde=$compte->getSolde()+$transact->getMontant();
+            $compte->setSolde($solde);
             $transact->setCommissionPartenaire($comPart);
             $transact->setType("retrait");
             $transact->setDateRetrait(new \DateTime('now'));
@@ -352,6 +354,7 @@ class BankAccountController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($transact);
+            $entityManager->persist($compte);
             $entityManager->flush();
             $data = [
                 'status' => 201,

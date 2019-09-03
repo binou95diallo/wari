@@ -5,6 +5,7 @@
       <a [routerLink]="['/partenaires']">Partenaire</a>
       <ol class="sub-menu">
         <li class="menu-item"><a [routerLink]="['/addPartenaire']">Ajout</a></li>
+        <li class="menu-item"><a [routerLink]="['/partenaireOperation']">Liste Operations Partenaire</a></li>
       </ol>
     </li>
     <li class="menu-item" *ngIf="isPartenaireOrUser()">
@@ -19,7 +20,7 @@
     <li class="menu-item" *ngIf="isAdminPartenaireOrCaissier()">
       <a [routerLink]="['/compte']">Comptes</a>
       <ol class="sub-menu">
-        <li class="menu-item" *ngIf="isCaissier()"><a [routerLink]="['/depot']">Dépot</a></li>
+          <li class="menu-item" *ngIf="isPartenaire()"><a [routerLink]="['/addCompte']">Ajout compte</a></li>
       </ol>
     </li>
     <li class="menu-item"><a href="#0">Contact</a></li>

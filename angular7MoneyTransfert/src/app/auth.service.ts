@@ -18,12 +18,6 @@ export class AuthService{
   roles: Array<string>;
   private _registerUrl = "http://localhost:8000/api/register";
   constructor(private http: Http) {
-    //localStorage permet de garder les infos de l'utilisateur durant sa connexion un peu comme les sessions
-    /* const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(currentUser); */
-    /* this.compteur=this.compteur+1;
-    this.numberConnexion=JSON.stringify(this.compteur);
-    localStorage.setItem('numberConnexion',this.numberConnexion); */
   }
   public getToken(): string {
     let token=localStorage.getItem('token');
@@ -39,9 +33,6 @@ ngOnInit(){
 
   login(username: string, password: string):Observable<any>{
     let headers = new Headers();
-    /* let formdata=new FormData();
-    formdata.append('username',username);
-    formdata.append('password',password); */
     let nbConnex;
     headers.append('content-type', 'application/x-www-form-urlencoded');
 
@@ -56,7 +47,7 @@ ngOnInit(){
           
           // store username and jwt token in local storage to keep user logged in between page refreshes
           nbConnex=localStorage.getItem('numberConnexion');
-          if(nbConnex== null){
+          if(nbConnex== null || !(localStorage.getItem('currentUser')==username)){
             this.compteur=1;
             this.numberConnexion=this.compteur.toString();
           }

@@ -18,13 +18,15 @@ export class AddUserComponent implements OnInit {
   selectedFile=null;
   imageUrl:string ="/assets/img/afro3.png";
   fileToUpload:File= null;
+  errorMessage:string;
+
 
   adresse = new FormControl('', [Validators.required]);
   telephone= new FormControl('', [Validators.required]);
   nomComplet= new FormControl('', [Validators.required]);
   username= new FormControl('', [Validators.required]);
-  password= new FormControl('', [Validators.required, Validators.email]);
-  email= new FormControl('', [Validators.required]);
+  password= new FormControl('', [Validators.required]);
+  email= new FormControl('', [Validators.required, Validators.email]);
   getErrorMessage() {
     return this.adresse.hasError('required') ? 'You must enter a value' :
             this.telephone.hasError('required')? 'You must enter a value':
@@ -72,10 +74,10 @@ export class AddUserComponent implements OnInit {
    this.data.registerUser(this.registerUserData)
     .subscribe(
       res => {
-        
+        //console.log(res.error)
         this.router.navigate(['/utilisateurs'])
       },
-      err => console.log(err)
+      err =>this.errorMessage=err.error.detail
     )   
     
   }

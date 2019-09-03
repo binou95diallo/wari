@@ -24,7 +24,7 @@ import { Partenaire } from './partenaire';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatOptionModule, MatSelectModule, MatToolbarModule, MatExpansionModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatOptionModule, MatSelectModule, MatToolbarModule, MatExpansionModule } from '@angular/material';
 import { from } from 'rxjs';
 import { LogoutComponent } from './logout/logout.component';
 import { DepotComponent } from './depot/depot.component';
@@ -33,6 +33,8 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionRetraitComponent } from './transaction-retrait/transaction-retrait.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditPartenaireComponent } from './edit-partenaire/edit-partenaire.component';
+import { AddCompteComponent } from './add-compte/add-compte.component';
+import { PartenaireOperationComponent } from './partenaire-operation/partenaire-operation.component';
 
 
 const routes: Routes = [
@@ -58,7 +60,9 @@ const routes: Routes = [
     TransactionComponent,
     TransactionRetraitComponent,
     EditUserComponent,
-    EditPartenaireComponent
+    EditPartenaireComponent,
+    AddCompteComponent,
+    PartenaireOperationComponent
   ],
   imports: [
     BrowserModule,

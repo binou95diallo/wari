@@ -15,23 +15,27 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import {EditPartenaireComponent} from './edit-partenaire/edit-partenaire.component';
 import { TransactionRetraitComponent } from './transaction-retrait/transaction-retrait.component';
+import { AddCompteComponent } from './add-compte/add-compte.component';
+import { PartenaireOperationComponent } from './partenaire-operation/partenaire-operation.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'login',pathMatch:'full'},
+  {path: '', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: NavbarComponent},
   {path: 'login', component : LoginComponent},
   { path: 'partenaires', component: PartenaireComponent},
   { path: 'utilisateurs', component: UsersComponent},
   { path: 'compte', component: CompteComponent,canActivate:[AuthGuard]},
+  { path: 'addCompte', component: AddCompteComponent},
   { path: 'addPartenaire', component: AddPartenaireComponent},
   { path: 'addUser', component: AddUserComponent},
-  { path: 'depot', component: DepotComponent},
+  { path: 'addDepot/:id', component: DepotComponent},
   { path: 'passwordChange', component: PasswordChangeComponent},
   { path: 'UserOperations', component: HistoriqueOperationComponent},
   { path: 'envoiTransaction', component: TransactionComponent},
   { path: 'retraitTransaction', component: TransactionRetraitComponent},
   { path: 'editUser/:id', component: EditUserComponent},
-  { path: 'editPartenaire/:id', component:  EditPartenaireComponent}
+  { path: 'editPartenaire/:id', component:  EditPartenaireComponent},
+  { path: 'partenaireOperation', component: PartenaireOperationComponent}
 ];
 
 @NgModule({

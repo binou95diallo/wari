@@ -1,5 +1,5 @@
 .menu {
-    background: #F67280;
+    background: #3496DB;
     height: 4rem;
   }
   .menu ol {
@@ -24,7 +24,7 @@
     border-radius: 50%;
     bottom: 5px;
     left: calc(50% - 2px);
-    background: #FECEAB;
+    background: rgb(123, 122, 240);
     will-change: transform;
     transform: scale(0);
     transition: transform 0.2s ease;
@@ -46,7 +46,7 @@
   }
   .sub-menu .menu-item {
     padding: 0.75rem 0;
-    background: #F67280;
+    background: #2980B9;
     opacity: 0;
     transform-origin: bottom;
     animation: enter 0.2s ease forwards;
@@ -64,7 +64,7 @@
     animation-delay: 0.2s;
   }
   .sub-menu .menu-item:hover {
-    background: #F8B195;
+    background: rgba(253, 234, 234, 0.87);
   }
   .sub-menu .menu-item a {
     padding: 0 0.75rem;

@@ -37,6 +37,7 @@ class SecurityController extends AbstractController
       $this->passwordEncoder = $passwordEncoder;
     }
     
+    
      /**
      * @Route("/register", name="register", methods={"POST"})
      */
@@ -44,14 +45,23 @@ class SecurityController extends AbstractController
                             PartenaireRepository $partenaireRepo,SerializerInterface $serializer, ValidatorInterface $validator):Response
     {
         $user = new User();
+        $errors=[];
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $values=$request->request->all();
-        var_dump($values);
         $form->submit($values);
         $image=$request->files->all()['imageName'];
         $uti=$this->getUser();
        $idPart= $uti->getPartenaire();
+       $errorsAssert = $validator->validate($user);
+       if(count($errorsAssert)>0) {
+
+          $err = $serializer->serialize($errorsAssert, 'json');
+          
+           return new Response($err, 500, [
+               'content_type '=> 'application/json',
+           ]);
+       }
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -78,14 +88,8 @@ class SecurityController extends AbstractController
             $user->setRoles($roles);
             $user->setPartenaire($idPart);
             $user->setStatus("débloqué");
-            $errors = $validator->validate($user);
-            if(count($errors)) {
-                $errors = $serializer->serialize($errors, 'json');
-                return new Response($errors, 500, [
-                    'content_type '=> 'application/json'
-                ]);
-            }
-
+           
+            //die();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -94,7 +98,6 @@ class SecurityController extends AbstractController
                     'status' => 201,
                     'message' => 'L\'utilisateur a été créé'
                 ];
-
                 return new JsonResponse($data, 201);
     }
 

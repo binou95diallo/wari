@@ -19,6 +19,9 @@ ngOnInit():void{
 this.authenticationService.getToken();
 }
 
+isSuperAdmin(){
+  return this.authenticationService.isAdmin();
+}
 isUserPart(){
   return this.authenticationService.isUserPart();
 }

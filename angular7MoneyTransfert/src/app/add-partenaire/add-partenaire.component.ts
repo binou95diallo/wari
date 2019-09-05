@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { DataService } from '../data.service';
 import { Route, Router } from '@angular/router';
 import { Partenaire } from '../partenaire';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-partenaire',
@@ -16,46 +17,84 @@ export class AddPartenaireComponent implements OnInit {
   success = false;
   errors=[];
   statusData= <any>{};
-  partenaireData={ imageName:File=null};
-  imageUrl:string ="/assets/img/afro3.png";
-  solde= new FormControl('',[Validators.required]);
-  adresse = new FormControl('', [Validators.required]);
-  telephone= new FormControl('', [Validators.required]);
-  nomComplet= new FormControl('', [Validators.required]);
-  ninea= new FormControl('', [Validators.required]);
-  raisonSocial= new FormControl('', [Validators.required]);
-  username= new FormControl('', [Validators.required]);
-  password= new FormControl('', [Validators.required]);
-  email= new FormControl('', [Validators.required, Validators.email]);
-  getErrorMessage() {
-    return this.adresse.hasError('required') ? 'You must enter a value' :
-            this.telephone.hasError('required')? 'You must enter a value':
-            this.nomComplet.hasError('required')?'You must enter a value':
-            this.ninea.hasError('required')? 'You must enter a value':
-            this.solde.hasError('required')?'You must enter a value':
-            this.raisonSocial.hasError('required')?'You must enter a value':
-            this.username.hasError('required')?'You must enter a value':
-            this.password.hasError('required')?'You must enter a value':
-            this.email.hasError('required')?'You must enter a value':
-            this.email.hasError('email') ? 'Not a valid email' :
-            '';
-  }
+  imageName:File=null;
+  imageUrl:string ="/assets/images/afro3.png";
+  partenaireData=new FormGroup({
+  solde:new FormControl('',[Validators.required]),
+  adresse :new FormControl('', [Validators.required]),
+  telephone: new FormControl('', [Validators.required]),
+  nomComplet: new FormControl('', [Validators.required]),
+  ninea:new FormControl('', [Validators.required]),
+  raisonSocial: new FormControl('', [Validators.required]),
+  username: new FormControl('', [Validators.required]),
+  password: new FormControl('', [Validators.required]),
+  email: new FormControl('', [Validators.required, Validators.email]),
+  })
 
+  errorMessage={
+    'username':[
+     {type:'required', message:'Champ username obligatoire '},
+     {type:'minlength', message:'veuillez saisir au minimum 5 lettres'},
+     {type:'pattern', message:'Ecrivez correctement le username'}
+    ],
+    
+     'password':[
+      {type:'required', message:'Champ role est  obligatoire '}
+ 
+     ],
+    'telephone':[
+     {type:'required', message:'Champ telephone obligatoire '},
+     {type:'minlength', message:'veuillez saisir au minimum 9 lettres'},
+     {type:'maxlength', message:'veuillez saisir au maximum 9 lettres'},
+     {type:'pattern', message:'Ecrivez correctement le numero de telephone'}
+
+    ],
+    'nomComplet':[
+     {type:'required', message:'Champ prenom obligatoire '},
+     {type:'minlength', message:'veuillez saisir au minimum 2 lettres'},
+     {type:'pattern', message:'Ecrivez correctement le nom'}
+
+    ],
+    'raisonSocial':[
+      {type:'required', message:'Champ role est  obligatoire '}
+
+     ],
+     'ninea':[
+      {type:'required', message:'Champ role est  obligatoire '}
+ 
+     ],
+     'solde':[
+      {type:'required', message:'Champ role est  obligatoire '}
+ 
+     ],
+     'email':[
+       {type:'required', message:'email obligatoire'}
+     ],
+     'adresse':[
+       { type:'required', message:'champ obligatoire'}
+     ]
+  }
   constructor(private formBuilder: FormBuilder, private data: DataService,private router:Router,partenaire:Partenaire) { }
   handleFileInput(file:FileList){
-    this.partenaireData.imageName=file.item(0);
+    this.imageName=file.item(0);
     var reader=new FileReader();
     reader.onload=(event:any)=>{
       this.imageUrl=event.target.result;
     }
-    reader.readAsDataURL(this.partenaireData.imageName);
+    reader.readAsDataURL(this.imageName);
   }
 
-  addPartenaire() {
-    console.log(this.partenaireData);
-   this.data.addPartenaire(this.partenaireData)
+  addPartenaire(data:any) {
+   this.data.addPartenaire(data,this.imageName)
     .subscribe(
       res => {
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'partenaire ajouté avec success',
+          showConfirmButton: false,
+          timer: 2000
+        })
         this.router.navigate(['/partenaires'])
       },
       err => console.log(err)
@@ -64,13 +103,7 @@ export class AddPartenaireComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.statusData = [{
-      id: 1, name: 'bloquer' 
-    },
-    {
-      id: 2, name: 'debloquer' 
-    } 
-  ]
+    
   }
 
 }

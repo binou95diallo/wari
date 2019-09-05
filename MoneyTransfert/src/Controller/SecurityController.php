@@ -88,8 +88,6 @@ class SecurityController extends AbstractController
             $user->setRoles($roles);
             $user->setPartenaire($idPart);
             $user->setStatus("débloqué");
-           
-            //die();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -146,17 +144,6 @@ class SecurityController extends AbstractController
                 return new JsonResponse($data, 201);
     }
 
-    /**
-     * @Route("/logina", name="login", methods={"POST"})
-     */
-   /*  public function login(Request $request)
-    {
-        $user = $this->getUser();
-        return $this->json([
-            'username' => $user->getUsername(),
-            'roles' => $user->getRoles()
-        ]);
-    } */
 
      /**
      * @Rest\Get("/user/users", name="usersList")
@@ -234,20 +221,8 @@ class SecurityController extends AbstractController
      */
     public function userBloquer(Request $request, UserRepository $userRepo,EntityManagerInterface $entityManager): Response
     {
-        $tableUsers=$this->getDoctrine()->getRepository('App:User')->countByUsername();
         $values = $request->request->all();
         $user=$userRepo->findOneByUsername($values["username"]);
-        echo $user->getStatus();
-        if($user->getProfil()=="admin" && $tableUsers<=1){
-
-                  $data = [
-                    'status' => 200,
-                    'message' => 'Il n\'y à qu\'un super-administrateur dans le système une fois bloquer 
-                    la plateforme risque de ne plus fonctionner'
-                ];
-                return new JsonResponse($data);
-        }
-        else{
             if($user->getStatus()=="bloqué"){
             
                 if($user->getProfil()=="admin"){
@@ -259,17 +234,34 @@ class SecurityController extends AbstractController
                 elseif ($user->getProfil()=="adminPartenaire") {
                     $user->setRoles(["ROLE_ADMINPARTENAIRE"]);
                 }
-                $user->setStatus("debloqué");
+                $user->setStatus("débloqué");
 
                 $entityManager->flush();
                 $data = [
                     'status' => 200,
-                    'message' => 'utilisateur debloqué'
+                    'message' => 'utilisateur débloqué'
                 ];
                 return new JsonResponse($data);
                 
             }
             else {
+                    if($user->getProfil()=="adminPartenaire" || $user->getProfil()=="partenaire"){
+                        $idPart=$user->getPartenaire();
+                        $stmt=$userRepo->findById($idPart-> getId());
+                        $i=0;
+                        while ($donnees=$stmt->fetchAll()) {
+                           while ($i<sizeof($donnees)) {
+                            $users=$userRepo->findOneByUsername($donnees[$i]["username"]);
+                            print_r($donnees[$i]["username"]);
+                            $users->setStatus("bloqué");
+                            $user->setRoles(["ROLE_USERLOCK"]);
+                            $entityManager->persist($users);
+                            $entityManager->flush();
+                            $i=$i+1;
+                           }
+                        }
+                       
+                    }
                 $user->setStatus("bloqué");
                 $user->setRoles(["ROLE_USERLOCK"]);
 
@@ -280,7 +272,6 @@ class SecurityController extends AbstractController
                 ];
                 return new JsonResponse($data);
             }
-        }
     }
 
 

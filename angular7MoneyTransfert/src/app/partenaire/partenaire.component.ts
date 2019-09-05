@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {DataService} from '../data.service';
 import {Partenaire} from '../partenaire';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit,faDownload } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
+import * as jsPDF from 'jspdf';
 @Component({
   selector: 'app-partenaire',
   templateUrl: './partenaire.component.html',
@@ -11,16 +12,18 @@ import { Router } from '@angular/router';
 })
 export class PartenaireComponent implements OnInit {
   displayedColumns: string[] = [
-    'raisonSocial','nomComplet','ninea','telephone','adresse','email','status','id'];
+    'raisonSocial','nomComplet','ninea','telephone','adresse','email','status','id','contrat'];
   dataSource: MatTableDataSource<Partenaire>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   faEdit = faEdit;
+  faDownload= faDownload;  
   partenaires: Partenaire[] ;
      errorMessage: string;
      status:string;
      ninea: string;
      id:string;
+     contrat:string;
   constructor(private data: DataService, private router:Router) { }
 
   load(data){
@@ -62,5 +65,22 @@ export class PartenaireComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  genPDF(id) {
+    this.contrat="download";
+    var doc = new jsPDF();
+    
+      var specialElementHandlers = {
+          '#hidediv' : function(element,render) {return true;}
+      };
+      
+      doc.fromHTML($('#testdiv').get(0), 20,20,{
+                   'width':500,
+              'elementHandlers': specialElementHandlers
+      });
+    
+    doc.save('Test.pdf');
+    
   }
 }

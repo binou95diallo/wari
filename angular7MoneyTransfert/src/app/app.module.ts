@@ -35,7 +35,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditPartenaireComponent } from './edit-partenaire/edit-partenaire.component';
 import { AddCompteComponent } from './add-compte/add-compte.component';
 import { PartenaireOperationComponent } from './partenaire-operation/partenaire-operation.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   
@@ -63,6 +63,7 @@ const routes: Routes = [
     EditPartenaireComponent,
     AddCompteComponent,
     PartenaireOperationComponent
+
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
@@ -84,7 +85,8 @@ const routes: Routes = [
     MatOptionModule,
     MatSelectModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthGuard,AuthService,Partenaire,
     { provide: HTTP_INTERCEPTORS,

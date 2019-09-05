@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-transaction',
@@ -26,7 +27,7 @@ export class TransactionComponent implements OnInit {
             this.montant.hasError('required')?'You must enter a value':
             '';
   }
-  constructor(private data:DataService, private router:Router) { }
+  constructor(private data:DataService, private router:Router, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -34,6 +35,9 @@ export class TransactionComponent implements OnInit {
   envoiTransact(){
     this.data.envoiTransact(this.expediteur,this.beneficiaire).subscribe(
       data=>{
+        //console.log(data)
+        //this.errorMessage=data.error
+        this.toastr.warning("solde insuffisant")
         this.router.navigate(['/home'])
     })
 

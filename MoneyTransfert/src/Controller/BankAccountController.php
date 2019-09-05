@@ -63,7 +63,6 @@ class BankAccountController extends AbstractController
             $values=$request->request->all();
             $form->submit($values);
             $user=$this->getUser();
-            //$partenaire=$this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($values->partenaire);
             $partenaire=$user->getPartenaire();
             $ninea=$partenaire->getNinea();
             $random=random_int(100,1000000);
@@ -213,7 +212,8 @@ class BankAccountController extends AbstractController
      */
     public function compteParte(SerializerInterface $serializer, Request $request,UserRepository $userRepo):Response{
         $values=$request->request->all();
-        $user=$userRepo->findOneByUsername($values["username"]);
+        //$user=$userRepo->findOneByUsername($values["username"]);
+        $user=$this->getUser();
         $idPart=$user->getPartenaire();
         $compte = $this->getDoctrine()->getRepository('App:BankAccount')->findBy(['partenaire'=>$idPart]);
         $encoders = [new JsonEncoder()];
@@ -266,9 +266,20 @@ class BankAccountController extends AbstractController
         $form->handleRequest($request);
         $form->submit($values);
         
-        
+        $user=$this->getUser();
+        $compte=$user->getBankAccount();
+        $soldeCompte=$compte->getSolde();
         
         $montant=$values["montant"];
+        if($soldeCompte <= $montant){
+            $data=[
+                "status"=>400,
+                "message"=>"solde insuffisant",
+                "solde restant dans le compte"=>$soldeCompte
+            ];
+        }
+        else{
+
         $tarif=$entityManager->getRepository(Tarifs::class)->findAll();
              $data=[];
             $encoders = [new JsonEncoder()];
@@ -305,10 +316,10 @@ class BankAccountController extends AbstractController
             $transact->setExpediteur($exp);
             $transact->setRecepteur($recep);
             $random=random_int(100,1000000);
-            $user=$this->getUser();
+            
             $transact->setUser($user);
-            $compte=$user->getBankAccount();
-            $solde=$compte->getSolde()+$gain;
+            
+            $solde=$compte->getSolde()+$gain-$montant;
             $compte->setSolde($solde);
             $code=$random.''.$montant;
             $transact->setCode($code);
@@ -316,13 +327,14 @@ class BankAccountController extends AbstractController
             $entityManager->persist($transact);
             $entityManager->persist($compte);
             $entityManager->flush();
+            $data = [
+                'status' => 201,
+                'message' => 'Envoie effectuée'
+            ];
 
+        }
 
-
-        $data = [
-            'status' => 201,
-            'message' => 'Envoie effectuée'
-        ];
+        
         return new JsonResponse($data, 201);
      }
 
@@ -345,7 +357,7 @@ class BankAccountController extends AbstractController
             $transact->setUser($user);
             $frais=$transaction->getFrais();
             $comPart=($frais*20)/100;
-            $solde=$compte->getSolde()+$transact->getMontant();
+            $solde=$compte->getSolde() + $transact->getMontant() + $comPart;
             $compte->setSolde($solde);
             $transact->setCommissionPartenaire($comPart);
             $transact->setType("retrait");

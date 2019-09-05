@@ -17,10 +17,11 @@ import {EditPartenaireComponent} from './edit-partenaire/edit-partenaire.compone
 import { TransactionRetraitComponent } from './transaction-retrait/transaction-retrait.component';
 import { AddCompteComponent } from './add-compte/add-compte.component';
 import { PartenaireOperationComponent } from './partenaire-operation/partenaire-operation.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home',pathMatch:'full'},
-  {path: 'home', component: NavbarComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'login', component : LoginComponent},
   { path: 'partenaires', component: PartenaireComponent},
   { path: 'utilisateurs', component: UsersComponent},

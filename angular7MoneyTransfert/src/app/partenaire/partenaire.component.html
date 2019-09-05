@@ -1,77 +1,94 @@
-<app-navbar></app-navbar>
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-  </div>
-  <div class="col-md-4"></div>
-</div>
-
+<app-home></app-home>
 <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <div class="mat-elevation-z8" class="table-wrapper">
-      <table mat-table [dataSource]="dataSource" matSort class="fl-table">
-    
-        <!-- ID Column -->
-        <ng-container matColumnDef="raisonSocial">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Raison Social </th>
-          <td mat-cell *matCellDef="let row"> {{row.raisonSocial}} </td>
-        </ng-container>
-    
-        <!-- Name Column -->
-        <ng-container matColumnDef="nomComplet">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NomComplet</th>
-          <td mat-cell *matCellDef="let row"> {{row.nomComplet}} </td>
-        </ng-container>
-    
-        <!-- Color Column -->
-        <ng-container matColumnDef="ninea">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Ninea </th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.ninea}} </td>
-        </ng-container>
-
-     <!-- Progress Column -->
-     <ng-container matColumnDef="adresse">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Adresse </th>
-      <td mat-cell *matCellDef="let row"> {{row.adresse}}% </td>
-    </ng-container>
-        <!-- Color Column -->
-        <ng-container matColumnDef="telephone">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Téléphone </th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.telephone}} </td>
-        </ng-container>
-    <!-- Color Column -->
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> email </th>
-      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.email}} </td>
-    </ng-container>
-     <!-- status Column -->
-     <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> status </th>
-        <td mat-cell *matCellDef="let row" [style.color]="row.status">
-          <span *ngIf="row.status=='actif'">
-              <button mat-raised-button color="accent" (click)="bloquerPartenaire(row)">Actif</button>
-          </span>
-          <span *ngIf="row.status=='inactif'">
-              <button mat-raised-button color="warn" (click)="bloquerPartenaire(row)">Inactif</button>
-          </span>
+  <div class="col-md-9">
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div class="mat-elevation-z8" class="table-wrapper">
+              <table mat-table [dataSource]="dataSource" matSort class="fl-table">
             
-        </td>
-      </ng-container>
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
-      <td mat-cell *matCellDef="let row" [style.color]="row.color"><a routerLink="/editPartenaire/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
-    </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-        </tr>
-      </table>
-    
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    </div>
+                <!-- ID Column -->
+                <ng-container matColumnDef="raisonSocial">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Raison Social </th>
+                  <td mat-cell *matCellDef="let row"> {{row.raisonSocial}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="nomComplet">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NomComplet</th>
+                  <td mat-cell *matCellDef="let row"> {{row.nomComplet}} </td>
+                </ng-container>
+            
+                <!-- Color Column -->
+                <ng-container matColumnDef="ninea">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Ninea </th>
+                  <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.ninea}} </td>
+                </ng-container>
+        
+             <!-- Progress Column -->
+             <ng-container matColumnDef="adresse">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Adresse </th>
+              <td mat-cell *matCellDef="let row"> {{row.adresse}}% </td>
+            </ng-container>
+                <!-- Color Column -->
+                <ng-container matColumnDef="telephone">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Téléphone </th>
+                  <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.telephone}} </td>
+                </ng-container>
+            <!-- Color Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> email </th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.email}} </td>
+            </ng-container>
+             <!-- status Column -->
+             <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> status </th>
+                <td mat-cell *matCellDef="let row" [style.color]="row.status">
+                  <span *ngIf="row.status=='actif'">
+                      <button mat-raised-button color="accent" (click)="bloquerPartenaire(row)">Actif</button>
+                  </span>
+                  <span *ngIf="row.status=='inactif'">
+                      <button mat-raised-button color="warn" (click)="bloquerPartenaire(row)">Inactif</button>
+                  </span>
+                    
+                </td>
+              </ng-container>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.color"><a routerLink="/editPartenaire/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></td>
+            </ng-container>
+            <ng-container matColumnDef="contrat">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Télécharger contrat </th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.color"><button (click)="genPDF(row.id)"><fa-icon [icon]="faDownload"></fa-icon></button></td>
+            </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+              </table>
+            
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+        
   </div>
-  <div class="col-md-2"></div>
+  <div class="col-md-1"></div>
 </div>
+
+<div *ngIf="contrat" id="testdiv" style="display:none">
+    <div>TEST</div>
+    <div id="hidediv">TEST2</div>
+</div>
+<a href="javascript:genPDF()">Download PDF</a>

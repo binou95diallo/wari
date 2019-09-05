@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       }
       else if(numberConnect>=1 && !this.errorMessage){
         //this.errorMessage=data
-        this.router.navigate(['/home']);
+        this.router.navigate(['/utilisateurs']);
       }
      }, err => err
      

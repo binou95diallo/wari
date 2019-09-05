@@ -25,13 +25,10 @@ export class DataService {
     return  this.http.get<any>(this.uri+'/partenaire/partenaires' , this.headers)
   }
 
-  addPartenaire(partenaire) {/* 
-    const  headers = new HttpHeaders();
-    headers.append('content-type', 'application/json');
-    headers.append('Authorization', 'Bearer '+ this.authenticationService.token); */
+  addPartenaire(partenaire,imageName) {
     const formData = new FormData();
 
-    formData.append('imageName', partenaire.imageName);
+    formData.append('imageName',imageName);
     formData.append('username',partenaire.username);
     formData.append('password',partenaire.password);
     formData.append('nomComplet',partenaire.nomComplet);
@@ -66,10 +63,10 @@ export class DataService {
     return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res);
   }
 
-  registerUser(user) {
+  registerUser(user,imageName) {
     const formData = new FormData();
 
-    formData.append('imageName', user.imageName);
+    formData.append('imageName',imageName);
     formData.append('username',user.username);
     formData.append('password',user.password);
     formData.append('nomComplet',user.nomComplet);

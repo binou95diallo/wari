@@ -4,6 +4,8 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import {User} from '../users';
 import {MatPaginator,MatSort,MatTableDataSource} from '@angular/material';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -14,13 +16,13 @@ export class UsersComponent implements OnInit {
   displayedColumns: string[] = [
     'nomComplet','username','adresse','profil','status','photo','id'];
   dataSource: MatTableDataSource<User>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: true} as any) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: true} as any) sort: MatSort;
   faEdit = faEdit;
   user: User[];
      errorMessage: string;
      statut:string;
-  constructor(private data: DataService, private router:Router) { 
+  constructor(private data: DataService, private router:Router, private toastr: ToastrService) { 
   }
 
   getUser() {
@@ -51,14 +53,36 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  bloquerUser(row){
-
-    this.data.bloquerUser(row.username).subscribe(
+  bloquerUser(username){
+/* 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+       
+      }
+    }) */
+    this.data.bloquerUser(username).subscribe(
       data => {
+        console.log(data)
+        console.log(username)
+        this.toastr.success("utilisateur bloqué")
         this.router.navigate(['/utilisateurs'])
      }, error => this.errorMessage = error,
      );
-     window.location.reload();
+    
+     //window.location.reload();
   }
  
 }

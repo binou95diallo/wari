@@ -1,86 +1,148 @@
-<app-navbar></app-navbar>
-<div class="py-5">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <span class="anchor" id="formLogin"></span>
-
-      <!-- form card add partenaire -->
-      <div class="card rounded-0">
-        <div class="card-header">
-          <h3 class="mb-0">Ajout partenaire</h3>
-        </div>
-        <div class="card-body">
-          <form class="form">
-              <div class="form-group">
-                  <label for="uname1">Raison Social</label>
-                  <input type="text" [(ngModel)]="partenaireData.raisonSocial" name="raisonSocial" class="form-control rounded-0" [formControl]="raisonSocial" required>
-                  <mat-error *ngIf="raisonSocial.invalid">{{getErrorMessage()}}</mat-error>
+<app-home></app-home>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+      <div class="py-5 mt-5">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <span class="anchor" id="formLogin"></span>
+        
+              <!-- form card add partenaire -->
+              <div class="card rounded-0">
+                <div class="card-header">
+                  <h3 class="mb-0">Ajout partenaire</h3>
                 </div>
-                <div class="form-group">
-                    <label for="uname1">Ninea</label>
-                    <input type="text" [(ngModel)]="partenaireData.ninea" name="ninea" class="form-control rounded-0" [formControl]="ninea" required>
-                    <mat-error *ngIf="ninea.invalid">{{getErrorMessage()}}</mat-error>
-                  </div>
-              <div class="form-group">
-                  <label for="uname1">Username</label>
-                  <input type="text" [(ngModel)]="partenaireData.username" name="username" class="form-control rounded-0" [formControl]="username" required>
-                  <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
-                </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="text" [(ngModel)]="partenaireData.password" name="password" class="form-control rounded-0" [formControl]="password"  required>
-              <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
-            </div>
-            <div class="form-group">
-                <label for="uname1">Email</label>
-                <input type="text" [(ngModel)]="partenaireData.email" name="email" class="form-control rounded-0" [formControl]="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              </div>
-              <div class="form-group">
-                  <label for="uname1">NomComplet</label>
-                  <input type="text" [(ngModel)]="partenaireData.nomComplet" name="nomComplet" class="form-control rounded-0" [formControl]="nomComplet" required>
-                  <mat-error *ngIf="nomComplet.invalid">{{getErrorMessage()}}</mat-error>
-                </div>
-                <div class="form-group">
-                    <label for="uname1">Adresse</label>
-                    <input type="text" [(ngModel)]="partenaireData.adresse" name="adresse" class="form-control rounded-0" [formControl]="adresse" required>
-                    <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
-                  </div>
-                  <div class="form-group">
-                      <label for="uname1">Telephone</label>
-                      <input type="text" [(ngModel)]="partenaireData.telephone" name="telephone" class="form-control rounded-0" [formControl]="telephone" required>
-                      <mat-error *ngIf="telephone.invalid">{{getErrorMessage()}}</mat-error>
-                    </div>
-                    <div class="form-group">
-                        <label for="uname1">Profil</label>
-                        <select [(ngModel)]="partenaireData.profil" name="profil" id="" >
-                            <option value="admin">Admin</option>
-                            <option value="user">Utilisateur</option>
-                            <option value="caissier">Caissier</option>
-                            <option value="partenaire">Partenaire</option>
-                        </select>
+                <div class="card-body">
+                  <form  [formGroup]="partenaireData" (ngSubmit)="addPartenaire(partenaireData.value)" >
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="uname1">Raison Social</label>
+                              <input type="text" formControlName="raisonSocial" name="raisonSocial" class="form-control rounded-0">
+                            </div>
+                            <div *ngFor="let error of errorMessage.raisonSocial">
+                              <div *ngIf="partenaireData.get('raisonSocial').hasError(error.type) &&
+                               (partenaireData.get('raisonSocial').dirty || partenaireData.get('raisonSocial').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="uname1">Ninea</label>
+                                <input type="text" formControlName="ninea" name="ninea" class="form-control rounded-0">
+                              </div>
+                              <div *ngFor="let error of errorMessage.ninea">
+                                <div *ngIf="partenaireData.get('ninea').hasError(error.type) &&
+                                 (partenaireData.get('ninea').dirty || partenaireData.get('ninea').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
+                          <div class="form-group">
+                              <label for="uname1">Username</label>
+                              <input type="text" formControlName="username" name="username" class="form-control rounded-0">
+                            </div>
+                            <div *ngFor="let error of errorMessage.username">
+                              <div *ngIf="partenaireData.get('username').hasError(error.type) &&
+                               (partenaireData.get('username').dirty || partenaireData.get('username').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label>Password</label>
+                              <input type="password" formControlName="password" name="password" class="form-control rounded-0">
+                            </div>
+                            <div *ngFor="let error of errorMessage.password">
+                              <div *ngIf="partenaireData.get('password').hasError(error.type) &&
+                               (partenaireData.get('password').dirty || partenaireData.get('password').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="uname1">Email</label>
+                                <input type="text" formControlName="email" name="email" class="form-control rounded-0">
+                              </div>
+                              <div *ngFor="let error of errorMessage.email">
+                                <div *ngIf="partenaireData.get('email').hasError(error.type) &&
+                                 (partenaireData.get('email').dirty || partenaireData.get('email').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
                       </div>
-                        <div class="form-group">
-                          <label for="uname1">Solde</label>
-                          <input type="number" [(ngModel)]="partenaireData.solde" name="solde" class="form-control rounded-0" [formControl]="solde"  required>
-                          <mat-error *ngIf="solde.invalid">{{getErrorMessage()}}</mat-error>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-5">
+                          <div class="form-group">
+                              <label for="uname1">NomComplet</label>
+                              <input type="text" formControlName="nomComplet" name="nomComplet" class="form-control rounded-0">
+                            </div>
+                            <div *ngFor="let error of errorMessage.nomComplet">
+                              <div *ngIf="partenaireData.get('nomComplet').hasError(error.type) &&
+                               (partenaireData.get('nomComplet').dirty || partenaireData.get('nomComplet').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="uname1">Adresse</label>
+                                <input type="text" formControlName="adresse" name="adresse" class="form-control rounded-0">
+                              </div>
+                              <div *ngFor="let error of errorMessage.adresse">
+                                <div *ngIf="partenaireData.get('adresse').hasError(error.type) &&
+                                 (partenaireData.get('adresse').dirty || partenaireData.get('adresse').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
+                              <div class="form-group">
+                                  <label for="uname1">Telephone</label>
+                                  <input type="text" formControlName="telephone" name="telephone" class="form-control rounded-0">
+                                </div>
+                                <div *ngFor="let error of errorMessage.telephone">
+                                  <div *ngIf="partenaireData.get('telephone').hasError(error.type) &&
+                                   (partenaireData.get('telephone').dirty || partenaireData.get('telephone').touched)">
+                                      {{error.message}}
+                                  </div>
+                              </div>
+                                <div class="form-group">
+                                    <label for="uname1">Profil</label>
+                                    <select formControlName="profil"  name="profil" id="" >
+                                        <option value="adminPartenaire">Admin partenaire</option>
+                                        <option value="caissier">Caissier</option>
+                                    </select>
+                                  </div>
+                                    <div class="form-group">
+                                      <label for="uname1">Solde</label>
+                                      <input type="number" formControlName="solde" name="solde" class="form-control rounded-0">
+                                    </div>
+                                    <div *ngFor="let error of errorMessage.solde">
+                                      <div *ngIf="partenaireData.get('solde').hasError(error.type) &&
+                                       (partenaireData.get('solde').dirty || partenaireData.get('solde').touched)">
+                                          {{error.message}}
+                                      </div>
+                                  </div>
+                                    
                         </div>
-                        <div class="form-group">
-                          <label for="">Photo</label>
-                          <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
-                          <input #imageName
-                            type="file" accept="image/*"  class="form-control rounded-0" required
-                             (change)="handleFileInput($event.target.files)">
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Photo</label>
+                                        <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
+                                        <input #imageName
+                                          type="file" accept="image/*"  class="form-control rounded-0" required
+                                          (change)="handleFileInput($event.target.files)">
+                                    </div>
                         </div>
-            <button type="button" (click)="addPartenaire()" class="btn btn-primary float-right">Ajouter</button>
-          </form>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right" [disabled]="!partenaireData.valid">Ajouter</button>
+                  </form>
+                </div>
+                <!--/card-block-->
+              </div>
+              <!-- /form card login -->
+        
+            </div>
+        
+        
+          </div>
         </div>
-        <!--/card-block-->
-      </div>
-      <!-- /form card login -->
-
-    </div>
-
-
   </div>
 </div>

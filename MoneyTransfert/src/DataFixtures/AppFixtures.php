@@ -25,7 +25,7 @@ public function __construct(UserPasswordEncoderInterface $encoder)
     $user->setAdresse('fann');
     $user->setTelephone('2217711230000');
     $user->setStatus('debloquer');
-    $user->setProfil('user');
+    $user->setProfil('superAdmin');
     $user->setEmail('binou@gmail.com');
     $user->setRoles(["ROLE_SUPER_ADMIN"]);
     $user->setUpdated_at(new \DateTime('now'));

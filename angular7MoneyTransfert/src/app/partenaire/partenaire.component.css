@@ -28,7 +28,7 @@
   }
      */
 
-     .fl-table {
+     /* .fl-table {
         border-radius: 5px;
         font-size: 12px;
         font-weight: normal;
@@ -64,4 +64,18 @@
     
     .fl-table tr:nth-child(even) {
         background: #F8F8F8;
+    } */
+    mat-paginator{
+      float: left;
+    }
+    th{
+            color: #ffffff;
+            background: #007bff;
+    }
+    td{
+      color: #007bff;
+    }
+    th,td{
+            text-align: center;
+            padding: 15%;
     }

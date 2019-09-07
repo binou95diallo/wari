@@ -15,7 +15,8 @@ class RecepteurType extends AbstractType
             ->add('nomCompletR')
             ->add('adresseR')
             ->add('telephoneR')
-            ->add('ncniR')
+            ->add('numeroPieceR')
+            ->add('typePiece')
         ;
     }
 

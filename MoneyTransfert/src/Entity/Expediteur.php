@@ -38,12 +38,17 @@ class Expediteur
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ncni;
+    private $numeroPiece;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="expediteur")
      */
     private $transactions;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $typePiece;
 
     public function __construct()
     {
@@ -91,14 +96,14 @@ class Expediteur
         return $this;
     }
 
-    public function getNcni(): ?string
+    public function getNumeroPiece(): ?string
     {
-        return $this->ncni;
+        return $this->numeroPiece;
     }
 
-    public function setNcni(string $ncni): self
+    public function setNumeroPiece(string $numeroPiece): self
     {
-        $this->ncni = $ncni;
+        $this->numeroPiece = $numeroPiece;
 
         return $this;
     }
@@ -130,6 +135,18 @@ class Expediteur
                 $transaction->setExpediteur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypePiece(): ?string
+    {
+        return $this->typePiece;
+    }
+
+    public function setTypePiece(string $typePiece): self
+    {
+        $this->typePiece = $typePiece;
 
         return $this;
     }

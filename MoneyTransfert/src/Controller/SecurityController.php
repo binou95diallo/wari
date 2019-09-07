@@ -151,21 +151,9 @@ class SecurityController extends AbstractController
     public function listAction(SerializerInterface $serializer):Response
     {
         $users = $this->getDoctrine()->getRepository('App:User')->findAll();
-        $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($users, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
+            $data = $serializer->serialize($users,['groups'=>['partenaire']]);
             
-        return new Response($jsonObject, 200, [
+        return new Response($data, 200, [
             'content_type' => 'application/json'
         ]);
     }
@@ -179,8 +167,8 @@ class SecurityController extends AbstractController
     {
         $values=$request->request->all();
         $entityManager = $this->getDoctrine()->getManager();
+        $connected=$this->getUser();
         $user = $userRepo->findOneByUsername($values["username"]);
-        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form->submit($values);
@@ -196,7 +184,7 @@ class SecurityController extends AbstractController
             $user->setBankAccount($compte);
             $compte->setNombreUsers($compte->getNombreUsers()+1);
         }
-        
+        $user->setPartenaire($connected->getPartenaire());
        
         $errors = $validator->validate($user);
         if(count($errors)) {
@@ -205,14 +193,14 @@ class SecurityController extends AbstractController
                 'content_type' => 'application/json'
             ]);
         }
-        $entityManager->persist($user);
-        $entityManager->persist($compte);
         $entityManager->flush();
         $data = [
             'status' => 200,
             'message' => 'L \'utilisateur a bien été mis à jour'
         ];
-        return new JsonResponse($data);
+        return new JsonResponse($data,200,[
+            'content_type'=>'application/json'
+        ]);
  
     }
     
@@ -282,22 +270,9 @@ class SecurityController extends AbstractController
     {
          
          $user= $userRepo->find($user->getId());
-        $encoders = [new JsonEncoder()];
-        $normalizers = [
-            (new ObjectNormalizer())
-                ->setIgnoredAttributes([
-                    'updated_at'
-                ])
-        ];
-        $serializer = new Serializer($normalizers, $encoders);
-        $jsonObject = $serializer->serialize($user, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
-        ]);
-        return new Response($jsonObject, 200, [
-            'Content-Type' => 'application/json'
-        ]);
+         $data = $serializer->serialize($user,'json',['groups'=>['user']]);
+         return new Response($data,200,[
+             'Content-Type'=>'application/json']);
 
     }
 
@@ -332,10 +307,12 @@ class SecurityController extends AbstractController
                 return new JsonResponse($data);
             }
             if($user->getStatus()=="bloqué"){
-                return new JsonResponse($this->json([
+
+                $data = [
                     'code' => 'ko',
                     'message' => 'ACCÈS REFUSÉ veuillez-contacter l\'administrateur!'
-                ]));
+                ];
+                return new JsonResponse($data);
             }
             $token = $JWTEncoder->encode([
                 'username' => $user->getUsername(),
@@ -354,23 +331,17 @@ class SecurityController extends AbstractController
     public function partenaireUsers(SerializerInterface $serializer, Request $request,UserRepository $userRepo):Response{
        
         $user=$this->getUser();
-        $idPart=$user->getPartenaire();
-        $users = $this->getDoctrine()->getRepository('App:User')->findBy(['partenaire'=>$idPart]);
-        $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($users, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
-        return new Response($jsonObject, 200, [
-            'Content-Type' => 'application/json'
-        ]);
+        $part=$user->getPartenaire();
+        if($user->getProfil()=="superAdmin"){
+            $users=$userRepo->findCaissierOrAdminP();
+        }
+       else {
+        $idPart=$part->getId();
+        $users = $userRepo->findUserPart($idPart,$user->getUsername());
+       }
+        
+            $data = $serializer->serialize($users,'json',['groups'=>['user']]);
+            return new Response($data,200,[
+                'Content-Type'=>'application/json']);
     }
  }

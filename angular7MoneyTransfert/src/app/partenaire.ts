@@ -1,9 +1,9 @@
 export class Partenaire{
-  nomComplet:string;
-  ninea: string;
-  raisonSocial: string;
-  adresse: string;
-  email: string;
+  nomComplet:string=null;
+  ninea: string=null;
+  raisonSocial:string=null;
+  adresse: string=null;
+  email: string=null;
   telephone: string;
   solde: string;
   username: string;

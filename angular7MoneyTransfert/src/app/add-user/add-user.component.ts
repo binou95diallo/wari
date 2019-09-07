@@ -27,6 +27,7 @@ export class AddUserComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    profil:new FormControl('',[Validators.required])
     })
   errorMessage={
     'username':[
@@ -57,6 +58,9 @@ export class AddUserComponent implements OnInit {
     ],
     'adresse':[
       { type:'required', message:'champ obligatoire'}
+    ],
+    'profil':[
+      { type:'required', message:'champ obligatoire'}
     ]
   }
 
@@ -64,12 +68,12 @@ export class AddUserComponent implements OnInit {
   constructor(private  data: DataService,
               private router: Router,private authenticationService: AuthService) { 
               }
-              getPartenaire() {
+              /* getPartenaire() {
                 this.data.getPartenaire().subscribe(
                  data => {this.partenaires = data}
                 );
                 console.log(this.partenaires);
-              }
+              } */
               handleFileInput(file:FileList){
                 this.fileToUpload=file.item(0);
                 this.imageName=this.fileToUpload;
@@ -81,15 +85,7 @@ export class AddUserComponent implements OnInit {
               }
 
   ngOnInit() {
-    this.getPartenaire();
-
-    this.statusData = [{
-        id: 1, name: 'bloquer' 
-      },
-      {
-        id: 2, name: 'debloquer' 
-      } 
-    ]
+    //this.getPartenaire();
   }
 
   registerUser(data:any) {
@@ -102,9 +98,9 @@ export class AddUserComponent implements OnInit {
           type: 'success',
           title: 'utilisateur ajouté avec success',
           showConfirmButton: false,
-          timer: 3500
+          timer: 2500
         })
-        this.router.navigate(['/utilisateurs'])
+        this.router.navigate(['/utilisateurs']);
       },
       err =>this.errorMessages=err.error.detail
     )   

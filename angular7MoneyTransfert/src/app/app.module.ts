@@ -22,7 +22,7 @@ import { AuthInterceptor } from './auth-interceptor.service';
 import { HistoriqueOperationComponent } from './historique-operation/historique-operation.component';
 import { Partenaire } from './partenaire';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent} from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatOptionModule, MatSelectModule, MatToolbarModule, MatExpansionModule } from '@angular/material';
 import { from } from 'rxjs';
@@ -36,6 +36,8 @@ import { EditPartenaireComponent } from './edit-partenaire/edit-partenaire.compo
 import { AddCompteComponent } from './add-compte/add-compte.component';
 import { PartenaireOperationComponent } from './partenaire-operation/partenaire-operation.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ContratComponent } from './contrat/contrat.component';
+import { UserInterfaceComponent } from './user-interface/user-interface.component';
 
 const routes: Routes = [
   
@@ -62,13 +64,15 @@ const routes: Routes = [
     EditUserComponent,
     EditPartenaireComponent,
     AddCompteComponent,
-    PartenaireOperationComponent
+    PartenaireOperationComponent,
+    ContratComponent,
+    UserInterfaceComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot( routes ),
+    RouterModule,
     HttpModule,
     HttpClientModule,
     FormsModule,

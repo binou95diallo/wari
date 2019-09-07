@@ -1,4 +1,4 @@
-<app-home></app-home>
+<app-navbar></app-navbar>
 <div class="py-5">
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -35,28 +35,12 @@
                       <label for="uname1">Telephone</label>
                       <input type="text" [(ngModel)]="registerUserData.telephone" name="telephone" class="form-control rounded-0" required>
                     </div>
-                    <div class="form-group">
-                        <label for="uname1">Profil</label>
-                        <select [(ngModel)]="registerUserData.profil" name="profil" id="" >
-                            <option value="admin">Admin</option>
-                            <option value="user">Utilisateur</option>
-                            <option value="caissier">Caissier</option>
-                            <option value="partenaire">Partenaire</option>
-                        </select>
-                      </div>
                       <div class="form-group">
                         <label for="uname1">Compte</label>
                         <select [(ngModel)]="registerUserData.compte" name="comptes" id="">
                           <option *ngFor="let c of idCompteData"  value="{{c.id}}">{{c.numeroCompte}}</option>
                         </select>
                       </div>
-                       <!-- <div class="form-group">
-                          <label for="">Photo</label>
-                          <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
-                          <input #imageName [(ngModel)]="registerUserData.imageName" name="image"
-                            type="file" accept="image/*"  class="form-control rounded-0" required
-                             (change)="handleFileInput($event.target.files)">
-                        </div>-->
             <button type="button" (click)="editUser()" class="btn btn-primary float-right">Register</button>
           </form>
         </div>

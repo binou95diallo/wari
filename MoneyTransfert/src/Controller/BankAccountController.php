@@ -56,7 +56,6 @@ class BankAccountController extends AbstractController
     public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
     {
         
-       
             $bankAccount = new BankAccount();
             $form = $this->createForm(BankAccountType::class, $bankAccount);
             $form->handleRequest($request);
@@ -64,9 +63,8 @@ class BankAccountController extends AbstractController
             $form->submit($values);
             $user=$this->getUser();
             $partenaire=$user->getPartenaire();
-            $ninea=$partenaire->getNinea();
-            $random=random_int(100,1000000);
-            $numeroCompte=$random.''.$ninea;
+            $random = date("Y") .date("s") . date("m") . date("H") . date("i");
+            $numeroCompte=$random;
             $bankAccount->setNumeroCompte($numeroCompte);
             $bankAccount->setSolde($values["solde"]);
             $bankAccount->setPartenaire($partenaire);
@@ -176,7 +174,6 @@ class BankAccountController extends AbstractController
         $form->handleRequest($request);
         $form->submit($values);
         $caissier=$this->getUser();
-       // dump($caissier);die();
         $idCompte=$values["id"];
        $compte=$bankARepo->find($idCompte);
         $depot->setCaissier($caissier);
@@ -211,8 +208,7 @@ class BankAccountController extends AbstractController
      * @Route("/bankAccount/partenaireCompte", name="BankAPartCompte", methods={"GET","POST"})
      */
     public function compteParte(SerializerInterface $serializer, Request $request,UserRepository $userRepo):Response{
-        $values=$request->request->all();
-        //$user=$userRepo->findOneByUsername($values["username"]);
+       
         $user=$this->getUser();
         $idPart=$user->getPartenaire();
         $compte = $this->getDoctrine()->getRepository('App:BankAccount')->findBy(['partenaire'=>$idPart]);
@@ -315,13 +311,12 @@ class BankAccountController extends AbstractController
             
             $transact->setExpediteur($exp);
             $transact->setRecepteur($recep);
-            $random=random_int(100,1000000);
-            
+            $random = date("Y") . date("d") . date("H") .date("m") . date("s");
             $transact->setUser($user);
             
             $solde=$compte->getSolde()+$gain-$montant;
             $compte->setSolde($solde);
-            $code=$random.''.$montant;
+            $code=$random;
             $transact->setCode($code);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($transact);
@@ -347,31 +342,44 @@ class BankAccountController extends AbstractController
         $values=$request->request->all();
         $transact=new Transaction();
         $transaction=$tranRepo->findOneByCode($values["code"]);
-
+        $recepteur=$transaction->getRecepteur();
+        $recepteur->setnumeroPieceR($values["numeroPiece"]);
+        $recepteur->setTypePiece($values["typePiece"]);
         $transact->setExpediteur($transaction->getExpediteur());
             $transact->setRecepteur($transaction->getRecepteur());
             $transact->setMontant($transaction->getMontant());
             $transact->setCode($values["code"]);
+            $montant=$transact->getMontant();
             $user=$this->getUser();
             $compte=$user->getBankAccount();
-            $transact->setUser($user);
-            $frais=$transaction->getFrais();
-            $comPart=($frais*20)/100;
-            $solde=$compte->getSolde() + $transact->getMontant() + $comPart;
-            $compte->setSolde($solde);
-            $transact->setCommissionPartenaire($comPart);
-            $transact->setType("retrait");
-            $transact->setDateRetrait(new \DateTime('now'));
-            $transact->setDateTransaction(new \DateTime('now'));
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($transact);
-            $entityManager->persist($compte);
-            $entityManager->flush();
-            $data = [
-                'status' => 201,
-                'message' => 'Retrait effectuée'
-            ];
+            $solde=$compte->getSolde();
+            if($montant>$solde){
+                $data=[
+                    "status"=>400,
+                    "message"=>"solde insuffisant, veuiller charger votre compte",
+                    "solde restant dans le compte"=>$solde
+                ];
+            }
+            else{
+                $transact->setUser($user);
+                $frais=$transaction->getFrais();
+                $comPart=($frais*20)/100;
+                $solde=$compte->getSolde() + $transact->getMontant() + $comPart;
+                $compte->setSolde($solde);
+                $transact->setCommissionPartenaire($comPart);
+                $transact->setType("retrait");
+                $transact->setDateRetrait(new \DateTime('now'));
+                $transact->setDateTransaction(new \DateTime('now'));
+    
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($transact);
+                $entityManager->flush();
+                $data = [
+                    'status' => 201,
+                    'message' => 'Retrait effectuée'
+                ];
+            }
+           
        
         
         return new JsonResponse($data, 201);
@@ -385,19 +393,7 @@ class BankAccountController extends AbstractController
         $user=$this->getUser();
         $part=$user->getPartenaire();
         $transact=$transactRepo->findUserOp($part->getId());
-        $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($transact, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
+            $jsonObject=$serializer->serialize($transact, 'json',['groups'=>['compte']]);
         return new Response($jsonObject, 200, [
             'Content-Type' => 'application/json'
         ]);
@@ -433,24 +429,11 @@ class BankAccountController extends AbstractController
             elseif ($nbCode==1) {
                 $transact=$transactRepo->findOneByCode($values["code"]);
                 $beneficiaire=$transact->getRecepteur();
-                $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($beneficiaire, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
-            return new Response($jsonObject, 200, [
+            $data = $serializer->serialize($beneficiaire, 'json');
+            return new Response($data, 200, [
                 'Content-Type' => 'application/json'
             ]);
             }
-
             else{
                 $data = [
                     'status' => 400,

@@ -1,7 +1,4 @@
-<app-home></app-home>
-<div class="py-5 mt-5">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
+
       <span class="anchor" id="formLogin"></span>
 
       <!-- form card registration -->
@@ -64,8 +61,7 @@
                             </div>
                         </div>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="uname1">Telephone</label>
                         <input type="text" formControlName="telephone" name="telephone" class="form-control rounded-0">
@@ -78,7 +74,7 @@
                       </div>
                       <div class="form-group">
                           <label for="uname1">Profil</label>
-                          <select name="profil" id="" >
+                          <select formControlName="profil" name="profil" id="" >
                             <span *ngIf="isSuperAdmin()">
                               <option value="adminPartenaire" >Admin Partenaire</option>
                               <option value="caissier">Caissier</option>
@@ -89,7 +85,7 @@
                         </div>
                           <div class="form-group">
                             <label for="">Photo</label>
-                            <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
+                            <img [src]="imageUrl" alt="" style="width:70px; height:70px;">
                             <input #imageName
                               type="file" accept="image/*"  class="form-control rounded-0" required
                                (change)="handleFileInput($event.target.files)">
@@ -106,9 +102,3 @@
         <!--/card-block-->
       </div>
       <!-- /form card login -->
-
-    </div>
-
-
-  </div>
-</div>

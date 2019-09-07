@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = [
-    'nomComplet','username','adresse','profil','status','photo','id'];
+    'nomComplet','username','adresse','profil','status','id'];
   dataSource: MatTableDataSource<User>;
   @ViewChild(MatPaginator,{static: true} as any) paginator: MatPaginator;
   @ViewChild(MatSort,{static: true} as any) sort: MatSort;
@@ -28,11 +28,13 @@ export class UsersComponent implements OnInit {
   getUser() {
     this.data.getUser().subscribe(
      data => {this.user = data
-      this.load(data)
+      console.log(data)
+      this.load(this.user)
+    
     }, error => this.errorMessage = error,
     );
     console.log(this.user);
-    return this.user;
+    //return this.user;
   }
 
   load(data){
@@ -77,8 +79,9 @@ export class UsersComponent implements OnInit {
       data => {
         console.log(data)
         console.log(username)
-        this.toastr.success("utilisateur bloqué")
-        this.router.navigate(['/utilisateurs'])
+        //this.toastr.success("utilisateur bloqué")
+       // this.router.navigate(['/utilisateurs'])
+        this.ngOnInit()
      }, error => this.errorMessage = error,
      );
     

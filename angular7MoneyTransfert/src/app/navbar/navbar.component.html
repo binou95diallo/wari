@@ -1,36 +1,59 @@
-<!-- <nav class="menu">
-  <ol>
-    <li class="menu-item"><a [routerLink]="['/home']">Home</a></li>
-    <li class="menu-item" *ngIf="isAdmin()">
-      <a [routerLink]="['/partenaires']">Partenaire</a>
-      <ol class="sub-menu">
-        <li class="menu-item"><a [routerLink]="['/addPartenaire']">Ajout</a></li>
-        <li class="menu-item"><a [routerLink]="['/partenaireOperation']">Liste Operations Partenaire</a></li>
-      </ol>
-    </li>
-    <li class="menu-item" *ngIf="isPartenaireOrUser()">
-      <a [routerLink]="['/utilisateurs']" >Utilisateurs</a>
-      <ol class="sub-menu">
-        <li class="menu-item" *ngIf="isAdminPartenaire()"><a [routerLink]="['/addUser']">Ajout</a></li>
-        <li class="menu-item" *ngIf="isUserPart()"><a [routerLink]="['/envoiTransaction']">Envoi</a></li>
-        <li class="menu-item" *ngIf="isUserPart()"><a [routerLink]="['/retraitTransaction']">Retrait</a></li>
-        <li class="menu-item" *ngIf="isAdminPartenaire()"><a [routerLink]="['/UserOperations']">Operations Utilisateurs</a></li>
-      </ol>
-    </li>
-    <li class="menu-item" *ngIf="isAdminPartenaireOrCaissier()">
-      <a [routerLink]="['/compte']">Comptes</a>
-      <ol class="sub-menu">
-          <li class="menu-item" *ngIf="isPartenaire()"><a [routerLink]="['/addCompte']">Ajout compte</a></li>
-      </ol>
-    </li>
-    <li class="menu-item"><a href="#0">Contact</a></li>
-    <li class="menu-item"><a [routerLink]="['/logout']">Déconnexion</a></li>
-  </ol>
-</nav> -->
-
-<script>
-    var doc = new jsPDF()
- 
- doc.text('Hello world!', 10, 10)
- doc.save('a4.pdf')
-</script>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="#">Webi Transfert</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isAuthenticated()">
+          <ul class="navbar-nav" id="navbarul">
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="isSuperAdmin">
+              <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Partenaire
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/partenaires']">Lister</a>
+                <a class="dropdown-item" [routerLink]="['/addPartenaire']">Ajout</a>
+                <a class="dropdown-item" [routerLink]="['/partenaireOperation']">Opérations partenaires</a>
+                <div class="dropdown-divider"></div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Utilisateur
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <span  *ngIf="isAdminPartenaire()">
+                  <a class="dropdown-item" [routerLink]="['/utilisateurs']" >Lister</a>
+                  <a class="dropdown-item" [routerLink]="['/UserOperations']">Operations Utilisateurs</a>
+                </span>
+                  <span *ngIf="isUserPart()">
+                  <a class="dropdown-item" [routerLink]="['/envoiTransaction']">Envoi</a>
+                  <a class="dropdown-item" [routerLink]="['/retraitTransaction']">Retrait</a>
+                </span>
+                <div class="dropdown-divider"></div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/compte']">Lister</a>
+                    <a class="dropdown-item" [routerLink]="['/addCompte']">Ajout</a>
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <fa-icon [icon]="faUser"></fa-icon>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/logout']">logOut</a>
+                  <a class="dropdown-item" [routerLink]="['/userProfil']">profil</a>
+              </div>
+              </li>
+          </ul>
+  </div>
+</nav>

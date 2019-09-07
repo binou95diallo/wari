@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -18,16 +19,19 @@ class BankAccount
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"compte"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"compte"})
      */
     private $numeroCompte;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"compte"})
      * @Assert\NotBlank()
      * @Assert\Range(min="0",minMessage="La valeur minimum autorisée est {{ limit }}")
      */

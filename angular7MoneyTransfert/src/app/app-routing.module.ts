@@ -18,13 +18,17 @@ import { TransactionRetraitComponent } from './transaction-retrait/transaction-r
 import { AddCompteComponent } from './add-compte/add-compte.component';
 import { PartenaireOperationComponent } from './partenaire-operation/partenaire-operation.component';
 import { HomeComponent } from './home/home.component';
+import { ContratComponent } from './contrat/contrat.component';
+import { LogoutComponent } from './logout/logout.component';
+import { UserInterfaceComponent } from './user-interface/user-interface.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'home',pathMatch:'full'},
+  {path: '', redirectTo:'login',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component : LoginComponent},
+  { path: 'logout', component: LogoutComponent},
   { path: 'partenaires', component: PartenaireComponent},
-  { path: 'utilisateurs', component: UsersComponent},
+  { path: 'utilisateurs', component: UserInterfaceComponent},
   { path: 'compte', component: CompteComponent,canActivate:[AuthGuard]},
   { path: 'addCompte', component: AddCompteComponent},
   { path: 'addPartenaire', component: AddPartenaireComponent},
@@ -36,7 +40,8 @@ const routes: Routes = [
   { path: 'retraitTransaction', component: TransactionRetraitComponent},
   { path: 'editUser/:id', component: EditUserComponent},
   { path: 'editPartenaire/:id', component:  EditPartenaireComponent},
-  { path: 'partenaireOperation', component: PartenaireOperationComponent}
+  { path: 'partenaireOperation', component: PartenaireOperationComponent},
+  { path: 'partenaire/contrat/:id', component: ContratComponent}
 ];
 
 @NgModule({

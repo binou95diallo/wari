@@ -1,4 +1,4 @@
-<app-home></app-home>
+<app-navbar></app-navbar>
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
@@ -43,7 +43,7 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
     <td mat-cell *matCellDef="let row" [style.color]="row.color">
-        <a routerLink="/addDepot/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
+        <a routerLink="/editPartenaire/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
     </td>
   </ng-container>
 

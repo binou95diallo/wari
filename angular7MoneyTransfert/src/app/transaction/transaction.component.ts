@@ -13,7 +13,7 @@ export class TransactionComponent implements OnInit {
   adresse = new FormControl('', [Validators.required]);
   telephone= new FormControl('', [Validators.required]);
   nomComplet= new FormControl('', [Validators.required]);
-  ncni= new FormControl('', [Validators.required]);
+  numeroPiece= new FormControl('', [Validators.required]);
   montant= new FormControl('',[Validators.required]);
 
   expediteur= {};
@@ -23,7 +23,7 @@ export class TransactionComponent implements OnInit {
     return this.adresse.hasError('required') ? 'You must enter a value' :
             this.telephone.hasError('required')? 'You must enter a value':
             this.nomComplet.hasError('required')?'You must enter a value':
-            this.ncni.hasError('required')? 'You must enter a value':
+            this.numeroPiece.hasError('required')? 'You must enter a value':
             this.montant.hasError('required')?'You must enter a value':
             '';
   }
@@ -36,8 +36,8 @@ export class TransactionComponent implements OnInit {
     this.data.envoiTransact(this.expediteur,this.beneficiaire).subscribe(
       data=>{
         //console.log(data)
-        //this.errorMessage=data.error
-        this.toastr.warning("solde insuffisant")
+        this.errorMessage=data.error
+        this.toastr.warning(this.errorMessage)
         this.router.navigate(['/home'])
     })
 

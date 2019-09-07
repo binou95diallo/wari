@@ -38,14 +38,14 @@ export class TransactionRetraitComponent implements OnInit {
         this.beneficiaire=data;
         console.log(data);
         return this.beneficiaire;
-    },err=>this.errorMessage=err);
+    },err=>this.errorMessage=err.error.message);
   }
   isVerif(){
     return this.beneficiaire;
   }
 
   retraitTransact(codeEnter){
-    this.data.retraitTransact(codeEnter).subscribe(data=>{
+    this.data.retraitTransact(codeEnter,this.beneficiaire).subscribe(data=>{
       //console.log(data);
       this.errorMessageR="retrait effectué avec succés!"
     });

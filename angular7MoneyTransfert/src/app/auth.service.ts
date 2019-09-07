@@ -47,7 +47,7 @@ ngOnInit(){
           
           // store username and jwt token in local storage to keep user logged in between page refreshes
           nbConnex=localStorage.getItem('numberConnexion');
-          if(nbConnex== null || !(localStorage.getItem('currentUser')==username)){
+          if(nbConnex== null || (localStorage.getItem('currentUser')!=username)){
             this.compteur=1;
             this.numberConnexion=this.compteur.toString();
           }
@@ -99,6 +99,9 @@ ngOnInit(){
 
   isAuthenticated(){
     return this.roles && (this.isUser());
+  }
+  isSuperAdmin(){
+    return this.roles && this.roles.indexOf("ROLE_SUPER_ADMIN");
   }
 
   logout(): void {

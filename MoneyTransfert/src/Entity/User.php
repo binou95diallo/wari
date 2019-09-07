@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"}, message="Cet utilisateur existe déjà")
@@ -22,21 +23,25 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     *  @Groups({"user"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
+     *  @Groups({"user"})
      */
     private $roles = [];
     
    /**
-	* @ORM\Column(type="string")
+    * @ORM\Column(type="string")
+    * @Groups({"user"})
 	* @Assert\Regex(
 	*     pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{7,}$/",
 	*     match=true,
@@ -47,26 +52,31 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user"})
      */
     private $profil;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user"})
      */
     private $nomComplet;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user"})
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user"})
      * @Assert\NotBlank(message="Vous devez insérer un téléphone")
      * @Assert\Regex(
      *     pattern="/^(\+[1-9][0-9]*(\([0-9]*\)|-[0-9]*-))?[0]?[1-9][0-9\-]*$/",
@@ -78,6 +88,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user"})
      */
     private $email;
     /**
@@ -93,7 +104,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255,nullable=true)
-     *
+     * @Groups({"user"})
      * @var string
      */
     private $imageName;

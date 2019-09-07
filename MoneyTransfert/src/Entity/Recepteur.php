@@ -36,14 +36,19 @@ class Recepteur
     private $telephoneR;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
-    private $ncniR;
+    private $numeroPieceR;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="recepteur")
      */
     private $transaction;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $typePiece;
 
     public function __construct()
     {
@@ -91,14 +96,14 @@ class Recepteur
         return $this;
     }
 
-    public function getNcniR(): ?string
+    public function getNumeroPieceR(): ?string
     {
-        return $this->ncniR;
+        return $this->numeroPieceR;
     }
 
-    public function setNcniR(string $ncniR): self
+    public function setNumeroPieceR(string $numeroPieceR): self
     {
-        $this->ncniR = $ncniR;
+        $this->numeroPieceR = $numeroPieceR;
 
         return $this;
     }
@@ -130,6 +135,18 @@ class Recepteur
                 $transaction->setRecepteur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypePiece(): ?string
+    {
+        return $this->typePiece;
+    }
+
+    public function setTypePiece(string $typePiece): self
+    {
+        $this->typePiece = $typePiece;
 
         return $this;
     }

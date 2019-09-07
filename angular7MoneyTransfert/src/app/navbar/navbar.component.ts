@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +8,12 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  faUser=faUser;
 
   constructor(private authenticationService:AuthService){}
+  isSuperAdmin(){
+    return this.authenticationService.isSuperAdmin();
+  }
   isAdmin(){
     return this.authenticationService.isAdmin();
   }

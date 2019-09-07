@@ -4,7 +4,6 @@ import {Partenaire} from '../partenaire';
 import { faEdit,faDownload } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
-import * as jsPDF from 'jspdf';
 @Component({
   selector: 'app-partenaire',
   templateUrl: './partenaire.component.html',
@@ -23,7 +22,8 @@ export class PartenaireComponent implements OnInit {
      status:string;
      ninea: string;
      id:string;
-     contrat:string;
+     download:string;
+     contrat:{};
   constructor(private data: DataService, private router:Router) { }
 
   load(data){
@@ -35,30 +35,31 @@ export class PartenaireComponent implements OnInit {
   getPartenaire() {
     this.data.getPartenaire().subscribe(
      data => {this.partenaires = data
-     this.load(data);
+     this.load(this.partenaires);
 
     }, error => this.errorMessage = error,
     );
     //console.log(this.partenaires);
   }
 
-  bloquerPartenaire(row){
-
-    this.data.bloquerPartenaire(row.ninea).subscribe(
-      data => {
-        //this.status=row.status
-        
-        this.router.navigate(['/partenaires'])
-     }, error => this.errorMessage = error,
-     );
-     window.location.reload();
-  }
-
   ngOnInit() {
     
     this.getPartenaire();
   }
-  applyFilter(filterValue: string) {
+
+  bloquerPartenaire(ninea){
+
+    this.data.bloquerPartenaire(ninea).subscribe(
+      data => {
+        //this.ngOnInit();
+        
+     }, error => {this.errorMessage = error
+      this.ngOnInit();
+    },
+     );
+  }
+
+ lyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     
 
@@ -67,20 +68,5 @@ export class PartenaireComponent implements OnInit {
     }
   }
 
-  genPDF(id) {
-    this.contrat="download";
-    var doc = new jsPDF();
-    
-      var specialElementHandlers = {
-          '#hidediv' : function(element,render) {return true;}
-      };
-      
-      doc.fromHTML($('#testdiv').get(0), 20,20,{
-                   'width':500,
-              'elementHandlers': specialElementHandlers
-      });
-    
-    doc.save('Test.pdf');
-    
-  }
+
 }

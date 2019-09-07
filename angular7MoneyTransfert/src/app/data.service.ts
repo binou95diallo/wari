@@ -189,9 +189,11 @@ export class DataService {
     return this.http.get<any>(this.uri+'/partenaireOp')
   }
 
-  retraitTransact(code){
+  retraitTransact(code,beneficiaire){
     let formData=new FormData();
     formData.append('code',code);
+    formData.append('typePiece',beneficiaire.typePiece);
+    formData.append('numeroPiece',beneficiaire.numeroPiece);
     return this.http.post(this.uri+'/transaction/retrait',formData).catch(this.handelError);
   }
 
@@ -200,15 +202,22 @@ export class DataService {
     formData.append('nomComplet',expediteur.nomComplet);
     formData.append('adresse',expediteur.adresse);
     formData.append('telephone',expediteur.telephone);
-    formData.append('ncni',expediteur.ncni);
+    formData.append('numeroPiece',expediteur.numeroPiece);
+    formData.append('typePiece',expediteur.typePiece);
     formData.append('nomCompletR',beneficiaire.nomComplet);
     formData.append('adresseR',beneficiaire.adresse);
     formData.append('telephoneR',beneficiaire.telephone);
-    formData.append('ncniR',beneficiaire.ncni);
     formData.append('montant',beneficiaire.montant);
 
     return this.http.post(this.uri+'/transaction/envoie',formData).map(res => res).catch(this.handelError);
   }
+
+ downloadContrat(id):Observable<Partenaire[]> {
+   const formData=new FormData();
+   formData.append("id",id);
+   return this.http.post<Partenaire[]>(this.uri+'/partenaire/contrat',formData).map(res=>res).catch(this.handelError);
+ }
+
   private handelError(error: Response) {
 
     return Observable.throw(error || 'server error');

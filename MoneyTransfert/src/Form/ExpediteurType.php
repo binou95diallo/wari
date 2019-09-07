@@ -15,7 +15,8 @@ class ExpediteurType extends AbstractType
             ->add('nomComplet')
             ->add('adresse')
             ->add('telephone')
-            ->add('ncni')
+            ->add('numeroPiece')
+            ->add('typePiece')
         ;
     }
 

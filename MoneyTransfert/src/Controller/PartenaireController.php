@@ -145,23 +145,10 @@ class PartenaireController extends AbstractController
     {
          
          $partenaire= $partenaireRepo->find($partenaire->getId());
-        $encoders = [new JsonEncoder()];
-        $normalizers = [
-            (new ObjectNormalizer())
-                ->setIgnoredAttributes([
-                    'updated_at'
-                ])
-        ];
-        $serializer = new Serializer($normalizers, $encoders);
-        $jsonObject = $serializer->serialize($partenaire, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
-        ]);
-        return new Response($jsonObject, 200, [
-            'Content-Type' => 'application/json'
-        ]);
-
+         $jsonObject = $serializer->serialize($partenaire, 'json',['groups'=>['partenaire']]);
+         return new Response($jsonObject, 200, [
+             'Content-Type' => 'application/json'
+         ]);
     }
 
     /**
@@ -200,19 +187,7 @@ class PartenaireController extends AbstractController
     public function listAction(SerializerInterface $serializer):Response
     {
         $partenaire = $this->getDoctrine()->getRepository('App:Partenaire')->findAll();
-        $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($partenaire, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
+        $jsonObject = $serializer->serialize($partenaire, 'json',['groups'=>['partenaire']]);
         return new Response($jsonObject, 200, [
             'Content-Type' => 'application/json'
         ]);
@@ -225,7 +200,7 @@ class PartenaireController extends AbstractController
 
      public function listPartOp(PartenaireRepository $partenaireRepo,SerializerInterface $serializer){
          $partenaire=$partenaireRepo->findPartOp();
-         $data = $serializer->serialize($partenaire, 'json');
+         $data = $serializer->serialize($partenaire, 'json',['groups'=>['partenaire']]);
         return new Response($data, 200, [
             'Content-Type' => 'application/json'
         ]);
@@ -285,8 +260,25 @@ class PartenaireController extends AbstractController
                     'status' => 200,
                     'message' => 'partenaire bloqué'
                 ];
-                return new JsonResponse($data);
+                return new JsonResponse($data,200,[
+                    'Content-Type'=>'application/json']);
             }
     }
+
+
+     /**
+     * @Route("/partenaire/contrat", name="contrat", methods={"GET","POST"})
+     */
+
+     public function contratPrestation(PartenaireRepository $partRepo, Request $request, SerializerInterface $serializer){
+         $values=$request->request->all();
+
+         $partenaire=$partRepo->find($values["id"]);
+
+        $data=$serializer->serialize($partenaire,'json',['groups'=>['partenaire']]);
+         return new Response($data,200,[
+            'Content-Type'=>'application/json']); 
+        
+     }
 
 }

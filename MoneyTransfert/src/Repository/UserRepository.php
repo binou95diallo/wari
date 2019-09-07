@@ -58,6 +58,34 @@ class UserRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findUserPart($value,$username)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.username!=:val1')
+            ->andWhere('u.partenaire= :val')
+            ->setParameter('val', $value)
+            ->setParameter('val1', $username)
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findCaissierOrAdminP(){
+        {
+            return $this->createQueryBuilder('u')
+                ->where('u.profil =:val')
+                ->orWhere('u.profil=:val1')
+                ->setParameter('val', "caissier")
+                ->setParameter('val1', "adminPartenaire")
+                ->orderBy('u.id', 'ASC')
+                ->getQuery()
+                ->getResult()
+            ;
+        }
+    }
+
     public function countByUsername()
 {
     $qb = $this->createQueryBuilder('u')

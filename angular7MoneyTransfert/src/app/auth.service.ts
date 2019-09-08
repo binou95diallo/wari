@@ -69,7 +69,6 @@ ngOnInit(){
     const JWThelper = new JwtHelperService();
     const objJWT = JWThelper.decodeToken(this.getToken());
     this.roles=objJWT.roles;
-    console.log(this.roles.indexOf("ROLE_USER"));
     console.log(objJWT);
   }
   isAdmin(){
@@ -80,7 +79,7 @@ ngOnInit(){
     return this.roles && this.roles.indexOf("ROLE_USER")>=0;
   }
   isUserPart(){
-    return this.roles && this.roles.indexOf("ROLE_USERPART");
+    return this.roles && this.roles.indexOf("ROLE_USERPART")>=0;
   }
   isCaissier(){
     return this.roles && this.roles.indexOf("ROLE_CAISSIER")>=0;
@@ -101,7 +100,7 @@ ngOnInit(){
     return this.roles && (this.isUser());
   }
   isSuperAdmin(){
-    return this.roles && this.roles.indexOf("ROLE_SUPER_ADMIN");
+    return this.roles && this.roles.indexOf("ROLE_SUPER_ADMIN")>=0;
   }
 
   logout(): void {

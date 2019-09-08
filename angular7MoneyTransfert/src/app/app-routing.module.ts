@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'login', component : LoginComponent},
   { path: 'logout', component: LogoutComponent},
   { path: 'partenaires', component: PartenaireComponent},
-  { path: 'utilisateurs', component: UserInterfaceComponent},
+  { path: 'utilisateurs', component: UsersComponent},
   { path: 'compte', component: CompteComponent,canActivate:[AuthGuard]},
   { path: 'addCompte', component: AddCompteComponent},
   { path: 'addPartenaire', component: AddPartenaireComponent},

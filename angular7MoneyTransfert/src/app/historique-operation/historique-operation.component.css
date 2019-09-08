@@ -13,7 +13,7 @@ h2{
     font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: white;
+    color: #007BFF;
     padding: 30px 0;
 }
 
@@ -35,6 +35,13 @@ h2{
     white-space: nowrap;
     background-color: white;
 }
+th{
+    background-color: #007BFF;
+    color: #ffffff;
+}
+td{
+    color: #007BFF;
+}
 
 .fl-table td, .fl-table th {
     text-align: center;
@@ -48,13 +55,13 @@ h2{
 
 .fl-table thead th {
     color: #ffffff;
-    background: #4FC3A1;
+    background: #007BFF;
 }
 
 
 .fl-table thead th:nth-child(odd) {
     color: #ffffff;
-    background: #324960;
+    background: #007BFF;
 }
 
 .fl-table tr:nth-child(even) {

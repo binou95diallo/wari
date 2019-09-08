@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { DataService } from '../data.service';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit,faLock,faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import {User} from '../users';
 import {MatPaginator,MatSort,MatTableDataSource} from '@angular/material';
 import { Router } from '@angular/router';
@@ -19,6 +19,8 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator,{static: true} as any) paginator: MatPaginator;
   @ViewChild(MatSort,{static: true} as any) sort: MatSort;
   faEdit = faEdit;
+  faLock=faLock;
+  faLockOpen=faLockOpen;
   user: User[];
      errorMessage: string;
      statut:string;

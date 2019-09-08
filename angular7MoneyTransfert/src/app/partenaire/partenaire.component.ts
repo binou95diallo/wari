@@ -59,7 +59,7 @@ export class PartenaireComponent implements OnInit {
      );
   }
 
- lyFilter(filterValue: string) {
+  applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     
 

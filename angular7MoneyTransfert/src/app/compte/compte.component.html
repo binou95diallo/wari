@@ -24,7 +24,7 @@
         <!-- Progress Column -->
         <ng-container matColumnDef="solde">
           <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Solde </th>
-          <td mat-cell *matCellDef="let row"> {{row.solde}}%</td>
+          <td mat-cell *matCellDef="let row"> {{row.solde}}</td>
         </ng-container>
     
         <!-- Name Column -->
@@ -39,13 +39,6 @@
               <a routerLink="/addDepot/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
           </td>
         </ng-container>
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
-    <td mat-cell *matCellDef="let row" [style.color]="row.color">
-        <a routerLink="/editPartenaire/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
-    </td>
-  </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;">

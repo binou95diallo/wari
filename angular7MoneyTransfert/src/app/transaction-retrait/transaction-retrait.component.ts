@@ -46,7 +46,7 @@ export class TransactionRetraitComponent implements OnInit {
 
   retraitTransact(codeEnter){
     this.data.retraitTransact(codeEnter,this.beneficiaire).subscribe(data=>{
-      //console.log(data);
+      console.log(data);
       this.errorMessageR="retrait effectué avec succés!"
     });
   }

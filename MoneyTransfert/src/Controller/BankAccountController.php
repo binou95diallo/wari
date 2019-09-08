@@ -71,7 +71,11 @@ class BankAccountController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bankAccount);
             $entityManager->flush();
-        return new Response('nouveau compte ajouté', Response::HTTP_CREATED);
+            $data=[
+                'text'=>'nouveau compte ajouté',
+                'numeroCompte'=> $numeroCompte
+            ];
+        return new JsonResponse($data,201);
 }
 
     /**
@@ -142,21 +146,21 @@ class BankAccountController extends AbstractController
     {
         $compte = $this->getDoctrine()->getRepository('App:BankAccount')->findAll();
         $encoders = [new JsonEncoder()];
-            $normalizers = [
-                (new ObjectNormalizer())
-                    ->setIgnoredAttributes([
-                        'updated_at'
-                    ])
-            ];
-            $serializer = new Serializer($normalizers, $encoders);
-            $jsonObject = $serializer->serialize($compte, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }
-            ]);
-        return new Response($jsonObject, 200, [
-            'Content-Type' => 'application/json'
+        $normalizers = [
+            (new ObjectNormalizer())
+                ->setIgnoredAttributes([
+                    'updated_at'
+                ])
+        ];
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonObject = $serializer->serialize($compte, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
+    return new Response($jsonObject, 200, [
+        'Content-Type' => 'application/json'
+    ]);
     }
 
     #####################################################################################################
@@ -376,7 +380,8 @@ class BankAccountController extends AbstractController
                 $entityManager->flush();
                 $data = [
                     'status' => 201,
-                    'message' => 'Retrait effectuée'
+                    'montant'=>$montant,
+                    'message' => 'Merci de votre fidélité à bientôt!'
                 ];
             }
            

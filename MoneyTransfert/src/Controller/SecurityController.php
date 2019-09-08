@@ -182,7 +182,7 @@ class SecurityController extends AbstractController
             $compte=$entityManager->getRepository(BankAccount::class)->find($values["compteId"]);
             
             $user->setBankAccount($compte);
-            $compte->setNombreUsers($compte->getNombreUsers()+1);
+           // $compte->setNombreUsers($compte->getNombreUsers()+1);
         }
         $user->setPartenaire($connected->getPartenaire());
        

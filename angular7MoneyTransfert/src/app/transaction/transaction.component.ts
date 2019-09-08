@@ -18,7 +18,7 @@ export class TransactionComponent implements OnInit {
 
   expediteur= {};
   beneficiaire= {};
-  errorMessage: string;
+  errorMessage: {};
   getErrorMessage() {
     return this.adresse.hasError('required') ? 'You must enter a value' :
             this.telephone.hasError('required')? 'You must enter a value':
@@ -35,9 +35,8 @@ export class TransactionComponent implements OnInit {
   envoiTransact(){
     this.data.envoiTransact(this.expediteur,this.beneficiaire).subscribe(
       data=>{
-        //console.log(data)
-        this.errorMessage=data.error
-        this.toastr.warning(this.errorMessage)
+        this.errorMessage=data
+        this.toastr.warning("envoi effectué")
         this.router.navigate(['/home'])
     })
 

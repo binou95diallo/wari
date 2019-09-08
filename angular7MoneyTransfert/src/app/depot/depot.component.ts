@@ -24,7 +24,7 @@ export class DepotComponent implements OnInit {
       res => {
         console.log(res);
         this.toastr.success("dépôt de"+this.montant+" ajouté")
-        //this.router.navigate(['/compte'])
+        this.router.navigate(['/compte'])
       },
       err =>{this.errorMessage=err.error.detail
       this.toastr.warning("dépôt minimal autorisé est de 75000")
@@ -33,30 +33,12 @@ export class DepotComponent implements OnInit {
     
   }
   getPartenaireCompte(){
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.value) {
-        this.data.getPartenaireCompte().subscribe(
-          data=>{
-            this.idCompteData=data
-            console.log(data);
-          },error => this.errorMessage = error.error.detail
-        );
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-      }
-    })
-    
+    this.data.getPartenaireCompte().subscribe(
+      data=>{
+        this.idCompteData=data
+        console.log(data);
+      },error => this.errorMessage = error.error.detail
+    );
   }
 
 

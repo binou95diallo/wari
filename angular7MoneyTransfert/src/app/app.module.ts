@@ -38,6 +38,7 @@ import { PartenaireOperationComponent } from './partenaire-operation/partenaire-
 import { ToastrModule } from 'ngx-toastr';
 import { ContratComponent } from './contrat/contrat.component';
 import { UserInterfaceComponent } from './user-interface/user-interface.component';
+import * as $ from 'jquery';
 
 const routes: Routes = [
   

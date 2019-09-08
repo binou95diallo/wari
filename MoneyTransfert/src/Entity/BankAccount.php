@@ -19,19 +19,16 @@ class BankAccount
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"compte"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"compte"})
      */
     private $numeroCompte;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"compte"})
      * @Assert\NotBlank()
      * @Assert\Range(min="0",minMessage="La valeur minimum autorisée est {{ limit }}")
      */

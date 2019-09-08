@@ -12,7 +12,7 @@ import { Partenaire } from '../partenaire';
 })
 export class CompteComponent implements OnInit {
   displayedColumns: string[] = [
-    'numeroCompte','solde','partenaire','depot','id'];
+    'numeroCompte','solde','partenaire','depot'];
   dataSource: MatTableDataSource<Compte>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

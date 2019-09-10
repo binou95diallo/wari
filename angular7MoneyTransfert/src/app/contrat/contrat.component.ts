@@ -13,11 +13,14 @@ export class ContratComponent implements OnInit {
 
   contratPartenaire: Partenaire[];
   errorMessage: string;
+  contrat:string;
    id = +this.route.snapshot.paramMap.get('id');
-  constructor(private data: DataService, private router:Router,private route:ActivatedRoute) { }
+  constructor(private data: DataService, private router:Router,private route:ActivatedRoute) { 
+    //this.genPDF();
+  }
 
   ngOnInit() {
-    this.downloadContrat(this.id);
+    this.downloadContrat();
   }
 
   genPDF() {
@@ -27,7 +30,7 @@ export class ContratComponent implements OnInit {
           '#hidediv' : function(element,render) {return true;}
       };
       
-      doc.fromHTML($('#contrat').get(0), 20,20,{
+      doc.fromHTML($('#contrat').get(0), 40,20,{
                    'width':500,
               'elementHandlers': specialElementHandlers
       });
@@ -37,12 +40,24 @@ export class ContratComponent implements OnInit {
   }
 
 
-  downloadContrat(id){
-    this.data.downloadContrat(id).subscribe(
+  downloadContrat(){
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.data.downloadContrat(this.id).subscribe(
       res=>{
+        console.log(res)
       this.contratPartenaire=res
-      //this.genPDF();
+      //this.contrat="ok"
+      //this.ngOnInit()
+     
+
+    console.log("hello")
     },err=>this.errorMessage=err);
+    //this.genPDF();
   }
+  saveContrat(){
+    this.genPDF();
+    //window.print()
+  }
+
 
 }

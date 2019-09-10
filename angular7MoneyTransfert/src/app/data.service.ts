@@ -97,9 +97,10 @@ export class DataService {
   
   }
 
-  addCompte(solde){
+  addCompte(solde,idPartenaire){
     const formData=new FormData();
     formData.append("solde",solde);
+    formData.append("partenaire",idPartenaire);
     return this.http.post(this.uri+'/bankAccount/ajout',formData).map(res=>res).catch(this.handelErrorDep);
   }
   getPartenaireCompte(){
@@ -160,8 +161,19 @@ export class DataService {
   showUser(id):Observable<User[]> {
     return this.http.get<User[]>(this.uri+'/users/show/'+id).map(res => res).catch(this.handelError);
   }
+
+  findUser(){
+    const formData=new FormData();
+    return this.http.post(this.uri+'/users/findUser',formData).map(res => res).catch(this.handelError);
+  }
   showPartenaire(id):Observable<Partenaire[]> {
     return this.http.get<Partenaire[]>(this.uri+'/partenaire/show/'+id).map(res => res).catch(this.handelError);
+  }
+  userCompte(idCompte,userId){
+    const formData=new FormData();
+    formData.append("idCompte",idCompte);
+    formData.append("idUser",userId);
+    return this.http.post(this.uri+'/bankAccount/userCompte',formData);
   }
 
   getUser(): Observable<any[]> {

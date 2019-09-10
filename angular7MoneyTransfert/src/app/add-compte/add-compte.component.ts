@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
@@ -18,23 +18,24 @@ export class AddCompteComponent implements OnInit {
       '';
   }
   
-  constructor(private data:DataService, private router:Router, private toastr: ToastrService) { }
+  constructor(private data:DataService, private router:Router, private toastr: ToastrService,private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
   addCompte(){
-    this.data.addCompte(this.solde)
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.data.addCompte(this.solde,id)
     .subscribe(
       res => {/* console.log("compte numéro "+res.numeroCompte+ "avec un solde initial de "+this.solde+"ajouté")
         this.toastr.success("compte numéro "+res.numeroCompte+ "avec un solde initial de "+this.solde+"ajouté") */
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           type: 'success',
-          title: "compte numéro "+res.numeroCompte+ "avec un solde initial de "+this.solde+"ajouté",
+          title: "compte numéro "+res.numeroCompte+ "  avec un solde initial de  "+this.solde+"  ajouté",
           showConfirmButton: false,
-          timer: 3500
+          timer: 4500
         })
-        this.router.navigate(['/compte'])
+        //this.router.navigate(['/compte'])
       },
       err =>{
         console.log(err.text)

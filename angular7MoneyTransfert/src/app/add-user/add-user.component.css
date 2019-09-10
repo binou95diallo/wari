@@ -35,3 +35,6 @@ input[type=text], select {
   #submit:hover {
     background-color: #74B9FF;
   }
+  #error{
+      color: red;
+  }

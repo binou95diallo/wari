@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {DataService} from '../data.service';
 import {Partenaire} from '../partenaire';
-import { faEdit,faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faEdit,faDownload,faPlus,faLock,faLockOpen} from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
 @Component({
@@ -11,11 +11,14 @@ import { Router } from '@angular/router';
 })
 export class PartenaireComponent implements OnInit {
   displayedColumns: string[] = [
-    'raisonSocial','nomComplet','ninea','telephone','adresse','email','status','id','contrat'];
+    'raisonSocial','nomComplet','ninea','telephone','adresse','email','status','id','partenaire','contrat'];
   dataSource: MatTableDataSource<Partenaire>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   faEdit = faEdit;
+  faPlus=faPlus;
+  faLock=faLock;
+  faLockOpen=faLockOpen;
   faDownload= faDownload;  
   partenaires: Partenaire[] ;
      errorMessage: string;

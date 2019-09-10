@@ -39,6 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ContratComponent } from './contrat/contrat.component';
 import { UserInterfaceComponent } from './user-interface/user-interface.component';
 import * as $ from 'jquery';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   
@@ -67,7 +68,8 @@ const routes: Routes = [
     AddCompteComponent,
     PartenaireOperationComponent,
     ContratComponent,
-    UserInterfaceComponent
+    UserInterfaceComponent,
+    ProfilComponent
 
   ],
   imports: [

@@ -1,17 +1,17 @@
 <app-navbar></app-navbar>
+<div class="container mt-5">
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+  <div class="col-md-12">
+    <h2>Liste des opérations par partenaire</h2><hr>
   </div>
-  <div class="col-md-4"></div>
 </div>
 
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
     <div class="mat-elevation-z8" class="table-wrapper">
       <table mat-table [dataSource]="dataSource" matSort class="fl-table">
     
@@ -57,5 +57,6 @@
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
   </div>
-  <div class="col-md-2"></div>
+  <div class="col-md-1"></div>
+</div>
 </div>

@@ -17,7 +17,7 @@ export class EditUserComponent implements OnInit {
   registerUserData= {};
   idCompteData:{};
   errorMessage: string;
-  compte:number;
+  compte={};
   //registerUserData= { imageName:File=null};
   constructor(private route: ActivatedRoute, private router:Router,
     private data: DataService,
@@ -34,14 +34,6 @@ export class EditUserComponent implements OnInit {
     reader.readAsDataURL(this.registerUserData.imageName);
   } */
 
-  getPartenaireCompte(){
-    this.data.getPartenaireCompte().subscribe(
-      data=>{
-        this.idCompteData=data
-        console.log(data);
-      },error => this.errorMessage = error.error.detail
-    );
-  }
 
    showUserById(){
     const id = +this.route.snapshot.paramMap.get('id');
@@ -59,9 +51,9 @@ export class EditUserComponent implements OnInit {
         this.router.navigate(['/utilisateurs']);
     });
   }
+
   ngOnInit() {
     this.showUserById();
-    this.getPartenaireCompte();
   }
 
 }

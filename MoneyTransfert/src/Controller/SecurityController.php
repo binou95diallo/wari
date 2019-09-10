@@ -76,7 +76,7 @@ class SecurityController extends AbstractController
             if($profil=="admin"){
                 $roles=["ROLE_ADMIN"];
             }
-            elseif ($profil=="user") {
+            elseif ($profil=="userPart") {
                 $roles=["ROLE_USERPART"];
             }
             elseif ($profil=="partenaire" || $profil=="adminPartenaire") {
@@ -213,21 +213,21 @@ class SecurityController extends AbstractController
         $user=$userRepo->findOneByUsername($values["username"]);
             if($user->getStatus()=="bloqué"){
             
-                if($user->getProfil()=="admin"){
+               /*  if($user->getProfil()=="admin"){
                     $user->setRoles(["ROLE_ADMIN"]);
                 }
-                elseif ($user->getProfil()=="user") {
-                    $user->setRoles(["ROLE_USER"]);
+                elseif ($user->getProfil()=="userPart") {
+                    $user->setRoles(["ROLE_USERPART"]);
                 }
                 elseif ($user->getProfil()=="adminPartenaire") {
                     $user->setRoles(["ROLE_ADMINPARTENAIRE"]);
-                }
-                $user->setStatus("débloqué");
+                } */
+                $user->setStatus("debloqué");
 
                 $entityManager->flush();
                 $data = [
                     'status' => 200,
-                    'message' => 'utilisateur débloqué'
+                    'message' => 'utilisateur debloqué'
                 ];
                 return new JsonResponse($data);
                 
@@ -242,7 +242,7 @@ class SecurityController extends AbstractController
                             $users=$userRepo->findOneByUsername($donnees[$i]["username"]);
                             print_r($donnees[$i]["username"]);
                             $users->setStatus("bloqué");
-                            $user->setRoles(["ROLE_USERLOCK"]);
+                            //$user->setRoles(["ROLE_USERLOCK"]);
                             $entityManager->persist($users);
                             $entityManager->flush();
                             $i=$i+1;
@@ -251,7 +251,7 @@ class SecurityController extends AbstractController
                        
                     }
                 $user->setStatus("bloqué");
-                $user->setRoles(["ROLE_USERLOCK"]);
+                //$user->setRoles(["ROLE_USERLOCK"]);
 
                 $entityManager->flush();
                 $data = [
@@ -268,8 +268,19 @@ class SecurityController extends AbstractController
      */
     public function show(User $user,UserRepository $userRepo,SerializerInterface $serializer)
     {
-         
          $user= $userRepo->find($user->getId());
+         $data = $serializer->serialize($user,'json',['groups'=>['user']]);
+         return new Response($data,200,[
+             'Content-Type'=>'application/json']);
+
+    }
+
+     /**
+     * @Route("/users/findUser", name="User", methods={"POST"})
+     */
+    public function findUser(UserRepository $userRepo,SerializerInterface $serializer,Request $request)
+    {
+         $user= $this->getUser();
          $data = $serializer->serialize($user,'json',['groups'=>['user']]);
          return new Response($data,200,[
              'Content-Type'=>'application/json']);

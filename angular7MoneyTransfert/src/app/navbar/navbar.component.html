@@ -38,16 +38,13 @@
                 <div class="dropdown-divider"></div>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" *ngIf="isCaissier()">
                 <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Compte
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <div *ngIf="isCaissier()">
                         <a class="dropdown-item" [routerLink]="['/compte']">Lister</a>
-                      </div>
-                      <div *ngIf="isAdminPartenaire()">
-                        <a class="dropdown-item" [routerLink]="['/addCompte']">Ajout</a>
                       </div>
                       <div class="dropdown-divider"></div>
                 </div>
@@ -58,7 +55,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/logout']">logOut</a>
-                  <a class="dropdown-item" [routerLink]="['/userProfil']">profil</a>
+                  <a class="dropdown-item" [routerLink]="['/profil']">profil</a>
               </div>
               </li>
           </ul>

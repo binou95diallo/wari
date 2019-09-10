@@ -1,61 +1,109 @@
 <app-navbar></app-navbar>
-  <div class="mt-5 py-5 container">
-                <mat-form-field>
-                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                </mat-form-field>
+<div class="mt-5 container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Liste des utilisateurs</h2><hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" *ngIf="ajoutCompte==null">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
 
-                <div class="mat-elevation-z8" class="table-wrapper">
-                  <table mat-table [dataSource]="dataSource" matSort class="fl-table">
-                
-                    <!-- ID Column -->
-                    <ng-container matColumnDef="username">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Username </th>
-                      <td mat-cell *matCellDef="let row"> {{row.username}} </td>
-                    </ng-container>
-                
-                    <!-- Progress Column -->
-                    <ng-container matColumnDef="adresse">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Adresse </th>
-                      <td mat-cell *matCellDef="let row"> {{row.adresse}}</td>
-                    </ng-container>
-                
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="nomComplet">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NomComplet</th>
-                      <td mat-cell *matCellDef="let row"> {{row.nomComplet}} </td>
-                    </ng-container>
-                
+                    <div class="mat-elevation-z8" class="table-wrapper">
+                      <table mat-table [dataSource]="dataSource" matSort class="fl-table">
+                    
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="username">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Username </th>
+                          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+                        </ng-container>
+                    
+                        <!-- Progress Column -->
+                        <ng-container matColumnDef="adresse">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Adresse </th>
+                          <td mat-cell *matCellDef="let row"> {{row.adresse}}</td>
+                        </ng-container>
+                    
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="nomComplet">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NomComplet</th>
+                          <td mat-cell *matCellDef="let row"> {{row.nomComplet}} </td>
+                        </ng-container>
+                    
+                        <!-- Color Column -->
+                        <ng-container matColumnDef="profil">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Profil </th>
+                          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.profil}} </td>
+                        </ng-container>
+                    
+                        <!-- Color Column -->
+                        <ng-container matColumnDef="status">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Status </th>
+                          <td mat-cell *matCellDef="let row" [style.color]="row.color">
+                              <span *ngIf="row.status=='debloqué'">
+                                  <button><fa-icon [icon]="faLockOpen" (click)="bloquerUser(row.username)" id="icon"></fa-icon></button>
+                              </span>
+                              <span *ngIf="row.status=='bloqué'">
+                                  <button><fa-icon [icon]="faLock" (click)="bloquerUser(row.username)" id="icon"></fa-icon></button>
+                              </span>
+                          </td>
+                        </ng-container>
                     <!-- Color Column -->
-                    <ng-container matColumnDef="profil">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Profil </th>
-                      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.profil}} </td>
-                    </ng-container>
-                
-                    <!-- Color Column -->
-                    <ng-container matColumnDef="status">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Status </th>
-                      <td mat-cell *matCellDef="let row" [style.color]="row.color">
-                          <span *ngIf="row.status=='débloqué'">
-                              <a routerLink="lock"><fa-icon [icon]="faLockOpen" (click)="bloquerUser(row.username)"></fa-icon></a>
-                          </span>
-                          <span *ngIf="row.status=='bloqué'">
-                              <a routerLink="lock"><fa-icon [icon]="faLock" (click)="bloquerUser(row.username)"></fa-icon></a>
-                          </span>
-                      </td>
-                    </ng-container>
-                <!-- Color Column -->
-              
-                <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
-                <td mat-cell *matCellDef="let row" [style.color]="row.color">
-                    <a routerLink="/editUser/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
-                </td>
+                  
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> editer </th>
+                    <td mat-cell *matCellDef="let row" [style.color]="row.color">
+                        <a routerLink="/editUser/{{row.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="compte">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Attribuer Compte </th>
+                  <td mat-cell *matCellDef="let row" [style.color]="row.color">
+                      <button (click)="getPartenaireCompte(row.id)"><fa-icon [icon]="faPlus" id="icon"></fa-icon></button>
+                  </td>
+                </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                      </table>
+                    
+                      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+      </div>
+      <div class="col-md-12" *ngIf="ajoutCompte!=null">
+          <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        <div class="mat-elevation-z8" class="table-wrapper">
+          <table mat-table [dataSource]="dataSources" matSort class="fl-table">
+        
+            <!-- ID Column -->
+            <ng-container matColumnDef="numeroCompte">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NUmero Compte </th>
+              <td mat-cell *matCellDef="let row"> {{row.numeroCompte}} </td>
+            </ng-container>
+        
+            <!-- Progress Column -->
+            <ng-container matColumnDef="solde">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Solde </th>
+              <td mat-cell *matCellDef="let row"> {{row.solde}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="attribuer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Attribuer</th>
+                <td mat-cell *matCellDef="let row"><button (click)="attribuerCompte(row.id)"><fa-icon [icon]="faPlus" id="icon"></fa-icon></button></td>
               </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-                    </tr>
-                  </table>
-                
-                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                </div>
-            </div>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsCompte"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsCompte;">
+            </tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </div>
+    </div>
+</div>

@@ -117,10 +117,10 @@ export class AddUserComponent implements OnInit {
   isCaissier(){
     return this.authenticationService.isCaissier();
   }
-  
+  /* 
   isPartenaire(){
     return this.authenticationService.isAdminPartenaire();
-  }
+  } */
   isPartenaireOrUser(){
     return this.authenticationService.isPartenaireOrUser();
   }

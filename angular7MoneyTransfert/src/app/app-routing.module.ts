@@ -21,27 +21,29 @@ import { HomeComponent } from './home/home.component';
 import { ContratComponent } from './contrat/contrat.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserInterfaceComponent } from './user-interface/user-interface.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component : LoginComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: 'partenaires', component: PartenaireComponent},
-  { path: 'utilisateurs', component: UsersComponent},
+  { path: 'partenaires', component: PartenaireComponent,canActivate:[AuthGuard]},
+  { path: 'utilisateurs', component: UsersComponent,canActivate:[AuthGuard]},
   { path: 'compte', component: CompteComponent,canActivate:[AuthGuard]},
-  { path: 'addCompte', component: AddCompteComponent},
-  { path: 'addPartenaire', component: AddPartenaireComponent},
-  { path: 'addUser', component: AddUserComponent},
-  { path: 'addDepot/:id', component: DepotComponent},
-  { path: 'passwordChange', component: PasswordChangeComponent},
-  { path: 'UserOperations', component: HistoriqueOperationComponent},
-  { path: 'envoiTransaction', component: TransactionComponent},
-  { path: 'retraitTransaction', component: TransactionRetraitComponent},
-  { path: 'editUser/:id', component: EditUserComponent},
-  { path: 'editPartenaire/:id', component:  EditPartenaireComponent},
-  { path: 'partenaireOperation', component: PartenaireOperationComponent},
-  { path: 'partenaire/contrat/:id', component: ContratComponent}
+  { path: 'addCompte/:id', component: AddCompteComponent,canActivate:[AuthGuard]},
+  { path: 'addPartenaire', component: AddPartenaireComponent,canActivate:[AuthGuard]},
+  { path: 'addUser', component: AddUserComponent,canActivate:[AuthGuard]},
+  { path: 'addDepot/:id', component: DepotComponent,canActivate:[AuthGuard]},
+  { path: 'passwordChange', component: PasswordChangeComponent,canActivate:[AuthGuard]},
+  { path: 'UserOperations', component: HistoriqueOperationComponent,canActivate:[AuthGuard]},
+  { path: 'envoiTransaction', component: TransactionComponent,canActivate:[AuthGuard]},
+  { path: 'retraitTransaction', component: TransactionRetraitComponent,canActivate:[AuthGuard]},
+  { path: 'editUser/:id', component: EditUserComponent,canActivate:[AuthGuard]},
+  { path: 'editPartenaire/:id', component:  EditPartenaireComponent,canActivate:[AuthGuard]},
+  { path: 'partenaireOperation', component: PartenaireOperationComponent,canActivate:[AuthGuard]},
+  { path: 'partenaire/contrat/:id', component: ContratComponent,canActivate:[AuthGuard]},
+  { path: 'profil', component: ProfilComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

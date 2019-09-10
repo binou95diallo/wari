@@ -53,7 +53,8 @@ class BankAccountController extends AbstractController
     /**
      * @Route("/bankAccount/ajout", name="bankAccountAjout", methods={"POST","GET"})
      */
-    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,ValidatorInterface $validator): Response
+    public function ajout(Request $request,SerializerInterface $serializer, EntityManagerInterface $entityManager,
+                            ValidatorInterface $validator, PartenaireRepository $partRepo): Response
     {
         
             $bankAccount = new BankAccount();
@@ -61,8 +62,7 @@ class BankAccountController extends AbstractController
             $form->handleRequest($request);
             $values=$request->request->all();
             $form->submit($values);
-            $user=$this->getUser();
-            $partenaire=$user->getPartenaire();
+            $partenaire=$partRepo->find($values["partenaire"]);
             $random = date("Y") .date("s") . date("m") . date("H") . date("i");
             $numeroCompte=$random;
             $bankAccount->setNumeroCompte($numeroCompte);
@@ -88,6 +88,25 @@ class BankAccountController extends AbstractController
         return new Response($data, 200, [
             'Content-Type' => 'application/json'
         ]);
+    }
+
+    /**
+     * @Route("/bankAccount/userCompte",name="userCompte",methods={"Post"})
+     */
+    public function attribuerCompte(Request $request,UserRepository $userRepo,SerializerInterface $serializer,
+    EntityManagerInterface $entityManager,BankAccountRepository $bankARepo):Response
+    {
+        $values=$request->request->all();
+        $user=$userRepo->find($values["idUser"]);
+        $compte=$bankARepo->find($values["idCompte"]);
+        $user->setBankAccount($compte);
+        $entityManager->flush();
+        $data = [
+            'status' => 201,
+            'message' => 'compte attribuer'
+        ];
+
+        return new JsonResponse($data,201);
     }
 
     /**

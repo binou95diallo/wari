@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <comment>Description:</comment>
   command 1 description
 
@@ -8,3 +9,15 @@
 
 <comment>Help:</comment>
   command 1 help
+=======
+<comment>Description:</comment>
+  command 1 description
+
+<comment>Usage:</comment>
+  descriptor:command1
+  alias1
+  alias2
+
+<comment>Help:</comment>
+  command 1 help
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

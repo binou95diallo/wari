@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .test1 {
 	//gaga: hello;
 }
@@ -12,4 +13,20 @@
 	#hello: 1}
 
 #test2 {
+=======
+.test1 {
+	//gaga: hello;
+}
+
+.test2 {
+	*hello: 1;
+	hello: 2.2;
+	hello: 2000000000000.2;
+}
+
+#test {
+	#hello: 1}
+
+#test2 {
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 	help: none;

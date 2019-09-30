@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 Invalid __halt_compiler() syntax
 -----
 <?php
 __halt_compiler()
 -----
+=======
+Invalid __halt_compiler() syntax
+-----
+<?php
+__halt_compiler()
+-----
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 __HALT_COMPILER must be followed by "();" on line 2

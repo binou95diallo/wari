@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Names": {
@@ -39,3 +40,46 @@
         ]
     }
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Names": {
+        "BRL": [
+            "R$",
+            "Real bu Bresil"
+        ],
+        "CNY": [
+            "CN¥",
+            "Yuan bu Siin"
+        ],
+        "EUR": [
+            "€",
+            "Euro"
+        ],
+        "GBP": [
+            "£",
+            "Pound bu Grànd Brëtaañ"
+        ],
+        "INR": [
+            "₹",
+            "Rupee bu End"
+        ],
+        "JPY": [
+            "JP¥",
+            "Yen bu Sapoŋ"
+        ],
+        "RUB": [
+            "RUB",
+            "Ruble bi Rsis"
+        ],
+        "USD": [
+            "$",
+            "Dolaaru US"
+        ],
+        "XOF": [
+            "CFA",
+            "Franc CFA bu Afrik Sowwu-jant"
+        ]
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

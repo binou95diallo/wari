@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ApiPlatform\Core\Tests\Fixtures\TestBundle\Entity\AbstractDummy:
   discriminator_map:
     type_property: discr
@@ -8,4 +9,16 @@ ApiPlatform\Core\Tests\Fixtures\TestBundle\Document\AbstractDummy:
   discriminator_map:
     type_property: discr
     mapping:
+=======
+ApiPlatform\Core\Tests\Fixtures\TestBundle\Entity\AbstractDummy:
+  discriminator_map:
+    type_property: discr
+    mapping:
+      concrete: 'ApiPlatform\Core\Tests\Fixtures\TestBundle\Entity\ConcreteDummy'
+
+ApiPlatform\Core\Tests\Fixtures\TestBundle\Document\AbstractDummy:
+  discriminator_map:
+    type_property: discr
+    mapping:
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
       concrete: 'ApiPlatform\Core\Tests\Fixtures\TestBundle\Document\ConcreteDummy'

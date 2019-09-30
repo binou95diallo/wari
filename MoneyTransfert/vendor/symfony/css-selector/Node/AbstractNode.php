@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -40,3 +41,47 @@ abstract class AbstractNode implements NodeInterface
         return $this->nodeName;
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\CssSelector\Node;
+
+/**
+ * Abstract base node class.
+ *
+ * This component is a port of the Python cssselect library,
+ * which is copyright Ian Bicking, @see https://github.com/SimonSapin/cssselect.
+ *
+ * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
+ *
+ * @internal
+ */
+abstract class AbstractNode implements NodeInterface
+{
+    /**
+     * @var string
+     */
+    private $nodeName;
+
+    /**
+     * @return string
+     */
+    public function getNodeName(): string
+    {
+        if (null === $this->nodeName) {
+            $this->nodeName = preg_replace('~.*\\\\([^\\\\]+)Node$~', '$1', \get_called_class());
+        }
+
+        return $this->nodeName;
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

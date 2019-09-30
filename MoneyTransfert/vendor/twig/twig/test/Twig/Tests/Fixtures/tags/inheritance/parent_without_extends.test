@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "parent" tag
 --TEMPLATE--
@@ -6,3 +7,13 @@
 {% endblock %}
 --EXCEPTION--
 Twig\Error\SyntaxError: Calling "parent" on a template that does not extend nor "use" another template is forbidden in "index.twig" at line 3.
+=======
+--TEST--
+"parent" tag
+--TEMPLATE--
+{% block content %}
+    {{ parent() }}
+{% endblock %}
+--EXCEPTION--
+Twig\Error\SyntaxError: Calling "parent" on a template that does not extend nor "use" another template is forbidden in "index.twig" at line 3.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

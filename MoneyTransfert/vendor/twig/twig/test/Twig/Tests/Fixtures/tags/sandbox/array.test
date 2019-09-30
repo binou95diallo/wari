@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 sandbox tag
 --TEMPLATE--
@@ -14,3 +15,21 @@ return ['autoescape' => false, 'debug' => true]
 --EXPECT--
 b
 string(1) "b"
+=======
+--TEST--
+sandbox tag
+--TEMPLATE--
+{%- sandbox %}
+    {%- include "foo.twig" %}
+{%- endsandbox %}
+--TEMPLATE(foo.twig)--
+{{ [a][0] }}
+{{ dump([a][0]) }}
+--DATA--
+return ['a' => 'b']
+--CONFIG--
+return ['autoescape' => false, 'debug' => true]
+--EXPECT--
+b
+string(1) "b"
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

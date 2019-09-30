@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag supports name for endmacro
 --TEMPLATE--
@@ -14,3 +15,21 @@ return []
 foo
 bar
 
+=======
+--TEST--
+"macro" tag supports name for endmacro
+--TEMPLATE--
+{% import _self as macros %}
+
+{{ macros.foo() }}
+{{ macros.bar() }}
+
+{% macro foo() %}foo{% endmacro %}
+{% macro bar() %}bar{% endmacro bar %}
+--DATA--
+return []
+--EXPECT--
+foo
+bar
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

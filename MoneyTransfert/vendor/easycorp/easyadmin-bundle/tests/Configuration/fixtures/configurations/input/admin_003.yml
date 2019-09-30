@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # configuration format #1 with entities defined in different namespaces but with
 # the same class name
@@ -7,3 +8,14 @@ easy_admin:
     entities:
         - AppTestBundle\Entity\UnitTests\Category
         - AppTestBundle\Entity\UnitTests\SubNamespace\Category
+=======
+# TEST
+# configuration format #1 with entities defined in different namespaces but with
+# the same class name
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        - AppTestBundle\Entity\UnitTests\Category
+        - AppTestBundle\Entity\UnitTests\SubNamespace\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "block" tag
 --TEMPLATE--
@@ -9,3 +10,16 @@
 return ['foo' => 'bar']
 --EXPECT--
 FOObar
+=======
+--TEST--
+"block" tag
+--TEMPLATE--
+{% block title1 %}FOO{% endblock %}
+{% block title2 foo|lower %}
+--TEMPLATE(foo.twig)--
+{% block content %}{% endblock %}
+--DATA--
+return ['foo' => 'bar']
+--EXPECT--
+FOObar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

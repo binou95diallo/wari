@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Block names are unique per template
 --TEMPLATE--
@@ -17,3 +18,24 @@ return []
 --EXPECT--
 First
 Second
+=======
+--TEST--
+Block names are unique per template
+--TEMPLATE--
+{% extends 'layout' %}
+{% block content -%}
+    {% apply title -%}
+        second
+    {% endapply %}
+{% endblock %}
+--TEMPLATE(layout)--
+{% apply title -%}
+    first
+{% endapply %}
+{% block content %}{% endblock %}
+--DATA--
+return []
+--EXPECT--
+First
+Second
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

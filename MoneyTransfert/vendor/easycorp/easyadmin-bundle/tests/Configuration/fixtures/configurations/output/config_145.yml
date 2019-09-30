@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -32,3 +33,39 @@ easy_admin:
                         property: field2
                         type_options:
                             required: false
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            new:
+                fields:
+                    _easyadmin_form_design_element_0:
+                        type: easyadmin_group
+                        label: 'Group Label 1'
+                        icon: icon1
+                    field1:
+                        property: field1
+                        type_options:
+                            required: true
+                    _easyadmin_form_design_element_2:
+                        type: easyadmin_section
+                        help: 'Section Help'
+                        label: 'Section Label 1'
+                    field2:
+                        property: field2
+            edit:
+                fields:
+                    _easyadmin_form_design_element_0:
+                        type: easyadmin_group
+                        label: 'Group Label 1'
+                        icon: icon1
+                    _easyadmin_form_design_element_2:
+                        type: easyadmin_section
+                        help: 'Section Help'
+                        label: 'Section Label 1'
+                    field2:
+                        property: field2
+                        type_options:
+                            required: false
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

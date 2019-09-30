@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     parent_service:
         abstract: true
@@ -11,3 +12,18 @@ services:
         parent: parent_service
         public: true
         tags: [from_child]
+=======
+services:
+    parent_service:
+        abstract: true
+        lazy: true
+        autowire: false
+        public: false
+        tags: [from_parent]
+
+    child_service:
+        class: stdClass
+        parent: parent_service
+        public: true
+        tags: [from_child]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

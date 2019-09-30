@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # this is a custom translation catalog used in the 'config_custom_translation_domain.yml' test
 action.delete: '__Delete__'
 action.edit: '__Edit__'
@@ -10,3 +11,17 @@ ID: '__ID__'
 Name: '__Name__'
 Parent: '__Parent__'
 Products: '__Products__'
+=======
+# this is a custom translation catalog used in the 'config_custom_translation_domain.yml' test
+action.delete: '__Delete__'
+action.edit: '__Edit__'
+action.list: '__Back to list__'
+action.new: '__New__'
+action.save: '__Save__'
+action.search: '__Search__'
+Category: '__Category__'
+ID: '__ID__'
+Name: '__Name__'
+Parent: '__Parent__'
+Products: '__Products__'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

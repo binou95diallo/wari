@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Meta": {
@@ -6,3 +7,13 @@
         "HourFormatNeg": "-%02d:%02d"
     }
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Meta": {
+        "GmtFormat": "GMT%s",
+        "HourFormatPos": "+%02d:%02d",
+        "HourFormatNeg": "-%02d:%02d"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

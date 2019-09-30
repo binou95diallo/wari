@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 declare(strict_types=1);
 
 {prologue}class {class_name}
 {
     use {trait_name};
 }
+=======
+declare(strict_types=1);
+
+{prologue}class {class_name}
+{
+    use {trait_name};
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

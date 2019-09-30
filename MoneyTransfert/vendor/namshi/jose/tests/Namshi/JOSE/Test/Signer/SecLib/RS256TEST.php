@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Namshi\JOSE\Test\Signer\SecLib;
@@ -28,3 +29,35 @@ class RS256TEST extends SecLibTestCase
         $this->assertInternalType('string', $this->signer->sign('aaa', $this->privateKey, $this->password));
     }
 }
+=======
+<?php
+
+namespace Namshi\JOSE\Test\Signer\SecLib;
+
+use Namshi\JOSE\Signer\SecLib\RS256;
+
+class RS256TEST extends SecLibTestCase
+{
+    public function setup()
+    {
+        parent::setup();
+
+        $this->privateKey = file_get_contents(SSL_KEYS_PATH.'private.key');
+        $this->public = file_get_contents(SSL_KEYS_PATH.'public.key');
+        $this->password = 'tests';
+        $this->signer = new RS256();
+    }
+
+    public function testVerificationWorksProperly()
+    {
+        $encrypted = $this->signer->sign('aaa', $this->privateKey, $this->password);
+        $this->assertInternalType('bool', $this->signer->verify($this->public, $encrypted, 'aaa'));
+        $this->assertTrue($this->signer->verify($this->public, $encrypted, 'aaa'));
+    }
+
+    public function testSigningWorksProperly()
+    {
+        $this->assertInternalType('string', $this->signer->sign('aaa', $this->privateKey, $this->password));
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

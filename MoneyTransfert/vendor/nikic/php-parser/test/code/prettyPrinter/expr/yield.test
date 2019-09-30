@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Yield
 -----
 <?php
@@ -43,4 +44,51 @@ function gen()
     yield from $a;
     $a = (yield from $b);
 }
+=======
+Yield
+-----
+<?php
+
+function gen()
+{
+    yield;
+    yield $a;
+    yield $a => $b;
+    $a = yield;
+    $a = (yield $b);
+    $a = (yield $b => $c);
+}
+// TODO Get rid of parens for cases 2 and 3
+-----
+function gen()
+{
+    yield;
+    (yield $a);
+    (yield $a => $b);
+    $a = yield;
+    $a = (yield $b);
+    $a = (yield $b => $c);
+}
+// TODO Get rid of parens for cases 2 and 3
+-----
+<?php
+
+function gen()
+{
+    $a = yield $b;
+    $a = yield $b => $c;
+    yield from $a;
+    $a = yield from $b;
+}
+// TODO Get rid of parens for last case
+-----
+!!php7
+function gen()
+{
+    $a = (yield $b);
+    $a = (yield $b => $c);
+    yield from $a;
+    $a = (yield from $b);
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 // TODO Get rid of parens for last case

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 macro with arbitrary arguments
 --TEMPLATE--
@@ -19,3 +20,26 @@ return []
 foo: bar, foobar
 
 foo, bar, foobar
+=======
+--TEST--
+macro with arbitrary arguments
+--TEMPLATE--
+{% from _self import test1, test2 %}
+
+{% macro test1(var) %}
+    {{- var }}: {{ varargs|join(", ") }}
+{% endmacro %}
+
+{% macro test2() %}
+    {{- varargs|join(", ") }}
+{% endmacro %}
+
+{{ test1("foo", "bar", "foobar") }}
+{{ test2("foo", "bar", "foobar") }}
+--DATA--
+return []
+--EXPECT--
+foo: bar, foobar
+
+foo, bar, foobar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

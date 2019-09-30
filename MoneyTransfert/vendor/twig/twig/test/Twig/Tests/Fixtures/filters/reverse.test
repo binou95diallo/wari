@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "reverse" filter
 --TEMPLATE--
@@ -16,3 +17,23 @@ tnemenèvé4321
 a,c
 a,c
 a,c
+=======
+--TEST--
+"reverse" filter
+--TEMPLATE--
+{{ [1, 2, 3, 4]|reverse|join('') }}
+{{ '1234évènement'|reverse }}
+{{ arr|reverse|join('') }}
+{{ {'a': 'c', 'b': 'a'}|reverse()|join(',') }}
+{{ {'a': 'c', 'b': 'a'}|reverse(preserveKeys=true)|join(glue=',') }}
+{{ {'a': 'c', 'b': 'a'}|reverse(preserve_keys=true)|join(glue=',') }}
+--DATA--
+return ['arr' => new \ArrayObject([1, 2, 3, 4])]
+--EXPECT--
+4321
+tnemenèvé4321
+4321
+a,c
+a,c
+a,c
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         max_results: 10
@@ -14,3 +15,21 @@ easy_admin:
                 max_results: 10
             show:
                 max_results: 9
+=======
+easy_admin:
+    list:
+        max_results: 10
+    show:
+        max_results: 9
+    entities:
+        Category:
+            list:
+                max_results: 8
+            show:
+                max_results: 7
+        Product:
+            list:
+                max_results: 10
+            show:
+                max_results: 9
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

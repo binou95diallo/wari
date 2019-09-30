@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit colors="true" bootstrap="vendor/autoload.php">
@@ -22,3 +23,29 @@
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
     </listeners>
 </phpunit>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="DoctrineBundle for the Symfony Framework">
+            <directory>./Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>.</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+    </listeners>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

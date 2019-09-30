@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 File containing only inline HTML
 -----
 Hallo World
@@ -16,4 +17,24 @@ Test
 -----
 
 
+=======
+File containing only inline HTML
+-----
+Hallo World
+Foo Bar
+Bar Foo
+World Hallo
+-----
+Hallo World
+Foo Bar
+Bar Foo
+World Hallo
+-----
+
+
+Test
+-----
+
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 Test

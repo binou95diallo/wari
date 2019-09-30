@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Favicon configuration: foo/bar (unsupported ext)
 
 # CONFIGURATION
@@ -5,3 +6,12 @@ easy_admin:
     design:
         assets:
             favicon: { path: 'favicon.bar', mime_type: 'foo/bar' }
+=======
+# Favicon configuration: foo/bar (unsupported ext)
+
+# CONFIGURATION
+easy_admin:
+    design:
+        assets:
+            favicon: { path: 'favicon.bar', mime_type: 'foo/bar' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

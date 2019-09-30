@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig allows multi-word tests without a custom node class
 --TEMPLATE--
@@ -8,3 +9,15 @@ return []
 --EXPECT--
 no
 yes
+=======
+--TEST--
+Twig allows multi-word tests without a custom node class
+--TEMPLATE--
+{{ 'foo' is multi word ? 'yes' : 'no' }}
+{{ 'foo bar' is multi word ? 'yes' : 'no' }}
+--DATA--
+return []
+--EXPECT--
+no
+yes
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

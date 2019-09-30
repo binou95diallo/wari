@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # the 'sort' config option (which can be a string or an array) is properly processed
 
@@ -20,3 +21,27 @@ easy_admin:
                 sort: price
             search:
                 sort: ['createdAt', 'desc']
+=======
+# TEST
+# the 'sort' config option (which can be a string or an array) is properly processed
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            # although this is a unit test, it's correct to use the Category entity from
+            # the functional tests, because we need an entity with more than one 'id' property
+            class: AppTestBundle\Entity\FunctionalTests\Category
+            list:
+                sort: ['name', 'ASC']
+            search:
+                sort: id
+        Product:
+            # although this is a unit test, it's correct to use the Product entity from
+            # the functional tests, because we need an entity with more than one 'id' property
+            class: AppTestBundle\Entity\FunctionalTests\Product
+            list:
+                sort: price
+            search:
+                sort: ['createdAt', 'desc']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

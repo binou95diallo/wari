@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig is able to deal with SimpleXMLElement instances as variables
 --TEMPLATE--
@@ -15,3 +16,22 @@ example
 2
     - foo
     - bar
+=======
+--TEST--
+Twig is able to deal with SimpleXMLElement instances as variables
+--TEMPLATE--
+Hello '{{ images.image.0.group }}'!
+{{ images.image.0.group.attributes.myattr }}
+{{ images.children().image.count() }}
+{% for image in images %}
+    - {{ image.group }}
+{% endfor %}
+--DATA--
+return ['images' => new \SimpleXMLElement('<images><image><group myattr="example">foo</group></image><image><group>bar</group></image></images>')]
+--EXPECT--
+Hello 'foo'!
+example
+2
+    - foo
+    - bar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -15,3 +16,22 @@ easy_admin:
         params:
             action: list
             entity: Category
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            name: Category
+            label: Category
+        Product:
+            class: AppTestBundle\Entity\UnitTests\Product
+            name: Product
+            label: Product
+    default_entity_name: Category
+    default_menu_item: null
+    homepage:
+        route: easyadmin
+        params:
+            action: list
+            entity: Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

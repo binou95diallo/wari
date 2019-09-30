@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 utf8_one:
     path: /one
 
 utf8_two:
     path: /two
+=======
+utf8_one:
+    path: /one
+
+utf8_two:
+    path: /two
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

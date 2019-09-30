@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="fr-FR" target-language="en-US" datatype="plaintext" original="file.ext">
@@ -12,3 +13,19 @@
     </body>
   </file>
 </xliff>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr-FR" target-language="en-US" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LCa0a2j" resname="foo">
+        <source>foo</source>
+        <target state="needs-translation">bar</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

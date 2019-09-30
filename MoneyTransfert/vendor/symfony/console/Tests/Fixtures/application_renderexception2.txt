@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
                                       
   The "--foo" option does not exist.  
@@ -5,3 +6,12 @@
 
 list [--raw] [--format FORMAT] [--] [<namespace>]
 
+=======
+
+                                      
+  The "--foo" option does not exist.  
+                                      
+
+list [--raw] [--format FORMAT] [--] [<namespace>]
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

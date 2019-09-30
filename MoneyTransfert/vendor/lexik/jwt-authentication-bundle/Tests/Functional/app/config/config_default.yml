@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: base_config.yml }
 
@@ -5,3 +6,12 @@ lexik_jwt_authentication:
     secret_key: '%kernel.root_dir%/../config/jwt/private.pem'
     public_key: '%kernel.root_dir%/../config/jwt/public.pem'
     pass_phrase: testing
+=======
+imports:
+    - { resource: base_config.yml }
+
+lexik_jwt_authentication:
+    secret_key: '%kernel.root_dir%/../config/jwt/private.pem'
+    public_key: '%kernel.root_dir%/../config/jwt/public.pem'
+    pass_phrase: testing
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

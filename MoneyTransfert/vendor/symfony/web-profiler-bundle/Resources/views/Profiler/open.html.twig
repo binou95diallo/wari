@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends '@WebProfiler/Profiler/base.html.twig' %}
 
 {% block head %}
@@ -20,3 +21,27 @@
         {% endif %}
     </div>
 {% endblock %}
+=======
+{% extends '@WebProfiler/Profiler/base.html.twig' %}
+
+{% block head %}
+    <style>
+        {{ include('@WebProfiler/Profiler/open.css.twig') }}
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% set source = filename|file_excerpt(line, -1) %}
+    <div class="header">
+        <h1>{{ file }}{% if 0 < line %} <small>line {{ line }}</small>{% endif %}</h1>
+        <a class="doc" href="https://symfony.com/doc/{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}/reference/configuration/framework.html#ide" rel="help">Open in your IDE?</a>
+    </div>
+    <div class="source">
+        {% if source is null %}
+            <p class="empty">The file is not readable.</p>
+        {% else %}
+            {{ source|raw }}
+        {% endif %}
+    </div>
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

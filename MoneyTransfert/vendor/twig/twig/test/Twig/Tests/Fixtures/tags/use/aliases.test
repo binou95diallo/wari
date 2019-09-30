@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "use" tag
 --TEMPLATE--
@@ -10,3 +11,17 @@
 return []
 --EXPECT--
 foo
+=======
+--TEST--
+"use" tag
+--TEMPLATE--
+{% use "blocks.twig" with content as foo %}
+
+{{ block('foo') }}
+--TEMPLATE(blocks.twig)--
+{% block content 'foo' %}
+--DATA--
+return []
+--EXPECT--
+foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

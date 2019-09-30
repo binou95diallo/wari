@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # the list of disabled actions must be defined as an array (strings are not allowed)
 
@@ -9,3 +10,16 @@ expected_exception:
 # CONFIGURATION
 easy_admin:
     disabled_actions: 'action1'
+=======
+# TEST
+# the list of disabled actions must be defined as an array (strings are not allowed)
+
+# EXCEPTION
+expected_exception:
+    class: \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+    message_string: 'Invalid configuration for path "easy_admin.disabled_actions": The disabled_actions option must be an array of action names.'
+
+# CONFIGURATION
+easy_admin:
+    disabled_actions: 'action1'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

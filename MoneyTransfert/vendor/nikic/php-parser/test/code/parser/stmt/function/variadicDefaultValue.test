@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Invalid variadic function
 -----
 <?php
@@ -28,4 +29,36 @@ array(
         stmts: array(
         )
     )
+=======
+Invalid variadic function
+-----
+<?php
+function foo(...$foo = []) {}
+-----
+Variadic parameter cannot have a default value from 2:24 to 2:25
+array(
+    0: Stmt_Function(
+        byRef: false
+        name: Identifier(
+            name: foo
+        )
+        params: array(
+            0: Param(
+                type: null
+                byRef: false
+                variadic: true
+                var: Expr_Variable(
+                    name: foo
+                )
+                default: Expr_Array(
+                    items: array(
+                    )
+                )
+            )
+        )
+        returnType: null
+        stmts: array(
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

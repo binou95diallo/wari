@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EAUltimateProjectSettings">
@@ -17,4 +18,25 @@
       <PREFER_YODA_COMPARISON_STYLE value="no" />
     </settings>
   </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EAUltimateProjectSettings">
+    <categories>
+      <STRICTNESS_CATEGORY_SECURITY enabled="yes" />
+      <STRICTNESS_CATEGORY_PROBABLE_BUGS enabled="yes" />
+      <STRICTNESS_CATEGORY_PERFORMANCE enabled="yes" />
+      <STRICTNESS_CATEGORY_ARCHITECTURE enabled="yes" />
+      <STRICTNESS_CATEGORY_CONTROL_FLOW enabled="yes" />
+      <STRICTNESS_CATEGORY_LANGUAGE_LEVEL_MIGRATION enabled="yes" />
+      <STRICTNESS_CATEGORY_CODE_STYLE enabled="yes" />
+      <STRICTNESS_CATEGORY_UNUSED enabled="yes" />
+      <STRICTNESS_CATEGORY_PHPUNIT enabled="yes" />
+    </categories>
+    <settings>
+      <ANALYZE_ONLY_MODIFIED_FILES value="no" />
+      <PREFER_YODA_COMPARISON_STYLE value="no" />
+    </settings>
+  </component>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 </project>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Names": {
@@ -15,3 +16,22 @@
         "US": "Hononga o Amerika"
     }
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Names": {
+        "BR": "Parahi",
+        "CN": "Haina",
+        "DE": "Tiamana",
+        "FR": "Wīwī",
+        "GB": "Hononga o Piritene",
+        "IN": "Inia",
+        "IT": "Itāria",
+        "JP": "Hapani",
+        "MK": "Makerōnia ki te Raki",
+        "NZ": "Aotearoa",
+        "RU": "Rūhia",
+        "US": "Hononga o Amerika"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

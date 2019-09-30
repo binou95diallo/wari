@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% if app.session is not null and app.session.started %}
     {% set _flash_messages = app.session.flashbag.all %}
 
@@ -13,3 +14,20 @@
         </div>
     {% endif %}
 {% endif %}
+=======
+{% if app.session is not null and app.session.started %}
+    {% set _flash_messages = app.session.flashbag.all %}
+
+    {% if _flash_messages|length > 0 %}
+        <div id="flash-messages">
+            {% for label, messages in _flash_messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message|trans|striptags }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endif %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

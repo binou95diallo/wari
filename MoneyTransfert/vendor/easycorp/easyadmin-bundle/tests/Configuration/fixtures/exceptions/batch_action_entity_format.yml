@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # the "batch_actions" option must be an array, not a string
 
@@ -13,3 +14,20 @@ easy_admin:
             list:
                 batch_actions: 'delete'
             class: AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# the "batch_actions" option must be an array, not a string
+
+# EXCEPTION
+expected_exception:
+    class: InvalidArgumentException
+    message_string: 'The "batch_actions" configuration for the "list" view of the "TestEntity" entity must be an array (a string was provided).'
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        TestEntity:
+            list:
+                batch_actions: 'delete'
+            class: AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

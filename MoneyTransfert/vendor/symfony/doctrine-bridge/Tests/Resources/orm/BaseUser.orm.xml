@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,3 +11,17 @@
     </mapped-superclass>
 
 </doctrine-mapping>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Symfony\Bridge\Doctrine\Tests\Fixtures\BaseUser">
+        <field name="username" column="username" type="string" length="120" />
+        <field name="enabled" type="boolean" />
+    </mapped-superclass>
+
+</doctrine-mapping>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

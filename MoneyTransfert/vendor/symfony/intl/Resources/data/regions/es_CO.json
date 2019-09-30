@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.70",
     "Names": {
@@ -7,3 +8,14 @@
         "VI": "Islas Vírgenes de EE. UU."
     }
 }
+=======
+{
+    "Version": "2.1.47.70",
+    "Names": {
+        "BA": "Bosnia y Herzegovina",
+        "TL": "Timor-Leste",
+        "UM": "Islas menores alejadas de EE. UU.",
+        "VI": "Islas Vírgenes de EE. UU."
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

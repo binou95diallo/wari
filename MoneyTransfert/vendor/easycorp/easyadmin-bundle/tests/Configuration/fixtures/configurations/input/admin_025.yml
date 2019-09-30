@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # configuration format #3 expanded, with two different entities using
 # different names and same custom labels which include special YAML characters
@@ -11,3 +12,18 @@ easy_admin:
         AnotherCategory:
             class: AppTestBundle\Entity\UnitTests\SubNamespace\Category
             label: 'Custom #AnotherCategory ~ Label'
+=======
+# TEST
+# configuration format #3 expanded, with two different entities using
+# different names and same custom labels which include special YAML characters
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            label: 'Custom #Category ~ Label'
+        AnotherCategory:
+            class: AppTestBundle\Entity\UnitTests\SubNamespace\Category
+            label: 'Custom #AnotherCategory ~ Label'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

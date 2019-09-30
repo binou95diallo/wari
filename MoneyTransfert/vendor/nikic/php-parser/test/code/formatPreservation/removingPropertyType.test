@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Removing property type
 -----
 <?php
@@ -20,3 +21,27 @@ class B
     public
     $b;
 }
+=======
+Removing property type
+-----
+<?php
+
+class B
+{
+
+    public
+    ?float
+    $b;
+}
+-----
+$stmts[0]->stmts[0]->type = null;
+-----
+<?php
+
+class B
+{
+
+    public
+    $b;
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "const" test
 --TEMPLATE--
@@ -11,4 +12,19 @@ return ['value' => 'bar', 'object' => new \ArrayObject(['hi'])]
 ok
 ok
 ok
+=======
+--TEST--
+"const" test
+--TEMPLATE--
+{{ 8 is constant('E_NOTICE') ? 'ok' : 'no' }}
+{{ 'bar' is constant('TwigTestFoo::BAR_NAME') ? 'ok' : 'no' }}
+{{ value is constant('TwigTestFoo::BAR_NAME') ? 'ok' : 'no' }}
+{{ 2 is constant('ARRAY_AS_PROPS', object) ? 'ok' : 'no' }}
+--DATA--
+return ['value' => 'bar', 'object' => new \ArrayObject(['hi'])]
+--EXPECT--
+ok
+ok
+ok
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 ok

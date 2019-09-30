@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "import" tag
 --TEMPLATE--
@@ -25,3 +26,32 @@ return []
 8
 9
 10
+=======
+--TEST--
+"import" tag
+--TEMPLATE--
+{% from _self import recursive_macro %}
+
+{{ recursive_macro(10) }}
+
+{% macro recursive_macro(n) %}
+    {% if n > 0 %}
+        {{- recursive_macro(n - 1) -}}
+    {% endif %}
+    {{- n }}
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

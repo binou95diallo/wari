@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "trim" filter
 --TEMPLATE--
@@ -22,3 +23,29 @@ xxxI like Twig.
   foo/
   foo/
   do nothing.  
+=======
+--TEST--
+"trim" filter
+--TEMPLATE--
+{{ "  I like Twig.  "|trim }}
+{{ text|trim }}
+{{ "  foo/"|trim("/") }}
+{{ "xxxI like Twig.xxx"|trim(character_mask="x", side="left") }}
+{{ "xxxI like Twig.xxx"|trim(side="right", character_mask="x") }}
+{{ "xxxI like Twig.xxx"|trim("x", "right") }}
+{{ "/  foo/"|trim("/", "left") }}
+{{ "/  foo/"|trim(character_mask="/", side="left") }}
+{{ "  do nothing.  "|trim("", "right") }}
+--DATA--
+return ['text' => "  If you have some <strong>HTML</strong> it will be escaped.  "]
+--EXPECT--
+I like Twig.
+If you have some &lt;strong&gt;HTML&lt;/strong&gt; it will be escaped.
+  foo
+I like Twig.xxx
+xxxI like Twig.
+xxxI like Twig.
+  foo/
+  foo/
+  do nothing.  
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

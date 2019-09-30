@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "block" calling parent() with no definition in parent template
 --TEMPLATE--
@@ -9,3 +10,16 @@
 return array()
 --EXCEPTION--
 Twig\Error\RuntimeError: Block "label" should not call parent() in "index.twig" as the block does not exist in the parent template "parent.twig" in "index.twig" at line 3.
+=======
+--TEST--
+"block" calling parent() with no definition in parent template
+--TEMPLATE--
+{% extends "parent.twig" %}
+{% block label %}{{ parent() }}{% endblock %}
+--TEMPLATE(parent.twig)--
+{{ block('label') }}
+--DATA--
+return array()
+--EXCEPTION--
+Twig\Error\RuntimeError: Block "label" should not call parent() in "index.twig" as the block does not exist in the parent template "parent.twig" in "index.twig" at line 3.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

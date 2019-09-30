@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 File containing both inline HTML and PHP
 -----
 HTML
@@ -55,4 +56,63 @@ HTML<?php echo 'PHP'; ?>HTML
 -----
 HTML<?php
 echo 'PHP';
+=======
+File containing both inline HTML and PHP
+-----
+HTML
+<?php
+echo 'PHP';
+-----
+HTML
+<?php
+echo 'PHP';
+-----
+<?php
+echo 'PHP';
+?>
+HTML
+-----
+<?php
+
+echo 'PHP';
+?>
+HTML
+-----
+HTML
+<?php
+echo 'PHP';
+?>
+HTML
+-----
+HTML
+<?php
+echo 'PHP';
+?>
+HTML
+-----
+HTML
+<?php
+echo 'PHP';
+?>
+HTML
+<?php
+echo 'PHP';
+?>
+HTML
+-----
+HTML
+<?php
+echo 'PHP';
+?>
+HTML
+<?php
+echo 'PHP';
+?>
+HTML
+-----
+HTML<?php echo 'PHP'; ?>HTML
+-----
+HTML<?php
+echo 'PHP';
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 ?>HTML

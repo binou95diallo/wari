@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 easy_admin:
     formats:
         date: 'j F Y'
         time: 'H:i A'
         datetime: 'd/m/Y H:i:s'
         number: '%6.2f'
+=======
+easy_admin:
+    formats:
+        date: 'j F Y'
+        time: 'H:i A'
+        datetime: 'd/m/Y H:i:s'
+        number: '%6.2f'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

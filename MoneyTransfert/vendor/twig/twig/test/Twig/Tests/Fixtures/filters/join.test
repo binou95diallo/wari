@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "join" filter
 --TEMPLATE--
@@ -36,3 +37,43 @@ hello
 wxyz
 w,x,y,z
 w,x,y-z
+=======
+--TEST--
+"join" filter
+--TEMPLATE--
+{{ ["foo", "bar"]|join(', ') }}
+{{ foo|join(', ') }}
+{{ bar|join(', ') }}
+
+{{ ["foo", "bar"]|join(', ', ' and ') }}
+{{ foo|join(', ', ' and ') }}
+{{ bar|join(', ', ' and ') }}
+{{ ["one", "two", "three"]|join(', ', ' and ') }}
+{{ ["a", "b", "c"]|join('','-') }}
+{{ ["a", "b", "c"]|join('-','-') }}
+{{ ["a", "b", "c"]|join('-','') }}
+{{ ["hello"]|join('|','-') }}
+
+{{ {"a": "w", "b": "x", "c": "y", "d": "z"}|join }}
+{{ {"a": "w", "b": "x", "c": "y", "d": "z"}|join(',') }}
+{{ {"a": "w", "b": "x", "c": "y", "d": "z"}|join(',','-') }}
+--DATA--
+return ['foo' => new TwigTestFoo(), 'bar' => new \ArrayObject([3, 4])]
+--EXPECT--
+foo, bar
+1, 2
+3, 4
+
+foo and bar
+1 and 2
+3 and 4
+one, two and three
+ab-c
+a-b-c
+a-bc
+hello
+
+wxyz
+w,x,y,z
+w,x,y-z
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

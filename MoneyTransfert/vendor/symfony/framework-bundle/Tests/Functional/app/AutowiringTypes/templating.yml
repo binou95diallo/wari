@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ../config/default.yml }
 
@@ -10,3 +11,17 @@ services:
 framework:
     templating:
         engines: ['php']
+=======
+imports:
+    - { resource: ../config/default.yml }
+
+services:
+    _defaults: { public: true }
+    test.autowiring_types.autowired_services:
+        class: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\AutowiringTypes\TemplatingServices
+        autowire: true
+
+framework:
+    templating:
+        engines: ['php']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

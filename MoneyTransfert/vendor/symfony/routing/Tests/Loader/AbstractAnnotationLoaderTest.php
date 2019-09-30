@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -31,3 +32,38 @@ abstract class AbstractAnnotationLoaderTest extends TestCase
         ;
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\Routing\Tests\Loader;
+
+use PHPUnit\Framework\TestCase;
+
+abstract class AbstractAnnotationLoaderTest extends TestCase
+{
+    public function getReader()
+    {
+        return $this->getMockBuilder('Doctrine\Common\Annotations\Reader')
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+    }
+
+    public function getClassLoader($reader)
+    {
+        return $this->getMockBuilder('Symfony\Component\Routing\Loader\AnnotationClassLoader')
+            ->setConstructorArgs([$reader])
+            ->getMockForAbstractClass()
+        ;
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

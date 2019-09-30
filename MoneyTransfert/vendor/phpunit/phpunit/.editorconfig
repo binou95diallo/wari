@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 root = true
 
 [*]
@@ -9,3 +10,16 @@ charset = utf-8
 
 [tests/_files/*_result_cache.txt]
 insert_final_newline = false
+=======
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+charset = utf-8
+
+[tests/_files/*_result_cache.txt]
+insert_final_newline = false
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

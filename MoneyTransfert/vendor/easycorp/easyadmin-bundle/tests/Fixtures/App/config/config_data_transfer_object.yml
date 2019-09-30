@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -10,3 +11,17 @@ easy_admin:
                 fields: ['name', 'description', { property: 'price', type: 'number' }, 'ean']
             edit:
                 fields: ['name']
+=======
+imports:
+    - { resource: config.yml }
+
+easy_admin:
+    entities:
+        Product:
+            class: AppTestBundle\Entity\FunctionalTests\Product
+            controller: EasyCorp\Bundle\EasyAdminBundle\Tests\Fixtures\AppTestBundle\Admin\ProductController
+            new:
+                fields: ['name', 'description', { property: 'price', type: 'number' }, 'ean']
+            edit:
+                fields: ['name']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

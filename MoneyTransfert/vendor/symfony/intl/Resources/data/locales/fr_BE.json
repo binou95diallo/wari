@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Names": {
         "gu": "gujarati",
@@ -5,3 +6,12 @@
         "ms_BN": "malais (Brunei)"
     }
 }
+=======
+{
+    "Names": {
+        "gu": "gujarati",
+        "gu_IN": "gujarati (Inde)",
+        "ms_BN": "malais (Brunei)"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

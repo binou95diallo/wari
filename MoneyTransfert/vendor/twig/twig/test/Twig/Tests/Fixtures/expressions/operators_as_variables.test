@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig allows to use named operators as variable names
 --TEMPLATE--
@@ -14,3 +15,21 @@ return ['matches' => [1, 2, 3], 'in' => 'in', 'is' => 'is']
 3
 in
 is
+=======
+--TEST--
+Twig allows to use named operators as variable names
+--TEMPLATE--
+{% for match in matches %}
+    {{- match }}
+{% endfor %}
+{{ in }}
+{{ is }}
+--DATA--
+return ['matches' => [1, 2, 3], 'in' => 'in', 'is' => 'is']
+--EXPECT--
+1
+2
+3
+in
+is
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

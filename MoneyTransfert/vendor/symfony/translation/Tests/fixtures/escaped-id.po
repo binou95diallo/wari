@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6,3 +7,13 @@ msgstr ""
 
 msgid "escaped \"foo\""
 msgstr "escaped \"bar\""
+=======
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "escaped \"foo\""
+msgstr "escaped \"bar\""
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

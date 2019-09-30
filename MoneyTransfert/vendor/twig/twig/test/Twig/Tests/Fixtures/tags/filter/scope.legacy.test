@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "scope" tag creates a new scope
 --DEPRECATION--
@@ -11,3 +12,18 @@ The "filter" tag in "index.twig" at line 2 is deprecated since Twig 2.9, use the
 return []
 --EXCEPTION--
 Twig\Error\RuntimeError: Variable "item" does not exist in "index.twig" at line 5.
+=======
+--TEST--
+"scope" tag creates a new scope
+--DEPRECATION--
+The "filter" tag in "index.twig" at line 2 is deprecated since Twig 2.9, use the "apply" tag instead.
+--TEMPLATE--
+{% filter spaceless %}
+{% set item = 'foo' %}
+{% endfilter %}
+{{ item }}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\RuntimeError: Variable "item" does not exist in "index.twig" at line 5.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

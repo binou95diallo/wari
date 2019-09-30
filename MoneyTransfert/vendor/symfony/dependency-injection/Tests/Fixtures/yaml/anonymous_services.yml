@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     # Ensure the anonymous services count is reset after importing a file
     - { resource: anonymous_services_in_instanceof.yml }
@@ -12,3 +13,19 @@ services:
                 class: Bar
                 autowire: true
         factory: [ !service { class: Quz }, 'constructFoo' ]
+=======
+imports:
+    # Ensure the anonymous services count is reset after importing a file
+    - { resource: anonymous_services_in_instanceof.yml }
+
+services:
+    _defaults:
+        autowire: true
+
+    Foo:
+        arguments:
+            - !service
+                class: Bar
+                autowire: true
+        factory: [ !service { class: Quz }, 'constructFoo' ]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

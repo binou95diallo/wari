@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 get_users:
     path: /users
     host: rest.local
     defaults:
         _controller: FOSRestBundle:UsersController:getUsers
+=======
+get_users:
+    path: /users
+    host: rest.local
+    defaults:
+        _controller: FOSRestBundle:UsersController:getUsers
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

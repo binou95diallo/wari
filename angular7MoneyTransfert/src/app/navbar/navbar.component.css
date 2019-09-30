@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #navbarSupportedContent{
   /* border: solid 1px brown; */
 }
@@ -20,4 +21,28 @@
     position: static;
     right:0px;
   }
+=======
+#navbarSupportedContent{
+  /* border: solid 1px brown; */
+}
+
+
+#navbarul{
+  /* border: solid 1px yellow; */
+  position: absolute;
+  right:40px;
+}
+.profil{
+  width: 20px;
+  height: 20px;
+  border: 1 solid red;
+}
+
+@media(max-width:991px){
+  #navbarul{
+    /* border: solid 0px none; */
+    position: static;
+    right:0px;
+  }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

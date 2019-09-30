@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /tests/_files/tmp
 /vendor
 /composer.lock
@@ -5,3 +6,12 @@
 /.php_cs
 /.php_cs.cache
 /.phpunit.result.cache
+=======
+/tests/_files/tmp
+/vendor
+/composer.lock
+/.idea
+/.php_cs
+/.php_cs.cache
+/.phpunit.result.cache
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

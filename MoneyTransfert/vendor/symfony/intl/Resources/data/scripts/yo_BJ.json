@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.48.77",
     "Names": {
@@ -9,3 +10,16 @@
         "Zxxx": "Aikɔsilɛ"
     }
 }
+=======
+{
+    "Version": "2.1.48.77",
+    "Names": {
+        "Arab": "èdè Lárúbáwá",
+        "Cyrl": "èdè ilɛ̀ Rɔ́shíà",
+        "Hans": "tí wɔ́n mú rɔrùn.",
+        "Hant": "Hans àtɔwɔ́dɔ́wɔ́",
+        "Latn": "Èdè Látìn",
+        "Zxxx": "Aikɔsilɛ"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

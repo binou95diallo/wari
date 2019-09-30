@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ./config.yml }
 
@@ -12,3 +13,19 @@ security:
     firewalls:
         default:
             switch_user: true
+=======
+imports:
+    - { resource: ./config.yml }
+
+security:
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user_can_switch:      { password: test, roles: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH] }
+                    user_cannot_switch_1: { password: test, roles: [ROLE_USER] }
+                    user_cannot_switch_2: { password: test, roles: [ROLE_USER] }
+    firewalls:
+        default:
+            switch_user: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

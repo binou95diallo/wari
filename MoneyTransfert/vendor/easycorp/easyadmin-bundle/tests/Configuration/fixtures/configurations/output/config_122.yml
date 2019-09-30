@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     design:
         assets:
@@ -6,3 +7,13 @@ easy_admin:
             favicon:
                 path: favicon.ico
                 mime_type: image/x-icon
+=======
+easy_admin:
+    design:
+        assets:
+            css: {  }
+            js: {  }
+            favicon:
+                path: favicon.ico
+                mime_type: image/x-icon
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

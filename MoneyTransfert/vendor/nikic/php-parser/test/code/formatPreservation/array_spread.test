@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Array spread
 -----
 <?php
@@ -26,4 +27,34 @@ $array->items[] = new Expr\ArrayItem(new Expr\Variable('c'), null, false, [], tr
 $items =
 [
 ... $value, ...$c
+=======
+Array spread
+-----
+<?php
+$items = [
+...$value
+];
+-----
+$array = $stmts[0]->expr->expr;
+$array->items[] = new Expr\ArrayItem(new Expr\Variable('b'));
+-----
+<?php
+$items = [
+...$value, $b
+];
+-----
+<?php
+$items =
+[
+... $value
+];
+-----
+$array = $stmts[0]->expr->expr;
+$array->items[] = new Expr\ArrayItem(new Expr\Variable('c'), null, false, [], true);
+-----
+<?php
+$items =
+[
+... $value, ...$c
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 ];

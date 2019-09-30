@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <phar xmlns="https://phar.io/xml/manifest/1.0">
     <contains name="phpunit/phpunit-example-extension" version="1.0.0" type="extension">
@@ -11,3 +12,18 @@
         <php version="^7.0"/>
     </requires>
 </phar>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<phar xmlns="https://phar.io/xml/manifest/1.0">
+    <contains name="phpunit/phpunit-example-extension" version="1.0.0" type="extension">
+        <extension for="phpunit/phpunit" compatible="invalid"/>
+    </contains>
+    <copyright>
+        <author name="Sebastian Bergmann" email="sebastian@phpunit.de"/>
+        <license type="BSD-3-Clause" url="https://github.com/sebastianbergmann/phpunit-example-extension/blob/master/LICENSE"/>
+    </copyright>
+    <requires>
+        <php version="^7.0"/>
+    </requires>
+</phar>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

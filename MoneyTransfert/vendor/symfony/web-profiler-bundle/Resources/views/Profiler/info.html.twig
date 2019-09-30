@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends '@WebProfiler/Profiler/layout.html.twig' %}
 
 {% set messages = {
@@ -20,3 +21,27 @@
     <h2>{{ messages[about].title }}</h2>
     <p>{{ messages[about].message }}</p>
 {% endblock %}
+=======
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% set messages = {
+    'no_token' : {
+        status:  'error',
+        title:   (token|default('') == 'latest') ? 'There are no profiles' : 'Token not found',
+        message: (token|default('') == 'latest') ? 'No profiles found in the database.' : 'Token "' ~ token|default('') ~ '" was not found in the database.'
+    }
+} %}
+
+{% block summary %}
+    <div class="status status-{{ messages[about].status }}">
+        <div class="container">
+            <h2>{{ messages[about].status|title }}</h2>
+        </div>
+    </div>
+{% endblock %}
+
+{% block panel %}
+    <h2>{{ messages[about].title }}</h2>
+    <p>{{ messages[about].message }}</p>
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

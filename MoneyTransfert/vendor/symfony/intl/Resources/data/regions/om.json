@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.82",
     "Names": {
@@ -15,3 +16,22 @@
         "US": "United States"
     }
 }
+=======
+{
+    "Version": "2.1.47.82",
+    "Names": {
+        "BR": "Brazil",
+        "CN": "China",
+        "DE": "Germany",
+        "ET": "Itoophiyaa",
+        "FR": "France",
+        "GB": "United Kingdom",
+        "IN": "India",
+        "IT": "Italy",
+        "JP": "Japan",
+        "KE": "Keeniyaa",
+        "RU": "Russia",
+        "US": "United States"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

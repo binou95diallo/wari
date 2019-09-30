@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -9,3 +10,16 @@ easy_admin:
         batch_actions:
             - { name: 'delete' }
             - { name: 'custom_batch_action', icon: 'custom-icon' }
+=======
+imports:
+    - { resource: config.yml }
+
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\FunctionalTests\Category
+    list:
+        batch_actions:
+            - { name: 'delete' }
+            - { name: 'custom_batch_action', icon: 'custom-icon' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

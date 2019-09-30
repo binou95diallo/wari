@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <phive xmlns="https://phar.io/phive">
   <phar name="php-cs-fixer" version="^2.15" installed="2.15.1" location="./tools/php-cs-fixer" copy="true"/>
   <phar name="psalm" version="^3.2" installed="3.4.5" location="./tools/psalm" copy="true"/>
 </phive>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="php-cs-fixer" version="^2.15" installed="2.15.1" location="./tools/php-cs-fixer" copy="true"/>
+  <phar name="psalm" version="^3.2" installed="3.4.5" location="./tools/psalm" copy="true"/>
+</phive>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

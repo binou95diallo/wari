@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Lexik\Bundle\JWTAuthenticationBundle\Event;
@@ -23,3 +24,30 @@ class JWTNotFoundEvent extends AuthenticationFailureEvent implements JWTFailureE
         $this->response  = $response;
     }
 }
+=======
+<?php
+
+namespace Lexik\Bundle\JWTAuthenticationBundle\Event;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+
+/**
+ * JWTNotFoundEvent event is dispatched when a JWT cannot be found in a request
+ * covered by a firewall secured via lexik_jwt.
+ *
+ * @author Robin Chalas <robin.chalas@gmail.com>
+ */
+class JWTNotFoundEvent extends AuthenticationFailureEvent implements JWTFailureEventInterface
+{
+    /**
+     * @param AuthenticationException|null $exception
+     * @param Response|null                $response
+     */
+    public function __construct(AuthenticationException $exception = null, Response $response = null)
+    {
+        $this->exception = $exception;
+        $this->response  = $response;
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

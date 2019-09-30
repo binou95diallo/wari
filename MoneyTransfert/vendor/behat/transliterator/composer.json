@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name":         "behat/transliterator",
     "description":  "String transliterator",
@@ -32,3 +33,39 @@
         }
     }
 }
+=======
+{
+    "name":         "behat/transliterator",
+    "description":  "String transliterator",
+    "keywords":     ["transliterator", "slug", "i18n"],
+    "type":         "library",
+    "license":      "Artistic-1.0",
+
+    "require": {
+        "php": ">=5.3.3"
+    },
+
+    "require-dev": {
+        "php-yaoi/php-yaoi": "^1.0",
+        "chuyskywalker/rolling-curl": "^3.1"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Behat\\Transliterator": "src/"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Behat\\Tests\\Transliterator\\": "tests"
+        }
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.2-dev"
+        }
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

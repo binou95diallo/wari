@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -16,3 +17,23 @@ easy_admin:
             show:
                 fields:
                     - { property: 'htmlFeatures', type: 'raw' }
+=======
+imports:
+    - { resource: config.yml }
+
+framework:
+    # This file overrides the EasyAdmin controller
+    router: { resource: "%kernel.root_dir%/config/routing_override.yml" }
+
+easy_admin:
+    entities:
+        Product:
+            class: AppTestBundle\Entity\FunctionalTests\Product
+            label: 'Products'
+            list:
+                fields:
+                    - { property: 'htmlFeatures', type: 'raw' }
+            show:
+                fields:
+                    - { property: 'htmlFeatures', type: 'raw' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

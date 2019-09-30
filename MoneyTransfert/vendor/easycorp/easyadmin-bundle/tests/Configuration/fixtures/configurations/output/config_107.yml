@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -10,3 +11,17 @@ easy_admin:
                         label: Field2
                     field3:
                         label: Field3
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            search:
+                fields:
+                    field1:
+                        label: Field1
+                    field2:
+                        label: Field2
+                    field3:
+                        label: Field3
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

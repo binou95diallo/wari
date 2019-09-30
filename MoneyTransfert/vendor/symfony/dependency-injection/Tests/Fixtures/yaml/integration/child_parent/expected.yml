@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     # child_service in the end should be identical to this
     child_service_expected:
@@ -7,3 +8,14 @@ services:
         lazy: true
         # ONLY the child tag, the parent tag does not inherit
         tags: [from_child]
+=======
+services:
+    # child_service in the end should be identical to this
+    child_service_expected:
+        class: stdClass
+        autowire: false
+        public: true
+        lazy: true
+        # ONLY the child tag, the parent tag does not inherit
+        tags: [from_child]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

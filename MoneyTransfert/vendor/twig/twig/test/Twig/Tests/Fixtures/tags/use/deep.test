@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "use" tag
 --TEMPLATE--
@@ -20,3 +21,27 @@ return []
 foo
 foo
 bar
+=======
+--TEST--
+"use" tag
+--TEMPLATE--
+{% use "foo.twig" %}
+
+{{ block('content') }}
+{{ block('foo') }}
+{{ block('bar') }}
+--TEMPLATE(foo.twig)--
+{% use "bar.twig" %}
+
+{% block content 'foo' %}
+{% block foo 'foo' %}
+--TEMPLATE(bar.twig)--
+{% block content 'bar' %}
+{% block bar 'bar' %}
+--DATA--
+return []
+--EXPECT--
+foo
+foo
+bar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

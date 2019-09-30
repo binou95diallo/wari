@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     edit:
         actions:
@@ -57,3 +58,64 @@ easy_admin:
                         label: action.list
                         css_class: 'btn btn-link pr-0 action-list'
                         icon: null
+=======
+easy_admin:
+    edit:
+        actions:
+            delete:
+                name: delete
+                type: method
+                label: action.delete
+                css_class: 'btn text-danger'
+                icon: trash-o
+            list:
+                name: list
+                type: method
+                label: action.list
+                css_class: 'btn btn-link pr-0'
+                icon: null
+    show:
+        actions:
+            edit:
+                name: edit
+                type: method
+                label: action.edit
+                css_class: 'btn btn-primary'
+                icon: edit
+    entities:
+        Category:
+            edit:
+                actions:
+                    delete:
+                        name: delete
+                        type: method
+                        label: action.delete
+                        css_class: 'btn text-danger action-delete'
+                        icon: trash-o
+                    list:
+                        name: list
+                        type: method
+                        label: action.list
+                        css_class: 'btn btn-link pr-0 action-list'
+                        icon: null
+            show:
+                actions:
+                    edit:
+                        name: edit
+                        type: method
+                        label: action.edit
+                        css_class: 'btn btn-primary action-edit'
+                        icon: edit
+                    delete:
+                        name: delete
+                        type: method
+                        label: action.delete
+                        css_class: 'btn text-danger action-delete'
+                        icon: trash-o
+                    list:
+                        name: list
+                        type: method
+                        label: action.list
+                        css_class: 'btn btn-link pr-0 action-list'
+                        icon: null
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

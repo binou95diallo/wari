@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.69",
     "Names": {
@@ -16,3 +17,23 @@
         "szl": "Schlesisch"
     }
 }
+=======
+{
+    "Version": "2.1.47.69",
+    "Names": {
+        "ar_001": "modernes Hocharabisch",
+        "car": "karibische Sprache",
+        "chb": "Chibcha-Sprache",
+        "del": "Delawarisch",
+        "fur": "Friulanisch",
+        "ha": "Hausa",
+        "haw": "Hawaiianisch",
+        "hmn": "Miao-Sprache",
+        "mus": "Muskogee-Sprache",
+        "niu": "Niueanisch",
+        "pag": "Pangasinensisch",
+        "sh": "Serbokroatisch",
+        "szl": "Schlesisch"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

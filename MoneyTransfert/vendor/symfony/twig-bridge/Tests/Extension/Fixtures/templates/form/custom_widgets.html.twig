@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% block _text_id_widget -%}
     <div id="container">
         {{- form_widget(form) -}}
@@ -17,3 +18,24 @@
     {% endif -%}
     <label>Custom name label: {{ label|trans(label_translation_parameters, translation_domain) }}</label>
 {%- endblock _name_c_entry_label %}
+=======
+{% block _text_id_widget -%}
+    <div id="container">
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock _text_id_widget %}
+
+{% block _names_entry_label -%}
+    {% if label is empty %}
+        {%- set label = name|humanize -%}
+    {% endif -%}
+    <label>Custom label: {{ label|trans(label_translation_parameters, translation_domain) }}</label>
+{%- endblock _names_entry_label %}
+
+{% block _name_c_entry_label -%}
+    {% if label is empty %}
+        {%- set label = name|humanize -%}
+    {% endif -%}
+    <label>Custom name label: {{ label|trans(label_translation_parameters, translation_domain) }}</label>
+{%- endblock _name_c_entry_label %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

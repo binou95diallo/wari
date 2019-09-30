@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 easy_admin:
     design:
         assets:
             favicon:
                 path: favicon.gif
                 mime_type: image/gif
+=======
+easy_admin:
+    design:
+        assets:
+            favicon:
+                path: favicon.gif
+                mime_type: image/gif
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

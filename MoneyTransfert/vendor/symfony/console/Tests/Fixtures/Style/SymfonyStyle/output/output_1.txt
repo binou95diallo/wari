@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Title
 =====
@@ -7,3 +8,14 @@ Title
 Title
 =====
 
+=======
+
+Title
+=====
+
+ [WARNING] Lorem ipsum dolor sit amet                                                                                   
+
+Title
+=====
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

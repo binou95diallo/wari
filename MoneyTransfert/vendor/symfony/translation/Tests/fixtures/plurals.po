@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 msgid "foo"
 msgid_plural "foos"
 msgstr[0] "bar"
@@ -5,3 +6,12 @@ msgstr[1] "bars"
 
 msgid "{0} no foos|one foo|%count% foos"
 msgstr "{0} no bars|one bar|%count% bars"
+=======
+msgid "foo"
+msgid_plural "foos"
+msgstr[0] "bar"
+msgstr[1] "bars"
+
+msgid "{0} no foos|one foo|%count% foos"
+msgstr "{0} no bars|one bar|%count% bars"
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

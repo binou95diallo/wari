@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 services:
     _defaults:
         tags: ['foo']
 
     Foo\Bar:
         tags: invalid
+=======
+services:
+    _defaults:
+        tags: ['foo']
+
+    Foo\Bar:
+        tags: invalid
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

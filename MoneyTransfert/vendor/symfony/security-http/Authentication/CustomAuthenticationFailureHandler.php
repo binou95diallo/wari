@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -41,3 +42,48 @@ class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler
         return $this->handler->onAuthenticationFailure($request, $exception);
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\Security\Http\Authentication;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+
+/**
+ * @author Fabien Potencier <fabien@symfony.com>
+ */
+class CustomAuthenticationFailureHandler implements AuthenticationFailureHandlerInterface
+{
+    private $handler;
+
+    /**
+     * @param AuthenticationFailureHandlerInterface $handler An AuthenticationFailureHandlerInterface instance
+     * @param array                                 $options Options for processing a successful authentication attempt
+     */
+    public function __construct(AuthenticationFailureHandlerInterface $handler, array $options)
+    {
+        $this->handler = $handler;
+        if (method_exists($handler, 'setOptions')) {
+            $this->handler->setOptions($options);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    {
+        return $this->handler->onAuthenticationFailure($request, $exception);
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.idea/
 /.php_cs.cache
 /bin/
@@ -8,3 +9,15 @@
 /Tests/Functional/app/web/media/cache
 /var/
 /vendor/
+=======
+/.idea/
+/.php_cs.cache
+/bin/
+/composer.lock
+/composer.phar
+/phpunit.xml
+/Tests/Functional/app/public/media/cache
+/Tests/Functional/app/web/media/cache
+/var/
+/vendor/
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # When using an array of form themes, the deprecated 'horizontal' and 'vertical'
 # shortcuts must keep being automatically transformed into their full form theme paths
@@ -6,3 +7,13 @@
 easy_admin:
     design:
         form_theme: ['horizontal', 'vertical']
+=======
+# TEST
+# When using an array of form themes, the deprecated 'horizontal' and 'vertical'
+# shortcuts must keep being automatically transformed into their full form theme paths
+
+# CONFIGURATION
+easy_admin:
+    design:
+        form_theme: ['horizontal', 'vertical']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

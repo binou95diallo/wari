@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 open
 validateId
 read
@@ -12,3 +13,19 @@ Array
     [1] => Cache-Control: max-age=10800, private, must-revalidate
 )
 shutdown
+=======
+open
+validateId
+read
+doRead: abc|i:123;
+read
+123
+updateTimestamp
+close
+Array
+(
+    [0] => Content-Type: text/plain; charset=utf-8
+    [1] => Cache-Control: max-age=10800, private, must-revalidate
+)
+shutdown
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

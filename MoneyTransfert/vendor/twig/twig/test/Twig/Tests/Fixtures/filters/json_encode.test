@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "json_encode" filter
 --TEMPLATE--
@@ -10,3 +11,17 @@ return ['foo' => new \Twig\Markup('foo', 'UTF-8')]
 "foo"
 "foo"
 ["foo","foo"]
+=======
+--TEST--
+"json_encode" filter
+--TEMPLATE--
+{{ "foo"|json_encode|raw }}
+{{ foo|json_encode|raw }}
+{{ [foo, "foo"]|json_encode|raw }}
+--DATA--
+return ['foo' => new \Twig\Markup('foo', 'UTF-8')]
+--EXPECT--
+"foo"
+"foo"
+["foo","foo"]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

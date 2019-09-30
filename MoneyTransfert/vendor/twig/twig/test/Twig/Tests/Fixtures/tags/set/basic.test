@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "set" tag
 --TEMPLATE--
@@ -18,3 +19,25 @@ foo&lt;br /&gt;
 
 
 foobar
+=======
+--TEST--
+"set" tag
+--TEMPLATE--
+{% set foo = 'foo' %}
+{% set bar = 'foo<br />' %}
+
+{{ foo }}
+{{ bar }}
+
+{% set foo, bar = 'foo', 'bar' %}
+
+{{ foo }}{{ bar }}
+--DATA--
+return []
+--EXPECT--
+foo
+foo&lt;br /&gt;
+
+
+foobar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

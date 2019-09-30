@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% if item.parent -%}
     {{ include('@EasyAdmin/default/action.html.twig', {
         action_href: path('easyadmin', request_parameters|merge({
@@ -8,3 +9,15 @@
 {%- else -%}
     <span class="sr-only">No Parent</span>
 {%- endif %}
+=======
+{% if item.parent -%}
+    {{ include('@EasyAdmin/default/action.html.twig', {
+        action_href: path('easyadmin', request_parameters|merge({
+            action: 'show',
+            id: item.parent.id
+        }))
+    }, with_context = true) }}
+{%- else -%}
+    <span class="sr-only">No Parent</span>
+{%- endif %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

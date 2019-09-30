@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -16,3 +17,23 @@ easy_admin:
                     validation_groups:
                         - Default
                         - my_validation_group
+=======
+easy_admin:
+    entities:
+        Category:
+            form:
+                form_options:
+                    validation_groups:
+                        - Default
+                        - my_validation_group
+            new:
+                form_options:
+                    validation_groups:
+                        - Default
+                        - my_validation_group
+            edit:
+                form_options:
+                    validation_groups:
+                        - Default
+                        - my_validation_group
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

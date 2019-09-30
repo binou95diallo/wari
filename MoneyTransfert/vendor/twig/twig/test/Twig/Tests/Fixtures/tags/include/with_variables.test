@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" tag accept variables
 --TEMPLATE--
@@ -12,3 +13,19 @@ return ['vars1' => ['foo' => 'bar'], 'vars2' => new ArrayObject(['foo' => 'bar']
 bar
 bar
 bar
+=======
+--TEST--
+"include" tag accept variables
+--TEMPLATE--
+{% include "foo.twig" with {'foo': 'bar'} %}
+{% include "foo.twig" with vars1 %}
+{% include "foo.twig" with vars2 %}
+--TEMPLATE(foo.twig)--
+{{ foo }}
+--DATA--
+return ['vars1' => ['foo' => 'bar'], 'vars2' => new ArrayObject(['foo' => 'bar'])]
+--EXPECT--
+bar
+bar
+bar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.4/phpunit.xsd">
@@ -11,3 +12,18 @@
         <listener class="Issue3379TestListener" file="./Issue3379TestListener.php"/>
     </listeners>
 </phpunit>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.4/phpunit.xsd">
+    <testsuites>
+        <testsuite name="default">
+            <directory suffix="Test.php">.</directory>
+        </testsuite>
+    </testsuites>
+
+    <listeners>
+        <listener class="Issue3379TestListener" file="./Issue3379TestListener.php"/>
+    </listeners>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

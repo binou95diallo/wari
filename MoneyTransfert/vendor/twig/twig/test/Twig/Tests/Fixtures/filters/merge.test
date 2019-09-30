@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "merge" filter
 --TEMPLATE--
@@ -23,3 +24,30 @@ foobar
 barfoo
 123456
 123b
+=======
+--TEST--
+"merge" filter
+--TEMPLATE--
+{{ items|merge({'bar': 'foo'})|join }}
+{{ items|merge({'bar': 'foo'})|keys|join }}
+{{ {'bar': 'foo'}|merge(items)|join }}
+{{ {'bar': 'foo'}|merge(items)|keys|join }}
+{{ numerics|merge([4, 5, 6])|join }}
+{{ traversable.a|merge(traversable.b)|join }}
+--DATA--
+return [
+    'items' => ['foo' => 'bar'],
+    'numerics' => [1, 2, 3],
+    'traversable' => [
+        'a' => new \ArrayObject([0 => 1, 1 => 2, 2 => 3]),
+        'b' => new \ArrayObject(['a' => 'b'])
+    ]
+]
+--EXPECT--
+barfoo
+foobar
+foobar
+barfoo
+123456
+123b
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

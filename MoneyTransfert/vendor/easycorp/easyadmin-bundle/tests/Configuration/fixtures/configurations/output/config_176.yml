@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -7,3 +8,14 @@ easy_admin:
                     edit: { name: 'edit', template: '@EasyAdmin/default/action.html.twig' }
                     delete: { name: 'delete', template: '@EasyAdmin/default/action.html.twig' }
                     custom: { name: 'custom', template: 'admin/custom.html.twig' }
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            list:
+                actions:
+                    edit: { name: 'edit', template: '@EasyAdmin/default/action.html.twig' }
+                    delete: { name: 'delete', template: '@EasyAdmin/default/action.html.twig' }
+                    custom: { name: 'custom', template: 'admin/custom.html.twig' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

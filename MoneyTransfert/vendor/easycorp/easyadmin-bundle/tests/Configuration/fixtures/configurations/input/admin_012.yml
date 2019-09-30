@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # configuration format #3 with two entities
 
@@ -8,3 +9,15 @@ easy_admin:
             class: AppTestBundle\Entity\UnitTests\Category
         Product:
             class: AppTestBundle\Entity\UnitTests\Product
+=======
+# TEST
+# configuration format #3 with two entities
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+        Product:
+            class: AppTestBundle\Entity\UnitTests\Product
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

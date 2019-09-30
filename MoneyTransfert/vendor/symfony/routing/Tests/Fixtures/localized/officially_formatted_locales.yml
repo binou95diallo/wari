@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 official:
     controller: HomeController::someAction
@@ -5,3 +6,12 @@ official:
         fr.UTF-8: /omelette-au-fromage
         pt-PT: /eu-não-sou-espanhol
         pt_BR: /churrasco
+=======
+---
+official:
+    controller: HomeController::someAction
+    path:
+        fr.UTF-8: /omelette-au-fromage
+        pt-PT: /eu-não-sou-espanhol
+        pt_BR: /churrasco
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

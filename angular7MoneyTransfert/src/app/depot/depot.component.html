@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <app-navbar></app-navbar>
 <div class="py-5 mt-5">
   <div class="row">
@@ -29,4 +30,37 @@
 
 
   </div>
+=======
+<app-navbar></app-navbar>
+<div class="py-5 mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor" id="formLogin"></span>
+
+      <!-- form card registration -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Faire un dépôt</h3>
+        </div>
+        <div class="card-body">
+          <form class="form">
+              <div class="form-group">
+                  <label for="uname1">Montant</label>
+                  <input type="number" [(ngModel)]="montant" name="montant" class="form-control rounded-0" required>
+                </div>
+                <div class="form-group">
+                  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+                </div>
+            <button type="button" (click)="addDepot()" class="btn btn-primary float-right">Valider</button>
+          </form>
+        </div>
+        <!--/card-block-->
+      </div>
+      <!-- /form card login -->
+
+    </div>
+
+
+  </div>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 </div>

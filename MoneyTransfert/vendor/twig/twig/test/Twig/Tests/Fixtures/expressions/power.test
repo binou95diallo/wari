@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig parses power expressions
 --TEMPLATE--
@@ -18,3 +19,25 @@ return ['a' => 4, 'b' => -2]
 0.0625
 16
 0.25
+=======
+--TEST--
+Twig parses power expressions
+--TEMPLATE--
+{{ 2**3 }}
+{{ (-2)**3 }}
+{{ (-2)**(-3) }}
+{{ a ** a }}
+{{ a ** b }}
+{{ b ** a }}
+{{ b ** b }}
+--DATA--
+return ['a' => 4, 'b' => -2]
+--EXPECT--
+8
+-8
+-0.125
+256
+0.0625
+16
+0.25
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

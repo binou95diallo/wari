@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "constant" function
 --TEMPLATE--
@@ -8,3 +9,15 @@ return ['expect' => DATE_W3C, 'object' => new \ArrayObject(['hi'])]
 --EXPECT--
 true
 2
+=======
+--TEST--
+"constant" function
+--TEMPLATE--
+{{ constant('DATE_W3C') == expect ? 'true' : 'false' }}
+{{ constant('ARRAY_AS_PROPS', object) }}
+--DATA--
+return ['expect' => DATE_W3C, 'object' => new \ArrayObject(['hi'])]
+--EXPECT--
+true
+2
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Aliases (namespacing)
 -----
 <?php
@@ -17,4 +18,25 @@ use F\G as H, J;
 use function foo\bar;
 use function foo\bar as baz;
 use const foo\BAR;
+=======
+Aliases (namespacing)
+-----
+<?php
+
+use A\B;
+use C\D as E;
+use F\G as H, J;
+
+use function foo\bar;
+use function foo\bar as baz;
+use const foo\BAR;
+use const foo\BAR as BAZ;
+-----
+use A\B;
+use C\D as E;
+use F\G as H, J;
+use function foo\bar;
+use function foo\bar as baz;
+use const foo\BAR;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 use const foo\BAR as BAZ;

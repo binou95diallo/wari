@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # combining configuration formats #2 and #3 using entities with same class names
 # and label but different names
@@ -9,3 +10,16 @@ easy_admin:
         AnotherCategory:
             class: AppTestBundle\Entity\UnitTests\SubNamespace\Category
             label: Category
+=======
+# TEST
+# combining configuration formats #2 and #3 using entities with same class names
+# and label but different names
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category: AppTestBundle\Entity\UnitTests\Category
+        AnotherCategory:
+            class: AppTestBundle\Entity\UnitTests\SubNamespace\Category
+            label: Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

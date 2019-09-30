@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "defined" support for blocks with a template argument
 --TEMPLATE--
@@ -15,3 +16,22 @@ return [
 ok
 ok
 ok
+=======
+--TEST--
+"defined" support for blocks with a template argument
+--TEMPLATE--
+{{ block('foo', 'included.twig') is defined ? 'ok' : 'ko' }}
+{{ block('foo', included_loaded) is defined ? 'ok' : 'ko' }}
+{{ block('foo', included_loaded_internal) is defined ? 'ok' : 'ko' }}
+--TEMPLATE(included.twig)--
+{% block foo %}FOO{% endblock %}
+--DATA--
+return [
+    'included_loaded' => $twig->load('included.twig'),
+    'included_loaded_internal' => $twig->load('included.twig'),
+]
+--EXPECT--
+ok
+ok
+ok
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

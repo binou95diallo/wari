@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         batch_actions:
@@ -13,3 +14,20 @@ easy_admin:
                 name: lowercaseaction
             WEIRD_caseAction:
                 name: WEIRD_caseAction
+=======
+easy_admin:
+    list:
+        batch_actions:
+            CamelCaseAction:
+                name: CamelCaseAction
+            snakeCaseAction:
+                name: snakeCaseAction
+            underscore_action:
+                name: underscore_action
+            UPPERCASE_ACTION:
+                name: UPPERCASE_ACTION
+            lowercaseaction:
+                name: lowercaseaction
+            WEIRD_caseAction:
+                name: WEIRD_caseAction
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

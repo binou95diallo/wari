@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 # TEST
 # disable actions globally with no entities configured (it shouldn't fail)
 
 # CONFIGURATION
 easy_admin:
     disabled_actions: ['action1']
+=======
+# TEST
+# disable actions globally with no entities configured (it shouldn't fail)
+
+# CONFIGURATION
+easy_admin:
+    disabled_actions: ['action1']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

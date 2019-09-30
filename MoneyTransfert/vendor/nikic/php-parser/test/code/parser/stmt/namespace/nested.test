@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Nested namespaces are not allowed
 -----
 <?php
@@ -27,4 +28,35 @@ array(
             )
         )
     )
+=======
+Nested namespaces are not allowed
+-----
+<?php
+namespace A {
+    namespace B {
+
+    }
+}
+-----
+Namespace declarations cannot be nested from 3:5 to 5:5
+array(
+    0: Stmt_Namespace(
+        name: Name(
+            parts: array(
+                0: A
+            )
+        )
+        stmts: array(
+            0: Stmt_Namespace(
+                name: Name(
+                    parts: array(
+                        0: B
+                    )
+                )
+                stmts: array(
+                )
+            )
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

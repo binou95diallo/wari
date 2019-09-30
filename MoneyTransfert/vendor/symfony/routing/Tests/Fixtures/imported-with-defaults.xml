@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <routes xmlns="http://symfony.com/schema/routing"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,3 +10,16 @@
         <default key="specific">imported</default>
     </route>
 </routes>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing
+        https://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="one" path="/one" />
+    <route id="two" path="/two">
+        <default key="specific">imported</default>
+    </route>
+</routes>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

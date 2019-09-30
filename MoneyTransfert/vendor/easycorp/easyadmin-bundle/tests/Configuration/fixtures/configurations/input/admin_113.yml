@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # if the special 'form' view is defined, use its options to complete 'new' and 'edit' actions 'form_options'
 
 # CONFIGURATION
@@ -7,3 +8,14 @@ easy_admin:
             class: AppTestBundle\Entity\UnitTests\Category
             form:
                 form_options: { validation_groups: ['Default', 'my_validation_group'] }
+=======
+# if the special 'form' view is defined, use its options to complete 'new' and 'edit' actions 'form_options'
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            form:
+                form_options: { validation_groups: ['Default', 'my_validation_group'] }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

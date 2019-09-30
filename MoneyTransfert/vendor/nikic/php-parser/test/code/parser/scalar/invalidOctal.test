@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Invalid octal literals
 -----
 <?php
@@ -23,4 +24,31 @@ array(
             value: 7
         )
     )
+=======
+Invalid octal literals
+-----
+<?php
+0787;
+-----
+!!php7
+Invalid numeric literal from 2:1 to 2:4
+array(
+    0: Stmt_Expression(
+        expr: Scalar_LNumber(
+            value: 0
+        )
+    )
+)
+-----
+<?php
+0787;
+-----
+!!php5
+array(
+    0: Stmt_Expression(
+        expr: Scalar_LNumber(
+            value: 7
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

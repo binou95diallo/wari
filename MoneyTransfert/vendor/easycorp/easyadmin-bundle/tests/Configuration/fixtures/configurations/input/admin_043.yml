@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # field defines its own image base_path and overrides entity configuration
 
@@ -10,3 +11,17 @@ easy_admin:
             list:
                 fields:
                     - { property: 'field1', type: 'image', base_path: '/field_path/' }
+=======
+# TEST
+# field defines its own image base_path and overrides entity configuration
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            image_base_path: '/entity_path/'
+            class: AppTestBundle\Entity\UnitTests\Category
+            list:
+                fields:
+                    - { property: 'field1', type: 'image', base_path: '/field_path/' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

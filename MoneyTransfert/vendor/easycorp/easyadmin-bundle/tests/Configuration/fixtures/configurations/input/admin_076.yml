@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # entity actions add the same default actions as the global actions
 # (the result should not duplicate those actions)
@@ -23,3 +24,30 @@ easy_admin:
                 actions: ['edit']
             new:
                 actions: ['list']
+=======
+# TEST
+# entity actions add the same default actions as the global actions
+# (the result should not duplicate those actions)
+
+# CONFIGURATION
+easy_admin:
+    list:
+        actions: ['show', 'edit']
+    edit:
+        actions: ['delete']
+    show:
+        actions: ['edit']
+    new:
+        actions: ['list']
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            list:
+                actions: ['show', 'edit']
+            edit:
+                actions: ['delete']
+            show:
+                actions: ['edit']
+            new:
+                actions: ['list']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

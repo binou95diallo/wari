@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # the 'new' and 'edit' and 'form' options are merged recursively
 
@@ -13,3 +14,20 @@ easy_admin:
                 custom_option: 'new custom value'
             edit:
                 fields: ['field3', 'field4']
+=======
+# TEST
+# the 'new' and 'edit' and 'form' options are merged recursively
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            form:
+                fields: ['field1', 'field2']
+                custom_option: 'custom value'
+            new:
+                custom_option: 'new custom value'
+            edit:
+                fields: ['field3', 'field4']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

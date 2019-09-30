@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 /**
  * This file is part of Lcobucci\JWT, a simple library to handle JWT and JWS
@@ -22,3 +23,29 @@ abstract class Rsa extends OpenSSL
         return OPENSSL_KEYTYPE_RSA;
     }
 }
+=======
+<?php
+/**
+ * This file is part of Lcobucci\JWT, a simple library to handle JWT and JWS
+ *
+ * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
+
+namespace Lcobucci\JWT\Signer;
+
+use const OPENSSL_KEYTYPE_RSA;
+
+/**
+ * Base class for RSASSA-PKCS1 signers
+ *
+ * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
+ * @since 2.1.0
+ */
+abstract class Rsa extends OpenSSL
+{
+    final public function getKeyType()
+    {
+        return OPENSSL_KEYTYPE_RSA;
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

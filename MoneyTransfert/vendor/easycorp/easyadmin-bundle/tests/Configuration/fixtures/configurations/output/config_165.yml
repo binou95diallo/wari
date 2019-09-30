@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         batch_actions:
@@ -15,3 +16,22 @@ easy_admin:
                         label: 'Entity Delete Label'
                         css_class: entity-delete-class
                         icon: entity-delete-icon
+=======
+easy_admin:
+    list:
+        batch_actions:
+            delete:
+                name: delete
+                label: 'Global Delete Label'
+                css_class: global-delete-class
+                icon: global-delete-icon
+    entities:
+        Category:
+            list:
+                batch_actions:
+                    delete:
+                        name: delete
+                        label: 'Entity Delete Label'
+                        css_class: entity-delete-class
+                        icon: entity-delete-icon
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "autoescape" tag do not applies escaping on filter arguments
 --TEMPLATE--
@@ -21,3 +22,28 @@ Twig
 Twig
 &lt;Fabien&gt;&lt;br /&gt;
 Twig
+=======
+--TEST--
+"autoescape" tag do not applies escaping on filter arguments
+--TEMPLATE--
+{% autoescape 'html' %}
+{{ var|nl2br("<br />") }}
+{{ var|nl2br("<br />"|escape) }}
+{{ var|nl2br(sep) }}
+{{ var|nl2br(sep|raw) }}
+{{ var|nl2br(sep|escape) }}
+{% endautoescape %}
+--DATA--
+return ['var' => "<Fabien>\nTwig", 'sep' => '<br />']
+--EXPECT--
+&lt;Fabien&gt;<br />
+Twig
+&lt;Fabien&gt;&lt;br /&gt;
+Twig
+&lt;Fabien&gt;<br />
+Twig
+&lt;Fabien&gt;<br />
+Twig
+&lt;Fabien&gt;&lt;br /&gt;
+Twig
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

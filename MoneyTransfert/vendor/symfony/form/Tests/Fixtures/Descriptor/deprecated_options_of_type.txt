@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Symfony\Component\Form\Tests\Console\Descriptor\FooType (Block prefix: "foo")
 =============================================================================
@@ -17,3 +18,24 @@ Type extensions
 ---------------
 
  * Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension
+=======
+
+Symfony\Component\Form\Tests\Console\Descriptor\FooType (Block prefix: "foo")
+=============================================================================
+
+ --------- 
+  Options  
+ --------- 
+  bar      
+ --------- 
+
+Parent types
+------------
+
+ * Symfony\Component\Form\Extension\Core\Type\FormType
+
+Type extensions
+---------------
+
+ * Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

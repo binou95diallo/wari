@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "autoescape" tag applies escaping on embedded blocks
 --TEMPLATE--
@@ -10,3 +11,17 @@
 return ['var' => '<br />']
 --EXPECT--
 &lt;br /&gt;
+=======
+--TEST--
+"autoescape" tag applies escaping on embedded blocks
+--TEMPLATE--
+{% autoescape 'html' %}
+  {% block foo %}
+    {{ var }}
+  {% endblock %}
+{% endautoescape %}
+--DATA--
+return ['var' => '<br />']
+--EXPECT--
+&lt;br /&gt;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

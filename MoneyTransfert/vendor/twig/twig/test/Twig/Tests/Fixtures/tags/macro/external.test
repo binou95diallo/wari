@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -15,3 +16,22 @@ return []
   <input type="text" name="username" value="" size="20">
 
   <input type="password" name="password" value="" size="1">
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% import 'forms.twig' as forms %}
+
+{{ forms.input('username') }}
+{{ forms.input('password', null, 'password', 1) }}
+--TEMPLATE(forms.twig)--
+{% macro input(name, value, type, size) %}
+  <input type="{{ type|default("text") }}" name="{{ name }}" value="{{ value|e|default('') }}" size="{{ size|default(20) }}">
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+  <input type="text" name="username" value="" size="20">
+
+  <input type="password" name="password" value="" size="1">
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

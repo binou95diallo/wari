@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Closures
 -----
 <?php
@@ -15,4 +16,23 @@ $closureWithArgs = function ($arg1, $arg2) {
 };
 $closureWithArgsAndVars = function ($arg1, $arg2) use($var1, $var2) {
     $comment = 'closure body';
+=======
+Closures
+-----
+<?php
+
+$closureWithArgs = function ($arg1, $arg2) {
+    $comment = 'closure body';
+};
+
+$closureWithArgsAndVars = function ($arg1, $arg2) use($var1, $var2) {
+    $comment = 'closure body';
+};
+-----
+$closureWithArgs = function ($arg1, $arg2) {
+    $comment = 'closure body';
+};
+$closureWithArgsAndVars = function ($arg1, $arg2) use($var1, $var2) {
+    $comment = 'closure body';
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 };

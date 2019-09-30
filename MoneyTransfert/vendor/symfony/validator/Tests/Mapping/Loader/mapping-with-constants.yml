@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespaces:
   custom: Symfony\Component\Validator\Tests\Fixtures\
 
@@ -6,3 +7,13 @@ Symfony\Component\Validator\Tests\Fixtures\Entity:
     firstName:
       - Range:
           max: !php/const PHP_INT_MAX
+=======
+namespaces:
+  custom: Symfony\Component\Validator\Tests\Fixtures\
+
+Symfony\Component\Validator\Tests\Fixtures\Entity:
+  properties:
+    firstName:
+      - Range:
+          max: !php/const PHP_INT_MAX
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "from" tag with syntax error
 --TEMPLATE--
@@ -6,3 +7,13 @@
 return []
 --EXCEPTION--
 Twig\Error\SyntaxError: Unexpected token "end of statement block" ("name" expected with value "import") in "index.twig" at line 2.
+=======
+--TEST--
+"from" tag with syntax error
+--TEMPLATE--
+{% from 'forms.twig' %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\SyntaxError: Unexpected token "end of statement block" ("name" expected with value "import") in "index.twig" at line 2.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         batch_actions:
@@ -9,3 +10,16 @@ easy_admin:
                 batch_actions:
                     custom_batch_action:
                         name: custom_batch_action
+=======
+easy_admin:
+    list:
+        batch_actions:
+            custom_batch_action:
+                name: custom_batch_action
+    entities:
+        Category:
+            list:
+                batch_actions:
+                    custom_batch_action:
+                        name: custom_batch_action
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

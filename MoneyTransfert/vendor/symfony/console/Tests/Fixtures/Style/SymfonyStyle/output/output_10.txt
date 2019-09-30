@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 X [CUSTOM] Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et      
 X          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -5,3 +6,12 @@ X          commodo consequat. Duis aute irure dolor in reprehenderit in voluptat
 X          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit    
 X          anim id est laborum                                                                                          
 
+=======
+
+X [CUSTOM] Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et      
+X          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+X          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat    
+X          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit    
+X          anim id est laborum                                                                                          
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

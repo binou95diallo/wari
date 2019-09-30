@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -7,3 +8,14 @@ easy_admin:
                         name: delete
                     list:
                         name: list
+=======
+easy_admin:
+    entities:
+        Category:
+            show:
+                actions:
+                    delete:
+                        name: delete
+                    list:
+                        name: list
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

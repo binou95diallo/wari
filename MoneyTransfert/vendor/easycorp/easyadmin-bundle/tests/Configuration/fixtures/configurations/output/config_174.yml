@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -7,3 +8,14 @@ easy_admin:
                         name: zzz_first_action
                     aaa_second_action:
                         name: aaa_second_action
+=======
+easy_admin:
+    entities:
+        Category:
+            list:
+                batch_actions:
+                    zzz_first_action:
+                        name: zzz_first_action
+                    aaa_second_action:
+                        name: aaa_second_action
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

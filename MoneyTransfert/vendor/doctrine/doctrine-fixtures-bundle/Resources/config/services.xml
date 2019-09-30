@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -16,3 +17,23 @@
         </service>
     </services>
 </container>
+=======
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <!-- commands -->
+        <service id="doctrine.fixtures_load_command" class="Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand">
+            <argument type="service" id="doctrine.fixtures.loader" />
+            <argument type="service" id="doctrine" />
+            <tag name="console.command" command="doctrine:fixtures:load" />
+        </service>
+
+        <service id="doctrine.fixtures.loader" class="Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader" public="false">
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
+</container>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

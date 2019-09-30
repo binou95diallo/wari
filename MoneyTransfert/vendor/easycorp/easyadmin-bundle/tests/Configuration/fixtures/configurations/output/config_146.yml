@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -10,3 +11,17 @@ easy_admin:
                 sort: { field: 'price', direction: 'DESC' }
             search:
                 sort: { field: 'createdAt', direction: 'DESC' }
+=======
+easy_admin:
+    entities:
+        Category:
+            list:
+                sort: { field: 'name', direction: 'ASC' }
+            search:
+                sort: { field: 'id', direction: 'DESC' }
+        Product:
+            list:
+                sort: { field: 'price', direction: 'DESC' }
+            search:
+                sort: { field: 'createdAt', direction: 'DESC' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

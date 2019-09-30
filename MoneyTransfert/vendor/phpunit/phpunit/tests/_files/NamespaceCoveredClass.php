@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
@@ -44,3 +45,51 @@ class CoveredClass extends CoveredParentClass
     {
     }
 }
+=======
+<?php declare(strict_types=1);
+/*
+ * This file is part of PHPUnit.
+ *
+ * (c) Sebastian Bergmann <sebastian@phpunit.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+namespace Foo;
+
+class CoveredParentClass
+{
+    public function publicMethod(): void
+    {
+        $this->protectedMethod();
+    }
+
+    protected function protectedMethod(): void
+    {
+        $this->privateMethod();
+    }
+
+    private function privateMethod(): void
+    {
+    }
+}
+
+class CoveredClass extends CoveredParentClass
+{
+    public function publicMethod(): void
+    {
+        parent::publicMethod();
+        $this->protectedMethod();
+    }
+
+    protected function protectedMethod(): void
+    {
+        parent::protectedMethod();
+        $this->privateMethod();
+    }
+
+    private function privateMethod(): void
+    {
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

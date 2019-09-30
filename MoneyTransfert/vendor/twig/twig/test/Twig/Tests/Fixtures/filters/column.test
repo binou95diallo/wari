@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "column" filter
 --TEMPLATE--
@@ -9,3 +10,16 @@ return array('array' => $items, 'traversable' => new ArrayIterator($items));
 --EXPECT--
 barfoo
 barfoo
+=======
+--TEST--
+"column" filter
+--TEMPLATE--
+{{ array|column('foo')|join }}
+{{ traversable|column('foo')|join }}
+--DATA--
+$items = array(array('bar' => 'foo', 'foo' => 'bar'), array('foo' => 'foo', 'bar' => 'bar'));
+return array('array' => $items, 'traversable' => new ArrayIterator($items));
+--EXPECT--
+barfoo
+barfoo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

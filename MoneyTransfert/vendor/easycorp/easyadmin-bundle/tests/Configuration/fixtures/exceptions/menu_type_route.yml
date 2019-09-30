@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # menu items of type "route" must define their labels
 
@@ -12,3 +13,19 @@ easy_admin:
         menu:
             - { route: 'route_name' }
     entities: []
+=======
+# TEST
+# menu items of type "route" must define their labels
+
+# EXCEPTION
+expected_exception:
+    class: RuntimeException
+    message_string: 'The configuration of the menu item with "route = route_name" must define the "label" option.'
+
+# CONFIGURATION
+easy_admin:
+    design:
+        menu:
+            - { route: 'route_name' }
+    entities: []
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

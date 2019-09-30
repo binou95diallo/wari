@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" tag allows expressions for the template to include
 --TEMPLATE--
@@ -14,3 +15,21 @@ FOO
 
 FOOBAR
 BAR
+=======
+--TEST--
+"include" tag allows expressions for the template to include
+--TEMPLATE--
+FOO
+{% include foo %}
+
+BAR
+--TEMPLATE(foo.twig)--
+FOOBAR
+--DATA--
+return ['foo' => 'foo.twig']
+--EXPECT--
+FOO
+
+FOOBAR
+BAR
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Comments in arrays and function calls
 -----
 <?php
@@ -50,4 +51,58 @@ foo(
 new Foo(
     // Foo
     $foo
+=======
+Comments in arrays and function calls
+-----
+<?php
+
+$arr = [
+    // Foo
+    $foo,
+    // Bar
+    $bar,
+    // Discarded
+];
+[
+    // Foo
+    $foo,
+    ,
+    // Bar
+    $bar,
+] = $arr;
+foo(
+    // Foo
+    $foo,
+    // Bar
+    $bar
+);
+new Foo(
+    // Foo
+    $foo
+);
+-----
+!!php7
+$arr = [
+    // Foo
+    $foo,
+    // Bar
+    $bar,
+];
+[
+    // Foo
+    $foo,
+    ,
+    // Bar
+    $bar,
+] = $arr;
+foo(
+    // Foo
+    $foo,
+    // Bar
+    $bar
+);
+new Foo(
+    // Foo
+    $foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 );

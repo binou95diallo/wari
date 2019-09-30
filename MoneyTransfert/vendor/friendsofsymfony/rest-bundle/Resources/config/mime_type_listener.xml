@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
@@ -13,3 +14,20 @@
 
     </services>
 </container>
+=======
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="fos_rest.mime_type_listener" class="FOS\RestBundle\EventListener\MimeTypeListener">
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="200" />
+            <argument type="collection" />
+        </service>
+
+    </services>
+</container>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

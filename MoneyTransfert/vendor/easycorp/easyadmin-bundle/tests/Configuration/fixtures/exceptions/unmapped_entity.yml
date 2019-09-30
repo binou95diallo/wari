@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # the entity class must exist
 
@@ -10,3 +11,17 @@ expected_exception:
 easy_admin:
     entities:
         TestEntity: AppTestBundle\Entity\FunctionalTests\Dummy
+=======
+# TEST
+# the entity class must exist
+
+# EXCEPTION
+expected_exception:
+    class: Symfony\Component\Config\Definition\Exception\InvalidTypeException
+    message_string: 'The configured class "AppTestBundle\Entity\FunctionalTests\Dummy" for the path "easy_admin.entities.TestEntity" is no mapped entity.'
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        TestEntity: AppTestBundle\Entity\FunctionalTests\Dummy
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

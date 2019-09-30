@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 {
     "Names": {
         "wo": "wolof",
         "wo_SN": "wolof (Senegal)"
     }
 }
+=======
+{
+    "Names": {
+        "wo": "wolof",
+        "wo_SN": "wolof (Senegal)"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

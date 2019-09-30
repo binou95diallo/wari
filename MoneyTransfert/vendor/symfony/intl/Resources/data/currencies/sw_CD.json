@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.71",
     "Names": {
@@ -43,3 +44,50 @@
         ]
     }
 }
+=======
+{
+    "Version": "2.1.47.71",
+    "Names": {
+        "CDF": [
+            "FC",
+            "Faranga ya Kongo"
+        ],
+        "CNY": [
+            "CN¥",
+            "Yuan Renminbi ya China"
+        ],
+        "ETB": [
+            "ETB",
+            "Bir ya Uhabeshi"
+        ],
+        "JPY": [
+            "JP¥",
+            "Sarafu ya Kijapani"
+        ],
+        "MGA": [
+            "MGA",
+            "Ariary ya Bukini"
+        ],
+        "MRO": [
+            "MRO",
+            "Ugwiya ya Moritania (1973–2017)"
+        ],
+        "MRU": [
+            "MRU",
+            "Ugwiya ya Moritania"
+        ],
+        "SCR": [
+            "SCR",
+            "Rupia ya Shelisheli"
+        ],
+        "XAF": [
+            "FCFA",
+            "Faranga CFA BEAC"
+        ],
+        "XOF": [
+            "CFA",
+            "Faranga CFA BCEAO"
+        ]
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

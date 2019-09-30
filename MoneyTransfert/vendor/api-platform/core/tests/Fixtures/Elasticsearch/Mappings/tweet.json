@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "mappings": {
     "_doc": {
@@ -37,3 +38,44 @@
     }
   }
 }
+=======
+{
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "author": {
+          "properties": {
+            "id": {
+              "type": "keyword"
+            },
+            "gender": {
+              "type": "keyword"
+            },
+            "age": {
+              "type": "integer"
+            },
+            "firstName": {
+              "type": "text"
+            },
+            "lastName": {
+              "type": "text"
+            }
+          },
+          "dynamic": "strict"
+        },
+        "date": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
+        },
+        "message": {
+          "type": "text"
+        }
+      },
+      "dynamic": "strict"
+    }
+  }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

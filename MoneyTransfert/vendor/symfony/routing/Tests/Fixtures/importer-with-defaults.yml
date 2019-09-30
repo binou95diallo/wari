@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 defaults:
   resource: imported-with-defaults.yml
   prefix: /defaults
   locale: g_locale
   format: g_format
+=======
+defaults:
+  resource: imported-with-defaults.yml
+  prefix: /defaults
+  locale: g_locale
+  format: g_format
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

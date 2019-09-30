@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -22,3 +23,29 @@ easy_admin:
                     - { property: 'name', help: 'Edit Help' }
                     - '-ean'
                     - price
+=======
+imports:
+    - { resource: config.yml }
+
+easy_admin:
+    entities:
+        Product:
+            class: AppTestBundle\Entity\FunctionalTests\Product
+            form:
+                fields:
+                    - { type: 'group', label: 'Group Label 1', icon: 'icon1' }
+                    - { property: 'ean', type_options: { required: true } }
+                    - { type: 'section', label: 'Section Label 1', help: 'Section Help' }
+                    - 'name'
+                    - { type: 'section' }
+                    - 'description'
+            new:
+                fields:
+                    - { property: 'ean', type_options: { required: false } }
+                    - { property: '-description' }
+            edit:
+                fields:
+                    - { property: 'name', help: 'Edit Help' }
+                    - '-ean'
+                    - price
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

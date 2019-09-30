@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 preset: symfony
 
 enabled:
@@ -15,3 +16,22 @@ finder:
     - "Tests/Stubs/"
   name:
     - "*.php"
+=======
+preset: symfony
+
+enabled:
+  - ordered_imports
+  - short_array_syntax
+
+disabled:
+  - phpdoc_scalar
+  - extra_empty_lines
+  - unalign_double_arrow
+  - unalign_equals
+
+finder:
+  not-path:
+    - "Tests/Stubs/"
+  name:
+    - "*.php"
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

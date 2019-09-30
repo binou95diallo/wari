@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "defined" support for constants
 --TEMPLATE--
@@ -12,3 +13,19 @@ ok
 ok
 ok
 ok
+=======
+--TEST--
+"defined" support for constants
+--TEMPLATE--
+{{ constant('DATE_W3C') is defined ? 'ok' : 'ko' }}
+{{ constant('ARRAY_AS_PROPS', object) is defined ? 'ok' : 'ko' }}
+{{ constant('FOOBAR') is not defined ? 'ok' : 'ko' }}
+{{ constant('FOOBAR', object) is not defined ? 'ok' : 'ko' }}
+--DATA--
+return ['expect' => DATE_W3C, 'object' => new \ArrayObject(['hi'])]
+--EXPECT--
+ok
+ok
+ok
+ok
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

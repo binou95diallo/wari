@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 digraph sc {
   ratio="compress"
   node [fontsize="11" fontname="Arial" shape="record"];
@@ -8,3 +9,15 @@ digraph sc {
   node_bar [label="bar\nBarClass\n", shape=record, fillcolor="#eeeeee", style="filled"];
   node_foo -> node_bar [label="" style="filled"];
 }
+=======
+digraph sc {
+  ratio="compress"
+  node [fontsize="11" fontname="Arial" shape="record"];
+  edge [fontsize="9" fontname="Arial" color="grey" arrowhead="open" arrowsize="0.5"];
+
+  node_service_container [label="service_container\nSymfony\\Component\\DependencyInjection\\ContainerInterface\n", shape=record, fillcolor="#eeeeee", style="filled"];
+  node_foo [label="foo\nFooClass\n", shape=record, fillcolor="#eeeeee", style="filled"];
+  node_bar [label="bar\nBarClass\n", shape=record, fillcolor="#eeeeee", style="filled"];
+  node_foo -> node_bar [label="" style="filled"];
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

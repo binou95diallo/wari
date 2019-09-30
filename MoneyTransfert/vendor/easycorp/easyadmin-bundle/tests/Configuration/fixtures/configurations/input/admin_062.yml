@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # it's possible to define global custom actions
 
@@ -14,3 +15,21 @@ easy_admin:
     entities:
         Category:
             class: AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# it's possible to define global custom actions
+
+# CONFIGURATION
+easy_admin:
+    list:
+        actions: ['custom_action_for_list']
+    edit:
+        actions: ['custom_action_for_edit']
+    show:
+        actions: ['custom_action_for_show']
+    new:
+        actions: ['custom_action_for_new']
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

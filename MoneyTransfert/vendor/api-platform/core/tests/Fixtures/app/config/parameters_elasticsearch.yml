@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 parameters:
     host: 'http://localhost:9200'
+=======
+parameters:
+    host: 'http://localhost:9200'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

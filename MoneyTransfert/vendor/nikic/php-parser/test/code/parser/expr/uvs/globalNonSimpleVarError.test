@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Non-simple variables are forbidden in PHP 7
 -----
 <?php
@@ -24,4 +25,32 @@ array(
             )
         )
     )
+=======
+Non-simple variables are forbidden in PHP 7
+-----
+<?php
+global $$foo->bar;
+-----
+!!php7
+Syntax error, unexpected T_OBJECT_OPERATOR, expecting ';' from 2:13 to 2:14
+array(
+    0: Stmt_Global(
+        vars: array(
+            0: Expr_Variable(
+                name: Expr_Variable(
+                    name: foo
+                )
+            )
+        )
+    )
+    1: Stmt_Expression(
+        expr: Expr_ConstFetch(
+            name: Name(
+                parts: array(
+                    0: bar
+                )
+            )
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

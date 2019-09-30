@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "batch" filter with zero elements
 --TEMPLATE--
@@ -8,3 +9,15 @@ return []
 --EXPECT--
 0
 0
+=======
+--TEST--
+"batch" filter with zero elements
+--TEMPLATE--
+{{ []|batch(3)|length }}
+{{ []|batch(3, 'fill')|length }}
+--DATA--
+return []
+--EXPECT--
+0
+0
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

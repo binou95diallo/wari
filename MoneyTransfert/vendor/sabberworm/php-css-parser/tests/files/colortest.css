@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #mine {
 	color: red;
 	border-color: rgb(10, 100, 230);
@@ -10,3 +11,17 @@
 	background-color: hsl(220, 10%, 220%);
 	background-color: hsla(220, 10%, 220%, 0.3);
 }
+=======
+#mine {
+	color: red;
+	border-color: rgb(10, 100, 230);
+	border-color: rgba(10, 100, 231, 0.3);
+	outline-color: #222;
+	background-color: #232323;
+}
+
+#yours {
+	background-color: hsl(220, 10%, 220%);
+	background-color: hsla(220, 10%, 220%, 0.3);
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 services:
     alias_for_foobar:
         alias: foobar
         deprecated: The "%alias_id%" service alias is deprecated.
+=======
+services:
+    alias_for_foobar:
+        alias: foobar
+        deprecated: The "%alias_id%" service alias is deprecated.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

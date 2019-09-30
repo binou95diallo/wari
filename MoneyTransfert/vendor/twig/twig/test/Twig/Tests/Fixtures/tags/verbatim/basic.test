@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "verbatim" tag
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return []
 --EXPECT--
 {{ foo }}
+=======
+--TEST--
+"verbatim" tag
+--TEMPLATE--
+{% verbatim %}
+{{ foo }}
+{% endverbatim %}
+--DATA--
+return []
+--EXPECT--
+{{ foo }}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

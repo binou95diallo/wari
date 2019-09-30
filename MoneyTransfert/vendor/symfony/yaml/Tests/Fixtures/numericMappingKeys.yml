@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --- %YAML:1.0
 test: A sequence with an unordered array
 brief: >
@@ -21,3 +22,28 @@ php: |
         2 => 'two',
         3 => 'three'
     ]
+=======
+--- %YAML:1.0
+test: A sequence with an unordered array
+brief: >
+  A sequence with an unordered array
+yaml: |
+  1: foo
+  0: bar
+php: |
+  [1 => 'foo', 0 => 'bar']
+---
+test: Integers as Map Keys
+brief: >
+    An integer can be used as dictionary key.
+yaml: |
+    1: one
+    2: two
+    3: three
+php: |
+    [
+        1 => 'one',
+        2 => 'two',
+        3 => 'three'
+    ]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 <phpunit stopOnWarning="true" />

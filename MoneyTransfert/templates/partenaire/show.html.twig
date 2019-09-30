@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html.twig' %}
 
 {% block title %}Partenaire{% endblock %}
@@ -52,3 +53,59 @@
 
     {{ include('partenaire/_delete_form.html.twig') }}
 {% endblock %}
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Partenaire{% endblock %}
+
+{% block body %}
+    <h1>Partenaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ partenaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ partenaire.matricule }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ partenaire.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ partenaire.password }}</td>
+            </tr>
+            <tr>
+                <th>NomComplet</th>
+                <td>{{ partenaire.nomComplet }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ partenaire.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ partenaire.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Ninea</th>
+                <td>{{ partenaire.ninea }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ partenaire.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('partenaire_index') }}">back to list</a>
+
+    <a href="{{ path('partenaire_edit', {'id': partenaire.id}) }}">edit</a>
+
+    {{ include('partenaire/_delete_form.html.twig') }}
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

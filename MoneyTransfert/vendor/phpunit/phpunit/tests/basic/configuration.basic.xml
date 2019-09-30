@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="../../phpunit.xsd"
@@ -14,3 +15,21 @@
         <const name="PHPUNIT_TESTSUITE_BASIC" value="true"/>
     </php>
 </phpunit>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../phpunit.xsd"
+         verbose="false"
+         colors="false">
+    <testsuites>
+        <testsuite name="basic">
+            <directory suffix="Test.php">unit</directory>
+            <directory suffix=".phpt">integration</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <const name="PHPUNIT_TESTSUITE_BASIC" value="true"/>
+    </php>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

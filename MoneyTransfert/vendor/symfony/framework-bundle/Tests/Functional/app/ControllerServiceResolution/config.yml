@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ../config/default.yml }
 
@@ -8,3 +9,15 @@ services:
 
     logger: { class: Psr\Log\NullLogger }
     Psr\Log\LoggerInterface: '@logger'
+=======
+imports:
+    - { resource: ../config/default.yml }
+
+services:
+    Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SubRequestServiceResolutionController:
+        public: true
+        tags: [controller.service_arguments]
+
+    logger: { class: Psr\Log\NullLogger }
+    Psr\Log\LoggerInterface: '@logger'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

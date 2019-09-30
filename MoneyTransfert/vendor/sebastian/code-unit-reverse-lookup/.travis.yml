@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: php
 
 php:
@@ -23,3 +24,30 @@ script:
 notifications:
   email: false
 
+=======
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.0snapshot
+  - 7.1
+  - 7.1snapshot
+  - master
+
+sudo: false
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+
+install:
+  - travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable
+
+script:
+  - ./vendor/bin/phpunit
+
+notifications:
+  email: false
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

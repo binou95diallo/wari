@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" function
 --TEMPLATE--
@@ -8,3 +9,15 @@
 --DATA--
 return []
 --EXPECT--
+=======
+--TEST--
+"include" function
+--TEMPLATE--
+{{ include(["foo.twig", "bar.twig"], ignore_missing = true) }}
+{{ include("foo.twig", ignore_missing = true) }}
+{{ include("foo.twig", ignore_missing = true, variables = {}) }}
+{{ include("foo.twig", ignore_missing = true, variables = {}, with_context = true) }}
+--DATA--
+return []
+--EXPECT--
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

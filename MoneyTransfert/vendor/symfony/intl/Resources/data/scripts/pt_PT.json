@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Names": {
@@ -17,3 +18,24 @@
         "Zxxx": "não escrito"
     }
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Names": {
+        "Armn": "arménio",
+        "Beng": "bengalês",
+        "Egyd": "egípcio demótico",
+        "Egyh": "egípcio hierático",
+        "Ethi": "etíope",
+        "Hanb": "han com bopomofo",
+        "Inds": "indus",
+        "Orya": "odia",
+        "Sylo": "siloti nagri",
+        "Tale": "tai le",
+        "Telu": "telugu",
+        "Zsye": "emoji",
+        "Zsym": "símbolos",
+        "Zxxx": "não escrito"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

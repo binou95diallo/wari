@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 framework:
     workflows:
         my_workflow:
@@ -9,3 +10,16 @@ framework:
                 go:
                     from: first
                     to: [last, middle ]
+=======
+framework:
+    workflows:
+        my_workflow:
+            type: state_machine
+            supports:
+                - Symfony\Bundle\FrameworkBundle\Tests\DependencyInjection\FrameworkExtensionTest
+            places: [first, middle, last]
+            transitions:
+                go:
+                    from: first
+                    to: [last, middle ]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "if" creates a condition
 --TEMPLATE--
@@ -20,3 +21,27 @@ return ['b' => 'b']
 return []
 --EXPECT--
   NOTHING
+=======
+--TEST--
+"if" creates a condition
+--TEMPLATE--
+{% if a is defined %}
+  {{ a }}
+{% elseif b is defined %}
+  {{ b }}
+{% else %}
+  NOTHING
+{% endif %}
+--DATA--
+return ['a' => 'a']
+--EXPECT--
+  a
+--DATA--
+return ['b' => 'b']
+--EXPECT--
+  b
+--DATA--
+return []
+--EXPECT--
+  NOTHING
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

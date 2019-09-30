@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 
  * Lorem ipsum dolor sit amet
  * consectetur adipiscing elit
 
  [OK] Lorem ipsum dolor sit amet                                                                                        
 
+=======
+
+ * Lorem ipsum dolor sit amet
+ * consectetur adipiscing elit
+
+ [OK] Lorem ipsum dolor sit amet                                                                                        
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

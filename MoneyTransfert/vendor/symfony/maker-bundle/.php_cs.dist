@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 if (!file_exists(__DIR__.'/src')) {
@@ -36,3 +37,43 @@ EOF
     ->setRiskyAllowed(true)
     ->setFinder($finder)
 ;
+=======
+<?php
+
+if (!file_exists(__DIR__.'/src')) {
+    exit(0);
+}
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__.'/src')
+    // the PHP template files are a bit special
+    ->notName('*.tpl.php')
+;
+
+if (\PHP_VERSION_ID < 70100) {
+    // EntityRegenerator works only with PHP 7.1+
+    $finder->notName('EntityRegenerator.php');
+}
+
+return PhpCsFixer\Config::create()
+    ->setRules(array(
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'protected_to_private' => false,
+        'semicolon_after_instruction' => false,
+        'header_comment' => [
+            'header' => <<<EOF
+This file is part of the Symfony MakerBundle package.
+
+(c) Fabien Potencier <fabien@symfony.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+EOF
+        ]
+    ))
+    ->setRiskyAllowed(true)
+    ->setFinder($finder)
+;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

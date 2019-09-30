@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "even" test
 --TEMPLATE--
@@ -12,3 +13,19 @@ ok
 ok
 ok
 ok
+=======
+--TEST--
+"even" test
+--TEMPLATE--
+{{ 1 is even ? 'ko' : 'ok' }}
+{{ 2 is even ? 'ok' : 'ko' }}
+{{ 1 is not even ? 'ok' : 'ko' }}
+{{ 2 is not even ? 'ko' : 'ok' }}
+--DATA--
+return []
+--EXPECT--
+ok
+ok
+ok
+ok
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

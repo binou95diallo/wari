@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "for" tags can be nested
 --TEMPLATE--
@@ -16,3 +17,23 @@ return ['items' => ['a' => ['a1', 'a2', 'a3'], 'b' => ['b1']]]
   * a3 (3)
 * b (2):
   * b1 (1)
+=======
+--TEST--
+"for" tags can be nested
+--TEMPLATE--
+{% for key, item in items %}
+* {{ key }} ({{ loop.length }}):
+{% for value in item %}
+  * {{ value }} ({{ loop.length }})
+{% endfor %}
+{% endfor %}
+--DATA--
+return ['items' => ['a' => ['a1', 'a2', 'a3'], 'b' => ['b1']]]
+--EXPECT--
+* a (2):
+  * a1 (3)
+  * a2 (3)
+  * a3 (3)
+* b (2):
+  * b1 (1)
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

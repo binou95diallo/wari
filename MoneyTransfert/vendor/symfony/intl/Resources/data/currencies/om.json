@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.82",
     "Names": {
@@ -39,3 +40,46 @@
         ]
     }
 }
+=======
+{
+    "Version": "2.1.47.82",
+    "Names": {
+        "BRL": [
+            "R$",
+            "Brazilian Real"
+        ],
+        "CNY": [
+            "CN¥",
+            "Chinese Yuan Renminbi"
+        ],
+        "ETB": [
+            "Br",
+            "Itoophiyaa Birrii"
+        ],
+        "EUR": [
+            "€",
+            "Euro"
+        ],
+        "GBP": [
+            "£",
+            "British Pound"
+        ],
+        "INR": [
+            "₹",
+            "Indian Rupee"
+        ],
+        "JPY": [
+            "JP¥",
+            "Japanese Yen"
+        ],
+        "RUB": [
+            "RUB",
+            "Russian Ruble"
+        ],
+        "USD": [
+            "US$",
+            "US Dollar"
+        ]
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

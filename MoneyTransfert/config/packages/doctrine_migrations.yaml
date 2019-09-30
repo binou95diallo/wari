@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 doctrine_migrations:
     dir_name: '%kernel.project_dir%/src/Migrations'
     # namespace is arbitrary but should be different from App\Migrations
     # as migrations classes should NOT be autoloaded
     namespace: DoctrineMigrations
+=======
+doctrine_migrations:
+    dir_name: '%kernel.project_dir%/src/Migrations'
+    # namespace is arbitrary but should be different from App\Migrations
+    # as migrations classes should NOT be autoloaded
+    namespace: DoctrineMigrations
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

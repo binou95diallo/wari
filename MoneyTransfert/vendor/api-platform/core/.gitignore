@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.php_cs
 /.php_cs.cache
 /build/
@@ -8,3 +9,15 @@
 /swagger.yaml
 /tests/Fixtures/app/var/
 /vendor/
+=======
+/.php_cs
+/.php_cs.cache
+/build/
+/composer.lock
+/composer.phar
+/phpunit.xml
+/swagger.json
+/swagger.yaml
+/tests/Fixtures/app/var/
+/vendor/
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

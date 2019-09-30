@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig manages negative numbers correctly
 --TEMPLATE--
@@ -16,3 +17,23 @@ return []
 4
 4
 4
+=======
+--TEST--
+Twig manages negative numbers correctly
+--TEMPLATE--
+{{ -1 }}
+{{ - 1 }}
+{{ 5 - 1 }}
+{{ 5-1 }}
+{{ 5 + -1 }}
+{{ 5 + - 1 }}
+--DATA--
+return []
+--EXPECT--
+-1
+-1
+4
+4
+4
+4
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

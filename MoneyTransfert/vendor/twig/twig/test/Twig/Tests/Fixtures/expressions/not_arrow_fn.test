@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 A string in parentheses cannot be confused with an arrow function
 --TEMPLATE--
@@ -6,3 +7,13 @@ A string in parentheses cannot be confused with an arrow function
 return []
 --EXPECT--
 foofbar
+=======
+--TEST--
+A string in parentheses cannot be confused with an arrow function
+--TEMPLATE--
+{{ ["foo", "bar"]|join(("f")) }}
+--DATA--
+return []
+--EXPECT--
+foofbar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

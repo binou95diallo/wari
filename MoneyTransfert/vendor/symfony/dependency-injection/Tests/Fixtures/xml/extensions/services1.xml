@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
@@ -17,3 +18,24 @@
     </project:bar>
 
 </container>
+=======
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:project="http://www.example.com/schema/project">
+
+    <parameters>
+        <parameter key="project.parameter.foo">BAR</parameter>
+    </parameters>
+
+    <services>
+        <service id="project.service.foo" class="BAR" public="true"/>
+    </services>
+
+    <project:bar babar="babar">
+        <another />
+        <another2>%project.parameter.foo%</another2>
+    </project:bar>
+
+</container>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

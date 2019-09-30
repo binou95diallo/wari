@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 declare(strict_types=1);
@@ -31,3 +32,38 @@ class MigrationsVersionEventArgs extends MigrationsEventArgs
         return $this->version;
     }
 }
+=======
+<?php
+
+declare(strict_types=1);
+
+namespace Doctrine\Migrations\Event;
+
+use Doctrine\Migrations\Configuration\Configuration;
+use Doctrine\Migrations\Version\Version;
+
+/**
+ * The MigrationsVersionEventArgs class is passed to events related to a single migration version.
+ */
+class MigrationsVersionEventArgs extends MigrationsEventArgs
+{
+    /** @var Version */
+    private $version;
+
+    public function __construct(
+        Version $version,
+        Configuration $config,
+        string $direction,
+        bool $dryRun
+    ) {
+        parent::__construct($config, $direction, $dryRun);
+
+        $this->version = $version;
+    }
+
+    public function getVersion() : Version
+    {
+        return $this->version;
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

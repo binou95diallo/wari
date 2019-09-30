@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Constant declarations
 -----
 <?php
@@ -8,4 +9,16 @@ const FOO = BAR, BAR = FOO;
 -----
 const FOO = 'BAR';
 const FOO = 1 + 1;
+=======
+Constant declarations
+-----
+<?php
+
+const FOO = 'BAR';
+const FOO = 1 + 1;
+const FOO = BAR, BAR = FOO;
+-----
+const FOO = 'BAR';
+const FOO = 1 + 1;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 const FOO = BAR, BAR = FOO;

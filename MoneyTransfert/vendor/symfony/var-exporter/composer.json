@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "symfony/var-exporter",
     "type": "library",
@@ -34,3 +35,41 @@
         }
     }
 }
+=======
+{
+    "name": "symfony/var-exporter",
+    "type": "library",
+    "description": "A blend of var_export() + serialize() to turn any serializable data structure to plain PHP code",
+    "keywords": ["export", "serialize", "instantiate", "hydrate", "construct", "clone"],
+    "homepage": "https://symfony.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas Grekas",
+            "email": "p@tchwork.com"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://symfony.com/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.1.1"
+    },
+    "autoload": {
+        "psr-4": { "Symfony\\Component\\VarExporter\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.3-dev"
+        }
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig supports the in operator when using objects
 --TEMPLATE--
@@ -17,3 +18,24 @@ return [
 ]
 --EXPECT--
 TRUE
+=======
+--TEST--
+Twig supports the in operator when using objects
+--TEMPLATE--
+{% if object in object_list %}
+TRUE
+{% endif %}
+--DATA--
+$foo = new TwigTestFoo();
+$foo1 = new TwigTestFoo();
+
+$foo->position = $foo1;
+$foo1->position = $foo;
+
+return [
+    'object'      => $foo,
+    'object_list' => [$foo1, $foo],
+]
+--EXPECT--
+TRUE
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

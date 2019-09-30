@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: php
 php:
   - 5.6
@@ -13,3 +14,20 @@ matrix:
 
 before_script:
   - composer install --prefer-dist -o
+=======
+language: php
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+before_script:
+  - composer install --prefer-dist -o
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

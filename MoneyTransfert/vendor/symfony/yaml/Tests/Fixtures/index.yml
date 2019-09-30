@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - escapedCharacters
 - sfComments
 - sfCompact
@@ -16,3 +17,23 @@
 - YtsSpecificationExamples
 - YtsTypeTransfers
 - unindentedCollections
+=======
+- escapedCharacters
+- sfComments
+- sfCompact
+- sfTests
+- sfObjects
+- sfMergeKey
+- sfQuotes
+- YtsAnchorAlias
+- YtsBasicTests
+- YtsBlockMapping
+- YtsDocumentSeparator
+- YtsErrorTests
+- YtsFlowCollections
+- YtsFoldedScalars
+- YtsNullsAndEmpties
+- YtsSpecificationExamples
+- YtsTypeTransfers
+- unindentedCollections
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

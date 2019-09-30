@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _blog:
     resource:     validpattern.yml
     prefix:       /{foo}
@@ -6,3 +7,13 @@ _blog:
     options:      { 'foo': 'bar' }
     host:         ""
     condition:    'context.getMethod() == "POST"'
+=======
+_blog:
+    resource:     validpattern.yml
+    prefix:       /{foo}
+    defaults:     { 'foo': '123' }
+    requirements: { 'foo': '\d+' }
+    options:      { 'foo': 'bar' }
+    host:         ""
+    condition:    'context.getMethod() == "POST"'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

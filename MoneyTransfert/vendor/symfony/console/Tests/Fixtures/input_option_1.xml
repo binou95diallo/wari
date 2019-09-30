@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <option name="--option_name" shortcut="-o" accept_value="0" is_value_required="0" is_multiple="0">
   <description></description>
 </option>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<option name="--option_name" shortcut="-o" accept_value="0" is_value_required="0" is_multiple="0">
+  <description></description>
+</option>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

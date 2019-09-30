@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" tag
 --TEMPLATE--
@@ -10,3 +11,17 @@ return []
 --EXPECT--
 foo
 foo
+=======
+--TEST--
+"include" tag
+--TEMPLATE--
+{% include ["foo.twig", "bar.twig"] %}
+{% include ["bar.twig", "foo.twig"] %}
+--TEMPLATE(foo.twig)--
+foo
+--DATA--
+return []
+--EXPECT--
+foo
+foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

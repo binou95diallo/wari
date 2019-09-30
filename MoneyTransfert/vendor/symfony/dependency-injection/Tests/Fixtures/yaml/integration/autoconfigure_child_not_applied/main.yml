@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: _child.yml }
 
@@ -6,3 +7,13 @@ services:
         autoconfigure: true
         abstract: true
         public: true
+=======
+imports:
+    - { resource: _child.yml }
+
+services:
+    parent_service:
+        autoconfigure: true
+        abstract: true
+        public: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

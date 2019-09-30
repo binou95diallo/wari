@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "entrypoints": {
     "app": {
@@ -33,4 +34,41 @@
       ]
     }
   }
+=======
+{
+  "entrypoints": {
+    "app": {
+      "css": [
+        "./app.css"
+      ],
+      "js": [
+        "./app.js"
+      ]
+    },
+    "app-rtl": {
+      "css": [
+        "./app-rtl.css"
+      ],
+      "js": [
+        "./app-rtl.js"
+      ]
+    },
+    "form-type-code-editor": {
+      "css": [
+        "./form-type-code-editor.css"
+      ],
+      "js": [
+        "./form-type-code-editor.js"
+      ]
+    },
+    "form-type-text-editor": {
+      "css": [
+        "./form-type-text-editor.css"
+      ],
+      "js": [
+        "./form-type-text-editor.js"
+      ]
+    }
+  }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

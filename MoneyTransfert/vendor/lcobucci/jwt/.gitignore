@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /vendor
 /phpunit.xml
 /composer.lock
+=======
+/vendor
+/phpunit.xml
+/composer.lock
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

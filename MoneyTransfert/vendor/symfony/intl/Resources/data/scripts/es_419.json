@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.86",
     "Names": {
@@ -8,3 +9,15 @@
         "Mlym": "malayalam"
     }
 }
+=======
+{
+    "Version": "2.1.47.86",
+    "Names": {
+        "Hanb": "han con bopomofo",
+        "Hrkt": "katakana o hiragana",
+        "Laoo": "lao",
+        "Latn": "latín",
+        "Mlym": "malayalam"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

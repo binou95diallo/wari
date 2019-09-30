@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .some[selectors-may='contain-a-{'] {
 	
 }
@@ -6,4 +7,14 @@
   .test {
     prop: val;
   }
+=======
+.some[selectors-may='contain-a-{'] {
+	
+}
+
+@media only screen and (min-width: 200px) {
+  .test {
+    prop: val;
+  }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

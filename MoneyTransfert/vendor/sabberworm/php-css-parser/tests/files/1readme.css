@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "utf-8";
 
 @font-face {
@@ -8,3 +9,15 @@
 html, body {
 	font-size: 1.6em
 }
+=======
+@charset "utf-8";
+
+@font-face {
+  font-family: "CrassRoots";
+  src: url("../media/cr.ttf")
+}
+	
+html, body {
+	font-size: 1.6em
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

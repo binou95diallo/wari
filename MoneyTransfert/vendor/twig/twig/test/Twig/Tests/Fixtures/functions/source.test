@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "source" function
 --TEMPLATE--
@@ -15,3 +16,22 @@ FOO
 {{ foo }}<br />
 
 BAR
+=======
+--TEST--
+"source" function
+--TEMPLATE--
+FOO
+{{ source("foo.twig") }}
+
+BAR
+--TEMPLATE(foo.twig)--
+{{ foo }}<br />
+--DATA--
+return []
+--EXPECT--
+FOO
+
+{{ foo }}<br />
+
+BAR
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --- %YAML:1.0
 test: Unindented collection
 brief: >
@@ -80,3 +81,87 @@ yaml: |
        foo: bar
 php: |
     ['collection' => [['key' => 'foo', 'foo' => 'bar']]]
+=======
+--- %YAML:1.0
+test: Unindented collection
+brief: >
+    Unindented collection
+yaml: |
+    collection:
+    - item1
+    - item2
+    - item3
+php: |
+    ['collection' => ['item1', 'item2', 'item3']]
+---
+test: Nested unindented collection (two levels)
+brief: >
+    Nested unindented collection
+yaml: |
+    collection:
+        key:
+        - a
+        - b
+        - c
+php: |
+    ['collection' => ['key' => ['a', 'b', 'c']]]
+---
+test: Nested unindented collection (three levels)
+brief: >
+    Nested unindented collection
+yaml: |
+    collection:
+        key:
+            subkey:
+            - one
+            - two
+            - three
+php: |
+    ['collection' => ['key' => ['subkey' => ['one', 'two', 'three']]]]
+---
+test: Key/value after unindented collection (1)
+brief: >
+    Key/value after unindented collection (1)
+yaml: |
+    collection:
+        key:
+        - a
+        - b
+        - c
+    foo: bar
+php: |
+    ['collection' => ['key' => ['a', 'b', 'c']], 'foo' => 'bar']
+---
+test: Key/value after unindented collection (at the same level)
+brief: >
+    Key/value after unindented collection
+yaml: |
+    collection:
+        key:
+        - a
+        - b
+        - c
+        foo: bar
+php: |
+    ['collection' => ['key' => ['a', 'b', 'c'], 'foo' => 'bar']]
+---
+test: Shortcut Key after unindented collection
+brief: >
+    Key/value after unindented collection
+yaml: |
+    collection:
+    - key: foo
+      foo: bar
+php: |
+    ['collection' => [['key' => 'foo', 'foo' => 'bar']]]
+---
+test: Shortcut Key after unindented collection with custom spaces
+brief: >
+    Key/value after unindented collection
+yaml: |
+    collection:
+    -  key: foo
+       foo: bar
+php: |
+    ['collection' => [['key' => 'foo', 'foo' => 'bar']]]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

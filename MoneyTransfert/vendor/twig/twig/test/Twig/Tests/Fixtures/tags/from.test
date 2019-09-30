@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 global variables
 --TEMPLATE--
@@ -12,3 +13,19 @@ called foobar
 return []
 --EXPECT--
 called foobar
+=======
+--TEST--
+global variables
+--TEMPLATE--
+{% include "included.twig" %}
+{% from "included.twig" import foobar %}
+{{ foobar() }}
+--TEMPLATE(included.twig)--
+{% macro foobar() %}
+called foobar
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+called foobar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 services:
     service_container:
@@ -20,3 +21,27 @@ services:
     Symfony\Component\DependencyInjection\ContainerInterface:
         alias: service_container
         public: false
+=======
+
+services:
+    service_container:
+        class: Symfony\Component\DependencyInjection\ContainerInterface
+        public: true
+        synthetic: true
+    foo_service:
+        class: Foo
+        tags:
+            - { name: foo }
+    foo_service_tagged_iterator:
+        class: Bar
+        arguments: [!tagged { tag: foo, index_by: barfoo, default_index_method: foobar }]
+    foo_service_tagged_locator:
+        class: Bar
+        arguments: [!tagged_locator { tag: foo, index_by: barfoo, default_index_method: foobar }]
+    Psr\Container\ContainerInterface:
+        alias: service_container
+        public: false
+    Symfony\Component\DependencyInjection\ContainerInterface:
+        alias: service_container
+        public: false
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

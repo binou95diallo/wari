@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 framework:
     fragments:
         enabled: false
@@ -5,3 +6,12 @@ framework:
         enabled: true
     ssi:
         enabled: true
+=======
+framework:
+    fragments:
+        enabled: false
+    esi:
+        enabled: true
+    ssi:
+        enabled: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

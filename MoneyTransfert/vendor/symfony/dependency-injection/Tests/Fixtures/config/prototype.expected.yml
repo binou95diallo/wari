@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 services:
     service_container:
@@ -23,3 +24,30 @@ services:
         lazy: true
         arguments: [1]
         factory: f
+=======
+
+services:
+    service_container:
+        class: Symfony\Component\DependencyInjection\ContainerInterface
+        public: true
+        synthetic: true
+    Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\Foo:
+        class: Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\Foo
+        public: true
+        tags:
+            - { name: foo }
+            - { name: baz }
+        deprecated: '%service_id%'
+        arguments: [1]
+        factory: f
+    Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\Sub\Bar:
+        class: Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\Sub\Bar
+        public: true
+        tags:
+            - { name: foo }
+            - { name: baz }
+        deprecated: '%service_id%'
+        lazy: true
+        arguments: [1]
+        factory: f
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

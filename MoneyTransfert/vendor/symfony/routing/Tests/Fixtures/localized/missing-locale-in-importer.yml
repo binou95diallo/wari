@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 ---
 importing_with_missing_prefix:
     resource: ./localized-route.yml
     prefix:
     nl: /prefix
+=======
+---
+importing_with_missing_prefix:
+    resource: ./localized-route.yml
+    prefix:
+    nl: /prefix
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

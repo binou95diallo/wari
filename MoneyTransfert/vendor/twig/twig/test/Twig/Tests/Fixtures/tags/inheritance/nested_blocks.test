@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "block" tag
 --TEMPLATE--
@@ -20,3 +21,27 @@
 return []
 --EXPECT--
 SUBSUBCONTENT
+=======
+--TEST--
+"block" tag
+--TEMPLATE--
+{% extends "foo.twig" %}
+
+{% block content %}
+    {% block subcontent %}
+        {% block subsubcontent %}
+            SUBSUBCONTENT
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
+--TEMPLATE(foo.twig)--
+{% block content %}
+    {% block subcontent %}
+        SUBCONTENT
+    {% endblock %}
+{% endblock %}
+--DATA--
+return []
+--EXPECT--
+SUBSUBCONTENT
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

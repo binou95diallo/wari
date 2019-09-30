@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 api_platform:
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
+=======
+api_platform:
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

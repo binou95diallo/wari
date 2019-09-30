@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -20,3 +21,27 @@ namespace Symfony\Component\Routing\Exception;
 class MissingMandatoryParametersException extends \InvalidArgumentException implements ExceptionInterface
 {
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\Routing\Exception;
+
+/**
+ * Exception thrown when a route cannot be generated because of missing
+ * mandatory parameters.
+ *
+ * @author Alexandre Salomé <alexandre.salome@gmail.com>
+ */
+class MissingMandatoryParametersException extends \InvalidArgumentException implements ExceptionInterface
+{
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

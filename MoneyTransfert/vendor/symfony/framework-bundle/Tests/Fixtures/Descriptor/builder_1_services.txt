@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 [33mSymfony Container Hidden Services[39m
 [33m=================================[39m
@@ -9,3 +10,16 @@
   .definition_2   Full\Qualified\Class2   
  --------------- ------------------------
 
+=======
+
+[33mSymfony Container Hidden Services[39m
+[33m=================================[39m
+
+ --------------- ------------------------ 
+ [32m Service ID    [39m [32m Class name             [39m 
+ --------------- ------------------------ 
+  .alias_2        alias for ".service_2"  
+  .definition_2   Full\Qualified\Class2   
+ --------------- ------------------------
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

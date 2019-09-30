@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <phive xmlns="https://phar.io/phive">
   <phar name="php-cs-fixer" version="^2.14" installed="2.14.2" location="./tools/php-cs-fixer" copy="true"/>
 </phive>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="php-cs-fixer" version="^2.14" installed="2.14.2" location="./tools/php-cs-fixer" copy="true"/>
+</phive>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Exception for an undefined trait
 --TEMPLATE--
@@ -7,3 +8,14 @@ Exception for an undefined trait
 {% endblock %}
 --EXCEPTION--
 Twig\Error\RuntimeError: Block "foobar" is not defined in trait "foo" in "index.twig" at line 2.
+=======
+--TEST--
+Exception for an undefined trait
+--TEMPLATE--
+{% use 'foo' with foobar as bar %}
+--TEMPLATE(foo)--
+{% block bar %}
+{% endblock %}
+--EXCEPTION--
+Twig\Error\RuntimeError: Block "foobar" is not defined in trait "foo" in "index.twig" at line 2.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Super globals as macro arguments
 --TEMPLATE--
@@ -12,3 +13,19 @@ Super globals as macro arguments
 return []
 --EXPECT--
 foo
+=======
+--TEST--
+Super globals as macro arguments
+--TEMPLATE--
+{% import _self as macros %}
+
+{{ macros.foo('foo') }}
+
+{% macro foo(GET) %}
+    {{ GET }}
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

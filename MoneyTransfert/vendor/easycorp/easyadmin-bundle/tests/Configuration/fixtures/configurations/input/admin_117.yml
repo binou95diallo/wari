@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Favicon configuration: jpeg
 
 # CONFIGURATION
@@ -5,3 +6,12 @@ easy_admin:
     design:
         assets:
             favicon: { path: 'favicon.jpeg' }
+=======
+# Favicon configuration: jpeg
+
+# CONFIGURATION
+easy_admin:
+    design:
+        assets:
+            favicon: { path: 'favicon.jpeg' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends '@Twig/layout.html.twig' %}
 
 {% block title 'Redirection Intercepted' %}
@@ -16,3 +17,23 @@
         </div>
     </div>
 {% endblock %}
+=======
+{% extends '@Twig/layout.html.twig' %}
+
+{% block title 'Redirection Intercepted' %}
+
+{% block body %}
+    <div class="sf-reset">
+        <div class="block-exception">
+            <h1>This request redirects to <a href="{{ location }}">{{ location }}</a>.</h1>
+
+            <p>
+                <small>
+                    The redirect was intercepted by the web debug toolbar to help debugging.
+                    For more information, see the "intercept-redirects" option of the Profiler.
+                </small>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

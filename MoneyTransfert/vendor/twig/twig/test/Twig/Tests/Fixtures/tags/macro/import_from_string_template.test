@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "import" tag with a template as string
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return []
 --EXPECT--
 ok
+=======
+--TEST--
+"import" tag with a template as string
+--TEMPLATE--
+{% import template_from_string("{% macro test() %}ok{% endmacro %}") as m %}
+{{ m.test() }}
+--TEMPLATE(forms.twig)--
+--DATA--
+return []
+--EXPECT--
+ok
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # 'new' and 'edit' options are correctly processed
 
@@ -10,3 +11,17 @@ easy_admin:
                 fields: ['field1', 'field2']
             edit:
                 fields: ['field3', 'field4']
+=======
+# TEST
+# 'new' and 'edit' options are correctly processed
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            new:
+                fields: ['field1', 'field2']
+            edit:
+                fields: ['field3', 'field4']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

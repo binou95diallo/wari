@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 In ApplicationTest.php line %d:
                                     
@@ -9,3 +10,16 @@ In ApplicationTest.php line %d:
 
 foo
 
+=======
+
+In ApplicationTest.php line %d:
+                                    
+  line 1 with extra spaces          
+  line 2                            
+                                    
+  line 4                            
+                                    
+
+foo
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

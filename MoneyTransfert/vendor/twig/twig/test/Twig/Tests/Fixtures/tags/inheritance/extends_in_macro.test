@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "extends" tag in a macro
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return []
 --EXCEPTION--
 Twig\Error\SyntaxError: Cannot use "extend" in a macro in "index.twig" at line 3.
+=======
+--TEST--
+"extends" tag in a macro
+--TEMPLATE--
+{% macro foo() %}
+    {% extends "foo.twig" %}
+{% endmacro %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\SyntaxError: Cannot use "extend" in a macro in "index.twig" at line 3.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

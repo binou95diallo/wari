@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ../config/default.yml }
     - { resource: ../config/exception_listener.yml }
@@ -14,3 +15,21 @@ fos_rest:
 
 twig:
     strict_variables: '%kernel.debug%'
+=======
+imports:
+    - { resource: ../config/default.yml }
+    - { resource: ../config/exception_listener.yml }
+
+framework:
+    serializer:
+        enabled: true
+    templating:
+        engines: ['twig']
+
+fos_rest:
+    view:
+        view_response_listener: 'force'
+
+twig:
+    strict_variables: '%kernel.debug%'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

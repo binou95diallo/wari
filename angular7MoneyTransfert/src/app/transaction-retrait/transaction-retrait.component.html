@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <app-navbar></app-navbar>
 <div class="container py-5 mt-5">
     <div class="row">
@@ -59,4 +60,67 @@
         </div>
       </div>
       
+=======
+<app-navbar></app-navbar>
+<div class="container py-5 mt-5">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="example-container">
+                <mat-form-field>
+                  <input matInput [(ngModel)]="codeEnter" name="code"  placeholder="code" type="number" [formControl]="code" required>
+                  <mat-error *ngIf="code.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="accent" (click)="recupBeneficiaire(codeEnter)">Verifier</button>
+                <div class="form-group">
+                  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+                  </div>
+          <span *ngIf="isVerif()">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Infos Bénéficiaire
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="beneficiaire.nomCompletR" name="nomCompletR" placeholder="Nom et Prénom" type="text" disabled>
+                  
+                </mat-form-field>
+            
+                <mat-form-field>
+                  <input matInput [(ngModel)]="beneficiaire.adresseR" name="adresseR" placeholder="Adresse" type="text" disabled>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [(ngModel)]="beneficiaire.telephoneR" name="telephoneR" placeholder="Téléphone" type="number" disabled>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <mat-label>Type Pièce</mat-label>
+                    <select [(ngModel)]="beneficiaire.typePiece" name="typePiece" id="" matNativeControl required>
+                        <option value="cni" >Carte d'identité</option>
+                        <option value="passport">Passport</option>
+                    </select>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput [(ngModel)]="beneficiaire.numeroPiece" name="ncni" placeholder="Saisir le numéro de la pièce" type="text">
+                      
+                    </mat-form-field>
+              </mat-expansion-panel>
+              
+            </mat-accordion>
+          <button mat-raised-button color="accent" (click)="retraitTransact(codeEnter,beneficiaire.ncni)">Confirmer</button>
+          </span>    
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <div *ngIf="errorMessageR" class="alert alert-danger">{{errorMessageR}}</div>
+            </div>
+        </div>
+      </div>
+      
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 </div>

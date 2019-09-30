@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 api_platform:
     resource: .
     type: api_platform
     prefix: /api
+=======
+api_platform:
+    resource: .
+    type: api_platform
+    prefix: /api
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

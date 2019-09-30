@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 services:
     service_container:
@@ -14,3 +15,21 @@ services:
     Symfony\Component\DependencyInjection\ContainerInterface:
         alias: service_container
         public: false
+=======
+
+services:
+    service_container:
+        class: Symfony\Component\DependencyInjection\ContainerInterface
+        public: true
+        synthetic: true
+    foo:
+        class: Class1
+        public: true
+        arguments: [!service { class: Class2, arguments: [!service { class: Class2 }] }]
+    Psr\Container\ContainerInterface:
+        alias: service_container
+        public: false
+    Symfony\Component\DependencyInjection\ContainerInterface:
+        alias: service_container
+        public: false
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

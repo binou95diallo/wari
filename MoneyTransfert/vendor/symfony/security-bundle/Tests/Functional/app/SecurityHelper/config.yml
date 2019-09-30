@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ./../config/default.yml }
 
@@ -16,3 +17,23 @@ security:
     firewalls:
         default:
             anonymous: ~
+=======
+imports:
+    - { resource: ./../config/default.yml }
+
+services:
+    # alias the service so we can access it in the tests
+    functional_test.security.helper:
+        alias: security.helper
+        public: true
+
+security:
+    providers:
+        in_memory:
+            memory:
+                users: []
+
+    firewalls:
+        default:
+            anonymous: ~
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 $container->loadFromExtension('framework', [
@@ -15,3 +16,22 @@ $container->loadFromExtension('framework', [
         ],
     ],
 ]);
+=======
+<?php
+
+$container->loadFromExtension('framework', [
+    'serializer' => true,
+    'messenger' => [
+        'serializer' => [
+            'default_serializer' => 'messenger.transport.symfony_serializer',
+            'symfony_serializer' => [
+                'format' => 'csv',
+                'context' => ['enable_max_depth' => true],
+            ],
+        ],
+        'transports' => [
+            'default' => 'amqp://localhost/%2f/messages',
+        ],
+    ],
+]);
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _main:
     resource: routing.yml
 
@@ -6,3 +7,13 @@ relation_embedded.custom_get:
     methods: ['GET', 'HEAD']
     defaults:
         _controller: 'ApiPlatform\Core\Tests\Fixtures\TestBundle\Controller\CustomController::customAction'
+=======
+_main:
+    resource: routing.yml
+
+relation_embedded.custom_get:
+    path: '/relation_embedders/{id}/custom'
+    methods: ['GET', 'HEAD']
+    defaults:
+        _controller: 'ApiPlatform\Core\Tests\Fixtures\TestBundle\Controller\CustomController::customAction'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

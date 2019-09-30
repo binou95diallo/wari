@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 The <info>%command.name%</info> command generates a new Doctrine fixtures class.
 
 <info>php %command.full_name% AppFixtures</info>
 
 If the argument is missing, the command will ask for a class interactively.
+=======
+The <info>%command.name%</info> command generates a new Doctrine fixtures class.
+
+<info>php %command.full_name% AppFixtures</info>
+
+If the argument is missing, the command will ask for a class interactively.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # menu items must define enough options to infer their type
 
@@ -12,3 +13,19 @@ easy_admin:
         menu:
             - { option1: 'value1', option2: 'value2' }
     entities: []
+=======
+# TEST
+# menu items must define enough options to infer their type
+
+# EXCEPTION
+expected_exception:
+    class: RuntimeException
+    message_string: 'The configuration of the menu item in the position 0 (being 0 the first item) must define at least one of these options: entity, url, route, label.'
+
+# CONFIGURATION
+easy_admin:
+    design:
+        menu:
+            - { option1: 'value1', option2: 'value2' }
+    entities: []
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

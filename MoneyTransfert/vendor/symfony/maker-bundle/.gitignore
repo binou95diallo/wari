@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 /composer.lock
 /phpunit.xml
 /vendor/
 /tests/tmp/*
 /.php_cs.cache
+=======
+/composer.lock
+/phpunit.xml
+/vendor/
+/tests/tmp/*
+/.php_cs.cache
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

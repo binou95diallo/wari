@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "active": true,
     "name": "Instantiator",
@@ -24,3 +25,31 @@
     ]
 }
 
+=======
+{
+    "active": true,
+    "name": "Instantiator",
+    "slug": "instantiator",
+    "docsSlug": "doctrine-instantiator",
+    "codePath": "/src",
+    "versions": [
+        {
+            "name": "1.1",
+            "branchName": "master",
+            "slug": "latest",
+            "aliases": [
+                "current",
+                "stable"
+            ],
+            "maintained": true,
+            "current": true
+        },
+        {
+            "name": "1.0",
+            "branchName": "1.0.x",
+            "slug": "1.0"
+        }
+    ]
+}
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

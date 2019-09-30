@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 parameters:
     earlyTerminatingMethodCalls:
         Doctrine\ORM\Query\Parser:
             - syntaxError
+=======
+parameters:
+    earlyTerminatingMethodCalls:
+        Doctrine\ORM\Query\Parser:
+            - syntaxError
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

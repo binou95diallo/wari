@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 /*
  * php-cs-fixer configuration file used to validate
@@ -12,3 +13,19 @@ return PhpCsFixer\Config::create()
     ))
     ->setRiskyAllowed(true)
 ;
+=======
+<?php
+/*
+ * php-cs-fixer configuration file used to validate
+ * generated code in our tests.
+ */
+return PhpCsFixer\Config::create()
+    ->setRules(array(
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        'native_function_invocation' => false,
+        'array_syntax' => ['syntax' => 'short'],
+    ))
+    ->setRiskyAllowed(true)
+;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     _defaults: {public: true}
     bar:
@@ -9,3 +10,16 @@ services:
         class: Bar\FooClass
         arguments: ['@Bar']
         calls: [[setBar, ['@bar']]]
+=======
+services:
+    _defaults: {public: true}
+    bar:
+        class: stdClass
+    Bar:
+        class: stdClass
+        properties: { bar: '@bar' }
+    BAR:
+        class: Bar\FooClass
+        arguments: ['@Bar']
+        calls: [[setBar, ['@bar']]]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

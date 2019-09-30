@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -26,3 +27,33 @@ return []
 
 
 <input name="username">
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{%- import _self as macros %}
+
+{% block foo %}
+    {%- import "macros" as macros %}
+    {{- macros.input('username') }}
+{% endblock %}
+
+{% block bar %}
+    {{- macros.input('username') }}
+{% endblock %}
+
+{% macro input(name) -%}
+    <input name="{{ name }}">
+{% endmacro %}
+--TEMPLATE(macros)--
+{% macro input(name) %}
+    <input name="{{ name }}" value="local">
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+<input name="username" value="local">
+
+
+<input name="username">
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 In ApplicationTest.php line %d:
                      
@@ -7,3 +8,14 @@ In ApplicationTest.php line %d:
 
 foo
 
+=======
+
+In ApplicationTest.php line %d:
+                     
+  dont break here <  
+  info>!</info>      
+                     
+
+foo
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

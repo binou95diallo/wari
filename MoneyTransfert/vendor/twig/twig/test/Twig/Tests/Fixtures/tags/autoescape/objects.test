@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "autoescape" tag applies escaping to object method calls
 --TEMPLATE--
@@ -24,3 +25,31 @@ return ['user' => new UserForAutoEscapeTest()]
 Fabien&lt;br /&gt;
 fabien&lt;br /&gt;
 Fabien&lt;br /&gt;
+=======
+--TEST--
+"autoescape" tag applies escaping to object method calls
+--TEMPLATE--
+{% autoescape 'html' %}
+{{ user.name }}
+{{ user.name|lower }}
+{{ user }}
+{% endautoescape %}
+--DATA--
+class UserForAutoEscapeTest
+{
+  public function getName()
+  {
+    return 'Fabien<br />';
+  }
+
+  public function __toString()
+  {
+     return 'Fabien<br />';
+  }
+}
+return ['user' => new UserForAutoEscapeTest()]
+--EXPECT--
+Fabien&lt;br /&gt;
+fabien&lt;br /&gt;
+Fabien&lt;br /&gt;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

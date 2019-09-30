@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
@@ -8,3 +9,15 @@
         </testsuite>
     </testsuites>
 </phpunit>
+=======
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
+    bootstrap="tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

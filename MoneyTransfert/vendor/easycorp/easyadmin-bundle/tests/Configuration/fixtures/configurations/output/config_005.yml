@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         CustomCategory:
@@ -11,3 +12,18 @@ easy_admin:
         params:
             action: list
             entity: CustomCategory
+=======
+easy_admin:
+    entities:
+        CustomCategory:
+            class: AppTestBundle\Entity\UnitTests\Category
+            name: CustomCategory
+            label: CustomCategory
+    default_entity_name: CustomCategory
+    default_menu_item: null
+    homepage:
+        route: easyadmin
+        params:
+            action: list
+            entity: CustomCategory
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

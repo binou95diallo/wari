@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <definition class="Full\Qualified\Class2" public="false" synthetic="true" lazy="false" shared="true" abstract="false" autowired="false" autoconfigured="false" file="/path/to/file">
   <factory service="factory.service" method="get"/>
@@ -15,3 +16,22 @@
     <tag name="tag2"/>
   </tags>
 </definition>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<definition class="Full\Qualified\Class2" public="false" synthetic="true" lazy="false" shared="true" abstract="false" autowired="false" autoconfigured="false" file="/path/to/file">
+  <factory service="factory.service" method="get"/>
+  <calls>
+    <call method="setMailer"/>
+  </calls>
+  <tags>
+    <tag name="tag1">
+      <parameter name="attr1">val1</parameter>
+      <parameter name="attr2">val2</parameter>
+    </tag>
+    <tag name="tag1">
+      <parameter name="attr3">val3</parameter>
+    </tag>
+    <tag name="tag2"/>
+  </tags>
+</definition>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

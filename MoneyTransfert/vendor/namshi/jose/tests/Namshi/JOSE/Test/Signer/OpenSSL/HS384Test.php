@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Namshi\JOSE\Test\OpenSSL\Signer;
@@ -18,3 +19,25 @@ class HS384Test extends TestCase
         $this->assertFalse($signer->verify('bar', $signature, 'aaa'));
     }
 }
+=======
+<?php
+
+namespace Namshi\JOSE\Test\OpenSSL\Signer;
+
+use Namshi\JOSE\Signer\OpenSSL\HS384;
+use PHPUnit_Framework_TestCase as TestCase;
+
+class HS384Test extends TestCase
+{
+    public function testSigningAndVerificationWorkProperly()
+    {
+        $signer = new HS384();
+        $signature = $signer->sign('aaa', 'foo');
+
+        $this->assertEquals($signature, base64_decode('W6Cd7qZknNYIXOxTrpEWFFwfuX0e2j59hTH4kVFh5o+9rcnfNtphLg4V8YXfkXGF'));
+
+        $this->assertTrue($signer->verify('foo', $signature, 'aaa'));
+        $this->assertFalse($signer->verify('bar', $signature, 'aaa'));
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

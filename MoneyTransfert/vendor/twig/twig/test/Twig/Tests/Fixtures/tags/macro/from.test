@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -16,3 +17,23 @@ return []
 foofoo
 foofoo
 barfoo
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% from 'forms.twig' import foo %}
+{% from 'forms.twig' import foo as foobar, bar %}
+
+{{ foo('foo') }}
+{{ foobar('foo') }}
+{{ bar('foo') }}
+--TEMPLATE(forms.twig)--
+{% macro foo(name) %}foo{{ name }}{% endmacro %}
+{% macro bar(name) %}bar{{ name }}{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+foofoo
+foofoo
+barfoo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

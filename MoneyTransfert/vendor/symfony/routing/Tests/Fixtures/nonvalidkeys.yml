@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 someroute:
   resource: path/to/some.yml
   not_valid_key: test_
+=======
+someroute:
+  resource: path/to/some.yml
+  not_valid_key: test_
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

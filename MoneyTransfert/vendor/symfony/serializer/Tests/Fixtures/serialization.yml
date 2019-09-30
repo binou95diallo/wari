@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'Symfony\Component\Serializer\Tests\Fixtures\GroupDummy':
   attributes:
     foo:
@@ -24,3 +25,31 @@
       second: 'Symfony\Component\Serializer\Tests\Fixtures\AbstractDummySecondChild'
   attributes:
     foo: ~
+=======
+'Symfony\Component\Serializer\Tests\Fixtures\GroupDummy':
+  attributes:
+    foo:
+      groups: ['group1', 'group2']
+    bar:
+      groups: ['group2']
+'Symfony\Component\Serializer\Tests\Fixtures\MaxDepthDummy':
+  attributes:
+    foo:
+      max_depth: 2
+    bar:
+      max_depth: 3
+'Symfony\Component\Serializer\Tests\Fixtures\SerializedNameDummy':
+  attributes:
+    foo:
+      serialized_name: 'baz'
+    bar:
+      serialized_name: 'qux'
+'Symfony\Component\Serializer\Tests\Fixtures\AbstractDummy':
+  discriminator_map:
+    type_property: type
+    mapping:
+      first: 'Symfony\Component\Serializer\Tests\Fixtures\AbstractDummyFirstChild'
+      second: 'Symfony\Component\Serializer\Tests\Fixtures\AbstractDummySecondChild'
+  attributes:
+    foo: ~
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # entity actions remove one default action explicitly added by the global actions
 # and mixing different configuration formats
@@ -27,3 +28,34 @@ easy_admin:
             new:
                 actions:
                     - { name: '-list' }
+=======
+# TEST
+# entity actions remove one default action explicitly added by the global actions
+# and mixing different configuration formats
+
+# CONFIGURATION
+easy_admin:
+    list:
+        actions:
+            - { name: 'search' }
+    edit:
+        actions: ['delete']
+    show:
+        actions:
+            - { name: 'edit' }
+    new:
+        actions: ['list']
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            list:
+                actions: ['-search']
+            edit:
+                actions:
+                    - { name: '-delete' }
+            show:
+                actions: ['-edit']
+            new:
+                actions:
+                    - { name: '-list' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

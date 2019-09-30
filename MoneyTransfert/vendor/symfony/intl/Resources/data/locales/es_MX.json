@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Names": {
         "ar_SA": "árabe (Arabia Saudita)",
@@ -15,3 +16,22 @@
         "wo_SN": "wolof (Senegal)"
     }
 }
+=======
+{
+    "Names": {
+        "ar_SA": "árabe (Arabia Saudita)",
+        "en_SZ": "inglés (Eswatini)",
+        "pa": "punyabí",
+        "pa_Arab": "punyabí (árabe)",
+        "pa_Arab_PK": "punyabí (árabe, Pakistán)",
+        "pa_Guru": "punyabí (gurmuji)",
+        "pa_Guru_IN": "punyabí (gurmuji, India)",
+        "pa_IN": "punyabí (India)",
+        "pa_PK": "punyabí (Pakistán)",
+        "rn": "kiroundi",
+        "rn_BI": "kiroundi (Burundi)",
+        "wo": "wolof",
+        "wo_SN": "wolof (Senegal)"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

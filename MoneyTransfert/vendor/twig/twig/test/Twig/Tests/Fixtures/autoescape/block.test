@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 blocks and autoescape
 --TEMPLATE--
@@ -19,3 +20,26 @@ return ['br' => '<br />']
 return ['autoescape' => 'name']
 --EXPECT--
 &lt;br /&gt;
+=======
+--TEST--
+blocks and autoescape
+--TEMPLATE--
+{{ include('unrelated.txt.twig') -}}
+{{ include('template.html.twig') -}}
+--TEMPLATE(unrelated.txt.twig)--
+{% block content %}{% endblock %}
+--TEMPLATE(template.html.twig)--
+{% extends 'parent.html.twig' %}
+{% block content %}
+{{ br -}}
+{% endblock %}
+--TEMPLATE(parent.html.twig)--
+{% set _content = block('content')|raw %}
+{{ _content|raw }}
+--DATA--
+return ['br' => '<br />']
+--CONFIG--
+return ['autoescape' => 'name']
+--EXPECT--
+&lt;br /&gt;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

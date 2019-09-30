@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "apply" tags can be nested at will
 --TEMPLATE--
@@ -14,3 +15,21 @@ return ['var' => 'var']
   Var
       Var
     Var
+=======
+--TEST--
+"apply" tags can be nested at will
+--TEMPLATE--
+{% apply lower|title %}
+  {{ var }}
+  {% apply upper %}
+    {{ var }}
+  {% endapply %}
+  {{ var }}
+{% endapply %}
+--DATA--
+return ['var' => 'var']
+--EXPECT--
+  Var
+      Var
+    Var
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

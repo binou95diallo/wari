@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 open
 validateId
 read
@@ -18,3 +19,25 @@ Array
     [1] => Cache-Control: max-age=0, private, must-revalidate
 )
 shutdown
+=======
+open
+validateId
+read
+doRead: 
+read
+Array
+(
+    [0] => bar
+)
+$_SESSION is not empty
+write
+destroy
+close
+$_SESSION is not empty
+Array
+(
+    [0] => Content-Type: text/plain; charset=utf-8
+    [1] => Cache-Control: max-age=0, private, must-revalidate
+)
+shutdown
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

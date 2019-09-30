@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # entity actions remove one default action for the 'list' view
 
@@ -9,3 +10,16 @@ easy_admin:
             list:
                 actions:
                     ['-search']
+=======
+# TEST
+# entity actions remove one default action for the 'list' view
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            list:
+                actions:
+                    ['-search']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

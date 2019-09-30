@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.86",
     "Names": {
@@ -39,3 +40,46 @@
         ]
     }
 }
+=======
+{
+    "Version": "2.1.47.86",
+    "Names": {
+        "AMD": [
+            "AMD",
+            "dram"
+        ],
+        "JPY": [
+            "¥",
+            "yen"
+        ],
+        "MYR": [
+            "MYR",
+            "ringit"
+        ],
+        "STN": [
+            "STN",
+            "dobra santotomense"
+        ],
+        "THB": [
+            "THB",
+            "bat"
+        ],
+        "USD": [
+            "$",
+            "dólar estadounidense"
+        ],
+        "UZS": [
+            "UZS",
+            "sum"
+        ],
+        "XAF": [
+            "XAF",
+            "franco CFA de África central"
+        ],
+        "XOF": [
+            "XOF",
+            "franco CFA de África Occidental"
+        ]
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

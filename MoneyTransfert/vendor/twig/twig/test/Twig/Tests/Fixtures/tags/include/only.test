@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" tag accept variables and only
 --TEMPLATE--
@@ -18,3 +19,25 @@ vars1,vars2,global,foo1,_parent,
 foo1,global,_parent,
 vars1,vars2,global,foo2,_parent,
 foo2,global,_parent,
+=======
+--TEST--
+"include" tag accept variables and only
+--TEMPLATE--
+{% include "foo.twig" %}
+{% include "foo.twig" only %}
+{% include "foo.twig" with vars1 %}
+{% include "foo.twig" with vars1 only %}
+{% include "foo.twig" with vars2 %}
+{% include "foo.twig" with vars2 only %}
+--TEMPLATE(foo.twig)--
+{% for k, v in _context %}{{ k }},{% endfor %}
+--DATA--
+return ['vars1' => ['foo1' => 'bar'], 'vars2' => new ArrayObject(['foo2' => 'bar'])]
+--EXPECT--
+vars1,vars2,global,_parent,
+global,_parent,
+vars1,vars2,global,foo1,_parent,
+foo1,global,_parent,
+vars1,vars2,global,foo2,_parent,
+foo2,global,_parent,
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

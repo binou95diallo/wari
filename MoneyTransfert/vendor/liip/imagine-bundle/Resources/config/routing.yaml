@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 liip_imagine_filter_runtime:
     path: /media/cache/resolve/{filter}/rc/{hash}/{path}
     defaults:
@@ -17,3 +18,24 @@ liip_imagine_filter:
     requirements:
         filter: '[A-z0-9_-]*'
         path: .+
+=======
+liip_imagine_filter_runtime:
+    path: /media/cache/resolve/{filter}/rc/{hash}/{path}
+    defaults:
+        _controller: '%liip_imagine.controller.filter_runtime_action%'
+    methods:
+        - GET
+    requirements:
+        filter: '[A-z0-9_-]*'
+        path: .+
+
+liip_imagine_filter:
+    path: /media/cache/resolve/{filter}/{path}
+    defaults:
+        _controller: '%liip_imagine.controller.filter_action%'
+    methods:
+        - GET
+    requirements:
+        filter: '[A-z0-9_-]*'
+        path: .+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

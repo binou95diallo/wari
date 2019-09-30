@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <phpunit>
     <testsuites>
         <testsuite name="One File Suite">
@@ -5,3 +6,12 @@
         </testsuite>
     </testsuites>
 </phpunit>
+=======
+<phpunit>
+    <testsuites>
+        <testsuite name="One File Suite">
+            <file>../../tests/end-to-end/loggers/debug.phpt</file>
+        </testsuite>
+    </testsuites>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 {% if trace.function %}
 at {{ trace.class ~ trace.type ~ trace.function }}({{ trace.args|format_args_as_text }})
 {%- endif -%}
 {% if trace.file|default('') is not empty and trace.line|default('') is not empty %}
   {{- trace.function ? '\n     (' : 'at '}}{{ trace.file|format_file(trace.line)|striptags|replace({ (' at line ' ~ trace.line): '' }) }}:{{ trace.line }}{{ trace.function ? ')' }}
 {%- endif %}
+=======
+{% if trace.function %}
+at {{ trace.class ~ trace.type ~ trace.function }}({{ trace.args|format_args_as_text }})
+{%- endif -%}
+{% if trace.file|default('') is not empty and trace.line|default('') is not empty %}
+  {{- trace.function ? '\n     (' : 'at '}}{{ trace.file|format_file(trace.line)|striptags|replace({ (' at line ' ~ trace.line): '' }) }}:{{ trace.line }}{{ trace.function ? ')' }}
+{%- endif %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

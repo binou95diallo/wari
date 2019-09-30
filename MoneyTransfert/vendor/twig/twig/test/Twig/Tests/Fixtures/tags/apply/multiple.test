@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "apply" tags accept multiple chained filters
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return ['var' => 'VAR']
 --EXPECT--
     Var
+=======
+--TEST--
+"apply" tags accept multiple chained filters
+--TEMPLATE--
+{% apply lower|title %}
+  {{ var }}
+{% endapply %}
+--DATA--
+return ['var' => 'VAR']
+--EXPECT--
+    Var
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

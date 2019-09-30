@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 {
     "Names": {
         "xh": "isiXhosa",
         "xh_ZA": "isiXhosa (eMzantsi Afrika)"
     }
 }
+=======
+{
+    "Names": {
+        "xh": "isiXhosa",
+        "xh_ZA": "isiXhosa (eMzantsi Afrika)"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

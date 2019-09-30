@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.48.45",
     "Names": {
@@ -20,3 +21,27 @@
         "US": "Mba United States"
     }
 }
+=======
+{
+    "Version": "2.1.48.45",
+    "Names": {
+        "BJ": "Binin",
+        "BM": "Bemuda",
+        "BR": "Mba Brazil",
+        "CN": "Mba China",
+        "DE": "Mba Germany",
+        "FR": "Mba France",
+        "GB": "Mba United Kingdom",
+        "HT": "Hati",
+        "IN": "Mba India",
+        "IT": "Mba Italy",
+        "JP": "Mba Japan",
+        "KM": "Comorosu",
+        "LY": "Libyia",
+        "MV": "Maldivesa",
+        "NG": "Naịjịrịa",
+        "RU": "Mba Russia",
+        "US": "Mba United States"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Short array syntax
 -----
 <?php
@@ -8,4 +9,16 @@ array(1, 2, 3);
 -----
 [];
 array(1, 2, 3);
+=======
+Short array syntax
+-----
+<?php
+
+[];
+array(1, 2, 3);
+['a' => 'b', 'c' => 'd'];
+-----
+[];
+array(1, 2, 3);
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 ['a' => 'b', 'c' => 'd'];

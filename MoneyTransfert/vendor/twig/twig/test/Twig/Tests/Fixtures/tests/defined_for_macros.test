@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "defined" support for macros
 --TEMPLATE--
@@ -39,3 +40,46 @@ OK
 OK
 
 OK
+=======
+--TEST--
+"defined" support for macros
+--TEMPLATE--
+{% import _self as macros %}
+{% from _self import hello, bar %}
+
+{% if macros.hello is defined -%}
+    OK
+{% endif %}
+
+{% if macros.foo is not defined -%}
+    OK
+{% endif %}
+
+{% if hello is defined -%}
+    OK
+{% endif %}
+
+{% if bar is not defined -%}
+    OK
+{% endif %}
+
+{% if foo is not defined -%}
+    OK
+{% endif %}
+
+{% macro hello(name) %}
+    Hello {{ name }}
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

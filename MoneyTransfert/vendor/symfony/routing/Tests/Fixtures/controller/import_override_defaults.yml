@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 _static:
     resource: routing.yml
     controller: FrameworkBundle:Template:template
     defaults:
         _controller: AppBundle:Homepage:show
+=======
+_static:
+    resource: routing.yml
+    controller: FrameworkBundle:Template:template
+    defaults:
+        _controller: AppBundle:Homepage:show
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

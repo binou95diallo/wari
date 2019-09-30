@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Names": {
@@ -12,3 +13,19 @@
         "Zyyy": "Komuni"
     }
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Names": {
+        "Arab": "Għarbi",
+        "Cyrl": "Ċirilliku",
+        "Grek": "Grieg",
+        "Hans": "Simplifikat",
+        "Hant": "Tradizzjonali",
+        "Latn": "Latin",
+        "Xpeo": "Persjan Antik",
+        "Zxxx": "Mhux Miktub",
+        "Zyyy": "Komuni"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

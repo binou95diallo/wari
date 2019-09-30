@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         batch_actions:
@@ -17,3 +18,24 @@ easy_admin:
                         label: 'Custom batch action'
                         css_class: null
                         icon: null
+=======
+easy_admin:
+    list:
+        batch_actions:
+            custom_batch_action:
+                name: custom_batch_action
+                type: method
+                label: 'Custom batch action'
+                css_class: null
+                icon: null
+    entities:
+        Category:
+            list:
+                batch_actions:
+                    custom_batch_action:
+                        name: custom_batch_action
+                        type: method
+                        label: 'Custom batch action'
+                        css_class: null
+                        icon: null
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

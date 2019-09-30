@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # actions can define their 'target' HTML attribute
 
@@ -22,3 +23,29 @@ easy_admin:
     new:
         actions:
             - { name: 'list', target: '_top' }
+=======
+# TEST
+# actions can define their 'target' HTML attribute
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+    list:
+        actions:
+            - { name: 'edit', target: '_blank' }
+            - { name: 'custom_action', target: '_parent' }
+            - { name: 'another_custom_action' }
+    edit:
+        actions:
+            - { name: 'list', target: '_parent' }
+    show:
+        actions:
+            - { name: 'edit', target: '_self' }
+            - { name: 'list' }
+            - { name: 'custom_action', target: 'custom_target' }
+    new:
+        actions:
+            - { name: 'list', target: '_top' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

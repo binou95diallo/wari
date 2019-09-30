@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h2{
     text-align: center;
     font-size: 18px;
@@ -5,4 +6,13 @@ h2{
     letter-spacing: 1px;
     color: #007BFF;
     padding: 30px 0;
+=======
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #007BFF;
+    padding: 30px 0;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
   }

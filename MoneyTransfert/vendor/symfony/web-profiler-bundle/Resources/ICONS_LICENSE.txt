@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 Icons License
 =============
 
 Icons created by Sensio (http://www.sensio.com/) are shared under a Creative
+=======
+Icons License
+=============
+
+Icons created by Sensio (http://www.sensio.com/) are shared under a Creative
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 Commons Attribution license (http://creativecommons.org/licenses/by-sa/3.0/).

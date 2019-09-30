@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     parent_service:
         class: stdClass
@@ -7,3 +8,14 @@ services:
         class: stdClass
         autoconfigure: true
         parent: parent_service
+=======
+services:
+    parent_service:
+        class: stdClass
+        public: true
+
+    child_service:
+        class: stdClass
+        autoconfigure: true
+        parent: parent_service
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

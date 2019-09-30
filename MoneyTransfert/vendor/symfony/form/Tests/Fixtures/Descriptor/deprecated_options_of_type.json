@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "class": "Symfony\\Component\\Form\\Tests\\Console\\Descriptor\\FooType",
     "block_prefix": "foo",
@@ -19,3 +20,26 @@
         "Symfony\\Component\\Form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension"
     ]
 }
+=======
+{
+    "class": "Symfony\\Component\\Form\\Tests\\Console\\Descriptor\\FooType",
+    "block_prefix": "foo",
+    "options": {
+        "own": [
+            "bar"
+        ],
+        "overridden": [],
+        "parent": [],
+        "extension": [],
+        "required": [
+            "foo"
+        ]
+    },
+    "parent_types": [
+        "Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType"
+    ],
+    "type_extensions": [
+        "Symfony\\Component\\Form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension"
+    ]
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

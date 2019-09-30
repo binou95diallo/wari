@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # global backend actions remove one default action for the 'new' view
 
@@ -9,3 +10,16 @@ easy_admin:
     entities:
         Category:
             class: AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# global backend actions remove one default action for the 'new' view
+
+# CONFIGURATION
+easy_admin:
+    new:
+        actions:
+            ['-list']
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

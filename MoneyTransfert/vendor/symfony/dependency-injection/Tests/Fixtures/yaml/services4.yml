@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - services2.yml
     - { resource: services3.yml }
@@ -6,3 +7,13 @@ imports:
     - { resource: "../ini/parameters2.ini" }
     - { resource: "../xml/services13.xml" }
     - { resource: "../xml/xml_with_wrong_ext.php", type: xml }
+=======
+imports:
+    - services2.yml
+    - { resource: services3.yml }
+    - { resource: "../php/simple.php" }
+    - { resource: "../ini/parameters.ini", class: Symfony\Component\DependencyInjection\Loader\IniFileLoader }
+    - { resource: "../ini/parameters2.ini" }
+    - { resource: "../xml/services13.xml" }
+    - { resource: "../xml/xml_with_wrong_ext.php", type: xml }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

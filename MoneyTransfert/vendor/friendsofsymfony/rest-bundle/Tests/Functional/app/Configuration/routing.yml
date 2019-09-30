@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _wdt:
     resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
     prefix:   /_wdt
@@ -5,3 +6,12 @@ _wdt:
 _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix:   /_profiler
+=======
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

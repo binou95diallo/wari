@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "apply" tag applies a filter on its children
 --TEMPLATE--
@@ -6,3 +7,13 @@
 return []
 --EXPECT--
 "test"
+=======
+--TEST--
+"apply" tag applies a filter on its children
+--TEMPLATE--
+{% apply json_encode|raw %}test{% endapply %}
+--DATA--
+return []
+--EXPECT--
+"test"
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

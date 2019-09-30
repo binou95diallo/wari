@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # short notation for 'new', 'edit', 'list' and 'show' fields is correctly normalized
 
@@ -14,3 +15,21 @@ easy_admin:
                 fields: ['field5', 'field6']
             show:
                 fields: ['field7', 'field8']
+=======
+# TEST
+# short notation for 'new', 'edit', 'list' and 'show' fields is correctly normalized
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            new:
+                fields: ['field1', 'field2']
+            edit:
+                fields: ['field3', 'field4']
+            list:
+                fields: ['field5', 'field6']
+            show:
+                fields: ['field7', 'field8']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

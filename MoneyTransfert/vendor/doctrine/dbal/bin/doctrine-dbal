@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 #!/usr/bin/env php
 <?php
 
 require __DIR__ . '/doctrine-dbal.php';
+=======
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/doctrine-dbal.php';
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
             class: AppTestBundle\Entity\UnitTests\Category
             label: Category
             name: Category
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            label: Category
+            name: Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

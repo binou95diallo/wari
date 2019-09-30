@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: php
 
 php:
@@ -15,3 +16,22 @@ before_script:
     - composer install --dev --prefer-dist --no-interaction
 
 script: ./vendor/bin/phpunit --coverage-text
+=======
+language: php
+
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+    - hhvm
+
+matrix:
+    allow_failures:
+        - php: hhvm
+
+before_script:
+    - composer self-update
+    - composer install --dev --prefer-dist --no-interaction
+
+script: ./vendor/bin/phpunit --coverage-text
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

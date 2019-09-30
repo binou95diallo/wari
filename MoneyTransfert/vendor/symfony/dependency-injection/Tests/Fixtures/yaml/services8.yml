@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 parameters:
     foo: '%baz%'
     baz: bar
@@ -18,3 +19,25 @@ services:
     Symfony\Component\DependencyInjection\ContainerInterface:
         alias: service_container
         public: false
+=======
+parameters:
+    foo: '%baz%'
+    baz: bar
+    bar: 'foo is %%foo bar'
+    escape: '@@escapeme'
+    values: [true, false, null, 0, 1000.3, 'true', 'false', 'null']
+    binary: !!binary 8PDw8A==
+    binary-control-char: !!binary VGhpcyBpcyBhIEJlbGwgY2hhciAH
+
+services:
+    service_container:
+        class: Symfony\Component\DependencyInjection\ContainerInterface
+        public: true
+        synthetic: true
+    Psr\Container\ContainerInterface:
+        alias: service_container
+        public: false
+    Symfony\Component\DependencyInjection\ContainerInterface:
+        alias: service_container
+        public: false
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

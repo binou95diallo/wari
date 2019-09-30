@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     dir1:
         namespace: Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\OtherDir\
@@ -8,3 +9,15 @@ services:
         namespace: Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\OtherDir\
         resource: ../Prototype/OtherDir/*/Dir2
         tags: [bar]
+=======
+services:
+    dir1:
+        namespace: Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\OtherDir\
+        resource: ../Prototype/OtherDir/*/Dir1
+        tags: [foo]
+
+    dir2:
+        namespace: Symfony\Component\DependencyInjection\Tests\Fixtures\Prototype\OtherDir\
+        resource: ../Prototype/OtherDir/*/Dir2
+        tags: [bar]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

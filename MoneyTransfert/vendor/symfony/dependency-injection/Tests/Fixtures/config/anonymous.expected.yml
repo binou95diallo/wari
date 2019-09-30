@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 services:
     service_container:
@@ -17,3 +18,24 @@ services:
         class: Symfony\Component\DependencyInjection\Tests\Fixtures\StdClassDecorator
         public: true
         arguments: [!service { class: stdClass, public: false }]
+=======
+
+services:
+    service_container:
+        class: Symfony\Component\DependencyInjection\ContainerInterface
+        public: true
+        synthetic: true
+    listener_aggregator:
+        class: Bar\FooClass
+        public: true
+        arguments: [!tagged listener]
+    .2_stdClass~%s:
+        class: stdClass
+        public: false
+        tags:
+            - { name: listener }
+    decorated:
+        class: Symfony\Component\DependencyInjection\Tests\Fixtures\StdClassDecorator
+        public: true
+        arguments: [!service { class: stdClass, public: false }]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

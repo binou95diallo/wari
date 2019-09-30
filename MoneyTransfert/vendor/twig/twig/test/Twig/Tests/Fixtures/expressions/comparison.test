@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig supports comparison operators (==, !=, <, >, >=, <=)
 --TEMPLATE--
@@ -12,3 +13,19 @@ return []
 1//1/1
 1/
 /1
+=======
+--TEST--
+Twig supports comparison operators (==, !=, <, >, >=, <=)
+--TEMPLATE--
+{{ 1 > 2 }}/{{ 1 > 1 }}/{{ 1 >= 2 }}/{{ 1 >= 1 }}
+{{ 1 < 2 }}/{{ 1 < 1 }}/{{ 1 <= 2 }}/{{ 1 <= 1 }}
+{{ 1 == 1 }}/{{ 1 == 2 }}
+{{ 1 != 1 }}/{{ 1 != 2 }}
+--DATA--
+return []
+--EXPECT--
+///1
+1//1/1
+1/
+/1
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

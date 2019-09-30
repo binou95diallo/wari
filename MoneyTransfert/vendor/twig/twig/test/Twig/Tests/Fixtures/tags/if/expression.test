@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "if" takes an expression as a test
 --TEMPLATE--
@@ -20,3 +21,27 @@ return ['a' => 12]
 return ['a' => 7]
 --EXPECT--
   A3
+=======
+--TEST--
+"if" takes an expression as a test
+--TEMPLATE--
+{% if a < 2 %}
+  A1
+{% elseif a > 10 %}
+  A2
+{% else %}
+  A3
+{% endif %}
+--DATA--
+return ['a' => 1]
+--EXPECT--
+  A1
+--DATA--
+return ['a' => 12]
+--EXPECT--
+  A2
+--DATA--
+return ['a' => 7]
+--EXPECT--
+  A3
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

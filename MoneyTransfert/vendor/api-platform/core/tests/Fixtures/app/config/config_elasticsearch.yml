@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: parameters_elasticsearch.yml }
     - { resource: config_test.yml }
@@ -12,3 +13,19 @@ services:
     test.api_platform.elasticsearch.client:
         parent: api_platform.elasticsearch.client
         public: true
+=======
+imports:
+    - { resource: parameters_elasticsearch.yml }
+    - { resource: config_test.yml }
+
+api_platform:
+    mapping:
+        paths: ['%kernel.project_dir%/../Elasticsearch/Model']
+    elasticsearch:
+        hosts: '%host%'
+
+services:
+    test.api_platform.elasticsearch.client:
+        parent: api_platform.elasticsearch.client
+        public: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

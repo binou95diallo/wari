@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 security:
     providers:
         default:
@@ -8,3 +9,15 @@ security:
         main:
             form_login:
                 provider: default
+=======
+security:
+    providers:
+        default:
+            memory:
+                users: { foo: { password: foo, roles: ROLE_USER } }
+
+    firewalls:
+        main:
+            form_login:
+                provider: default
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

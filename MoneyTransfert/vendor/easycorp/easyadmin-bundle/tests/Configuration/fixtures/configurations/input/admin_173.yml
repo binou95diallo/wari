@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # when defining batch actions in the global "actions" configuration, their order must
 # be preserved to display them in the same order in the backend interface
@@ -6,3 +7,13 @@
 easy_admin:
     list:
         batch_actions: ['zzz_first_action', 'aaa_second_action']
+=======
+# TEST
+# when defining batch actions in the global "actions" configuration, their order must
+# be preserved to display them in the same order in the backend interface
+
+# CONFIGURATION
+easy_admin:
+    list:
+        batch_actions: ['zzz_first_action', 'aaa_second_action']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

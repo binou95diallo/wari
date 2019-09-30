@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "--option_name",
     "shortcut": "-o|-O",
@@ -7,3 +8,14 @@
     "description": "option with multiple shortcuts",
     "default": null
 }
+=======
+{
+    "name": "--option_name",
+    "shortcut": "-o|-O",
+    "accept_value": true,
+    "is_value_required": true,
+    "is_multiple": false,
+    "description": "option with multiple shortcuts",
+    "default": null
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

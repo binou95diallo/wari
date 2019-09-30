@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Vich\UploaderBundle\Util;
@@ -29,3 +30,36 @@ class ClassUtils
         return \get_class($object);
     }
 }
+=======
+<?php
+
+namespace Vich\UploaderBundle\Util;
+
+use Doctrine\Common\Util\ClassUtils as DoctrineClassUtils;
+
+class ClassUtils
+{
+    /**
+     * This class should not be instantiated.
+     */
+    private function __construct()
+    {
+    }
+
+    /**
+     * Gets class name for the object, taking doctrine proxies into account.
+     *
+     * @param object $object The object
+     *
+     * @return string The FQCN of the given object
+     */
+    public static function getClass($object): string
+    {
+        if (\class_exists(DoctrineClassUtils::class)) {
+            return DoctrineClassUtils::getClass($object);
+        }
+
+        return \get_class($object);
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -10,3 +11,17 @@ framework:
 easy_admin:
     entities:
         Category: AppTestBundle\Entity\FunctionalTests\Category
+=======
+imports:
+    - { resource: config.yml }
+
+framework:
+    # This file overrides the EasyAdmin controller
+    router: { resource: "%kernel.root_dir%/config/routing_override.yml" }
+    translator:      ~
+    default_locale:  'fr'
+
+easy_admin:
+    entities:
+        Category: AppTestBundle\Entity\FunctionalTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

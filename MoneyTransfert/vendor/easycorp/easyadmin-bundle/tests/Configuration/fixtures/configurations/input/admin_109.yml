@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # disable actions globally
 
@@ -6,3 +7,13 @@ easy_admin:
     disabled_actions: ['action1']
     entities:
         Category: AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# disable actions globally
+
+# CONFIGURATION
+easy_admin:
+    disabled_actions: ['action1']
+    entities:
+        Category: AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

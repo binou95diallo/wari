@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "symfony/profiler-pack",
     "type": "symfony-pack",
@@ -10,3 +11,17 @@
         "symfony/web-profiler-bundle": "*"
     }
 }
+=======
+{
+    "name": "symfony/profiler-pack",
+    "type": "symfony-pack",
+    "license": "MIT",
+    "description": "A pack for the Symfony web profiler",
+    "require": {
+        "php": "^7.0",
+        "symfony/stopwatch": "*",
+        "symfony/twig-bundle": "*",
+        "symfony/web-profiler-bundle": "*"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

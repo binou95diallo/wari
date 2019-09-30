@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "cycle" function
 --TEMPLATE--
@@ -14,3 +15,21 @@ even-apple
 odd-orange
 even-citrus
 odd-apple
+=======
+--TEST--
+"cycle" function
+--TEMPLATE--
+{% for i in 0..6 %}
+{{ cycle(array1, i) }}-{{ cycle(array2, i) }}
+{% endfor %}
+--DATA--
+return ['array1' => ['odd', 'even'], 'array2' => ['apple', 'orange', 'citrus']]
+--EXPECT--
+odd-apple
+even-orange
+odd-citrus
+even-apple
+odd-orange
+even-citrus
+odd-apple
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

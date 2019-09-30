@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html.twig' %}
 
 {% block title %}Edit Partenaire{% endblock %}
@@ -11,3 +12,18 @@
 
     {{ include('partenaire/_delete_form.html.twig') }}
 {% endblock %}
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Partenaire{% endblock %}
+
+{% block body %}
+    <h1>Edit Partenaire</h1>
+
+    {{ include('partenaire/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('partenaire_index') }}">back to list</a>
+
+    {{ include('partenaire/_delete_form.html.twig') }}
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

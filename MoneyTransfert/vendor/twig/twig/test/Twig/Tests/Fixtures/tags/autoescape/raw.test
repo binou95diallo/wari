@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "autoescape" tag does not escape when raw is used as a filter
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return ['var' => '<br />']
 --EXPECT--
 <br />
+=======
+--TEST--
+"autoescape" tag does not escape when raw is used as a filter
+--TEMPLATE--
+{% autoescape 'html' %}
+{{ var|raw }}
+{% endautoescape %}
+--DATA--
+return ['var' => '<br />']
+--EXPECT--
+<br />
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

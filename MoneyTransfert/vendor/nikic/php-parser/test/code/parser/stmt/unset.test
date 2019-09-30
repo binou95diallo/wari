@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Unset
 -----
 <?php
@@ -23,4 +24,31 @@ array(
             )
         )
     )
+=======
+Unset
+-----
+<?php
+
+unset($a);
+unset($b, $c);
+-----
+array(
+    0: Stmt_Unset(
+        vars: array(
+            0: Expr_Variable(
+                name: a
+            )
+        )
+    )
+    1: Stmt_Unset(
+        vars: array(
+            0: Expr_Variable(
+                name: b
+            )
+            1: Expr_Variable(
+                name: c
+            )
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

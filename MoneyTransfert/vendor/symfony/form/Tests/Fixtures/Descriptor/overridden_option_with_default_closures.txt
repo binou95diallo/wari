@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Symfony\Component\Form\Tests\Console\Descriptor\FooType (empty_data)
 ====================================================================
 
@@ -24,3 +25,31 @@ Symfony\Component\Form\Tests\Console\Descriptor\FooType (empty_data)
   Normalizers      -                    %s
  ---------------- ----------------------%s 
 
+=======
+Symfony\Component\Form\Tests\Console\Descriptor\FooType (empty_data)
+====================================================================
+
+ ---------------- ----------------------%s 
+  Required         false                %s 
+ ---------------- ----------------------%s 
+  Default          Value: null          %s 
+                                        %s 
+                   Closure(s): [        %s 
+                     Closure%s{%A
+                       file: "%s%eExtension%eCore%eType%eFormType.php"%w
+                       line: %s 
+                     },                 %s 
+                     Closure%s{%A
+                       file: "%s%eTests%eConsole%eDescriptor%eAbstractDescriptorTest.php"%w
+                       line: %s 
+                     }                  %s 
+                   ]                    %s 
+ ---------------- ----------------------%s 
+  Allowed types    -                    %s 
+ ---------------- ----------------------%s 
+  Allowed values   -                    %s 
+ ---------------- ----------------------%s 
+  Normalizers      -                    %s
+ ---------------- ----------------------%s 
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Do loop
 -----
 <?php
@@ -14,4 +15,22 @@ array(
             name: a
         )
     )
+=======
+Do loop
+-----
+<?php
+
+do {
+
+} while ($a);
+-----
+array(
+    0: Stmt_Do(
+        stmts: array(
+        )
+        cond: Expr_Variable(
+            name: a
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

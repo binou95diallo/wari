@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Symfony Password Encoder Utility
 ================================
@@ -11,3 +12,18 @@ Symfony Password Encoder Utility
 
  [OK] Password encoding succeeded                                                                                       
 
+=======
+
+Symfony Password Encoder Utility
+================================
+
+ ------------------ ------------------------------------------------------------------ 
+  Key                Value                                                             
+ ------------------ ------------------------------------------------------------------ 
+  Encoder used       Symfony\Component\Security\Core\Encoder\PlaintextPasswordEncoder  
+  Encoded password   password                                                          
+ ------------------ ------------------------------------------------------------------ 
+
+ [OK] Password encoding succeeded                                                                                       
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

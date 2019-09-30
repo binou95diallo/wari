@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 macro with a filter
 --TEMPLATE--
@@ -12,3 +13,19 @@ macro with a filter
 return []
 --EXPECT--
 foo&lt;br /&gt;
+=======
+--TEST--
+macro with a filter
+--TEMPLATE--
+{% import _self as test %}
+
+{% macro test() %}
+    {% apply escape %}foo<br />{% endapply %}
+{% endmacro %}
+
+{{ test.test() }}
+--DATA--
+return []
+--EXPECT--
+foo&lt;br /&gt;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

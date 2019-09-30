@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 p {
     padding-right: .75rem \9;
     background-image: none \9;
@@ -7,3 +8,14 @@ p {
     content: "red \9\0";
     content: "red\0abc";
 }
+=======
+p {
+    padding-right: .75rem \9;
+    background-image: none \9;
+    color:red\9\0;
+    background-color:red \9 \0;
+    background-color:red \9 \0 !important;
+    content: "red \9\0";
+    content: "red\0abc";
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

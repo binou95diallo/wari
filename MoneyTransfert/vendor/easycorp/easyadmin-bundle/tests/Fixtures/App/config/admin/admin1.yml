@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         - AppTestBundle\Entity\FunctionalTests\Product
         - AppTestBundle\Entity\FunctionalTests\Product
         - AppTestBundle\Entity\FunctionalTests\Product
+=======
+easy_admin:
+    entities:
+        - AppTestBundle\Entity\FunctionalTests\Product
+        - AppTestBundle\Entity\FunctionalTests\Product
+        - AppTestBundle\Entity\FunctionalTests\Product
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

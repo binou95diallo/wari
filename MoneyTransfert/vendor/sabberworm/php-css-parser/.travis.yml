@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: php
 php:
     - "5.4"
@@ -10,3 +11,17 @@ php:
 script: phpunit .
 sudo: false
 
+=======
+language: php
+php:
+    - "5.4"
+    - "5.3"
+    - "5.5"
+    - "5.6"
+    - "7.0"
+    - "nightly"
+    - hhvm
+script: phpunit .
+sudo: false
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

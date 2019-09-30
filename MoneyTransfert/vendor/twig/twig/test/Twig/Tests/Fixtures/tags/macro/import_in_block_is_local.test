@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -16,3 +17,23 @@
 return []
 --EXCEPTION--
 Twig\Error\RuntimeError: Variable "lmacros" does not exist in "index.twig" at line 7.
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% block foo %}
+    {%- import _self as lmacros %}
+{% endblock %}
+
+{% block bar %}
+    {{- lmacros.input('username') }}
+{% endblock %}
+
+{% macro input(name) -%}
+    <input name="{{ name }}">
+{% endmacro %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\RuntimeError: Variable "lmacros" does not exist in "index.twig" at line 7.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

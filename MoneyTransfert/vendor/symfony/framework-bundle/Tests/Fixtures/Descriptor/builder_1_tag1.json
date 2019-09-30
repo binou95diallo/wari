@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "definitions": {
         ".definition_2": {
@@ -39,3 +40,46 @@
     "aliases": [],
     "services": []
 }
+=======
+{
+    "definitions": {
+        ".definition_2": {
+            "class": "Full\\Qualified\\Class2",
+            "public": false,
+            "synthetic": true,
+            "lazy": false,
+            "shared": true,
+            "abstract": false,
+            "autowire": false,
+            "autoconfigure": false,
+            "file": "\/path\/to\/file",
+            "factory_service": "factory.service",
+            "factory_method": "get",
+            "calls": [
+                "setMailer"
+            ],
+            "tags": [
+                {
+                    "name": "tag1",
+                    "parameters": {
+                        "attr1": "val1",
+                        "attr2": "val2"
+                    }
+                },
+                {
+                    "name": "tag1",
+                    "parameters": {
+                        "attr3": "val3"
+                    }
+                },
+                {
+                    "name": "tag2",
+                    "parameters": []
+                }
+            ]
+        }
+    },
+    "aliases": [],
+    "services": []
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

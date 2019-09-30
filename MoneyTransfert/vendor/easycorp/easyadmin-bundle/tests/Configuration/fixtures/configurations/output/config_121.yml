@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 easy_admin:
     design:
         assets:
             favicon:
                 path: favicon.ico
                 mime_type: image/vnd.microsoft.icon
+=======
+easy_admin:
+    design:
+        assets:
+            favicon:
+                path: favicon.ico
+                mime_type: image/vnd.microsoft.icon
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

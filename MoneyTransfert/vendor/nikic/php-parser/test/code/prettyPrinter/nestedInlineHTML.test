@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 InlineHTML node nested inside other code
 -----
 <?php
@@ -13,4 +14,21 @@ function test()
     ?>
 Test
     <?php
+=======
+InlineHTML node nested inside other code
+-----
+<?php
+
+function test() {
+    ?>
+Test
+    <?php
+}
+-----
+function test()
+{
+    ?>
+Test
+    <?php
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

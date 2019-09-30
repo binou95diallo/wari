@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 services:
     child_service_expected:
         class: Symfony\Component\DependencyInjection\Tests\Compiler\IntegrationTestStub
         # autoconfigure is set on the parent, but not on the child
         autoconfigure: false
         public: true
+=======
+services:
+    child_service_expected:
+        class: Symfony\Component\DependencyInjection\Tests\Compiler\IntegrationTestStub
+        # autoconfigure is set on the parent, but not on the child
+        autoconfigure: false
+        public: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

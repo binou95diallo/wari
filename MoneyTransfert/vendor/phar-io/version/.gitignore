@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.idea
 /.php_cs.cache
 /composer.lock
@@ -5,3 +6,12 @@
 /tools
 /vendor
 
+=======
+/.idea
+/.php_cs.cache
+/composer.lock
+/src/autoload.php
+/tools
+/vendor
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

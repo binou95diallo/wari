@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -16,3 +17,23 @@ easy_admin:
                     field2:
                         property: field2
                 form_options: {  }
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            new:
+                fields:
+                    field1:
+                        property: field1
+                    field2:
+                        property: field2
+                form_options: {  }
+            edit:
+                fields:
+                    field1:
+                        property: field1
+                    field2:
+                        property: field2
+                form_options: {  }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

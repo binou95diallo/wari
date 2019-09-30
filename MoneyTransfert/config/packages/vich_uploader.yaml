@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 vich_uploader:
     db_driver: orm
     mappings:
@@ -12,3 +13,19 @@ vich_uploader:
     #    products:
     #        uri_prefix: /images/products
     #        upload_destination: '%kernel.project_dir%/public/images/products'
+=======
+vich_uploader:
+    db_driver: orm
+    mappings:
+        user_image:
+            uri_prefix: /images/users 
+            upload_destination: '%kernel.project_dir%/public/images/users'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            inject_on_load: false # injecte l'image au chargement du formulaire
+            delete_on_update: true
+            delete_on_remove: true
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

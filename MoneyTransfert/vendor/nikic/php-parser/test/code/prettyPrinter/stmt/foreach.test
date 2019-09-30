@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 foreach
 -----
 <?php
@@ -25,4 +26,33 @@ foreach ($arr as &$val) {
 foreach ($arr as $key => $val) {
 }
 foreach ($arr as $key => &$val) {
+=======
+foreach
+-----
+<?php
+
+foreach ($arr as $val) {
+
+}
+
+foreach ($arr as &$val) {
+
+}
+
+foreach ($arr as $key => $val) {
+
+}
+
+foreach ($arr as $key => &$val) {
+
+}
+-----
+foreach ($arr as $val) {
+}
+foreach ($arr as &$val) {
+}
+foreach ($arr as $key => $val) {
+}
+foreach ($arr as $key => &$val) {
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

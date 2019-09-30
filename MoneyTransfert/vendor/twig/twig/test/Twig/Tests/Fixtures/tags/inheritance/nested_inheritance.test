@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "extends" tag
 --TEMPLATE--
@@ -14,3 +15,21 @@
 return []
 --EXPECT--
 INSIDE
+=======
+--TEST--
+"extends" tag
+--TEMPLATE--
+{% extends "layout.twig" %}
+{% block inside %}INSIDE{% endblock inside %}
+--TEMPLATE(layout.twig)--
+{% extends "base.twig" %}
+{% block body %}
+    {% block inside '' %}
+{% endblock body %}
+--TEMPLATE(base.twig)--
+{% block body '' %}
+--DATA--
+return []
+--EXPECT--
+INSIDE
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

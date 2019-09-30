@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "first" filter
 --TEMPLATE--
@@ -15,3 +16,22 @@ return ['arr' => new \ArrayObject([1, 2, 3, 4])]
 1
 1
 Ä
+=======
+--TEST--
+"first" filter
+--TEMPLATE--
+{{ [1, 2, 3, 4]|first }}
+{{ {a: 1, b: 2, c: 3, d: 4}|first }}
+{{ '1234'|first }}
+{{ arr|first }}
+{{ 'Ä€é'|first }}
+{{ ''|first }}
+--DATA--
+return ['arr' => new \ArrayObject([1, 2, 3, 4])]
+--EXPECT--
+1
+1
+1
+1
+Ä
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 __halt_compiler
 -----
 <?php
@@ -24,4 +25,32 @@ __halt_compiler();
 
 echo 'foo';
 __halt_compiler();
+=======
+__halt_compiler
+-----
+<?php
+
+echo 'foo';
+__halt_compiler();
+!!!
+???
+-----
+<?php
+
+echo 'foo';
+__halt_compiler();
+!!!
+???
+-----
+<?php
+
+echo 'foo';
+__halt_compiler();
+<?php
+-----
+<?php
+
+echo 'foo';
+__halt_compiler();
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 <?php

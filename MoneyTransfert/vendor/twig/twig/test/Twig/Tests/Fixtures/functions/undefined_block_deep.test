@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "block" function with undefined block on deep inheritance
 --TEMPLATE--
@@ -18,3 +19,25 @@
 return []
 --EXCEPTION--
 Twig\Error\RuntimeError: Block "unknown" on template "layout.twig" does not exist in "index.twig" at line 5.
+=======
+--TEST--
+"block" function with undefined block on deep inheritance
+--TEMPLATE--
+{% extends "base.twig" %}
+{% block foo %}
+    {{ parent() }}
+    {{ block('unknown') }}
+    {{ block('bar') }}
+{% endblock %}
+--TEMPLATE(base.twig)--
+{% extends "layout.twig" %}
+{% block foo %}Foo{% endblock %}
+{% block bar %}Bar{% endblock %}
+--TEMPLATE(layout.twig)--
+{% block foo %}Foo{% endblock %}
+{% block bar %}Bar{% endblock %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\RuntimeError: Block "unknown" on template "layout.twig" does not exist in "index.twig" at line 5.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "autoescape" tags can be nested at will
 --TEMPLATE--
@@ -24,3 +25,31 @@ return ['var' => '<br />']
         <br />
     &lt;br /&gt;
 &lt;br /&gt;
+=======
+--TEST--
+"autoescape" tags can be nested at will
+--TEMPLATE--
+{{ var }}
+{% autoescape 'html' %}
+  {{ var }}
+  {% autoescape false %}
+    {{ var }}
+    {% autoescape 'html' %}
+      {{ var }}
+    {% endautoescape %}
+    {{ var }}
+  {% endautoescape %}
+  {{ var }}
+{% endautoescape %}
+{{ var }}
+--DATA--
+return ['var' => '<br />']
+--EXPECT--
+&lt;br /&gt;
+  &lt;br /&gt;
+      <br />
+          &lt;br /&gt;
+        <br />
+    &lt;br /&gt;
+&lt;br /&gt;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

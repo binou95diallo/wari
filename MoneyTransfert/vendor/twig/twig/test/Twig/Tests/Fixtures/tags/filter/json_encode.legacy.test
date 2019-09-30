@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "filter" tag applies a filter on its children
 --DEPRECATION--
@@ -8,3 +9,15 @@ The "filter" tag in "index.twig" at line 2 is deprecated since Twig 2.9, use the
 return []
 --EXPECT--
 "test"
+=======
+--TEST--
+"filter" tag applies a filter on its children
+--DEPRECATION--
+The "filter" tag in "index.twig" at line 2 is deprecated since Twig 2.9, use the "apply" tag instead.
+--TEMPLATE--
+{% filter json_encode|raw %}test{% endfilter %}
+--DATA--
+return []
+--EXPECT--
+"test"
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

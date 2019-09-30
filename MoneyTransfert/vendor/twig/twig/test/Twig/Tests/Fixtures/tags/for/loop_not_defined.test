@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "for" tag
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return ['items' => ['a', 'b']]
 --EXCEPTION--
 Twig\Error\SyntaxError: The "loop.last" variable is not defined when looping with a condition in "index.twig" at line 3.
+=======
+--TEST--
+"for" tag
+--TEMPLATE--
+{% for i, item in items if i > 0 %}
+    {{ loop.last }}
+{% endfor %}
+--DATA--
+return ['items' => ['a', 'b']]
+--EXCEPTION--
+Twig\Error\SyntaxError: The "loop.last" variable is not defined when looping with a condition in "index.twig" at line 3.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

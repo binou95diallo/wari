@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "extends" tag with a parent as a Twig_TemplateWrapper instance
 --TEMPLATE--
@@ -10,3 +11,17 @@
 return ['foo' => $twig->load('foo.twig')]
 --EXPECT--
 New
+=======
+--TEST--
+"extends" tag with a parent as a Twig_TemplateWrapper instance
+--TEMPLATE--
+{% extends foo %}
+
+{% block content %}New{% endblock %}
+--TEMPLATE(foo.twig)--
+{% block content %}Default{% endblock %}
+--DATA--
+return ['foo' => $twig->load('foo.twig')]
+--EXPECT--
+New
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # when using a built-in action in the global "actions" configuration, all its
 # default options must be maintained (e.g. the "icon" or "css_class" should
@@ -9,3 +10,16 @@ easy_admin:
     edit:
         actions:
             - { name: 'delete', icon: '', css_class: ~ }
+=======
+# TEST
+# when using a built-in action in the global "actions" configuration, all its
+# default options must be maintained (e.g. the "icon" or "css_class" should
+# not be lost when the user doesn't define them) unless they are explicitly set,
+# even when using null or empty strings (which is useful to remove default values)
+
+# CONFIGURATION
+easy_admin:
+    edit:
+        actions:
+            - { name: 'delete', icon: '', css_class: ~ }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

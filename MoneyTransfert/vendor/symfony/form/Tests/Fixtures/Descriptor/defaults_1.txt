@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Built-in form types (Symfony\Component\Form\Extension\Core\Type)
 ----------------------------------------------------------------
@@ -19,3 +20,26 @@ Type guessers
 
  * Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser
 
+=======
+
+Built-in form types (Symfony\Component\Form\Extension\Core\Type)
+----------------------------------------------------------------
+
+ FormType
+
+Service form types
+------------------
+
+ * Symfony\Bridge\Doctrine\Form\Type\EntityType
+
+Type extensions
+---------------
+
+ * Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension
+
+Type guessers
+-------------
+
+ * Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

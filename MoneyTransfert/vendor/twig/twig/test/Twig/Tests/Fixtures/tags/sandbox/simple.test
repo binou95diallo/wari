@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 sandbox tag
 --TEMPLATE--
@@ -20,3 +21,27 @@ foo
 foo
 foo
 foo
+=======
+--TEST--
+sandbox tag
+--TEMPLATE--
+{%- sandbox %}
+    {%- include "foo.twig" %}
+{%- endsandbox %}
+
+{%- sandbox %}
+    {%- include "foo.twig" %}
+    {%- include "foo.twig" %}
+{%- endsandbox %}
+
+{%- sandbox %}{% include "foo.twig" %}{% endsandbox %}
+--TEMPLATE(foo.twig)--
+foo
+--DATA--
+return []
+--EXPECT--
+foo
+foo
+foo
+foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

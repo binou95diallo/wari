@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 parameters:
     foo: bar
     values:
@@ -11,3 +12,18 @@ parameters:
     foo_bar: '@foo_bar'
     mixedcase:
         MixedCaseKey: value
+=======
+parameters:
+    foo: bar
+    values:
+        - true
+        - false
+        - 0
+        - 1000.3
+        - !php/const PHP_INT_MAX
+    bar: foo
+    escape: '@@escapeme'
+    foo_bar: '@foo_bar'
+    mixedcase:
+        MixedCaseKey: value
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

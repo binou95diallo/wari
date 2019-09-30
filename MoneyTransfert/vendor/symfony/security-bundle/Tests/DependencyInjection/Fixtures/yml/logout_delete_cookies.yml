@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 security:
     providers:
         default:
@@ -13,3 +14,20 @@ security:
                     cookie2_name: ~
                     cookie3-long_name:
                         path: '/'
+=======
+security:
+    providers:
+        default:
+            id: foo
+
+    firewalls:
+        main:
+            provider: default
+            form_login: true
+            logout:
+                delete_cookies:
+                    cookie1-name: ~
+                    cookie2_name: ~
+                    cookie3-long_name:
+                        path: '/'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

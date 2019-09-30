@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "title": "zend-code Generator Component",
   "content": [
@@ -6,3 +7,13 @@
     {"Reference": "reference.md"}
   ]
 }
+=======
+{
+  "title": "zend-code Generator Component",
+  "content": [
+    {"Intro": "intro.md"},
+    {"Examples": "examples.md"},
+    {"Reference": "reference.md"}
+  ]
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

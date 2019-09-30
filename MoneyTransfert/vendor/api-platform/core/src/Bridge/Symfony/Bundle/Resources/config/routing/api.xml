@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <routes xmlns="http://symfony.com/schema/routing"
@@ -15,3 +16,22 @@
     </route>
 
 </routes>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing
+        http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="api_entrypoint" path="/{index}.{_format}">
+        <default key="_controller">api_platform.action.entrypoint</default>
+        <default key="_format" />
+        <default key="_api_respond">true</default>
+        <default key="index">index</default>
+
+        <requirement key="index">index</requirement>
+    </route>
+
+</routes>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

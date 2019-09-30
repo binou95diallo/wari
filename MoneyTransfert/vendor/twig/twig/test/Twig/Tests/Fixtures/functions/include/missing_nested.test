@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" function
 --TEMPLATE--
@@ -14,3 +15,21 @@
 return []
 --EXCEPTION--
 Twig\Error\LoaderError: Template "foo.twig" is not defined in "base.twig" at line 3.
+=======
+--TEST--
+"include" function
+--TEMPLATE--
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ parent() }}
+{% endblock %}
+--TEMPLATE(base.twig)--
+{% block content %}
+    {{ include("foo.twig") }}
+{% endblock %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\LoaderError: Template "foo.twig" is not defined in "base.twig" at line 3.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

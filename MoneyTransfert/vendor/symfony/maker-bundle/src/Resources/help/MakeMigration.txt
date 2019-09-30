@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 The <info>%command.name%</info> command generates a new migration:
 
 <info>php %command.full_name%</info>
+=======
+The <info>%command.name%</info> command generates a new migration:
+
+<info>php %command.full_name%</info>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

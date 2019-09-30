@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "type": "function",
@@ -9,3 +10,16 @@
         "priority": -1
     }
 ]
+=======
+[
+    {
+        "type": "function",
+        "name": "global_function",
+        "priority": 255
+    },
+    {
+        "type": "closure",
+        "priority": -1
+    }
+]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

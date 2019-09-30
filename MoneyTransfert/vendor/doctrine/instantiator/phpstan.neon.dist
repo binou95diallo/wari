@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-phpunit/rules.neon
@@ -17,3 +18,24 @@ parameters:
         -
             message: '#Access to an undefined property object::\$foo\.#'
             path: '*/tests/DoctrineTest/InstantiatorTest/InstantiatorTest.php'
+=======
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+
+    ignoreErrors:
+        -
+            message: '#::__construct\(\) does not call parent constructor from#'
+            path: '*/tests/DoctrineTest/InstantiatorTestAsset/*.php'
+
+        # dynamic properties confuse static analysis
+        -
+            message: '#Access to an undefined property object::\$foo\.#'
+            path: '*/tests/DoctrineTest/InstantiatorTest/InstantiatorTest.php'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

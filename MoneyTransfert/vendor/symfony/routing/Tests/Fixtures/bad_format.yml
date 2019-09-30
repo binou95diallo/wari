@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 blog_show:
 	path:     /blog/{slug}
 	defaults: { _controller: "MyBundle:Blog:show" }
+=======
+blog_show:
+	path:     /blog/{slug}
+	defaults: { _controller: "MyBundle:Blog:show" }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

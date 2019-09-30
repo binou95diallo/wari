@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "import" tag with syntax error
 --TEMPLATE--
@@ -16,3 +17,23 @@
 return []
 --EXPECT--
 OK
+=======
+--TEST--
+"import" tag with syntax error
+--TEMPLATE--
+{% import _self as foo %}
+
+{{ foo.foo() }}
+
+{% macro foo() %}
+    {{ foo.another() }}
+{% endmacro %}
+
+{% macro another() %}
+    OK
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+OK
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

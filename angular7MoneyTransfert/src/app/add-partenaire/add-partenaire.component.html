@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <app-navbar></app-navbar>
 <div class="container mt-5">
   <div class="row">
@@ -138,4 +139,146 @@
   </div>
   <div class="col-md-2"></div>
 </div>
+=======
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Interface Super admin</h2><hr>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+              <span class="anchor" id="formLogin"></span>
+        
+              <!-- form card add partenaire -->
+              <div class="card rounded-0">
+                <div class="card-header">
+                  <h2 class="mb-0">Ajout partenaire</h2>
+                </div>
+                <div class="card-body">
+                  <form  [formGroup]="partenaireData" (ngSubmit)="addPartenaire(partenaireData.value)" >
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="uname1">Raison Social</label>
+                              <input type="text" formControlName="raisonSocial" name="raisonSocial" class="form-control ">
+                            </div>
+                            <div *ngFor="let error of errorMessage.raisonSocial">
+                              <div id="error" *ngIf="partenaireData.get('raisonSocial').hasError(error.type) &&
+                               (partenaireData.get('raisonSocial').dirty || partenaireData.get('raisonSocial').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="uname1">Ninea</label>
+                                <input type="text" formControlName="ninea" name="ninea" class="form-control ">
+                              </div>
+                              <div *ngFor="let error of errorMessage.ninea">
+                                <div id="error" *ngIf="partenaireData.get('ninea').hasError(error.type) &&
+                                 (partenaireData.get('ninea').dirty || partenaireData.get('ninea').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
+                          <div class="form-group">
+                              <label for="uname1">Username</label>
+                              <input type="text" formControlName="username" name="username" class="form-control ">
+                            </div>
+                            <div id="error" *ngFor="let error of errorMessage.username">
+                              <div *ngIf="partenaireData.get('username').hasError(error.type) &&
+                               (partenaireData.get('username').dirty || partenaireData.get('username').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label>Password</label>
+                              <input type="password" formControlName="password" name="password" class="form-control ">
+                            </div>
+                            <div *ngFor="let error of errorMessage.password">
+                              <div id="error" *ngIf="partenaireData.get('password').hasError(error.type) &&
+                               (partenaireData.get('password').dirty || partenaireData.get('password').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="uname1">Email</label>
+                                <input type="text" formControlName="email" name="email" class="form-control ">
+                              </div>
+                              <div *ngFor="let error of errorMessage.email">
+                                <div id="error" *ngIf="partenaireData.get('email').hasError(error.type) &&
+                                 (partenaireData.get('email').dirty || partenaireData.get('email').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
+                      </div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-5">
+                          <div class="form-group">
+                              <label for="uname1">NomComplet</label>
+                              <input type="text" formControlName="nomComplet" name="nomComplet" class="form-control ">
+                            </div>
+                            <div *ngFor="let error of errorMessage.nomComplet">
+                              <div id="error" *ngIf="partenaireData.get('nomComplet').hasError(error.type) &&
+                               (partenaireData.get('nomComplet').dirty || partenaireData.get('nomComplet').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                            <div class="form-group">
+                                <label for="uname1">Adresse</label>
+                                <input type="text" formControlName="adresse" name="adresse" class="form-control ">
+                              </div>
+                              <div *ngFor="let error of errorMessage.adresse">
+                                <div id="error" *ngIf="partenaireData.get('adresse').hasError(error.type) &&
+                                 (partenaireData.get('adresse').dirty || partenaireData.get('adresse').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
+                              <div class="form-group">
+                                  <label for="uname1">Telephone</label>
+                                  <input type="text" formControlName="telephone" name="telephone" class="form-control ">
+                                </div>
+                                <div *ngFor="let error of errorMessage.telephone">
+                                  <div id="error" *ngIf="partenaireData.get('telephone').hasError(error.type) &&
+                                   (partenaireData.get('telephone').dirty || partenaireData.get('telephone').touched)">
+                                      {{error.message}}
+                                  </div>
+                              </div>
+                                    <div class="form-group">
+                                      <label for="uname1">Solde</label>
+                                      <input type="number" formControlName="solde" name="solde" class="form-control ">
+                                    </div>
+                                    <div *ngFor="let error of errorMessage.solde">
+                                      <div id="error" *ngIf="partenaireData.get('solde').hasError(error.type) &&
+                                       (partenaireData.get('solde').dirty || partenaireData.get('solde').touched)">
+                                          {{error.message}}
+                                      </div>
+                                  </div>
+                                    
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Photo</label>
+                                        <img [src]="imageUrl" alt="" style="width:200px; height:200px;">
+                                        <input #imageName
+                                          type="file" accept="image/*"  class="form-control " required
+                                          (change)="handleFileInput($event.target.files)">
+                                    </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-primary float-right" [disabled]="!partenaireData.valid">Ajouter</button>
+                  </form>
+                </div>
+                <!--/card-block-->
+              </div>
+              <!-- /form card login -->
+        
+  </div>
+  <div class="col-md-2"></div>
+</div>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 home:
     path:
@@ -7,3 +8,14 @@ home:
 not_localized:
     controller: HomeController::otherAction
     path: /here
+=======
+---
+home:
+    path:
+        nl: /nl
+        en: /en
+
+not_localized:
+    controller: HomeController::otherAction
+    path: /here
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

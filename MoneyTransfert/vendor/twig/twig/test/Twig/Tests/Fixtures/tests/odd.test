@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "odd" test
 --TEMPLATE--
@@ -7,4 +8,15 @@
 return []
 --EXPECT--
 ok
+=======
+--TEST--
+"odd" test
+--TEMPLATE--
+{{ 1 is odd ? 'ok' : 'ko' }}
+{{ 2 is odd ? 'ko' : 'ok' }}
+--DATA--
+return []
+--EXPECT--
+ok
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 ok

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # it's possible to define custom batch actions
 
@@ -8,3 +9,15 @@ easy_admin:
     entities:
         Category:
             class: AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# it's possible to define custom batch actions
+
+# CONFIGURATION
+easy_admin:
+    list:
+        batch_actions: ['custom_batch_action']
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "escape" filter
 --TEMPLATE--
@@ -6,3 +7,13 @@
 return []
 --EXPECT--
 \u00E9\u0020\u265C\u0020\uD834\uDF06
+=======
+--TEST--
+"escape" filter
+--TEMPLATE--
+{{ "é ♜ 𝌆"|e('js') }}
+--DATA--
+return []
+--EXPECT--
+\u00E9\u0020\u265C\u0020\uD834\uDF06
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

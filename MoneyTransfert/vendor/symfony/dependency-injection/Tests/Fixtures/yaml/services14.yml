@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 services:
     factory: { class: FooBarClass, factory: baz:getClass}
     factory_with_static_call: { class: FooBarClass, factory: FooBacFactory::createFooBar}
     invokable_factory: { class: FooBarClass, factory: '@factory' }
+=======
+services:
+    factory: { class: FooBarClass, factory: baz:getClass}
+    factory_with_static_call: { class: FooBarClass, factory: FooBacFactory::createFooBar}
+    invokable_factory: { class: FooBarClass, factory: '@factory' }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

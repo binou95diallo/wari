@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "with" tag with an expression that is not a hash
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return ['vars' => 'no-hash']
 --EXCEPTION--
 Twig\Error\RuntimeError: Variables passed to the "with" tag must be a hash in "index.twig" at line 2.
+=======
+--TEST--
+"with" tag with an expression that is not a hash
+--TEMPLATE--
+{% with vars %}
+    {{ foo }}{{ bar }}
+{% endwith %}
+--DATA--
+return ['vars' => 'no-hash']
+--EXCEPTION--
+Twig\Error\RuntimeError: Variables passed to the "with" tag must be a hash in "index.twig" at line 2.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "replace" filter
 --TEMPLATE--
@@ -10,3 +11,17 @@ return ['traversable' => new \ArrayObject(['%this%' => 'foo', '%that%' => 'bar']
 I liké foo and bar.
 I like single replace operation only %that%1
 I like foo and bar.
+=======
+--TEST--
+"replace" filter
+--TEMPLATE--
+{{ "I liké %this% and %that%."|replace({'%this%': "foo", '%that%': "bar"}) }}
+{{ 'I like single replace operation only %that%'|replace({'%that%' : '%that%1'}) }}
+{{ 'I like %this% and %that%.'|replace(traversable) }}
+--DATA--
+return ['traversable' => new \ArrayObject(['%this%' => 'foo', '%that%' => 'bar'])]
+--EXPECT--
+I liké foo and bar.
+I like single replace operation only %that%1
+I like foo and bar.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

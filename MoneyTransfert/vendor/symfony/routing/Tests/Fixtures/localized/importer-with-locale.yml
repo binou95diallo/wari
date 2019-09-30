@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 ---
 i_need:
     resource: ./imported-with-locale.yml
     prefix:
         nl: /nl
         en: /en
+=======
+---
+i_need:
+    resource: ./imported-with-locale.yml
+    prefix:
+        nl: /nl
+        en: /en
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

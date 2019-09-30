@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig supports method calls
 --TEMPLATE--
@@ -12,3 +13,19 @@ bar
 bar
 foo
 bar
+=======
+--TEST--
+Twig supports method calls
+--TEMPLATE--
+{{ items.foo }}
+{{ items['foo'] }}
+{{ items[foo] }}
+{{ items[items[foo]] }}
+--DATA--
+return ['foo' => 'bar', 'items' => ['foo' => 'bar', 'bar' => 'foo']]
+--EXPECT--
+bar
+bar
+foo
+bar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

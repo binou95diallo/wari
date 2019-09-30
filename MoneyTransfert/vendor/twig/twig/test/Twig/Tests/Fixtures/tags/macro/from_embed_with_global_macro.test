@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -19,3 +20,26 @@
 return []
 --EXCEPTION--
 Twig\Error\SyntaxError: Unknown "input" function in "index.twig" at line 6.
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% from _self import input %}
+
+{% embed 'embed' %}
+    {% block foo %}
+        {{ input("username") }}
+    {% endblock %}
+{% endembed %}
+
+{% macro input(name) -%}
+    <input name="{{ name }}">
+{% endmacro %}
+--TEMPLATE(embed)--
+    {% block foo %}
+    {% endblock %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\SyntaxError: Unknown "input" function in "index.twig" at line 6.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

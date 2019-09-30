@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 /.idea
 /vendor/
 /.php_cs
 /.php_cs.cache
 /composer.lock
+=======
+/.idea
+/vendor/
+/.php_cs
+/.php_cs.cache
+/composer.lock
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

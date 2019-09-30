@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.48.43",
     "Names": {
@@ -8,3 +9,15 @@
         "ro_MD": "Moldovan"
     }
 }
+=======
+{
+    "Version": "2.1.48.43",
+    "Names": {
+        "bn": "Bengali",
+        "en_US": "United States English",
+        "frc": "frc",
+        "lou": "lou",
+        "ro_MD": "Moldovan"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

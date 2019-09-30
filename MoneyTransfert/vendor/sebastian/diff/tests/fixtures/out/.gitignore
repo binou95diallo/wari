@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 # reset all ignore rules to create sandbox for integration test
+=======
+# reset all ignore rules to create sandbox for integration test
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 !/**

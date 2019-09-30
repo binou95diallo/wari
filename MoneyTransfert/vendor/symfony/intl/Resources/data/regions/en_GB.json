@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.86",
     "Names": {
@@ -12,3 +13,19 @@
         "VI": "US Virgin Islands"
     }
 }
+=======
+{
+    "Version": "2.1.47.86",
+    "Names": {
+        "BL": "St Barthélemy",
+        "KN": "St Kitts & Nevis",
+        "LC": "St Lucia",
+        "MF": "St Martin",
+        "PM": "St Pierre & Miquelon",
+        "SH": "St Helena",
+        "UM": "US Outlying Islands",
+        "VC": "St Vincent & Grenadines",
+        "VI": "US Virgin Islands"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

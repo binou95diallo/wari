@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Exception for an undefined parent
 --TEMPLATE--
@@ -8,3 +9,15 @@ Exception for an undefined parent
 return []
 --EXCEPTION--
 Twig\Error\LoaderError: Template "foo.html" is not defined in "index.twig" at line 2.
+=======
+--TEST--
+Exception for an undefined parent
+--TEMPLATE--
+{% extends 'foo.html' %}
+
+{% set foo = "foo" %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\LoaderError: Template "foo.html" is not defined in "index.twig" at line 2.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

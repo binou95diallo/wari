@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig supports the "matches" operator
 --TEMPLATE--
@@ -10,3 +11,17 @@ return []
 OK
 OK
 OK
+=======
+--TEST--
+Twig supports the "matches" operator
+--TEMPLATE--
+{{ 'foo' matches '/o/' ? 'OK' : 'KO' }}
+{{ 'foo' matches '/^fo/' ? 'OK' : 'KO' }}
+{{ 'foo' matches '/O/i' ? 'OK' : 'KO' }}
+--DATA--
+return []
+--EXPECT--
+OK
+OK
+OK
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

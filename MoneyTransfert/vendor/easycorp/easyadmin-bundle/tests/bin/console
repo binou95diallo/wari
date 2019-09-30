@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env php
 <?php
 
@@ -13,3 +14,20 @@ $input = new ArgvInput();
 
 $application = new Application(new AppKernel('default_backend', true));
 $application->run($input);
+=======
+#!/usr/bin/env php
+<?php
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+set_time_limit(0);
+
+require __DIR__.'/../../vendor/autoload.php';
+include __DIR__.'/../Fixtures/App/AppKernel.php';
+
+$input = new ArgvInput();
+
+$application = new Application(new AppKernel('default_backend', true));
+$application->run($input);
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

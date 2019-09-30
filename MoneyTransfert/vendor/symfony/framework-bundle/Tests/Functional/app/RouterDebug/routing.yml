@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 routerdebug_session_welcome:
     path:     /session
     defaults: { _controller: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SessionController::welcomeAction }
@@ -13,3 +14,20 @@ routerdebug_session_logout:
 routerdebug_test:
     path:     /test
     defaults: { _controller: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SessionController::welcomeAction }
+=======
+routerdebug_session_welcome:
+    path:     /session
+    defaults: { _controller: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SessionController::welcomeAction }
+
+routerdebug_session_welcome_name:
+    path:     /session/{name}
+    defaults: { _controller: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SessionController::welcomeAction }
+
+routerdebug_session_logout:
+    path:     /session_logout
+    defaults: { _controller: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SessionController::logoutAction }
+
+routerdebug_test:
+    path:     /test
+    defaults: { _controller: Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\SessionController::welcomeAction }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <phpunit>
   <testsuite name="My Test Suite">
     <file>Test.php</file>
@@ -9,3 +10,16 @@
     </exclude>
   </groups>
 </phpunit>
+=======
+<phpunit>
+  <testsuite name="My Test Suite">
+    <file>Test.php</file>
+  </testsuite>
+
+  <groups>
+    <exclude>
+      <group>one</group>
+    </exclude>
+  </groups>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

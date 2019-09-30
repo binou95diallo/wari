@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "number_format" filter with defaults.
 --TEMPLATE--
@@ -19,3 +20,26 @@ return []
 1=020!25
 1=020,25
 1.020,25
+=======
+--TEST--
+"number_format" filter with defaults.
+--TEMPLATE--
+{{ 20|number_format }}
+{{ 20.25|number_format }}
+{{ 20.25|number_format(1) }}
+{{ 20.25|number_format(2, ',') }}
+{{ 1020.25|number_format }}
+{{ 1020.25|number_format(2, ',') }}
+{{ 1020.25|number_format(2, ',', '.') }}
+--DATA--
+$twig->getExtension(\Twig\Extension\CoreExtension::class)->setNumberFormat(2, '!', '=');
+return []
+--EXPECT--
+20!00
+20!25
+20!3
+20,25
+1=020!25
+1=020,25
+1.020,25
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

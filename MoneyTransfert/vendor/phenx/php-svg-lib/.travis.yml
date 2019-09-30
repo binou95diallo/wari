@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: php
 
 php:
@@ -16,3 +17,23 @@ matrix:
   allow_failures:
     - php: 5.6
   fast_finish: true
+=======
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+
+script: phpunit
+
+matrix:
+  allow_failures:
+    - php: 5.6
+  fast_finish: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

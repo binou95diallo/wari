@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html.twig' %}
 
 {% block title %}New Partenaire{% endblock %}
@@ -9,3 +10,16 @@
 
     <a href="{{ path('partenaire_index') }}">back to list</a>
 {% endblock %}
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}New Partenaire{% endblock %}
+
+{% block body %}
+    <h1>Create new Partenaire</h1>
+
+    {{ include('partenaire/_form.html.twig') }}
+
+    <a href="{{ path('partenaire_index') }}">back to list</a>
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

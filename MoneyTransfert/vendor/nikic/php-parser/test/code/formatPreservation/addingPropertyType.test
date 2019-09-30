@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Adding property type
 -----
 <?php
@@ -37,3 +38,44 @@ class A
     public
         int $b;
 }
+=======
+Adding property type
+-----
+<?php
+
+class A
+{
+
+    public $a
+    = 1;
+}
+-----
+$stmts[0]->stmts[0]->type = new Node\Identifier('string');
+-----
+<?php
+
+class A
+{
+
+    public string $a
+    = 1;
+}
+-----
+<?php
+
+class A
+{
+    public
+        $b;
+}
+-----
+$stmts[0]->stmts[0]->type = new Node\Identifier('int');
+-----
+<?php
+
+class A
+{
+    public
+        int $b;
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

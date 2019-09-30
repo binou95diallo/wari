@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _main:
     resource: routing_common.yml
 
@@ -12,3 +13,19 @@ web_profiler_wdt:
 web_profiler_profiler:
     resource: '@WebProfilerBundle/Resources/config/routing/profiler.xml'
     prefix: /_profiler
+=======
+_main:
+    resource: routing_common.yml
+
+controller:
+    resource: '@TestBundle/Controller/Orm'
+    type: annotation
+
+web_profiler_wdt:
+    resource: '@WebProfilerBundle/Resources/config/routing/wdt.xml'
+    prefix: /_wdt
+
+web_profiler_profiler:
+    resource: '@WebProfilerBundle/Resources/config/routing/profiler.xml'
+    prefix: /_profiler
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

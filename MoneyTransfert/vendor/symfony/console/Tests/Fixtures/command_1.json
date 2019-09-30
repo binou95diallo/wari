@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "descriptor:command1",
     "hidden": false,
@@ -13,3 +14,20 @@
         "options": []
     }
 }
+=======
+{
+    "name": "descriptor:command1",
+    "hidden": false,
+    "usage": [
+        "descriptor:command1",
+        "alias1",
+        "alias2"
+    ],
+    "description": "command 1 description",
+    "help": "command 1 help",
+    "definition": {
+        "arguments": [],
+        "options": []
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     manager:
         class: UserManager
@@ -13,3 +14,20 @@ services:
         tags:
           - name: manager
             alias: user
+=======
+services:
+    manager:
+        class: UserManager
+        arguments:
+          - true
+        calls:
+          - method: setLogger
+            arguments:
+              - '@logger'
+          - method: setClass
+            arguments:
+              - User
+        tags:
+          - name: manager
+            alias: user
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

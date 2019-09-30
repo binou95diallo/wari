@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 It may be necessary to convert a single statement into a block
 -----
 <?php
@@ -26,4 +27,34 @@ $stmts[0]->stmts[] = new Stmt\Expression(new Expr\Variable('c'));
 
 if
 ($a) {$b;
+=======
+It may be necessary to convert a single statement into a block
+-----
+<?php
+
+if
+($a) $b;
+-----
+// TODO Avoid fallback
+$stmts[0]->stmts[] = new Stmt\Expression(new Expr\Variable('c'));
+-----
+<?php
+
+if ($a) {
+    $b;
+    $c;
+}
+-----
+<?php
+
+if
+($a) {$b;}
+-----
+$stmts[0]->stmts[] = new Stmt\Expression(new Expr\Variable('c'));
+-----
+<?php
+
+if
+($a) {$b;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 $c;}

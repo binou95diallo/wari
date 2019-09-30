@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -22,3 +23,29 @@ class ParameterTest extends TestCase
         $this->assertEquals('foo', (string) $ref, '__construct() sets the id of the parameter, which is used for the __toString() method');
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\DependencyInjection\Tests;
+
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\Parameter;
+
+class ParameterTest extends TestCase
+{
+    public function testConstructor()
+    {
+        $ref = new Parameter('foo');
+        $this->assertEquals('foo', (string) $ref, '__construct() sets the id of the parameter, which is used for the __toString() method');
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

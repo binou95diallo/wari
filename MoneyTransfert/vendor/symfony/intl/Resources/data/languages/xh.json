@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Names": {
         "xh": "isiXhosa"
     }
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Names": {
+        "xh": "isiXhosa"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

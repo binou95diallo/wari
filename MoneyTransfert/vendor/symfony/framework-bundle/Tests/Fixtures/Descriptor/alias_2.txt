@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 
 [39;49m // [39;49mThis service is a [33mprivate[39m alias for the service [32m.service_2[39m
 
+=======
+
+[39;49m // [39;49mThis service is a [33mprivate[39m alias for the service [32m.service_2[39m
+
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

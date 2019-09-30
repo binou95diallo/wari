@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 $meta #
 #semval($) $this->semValue
@@ -15,3 +16,22 @@ final class Tokens
     const %s = %n;
 #endtokenval
 }
+=======
+<?php
+$meta #
+#semval($) $this->semValue
+#semval($,%t) $this->semValue
+#semval(%n) $this->stackPos-(%l-%n)
+#semval(%n,%t) $this->stackPos-(%l-%n)
+
+namespace PhpParser\Parser;
+#include;
+
+/* GENERATED file based on grammar/tokens.y */
+final class Tokens
+{
+#tokenval
+    const %s = %n;
+#endtokenval
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         batch_actions:
@@ -17,3 +18,24 @@ easy_admin:
                         label: action.delete
                         css_class: btn-danger
                         icon: null
+=======
+easy_admin:
+    list:
+        batch_actions:
+            delete:
+                name: delete
+                type: method
+                label: action.delete
+                css_class: btn-danger
+                icon: null
+    entities:
+        Category:
+            list:
+                batch_actions:
+                    delete:
+                        name: delete
+                        type: method
+                        label: action.delete
+                        css_class: btn-danger
+                        icon: null
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     list:
         actions:
@@ -45,3 +46,52 @@ easy_admin:
                 actions:
                     list:
                         name: list
+=======
+easy_admin:
+    list:
+        actions:
+            custom_list_action:
+                name: custom_list_action
+    edit:
+        actions:
+            custom_edit_action:
+                name: custom_edit_action
+    show:
+        actions:
+            custom_show_action:
+                name: custom_show_action
+    new:
+        actions:
+            custom_new_action:
+                name: custom_new_action
+    entities:
+        Category:
+            list:
+                actions:
+                    edit:
+                        name: edit
+                    delete:
+                        name: delete
+                    new:
+                        name: new
+                    search:
+                        name: search
+            edit:
+                actions:
+                    delete:
+                        name: delete
+                    list:
+                        name: list
+            show:
+                actions:
+                    edit:
+                        name: edit
+                    delete:
+                        name: delete
+                    list:
+                        name: list
+            new:
+                actions:
+                    list:
+                        name: list
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

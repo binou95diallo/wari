@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% if view == 'show' %}
     {% if value|length > 0 %}
         <ul>
@@ -13,3 +14,20 @@
 {% else %}
     {{ value|join(', ')|easyadmin_truncate }}
 {% endif %}
+=======
+{% if view == 'show' %}
+    {% if value|length > 0 %}
+        <ul>
+            {% for element in value %}
+                <li>{{ element }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="empty collection-empty">
+            {{ include(entity_config.templates.label_empty) }}
+        </div>
+    {% endif %}
+{% else %}
+    {{ value|join(', ')|easyadmin_truncate }}
+{% endif %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

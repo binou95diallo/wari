@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "split" filter
 --TEMPLATE--
@@ -19,4 +20,27 @@ return ['foo' => 'Ä,é,Äほ', 'baz' => 'éÄßごa',]
 Ä-é-Äほ
 é-Ä-ß-ご-a
 é-Ä-ß-ご-a
+=======
+--TEST--
+"split" filter
+--TEMPLATE--
+{{ "é"|split('', 10)|join('-') }}
+{{ foo|split(',')|join('-') }}
+{{ foo|split(',', 1)|join('-') }}
+{{ foo|split(',', 2)|join('-') }}
+{{ foo|split(',', 3)|join('-') }}
+{{ baz|split('')|join('-') }}
+{{ baz|split('', 1)|join('-') }}
+{{ baz|split('', 2)|join('-') }}
+--DATA--
+return ['foo' => 'Ä,é,Äほ', 'baz' => 'éÄßごa',]
+--EXPECT--
+é
+Ä-é-Äほ
+Ä,é,Äほ
+Ä-é,Äほ
+Ä-é-Äほ
+é-Ä-ß-ご-a
+é-Ä-ß-ご-a
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 éÄ-ßご-a

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.82",
     "Names": {
@@ -14,3 +15,21 @@
         "VI": "Američka Djevičanska Ostrva"
     }
 }
+=======
+{
+    "Version": "2.1.47.82",
+    "Names": {
+        "BY": "Bjelorusija",
+        "CG": "Kongo",
+        "CZ": "Češka Republika",
+        "DE": "Njemačka",
+        "KN": "Sveti Kits i Nevis",
+        "PM": "Sveti Pjer i Mikelon",
+        "RE": "Reunion",
+        "UM": "Manja udaljena ostrva SAD",
+        "VC": "Sveti Vinsent i Grenadini",
+        "VG": "Britanska Djevičanska Ostrva",
+        "VI": "Američka Djevičanska Ostrva"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

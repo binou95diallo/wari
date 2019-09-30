@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # configuration format #2 with custom entity name that doesn't match its class name
 
@@ -5,3 +6,12 @@
 easy_admin:
     entities:
         CustomCategory: AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# configuration format #2 with custom entity name that doesn't match its class name
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        CustomCategory: AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

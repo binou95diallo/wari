@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 services:
     _defaults:
         public: true
 
     Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\FragmentController:
         tags: ['controller.service_arguments']
+=======
+services:
+    _defaults:
+        public: true
+
+    Symfony\Bundle\FrameworkBundle\Tests\Functional\Bundle\TestBundle\Controller\FragmentController:
+        tags: ['controller.service_arguments']
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

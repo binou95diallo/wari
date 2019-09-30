@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <parameter key="database_name">symfony</parameter>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<parameter key="database_name">symfony</parameter>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

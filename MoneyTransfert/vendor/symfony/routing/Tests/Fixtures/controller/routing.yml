@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 app_homepage:
     path: /
     controller: AppBundle:Homepage:show
@@ -9,3 +10,16 @@ app_blog:
 
 app_logout:
     path: /logout
+=======
+app_homepage:
+    path: /
+    controller: AppBundle:Homepage:show
+
+app_blog:
+    path: /blog
+    defaults:
+        _controller: AppBundle:Blog:list
+
+app_logout:
+    path: /logout
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

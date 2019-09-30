@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -20,3 +21,27 @@
     ]
   }
 }
+=======
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

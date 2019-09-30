@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 {% set type = field_options.type_options.type|default('fractional') %}
 {% set scale = field_options.type_options.scale|default(0) %}
 {{ (type == 'fractional' ? value * 100 : value)|number_format(scale) }}%
+=======
+{% set type = field_options.type_options.type|default('fractional') %}
+{% set scale = field_options.type_options.scale|default(0) %}
+{{ (type == 'fractional' ? value * 100 : value)|number_format(scale) }}%
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

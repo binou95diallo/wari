@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     entities:
         Category:
@@ -8,3 +9,15 @@ easy_admin:
             class: AppTestBundle\Entity\UnitTests\SubNamespace\Category
             name: AnotherCategory
             label: AnotherCategory
+=======
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            name: Category
+            label: Category
+        AnotherCategory:
+            class: AppTestBundle\Entity\UnitTests\SubNamespace\Category
+            name: AnotherCategory
+            label: AnotherCategory
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

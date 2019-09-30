@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Symfony\Component\Debug\Tests\Fixtures;
@@ -25,3 +26,32 @@ interface InterfaceWithAnnotatedParameters
      */
     public function iAmHere();
 }
+=======
+<?php
+
+namespace Symfony\Component\Debug\Tests\Fixtures;
+
+/**
+ * Ensures a deprecation is triggered when a new parameter is not declared in child classes.
+ */
+interface InterfaceWithAnnotatedParameters
+{
+    /**
+     * @param bool $matrix
+     */
+    public function whereAmI();
+
+    /**
+     * @param       $noType
+     * @param callable(\Throwable|null $reason, mixed $value) $callback and a comment
+     * about this great param
+     * @param string                                          $param (comment with $dollar)
+     * @param $defined
+     * @param  callable  ($a,  $b)  $anotherOne
+     * @param callable (mixed $a, $b) $definedCallable
+     * @param Type$WithDollarIsStillAType $ccc
+     * @param \JustAType
+     */
+    public function iAmHere();
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

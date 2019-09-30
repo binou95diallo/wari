@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --- %YAML:1.0
 test: Miscellaneous
 spec: 2.21
@@ -9,3 +10,16 @@ php: |
     'true' => true,
     'false' => false,
   ]
+=======
+--- %YAML:1.0
+test: Miscellaneous
+spec: 2.21
+yaml: |
+  true: true
+  false: false
+php: |
+  [
+    'true' => true,
+    'false' => false,
+  ]
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

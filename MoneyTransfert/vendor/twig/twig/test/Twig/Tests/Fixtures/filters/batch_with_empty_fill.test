@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "batch" filter
 --TEMPLATE--
@@ -35,3 +36,42 @@ return ['items' => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']]
       <td></td>
     </tr>
 </table>
+=======
+--TEST--
+"batch" filter
+--TEMPLATE--
+<table>
+{% for row in items|batch(3, '') %}
+  <tr>
+  {% for column in row %}
+    <td>{{ column }}</td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+--DATA--
+return ['items' => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']]
+--EXPECT--
+<table>
+  <tr>
+      <td>a</td>
+      <td>b</td>
+      <td>c</td>
+    </tr>
+  <tr>
+      <td>d</td>
+      <td>e</td>
+      <td>f</td>
+    </tr>
+  <tr>
+      <td>g</td>
+      <td>h</td>
+      <td>i</td>
+    </tr>
+  <tr>
+      <td>j</td>
+      <td></td>
+      <td></td>
+    </tr>
+</table>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

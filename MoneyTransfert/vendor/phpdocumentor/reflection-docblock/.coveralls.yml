@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 service_name: travis-ci
 coverage_clover: coverage.xml
 json_path: coverage.json
+=======
+service_name: travis-ci
+coverage_clover: coverage.xml
+json_path: coverage.json
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

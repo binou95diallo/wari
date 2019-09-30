@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 The <info>%command.name%</info> command generates a new user class for security
 and updates your security.yaml file for it. It will also generate a user provider
 class if your situation needs a custom class.
@@ -5,3 +6,12 @@ class if your situation needs a custom class.
 <info>php %command.full_name% User</info>
 
 If the argument is missing, the command will ask for the class name interactively.
+=======
+The <info>%command.name%</info> command generates a new user class for security
+and updates your security.yaml file for it. It will also generate a user provider
+class if your situation needs a custom class.
+
+<info>php %command.full_name% User</info>
+
+If the argument is missing, the command will ask for the class name interactively.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

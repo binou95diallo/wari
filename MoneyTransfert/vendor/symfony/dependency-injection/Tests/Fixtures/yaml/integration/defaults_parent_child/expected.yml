@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     child_service_expected:
         class: stdClass
@@ -5,3 +6,12 @@ services:
         # does not cascade to the child
         autoconfigure: false
         public: true
+=======
+services:
+    child_service_expected:
+        class: stdClass
+        # _defaults is applied to the parent, but autoconfigure: true
+        # does not cascade to the child
+        autoconfigure: false
+        public: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

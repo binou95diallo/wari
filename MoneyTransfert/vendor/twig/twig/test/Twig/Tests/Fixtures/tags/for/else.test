@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "for" tag can use an "else" clause
 --TEMPLATE--
@@ -21,3 +22,28 @@ return []
 return ['strict_variables' => false]
 --EXPECT--
   no item
+=======
+--TEST--
+"for" tag can use an "else" clause
+--TEMPLATE--
+{% for item in items %}
+  * {{ item }}
+{% else %}
+  no item
+{% endfor %}
+--DATA--
+return ['items' => ['a', 'b']]
+--EXPECT--
+  * a
+  * b
+--DATA--
+return ['items' => []]
+--EXPECT--
+  no item
+--DATA--
+return []
+--CONFIG--
+return ['strict_variables' => false]
+--EXPECT--
+  no item
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

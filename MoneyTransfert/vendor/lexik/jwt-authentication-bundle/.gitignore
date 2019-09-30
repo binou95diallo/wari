@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 phpunit.xml
 build
 vendor
 composer.lock
 composer.phar
+=======
+phpunit.xml
+build
+vendor
+composer.lock
+composer.phar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "for" tag keeps the context safe
 --TEMPLATE--
@@ -16,3 +17,23 @@ return ['items' => ['a', 'b']]
       * a
       * b
     * b
+=======
+--TEST--
+"for" tag keeps the context safe
+--TEMPLATE--
+{% for item in items %}
+  {% for item in items %}
+    * {{ item }}
+  {% endfor %}
+  * {{ item }}
+{% endfor %}
+--DATA--
+return ['items' => ['a', 'b']]
+--EXPECT--
+      * a
+      * b
+    * a
+      * a
+      * b
+    * b
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.json  text
 *.xml   text
 *.php   text
@@ -7,3 +8,14 @@
 *.html  text
 *.htm   text
 *.svg   text
+=======
+*.json  text
+*.xml   text
+*.php   text
+*.md    text
+*.css   text
+*.js    text
+*.html  text
+*.htm   text
+*.svg   text
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

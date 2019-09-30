@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
   - { resource: base_security.yml }
 
@@ -22,3 +23,29 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
+=======
+imports:
+  - { resource: base_security.yml }
+
+security:
+    firewalls:
+        login:
+            pattern:  ^/login
+            stateless: true
+            anonymous: true
+            provider: in_memory
+            form_login:
+                check_path: /login_check
+                require_previous_session: false
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern:  ^/api
+            stateless: true
+            anonymous: false
+            provider: jwt
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

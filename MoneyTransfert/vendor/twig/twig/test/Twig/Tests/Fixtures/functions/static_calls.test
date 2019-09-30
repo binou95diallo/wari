@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Functions as static method calls
 --TEMPLATE--
@@ -8,3 +9,15 @@ return ['foo' => 'foo']
 --EXPECT--
 *foo*
 *foo*
+=======
+--TEST--
+Functions as static method calls
+--TEMPLATE--
+{{ static_call_string('foo') }}
+{{ static_call_array('foo') }}
+--DATA--
+return ['foo' => 'foo']
+--EXPECT--
+*foo*
+*foo*
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

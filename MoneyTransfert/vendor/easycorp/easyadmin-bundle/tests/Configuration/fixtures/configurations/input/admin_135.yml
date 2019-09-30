@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # if the entity doesn't define a dql_filter option explicitly for 'list' or
 # 'search' its value will be considered as null
@@ -9,3 +10,16 @@ easy_admin:
             class: AppTestBundle\Entity\UnitTests\Category
             list: ~
             search: ~
+=======
+# TEST
+# if the entity doesn't define a dql_filter option explicitly for 'list' or
+# 'search' its value will be considered as null
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            list: ~
+            search: ~
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

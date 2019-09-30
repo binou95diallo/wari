@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "block" function without arguments
 --TEMPLATE--
@@ -10,3 +11,17 @@
 return []
 --EXCEPTION--
 Twig\Error\SyntaxError: The "block" function takes one argument (the block name) in "base.twig" at line 2.
+=======
+--TEST--
+"block" function without arguments
+--TEMPLATE--
+{% extends 'base.twig' %}
+{% block bar %}BAR{% endblock %}
+--TEMPLATE(base.twig)--
+{% block foo %}{{ block() }}{% endblock %}
+{% block bar %}BAR_BASE{% endblock %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\SyntaxError: The "block" function takes one argument (the block name) in "base.twig" at line 2.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Modifier change
 -----
 <?php
@@ -30,4 +31,38 @@ class Bar {
 
     public final function
     foo() {}
+=======
+Modifier change
+-----
+<?php
+class Foo {}
+abstract class Bar {
+    const
+    FOO = 42;
+
+    var $foo
+    = 24;
+
+    public function
+    foo() {}
+}
+-----
+$stmts[0]->flags = Stmt\Class_::MODIFIER_ABSTRACT;
+$stmts[1]->flags = 0;
+$stmts[1]->stmts[0]->flags = Stmt\Class_::MODIFIER_PRIVATE;
+$stmts[1]->stmts[1]->flags = Stmt\Class_::MODIFIER_PROTECTED;
+$stmts[1]->stmts[2]->flags |= Stmt\Class_::MODIFIER_FINAL;
+-----
+<?php
+abstract class Foo {}
+class Bar {
+    private const
+    FOO = 42;
+
+    protected $foo
+    = 24;
+
+    public final function
+    foo() {}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

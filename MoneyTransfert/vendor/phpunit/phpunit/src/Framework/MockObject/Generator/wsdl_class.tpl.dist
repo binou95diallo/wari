@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 declare(strict_types=1);
 
 {namespace}class {class_name} extends \SoapClient
@@ -7,3 +8,14 @@ declare(strict_types=1);
         parent::__construct('{wsdl}', $options);
     }
 {methods}}
+=======
+declare(strict_types=1);
+
+{namespace}class {class_name} extends \SoapClient
+{
+    public function __construct($wsdl, array $options)
+    {
+        parent::__construct('{wsdl}', $options);
+    }
+{methods}}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

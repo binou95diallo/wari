@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig does not confuse strings with integers in getAttribute()
 --TEMPLATE--
@@ -6,3 +7,13 @@ Twig does not confuse strings with integers in getAttribute()
 return ['hash' => ['2e2' => 'works']]
 --EXPECT--
 works
+=======
+--TEST--
+Twig does not confuse strings with integers in getAttribute()
+--TEMPLATE--
+{{ hash['2e2'] }}
+--DATA--
+return ['hash' => ['2e2' => 'works']]
+--EXPECT--
+works
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

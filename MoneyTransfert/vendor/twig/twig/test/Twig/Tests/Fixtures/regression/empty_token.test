@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig outputs 0 nodes correctly
 --TEMPLATE--
@@ -6,3 +7,13 @@ Twig outputs 0 nodes correctly
 return ['foo' => 'foo']
 --EXPECT--
 foo0foo
+=======
+--TEST--
+Twig outputs 0 nodes correctly
+--TEMPLATE--
+{{ foo }}0{{ foo }}
+--DATA--
+return ['foo' => 'foo']
+--EXPECT--
+foo0foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

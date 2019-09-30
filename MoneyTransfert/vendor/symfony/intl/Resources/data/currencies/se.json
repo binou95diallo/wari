@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.48.4",
     "Names": {
@@ -43,3 +44,50 @@
         ]
     }
 }
+=======
+{
+    "Version": "2.1.48.4",
+    "Names": {
+        "DKK": [
+            "Dkr",
+            "DKK"
+        ],
+        "EUR": [
+            "€",
+            "euro"
+        ],
+        "FIM": [
+            "FIM",
+            "suoma márkki"
+        ],
+        "HKD": [
+            "HK$",
+            "HKD"
+        ],
+        "INR": [
+            "₹",
+            "INR"
+        ],
+        "JPY": [
+            "JP¥",
+            "JPY"
+        ],
+        "MXN": [
+            "MX$",
+            "MXN"
+        ],
+        "NOK": [
+            "kr",
+            "norgga kruvdno"
+        ],
+        "SEK": [
+            "Skr",
+            "ruoŧŧa kruvdno"
+        ],
+        "THB": [
+            "฿",
+            "THB"
+        ]
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

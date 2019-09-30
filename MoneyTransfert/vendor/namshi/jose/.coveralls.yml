@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 service_name: travis-ci
 coverage_clover: build/logs/clover.xml
+=======
+service_name: travis-ci
+coverage_clover: build/logs/clover.xml
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

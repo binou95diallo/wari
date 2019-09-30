@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
@@ -20,3 +21,27 @@
     <service id="bar" parent="foo" />
   </services>
 </container>
+=======
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="foo" class="FooClass" public="true">
+      <argument type="service">
+        <service class="BarClass">
+          <argument type="service">
+            <service class="BazClass">
+            </service>
+          </argument>
+        </service>
+      </argument>
+      <property name="p" type="service">
+        <service class="BuzClass" />
+      </property>
+    </service>
+    <service id="bar" parent="foo" />
+  </services>
+</container>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

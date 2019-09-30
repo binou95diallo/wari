@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -32,3 +33,39 @@ class SimpleHelper extends Helper
         return 'foo';
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\Templating\Tests\Fixtures;
+
+use Symfony\Component\Templating\Helper\Helper;
+
+class SimpleHelper extends Helper
+{
+    protected $value = '';
+
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
+
+    public function __toString()
+    {
+        return $this->value;
+    }
+
+    public function getName()
+    {
+        return 'foo';
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

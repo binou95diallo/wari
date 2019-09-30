@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "timeout": 10,
     "source": {
@@ -8,4 +9,16 @@
     "logs": {
         "text": "infection-log.txt"
     }
+=======
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "logs": {
+        "text": "infection-log.txt"
+    }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

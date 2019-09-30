@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 # Useful for tests that require EasyAdmin configuration to be empty
 imports:
     - { resource: config.yml }
+=======
+# Useful for tests that require EasyAdmin configuration to be empty
+imports:
+    - { resource: config.yml }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

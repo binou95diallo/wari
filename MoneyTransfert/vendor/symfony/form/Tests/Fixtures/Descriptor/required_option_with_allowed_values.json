@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "required": true,
     "allowed_types": [
@@ -9,3 +10,16 @@
     ],
     "has_normalizer": true
 }
+=======
+{
+    "required": true,
+    "allowed_types": [
+        "string"
+    ],
+    "allowed_values": [
+        "bar",
+        "baz"
+    ],
+    "has_normalizer": true
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

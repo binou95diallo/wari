@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.48.43",
     "Names": {
@@ -5,3 +6,12 @@
         "wal": "wolaytta"
     }
 }
+=======
+{
+    "Version": "2.1.48.43",
+    "Names": {
+        "sw_CD": "swahili (R. D. Congo)",
+        "wal": "wolaytta"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

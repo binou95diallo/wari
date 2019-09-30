@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -12,3 +13,19 @@ return []
 --EXPECT--
 fooglobal
 fooglobal
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% from 'forms.twig' import foo %}
+
+{{ foo('foo') }}
+{{ foo() }}
+--TEMPLATE(forms.twig)--
+{% macro foo(name) %}{{ name|default('foo') }}{{ global }}{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+fooglobal
+fooglobal
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

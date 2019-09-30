@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -23,3 +24,30 @@ class JsonLoginLdapTest extends WebTestCase
         $this->assertInstanceOf(Kernel::class, $kernel);
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Bundle\SecurityBundle\Tests\Functional;
+
+use Symfony\Component\HttpKernel\Kernel;
+
+class JsonLoginLdapTest extends WebTestCase
+{
+    public function testKernelBoot()
+    {
+        $kernel = self::createKernel(['test_case' => 'JsonLoginLdap', 'root_config' => 'config.yml']);
+        $kernel->boot();
+
+        $this->assertInstanceOf(Kernel::class, $kernel);
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

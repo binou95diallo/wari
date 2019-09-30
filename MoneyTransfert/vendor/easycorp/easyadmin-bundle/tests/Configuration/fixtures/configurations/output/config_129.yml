@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 easy_admin:
     edit:
         actions:
@@ -7,3 +8,14 @@ easy_admin:
                 label: action.delete
                 css_class: 'btn text-danger'
                 icon: ''
+=======
+easy_admin:
+    edit:
+        actions:
+            delete:
+                name: delete
+                type: method
+                label: action.delete
+                css_class: 'btn text-danger'
+                icon: ''
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

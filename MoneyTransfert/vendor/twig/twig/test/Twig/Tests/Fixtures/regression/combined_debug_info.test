@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Exception with bad line number
 --TEMPLATE--
@@ -13,3 +14,20 @@ foo
 return ['foo' => 'foo']
 --EXCEPTION--
 Twig\Error\RuntimeError: Impossible to access an attribute ("bar") on a string variable ("foo") in "foo" at line 3.
+=======
+--TEST--
+Exception with bad line number
+--TEMPLATE--
+{% block content %}
+    {{ foo }}
+    {{ include("foo") }}
+{% endblock %}
+index
+--TEMPLATE(foo)--
+foo
+{{ foo.bar }}
+--DATA--
+return ['foo' => 'foo']
+--EXCEPTION--
+Twig\Error\RuntimeError: Impossible to access an attribute ("bar") on a string variable ("foo") in "foo" at line 3.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     _instanceof:
         FooInterface:
@@ -10,3 +11,17 @@ services:
     child_service:
         class: stdClass
         parent: parent_service
+=======
+services:
+    _instanceof:
+        FooInterface:
+            autowire: true
+
+    parent_service:
+        class: stdClass
+        public: true
+
+    child_service:
+        class: stdClass
+        parent: parent_service
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 framework:
     secret: test
     router: { resource: "%kernel.project_dir%/%kernel.test_case%/routing.yml" }
@@ -13,3 +14,20 @@ framework:
 
 services:
     logger: { class: Psr\Log\NullLogger }
+=======
+framework:
+    secret: test
+    router: { resource: "%kernel.project_dir%/%kernel.test_case%/routing.yml" }
+    validation: { enabled: true, enable_annotations: true }
+    assets: ~
+    csrf_protection: true
+    form: true
+    test: ~
+    default_locale: en
+    session:
+        storage_id: session.storage.mock_file
+    profiler: { only_exceptions: false }
+
+services:
+    logger: { class: Psr\Log\NullLogger }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "template_from_string" function works in an "include"
 --TEMPLATE--
@@ -9,3 +10,16 @@ Cool
 return []
 --EXPECT--
 Cool
+=======
+--TEST--
+"template_from_string" function works in an "include"
+--TEMPLATE--
+{% set embed = '{% embed "embed.twig" %}{% endembed %}' %}
+{{ include(template_from_string(embed)) }}
+--TEMPLATE(embed.twig)--
+Cool
+--DATA--
+return []
+--EXPECT--
+Cool
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

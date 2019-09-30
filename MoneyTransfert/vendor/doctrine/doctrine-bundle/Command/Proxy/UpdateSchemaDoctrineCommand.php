@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Doctrine\Bundle\DoctrineBundle\Command\Proxy;
@@ -35,3 +36,42 @@ class UpdateSchemaDoctrineCommand extends UpdateCommand
         return parent::execute($input, $output);
     }
 }
+=======
+<?php
+
+namespace Doctrine\Bundle\DoctrineBundle\Command\Proxy;
+
+use Doctrine\ORM\Tools\Console\Command\SchemaTool\UpdateCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+
+/**
+ * Command to generate the SQL needed to update the database schema to match
+ * the current mapping information.
+ */
+class UpdateSchemaDoctrineCommand extends UpdateCommand
+{
+    /**
+     * {@inheritDoc}
+     */
+    protected function configure()
+    {
+        parent::configure();
+
+        $this
+            ->setName('doctrine:schema:update')
+            ->addOption('em', null, InputOption::VALUE_OPTIONAL, 'The entity manager to use for this command');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        DoctrineCommandHelper::setApplicationEntityManager($this->getApplication(), $input->getOption('em'));
+
+        return parent::execute($input, $output);
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

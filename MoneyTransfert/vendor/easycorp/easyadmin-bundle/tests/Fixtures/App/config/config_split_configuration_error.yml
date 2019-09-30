@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
     - { resource: admin/category_entity_error.yml }
@@ -5,3 +6,12 @@ imports:
 easy_admin:
     entities:
         Product: AppTestBundle\Entity\FunctionalTests\Product
+=======
+imports:
+    - { resource: config.yml }
+    - { resource: admin/category_entity_error.yml }
+
+easy_admin:
+    entities:
+        Product: AppTestBundle\Entity\FunctionalTests\Product
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 declare
 -----
 <?php
@@ -14,4 +15,22 @@ declare (ticks=1) {
     foo();
 }
 declare (ticks=2) {
+=======
+declare
+-----
+<?php
+
+declare (strict_types=1);
+declare (ticks=1) {
+    foo();
+}
+declare (ticks=2) {
+}
+-----
+declare (strict_types=1);
+declare (ticks=1) {
+    foo();
+}
+declare (ticks=2) {
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 parameters:
     server: mongodb://localhost:27017
     dbname: 'api_platform_test'
+=======
+parameters:
+    server: mongodb://localhost:27017
+    dbname: 'api_platform_test'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

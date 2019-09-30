@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Positions for leading nop statement
 -----
 <?php
@@ -10,4 +11,18 @@ array(
             0: /* Comment */
         )
     )
+=======
+Positions for leading nop statement
+-----
+<?php
+/* Comment */
+-----
+!!positions
+array(
+    0: Stmt_Nop[2:14 - 2:13](
+        comments: array(
+            0: /* Comment */
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

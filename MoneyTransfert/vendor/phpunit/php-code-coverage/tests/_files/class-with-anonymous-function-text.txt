@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 Code Coverage Report:  
@@ -10,3 +11,17 @@ Code Coverage Report:
 
 CoveredClassWithAnonymousFunctionInStaticMethod
   Methods:   0.00% ( 0/ 1)   Lines:  87.50% (  7/  8)
+=======
+
+
+Code Coverage Report:  
+  %s
+                       
+ Summary:              
+  Classes:  0.00% (0/1)
+  Methods:  0.00% (0/1)
+  Lines:   87.50% (7/8)
+
+CoveredClassWithAnonymousFunctionInStaticMethod
+  Methods:   0.00% ( 0/ 1)   Lines:  87.50% (  7/  8)
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

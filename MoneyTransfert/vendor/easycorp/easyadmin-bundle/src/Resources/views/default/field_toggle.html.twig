@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% trans_default_domain 'EasyAdminBundle' %}
 
 {% if view == 'show' or ('edit' in backend_config.disabled_actions) %}
@@ -14,3 +15,21 @@
         </label>
     </div>
 {% endif %}
+=======
+{% trans_default_domain 'EasyAdminBundle' %}
+
+{% if view == 'show' or ('edit' in backend_config.disabled_actions) %}
+    {% if value == true %}
+        <span class="badge badge-success">{{ 'label.true'|trans }}</span>
+    {% else %}
+        <span class="badge badge-danger">{{ 'label.false'|trans }}</span>
+    {% endif %}
+{% else %}
+    <div class="checkbox-switch" data-propertyname="{{ field_options.property }}">
+        <label>
+            <input type="checkbox" {{ value == true ? 'checked' }}>
+            {# the empty <span> is needed for styling. Don't remove it! #}<span></span>
+        </label>
+    </div>
+{% endif %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

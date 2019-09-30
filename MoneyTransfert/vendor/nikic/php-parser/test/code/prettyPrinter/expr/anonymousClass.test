@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Anonymous classes
 -----
 <?php
@@ -25,3 +26,32 @@ new class($a) extends A
         $this->a = $a;
     }
 };
+=======
+Anonymous classes
+-----
+<?php
+
+new class {};
+new class extends A implements B, C {};
+new class($a) extends A {
+    private $a;
+    public function __construct($a) {
+        $this->a = $a;
+    }
+};
+-----
+new class
+{
+};
+new class extends A implements B, C
+{
+};
+new class($a) extends A
+{
+    private $a;
+    public function __construct($a)
+    {
+        $this->a = $a;
+    }
+};
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

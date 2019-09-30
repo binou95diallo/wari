@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
@@ -10,3 +11,17 @@
     </service>
   </services>
 </container>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <defaults public="true" />
+    <service class="FooClass"/>
+    <service id="FooClass">
+      <argument type="service">
+        <service class="BarClass" />
+      </argument>
+    </service>
+  </services>
+</container>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

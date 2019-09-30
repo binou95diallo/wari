@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -20,3 +21,27 @@ class CustomPathBundle extends Bundle
         return __DIR__.'/..';
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Bundle\FrameworkBundle\Tests;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class CustomPathBundle extends Bundle
+{
+    public function getPath()
+    {
+        return __DIR__.'/..';
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ../config/default.yml }
 
@@ -11,3 +12,18 @@ parameters:
     env(LOCALE): en
     env(COOKIE_HTTPONLY): '1'
     secret: test
+=======
+imports:
+    - { resource: ../config/default.yml }
+
+framework:
+    secret: '%secret%'
+    default_locale: '%env(LOCALE)%'
+    session:
+        cookie_httponly: '%env(bool:COOKIE_HTTPONLY)%'
+
+parameters:
+    env(LOCALE): en
+    env(COOKIE_HTTPONLY): '1'
+    secret: test
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

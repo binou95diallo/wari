@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "use" tag
 --TEMPLATE--
@@ -23,3 +24,30 @@ return []
 --EXPECT--
 <div class="container">    <div class="overridden_sub_container">overridden sub_container</div>
 </div>
+=======
+--TEST--
+"use" tag
+--TEMPLATE--
+{% use "parent.twig" %}
+
+{{ block('container') }}
+--TEMPLATE(parent.twig)--
+{% use "ancestor.twig" %}
+
+{% block sub_container %}
+    <div class="overridden_sub_container">overridden sub_container</div>
+{% endblock %}
+--TEMPLATE(ancestor.twig)--
+{% block container %}
+    <div class="container">{{ block('sub_container') }}</div>
+{% endblock %}
+
+{% block sub_container %}
+    <div class="sub_container">sub_container</div>
+{% endblock %}
+--DATA--
+return []
+--EXPECT--
+<div class="container">    <div class="overridden_sub_container">overridden sub_container</div>
+</div>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

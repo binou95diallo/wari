@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html {
 	some: -test(val1);
 }
@@ -15,3 +16,22 @@ html {
 #unrelated {
 	other: yes;
 }
+=======
+html {
+	some: -test(val1);
+}
+
+html {
+	some-other: -test(val1);
+}
+
+@media screen {
+	html {
+		some: -test(val2);
+	}
+}
+
+#unrelated {
+	other: yes;
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

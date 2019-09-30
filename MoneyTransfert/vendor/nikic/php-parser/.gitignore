@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 vendor/
 composer.lock
 grammar/kmyacc.exe
 grammar/y.output
+=======
+vendor/
+composer.lock
+grammar/kmyacc.exe
+grammar/y.output
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

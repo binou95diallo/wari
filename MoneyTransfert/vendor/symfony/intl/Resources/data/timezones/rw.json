@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.49.82",
     "Names": {
@@ -8,3 +9,15 @@
     },
     "Meta": []
 }
+=======
+{
+    "Version": "2.1.49.82",
+    "Names": {
+        "Africa\/Kigali": "U Rwanda (Kigali)",
+        "Antarctica\/Troll": "Troll",
+        "Europe\/Skopje": "Masedoniya y'Amajyaruguru (Skopje)",
+        "Pacific\/Tongatapu": "Tonga (Tongatapu)"
+    },
+    "Meta": []
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

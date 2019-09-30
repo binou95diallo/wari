@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html.twig" %}
 
 {% block body %}
@@ -6,3 +7,13 @@
     <a href="{{ logout_path('default') }}">Log out</a>.
     <a href="{{ logout_url('default') }}">Log out</a>.
 {% endblock %}
+=======
+{% extends "base.html.twig" %}
+
+{% block body %}
+    Hello {{ app.user.username }}!<br /><br />
+    You're browsing to path "{{ app.request.pathInfo }}".<br /><br />
+    <a href="{{ logout_path('default') }}">Log out</a>.
+    <a href="{{ logout_url('default') }}">Log out</a>.
+{% endblock %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

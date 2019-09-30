@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "apply" tag applies the filter on "if" tags
 --TEMPLATE--
@@ -27,3 +28,34 @@ A, B
 B
 
 A
+=======
+--TEST--
+"apply" tag applies the filter on "if" tags
+--TEMPLATE--
+{% apply upper %}
+{% if items %}
+{{ items|join(', ') }}
+{% endif %}
+
+{% if items.3 is defined %}
+FOO
+{% else %}
+{{ items.1 }}
+{% endif %}
+
+{% if items.3 is defined %}
+FOO
+{% elseif items.1 %}
+{{ items.0 }}
+{% endif %}
+
+{% endapply %}
+--DATA--
+return ['items' => ['a', 'b']]
+--EXPECT--
+A, B
+
+B
+
+A
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

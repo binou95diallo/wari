@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Array
 (
@@ -8,3 +9,15 @@ Array
     [4] => Set-Cookie: ?*():@&+$/%#[]=%3F%2A%28%29%3A%40%26%2B%24%2F%25%23%5B%5D; path=/
 )
 shutdown
+=======
+
+Array
+(
+    [0] => Content-Type: text/plain; charset=utf-8
+    [1] => Cache-Control: no-cache, private
+    [2] => Date: Sat, 12 Nov 1955 20:04:00 GMT
+    [3] => Set-Cookie: ?*():@&+$/%#[]=%3F%2A%28%29%3A%40%26%2B%24%2F%25%23%5B%5D; path=/
+    [4] => Set-Cookie: ?*():@&+$/%#[]=%3F%2A%28%29%3A%40%26%2B%24%2F%25%23%5B%5D; path=/
+)
+shutdown
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

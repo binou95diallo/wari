@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -21,3 +22,28 @@ Hello
 return []
 --EXPECT--
 Test
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% extends "parent" %}
+{% import _self as me %}
+
+{% block test %}
+    {{ me.hello() }}
+{% endblock test %}
+--TEMPLATE(parent)--
+{% import _self as me %}
+
+{% block test %}
+Hello
+{% endblock test %}
+
+{% macro hello() %}
+    Test
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+Test
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

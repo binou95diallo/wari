@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 users:
   type:     rest
   resource: FOS\RestBundle\Tests\Fixtures\Controller\UsersController
@@ -14,3 +15,21 @@ user_topic_comments:
   parent:       user_topics
   prefix:       /additional
   name_prefix:  test_
+=======
+users:
+  type:     rest
+  resource: FOS\RestBundle\Tests\Fixtures\Controller\UsersController
+  prefix:   /resources/all
+
+user_topics:
+  type:     rest
+  resource: FOS\RestBundle\Tests\Fixtures\Controller\UserTopicsController
+  parent:   users
+
+user_topic_comments:
+  type:         rest
+  resource:     FOS\RestBundle\Tests\Fixtures\Controller\UserTopicCommentsController
+  parent:       user_topics
+  prefix:       /additional
+  name_prefix:  test_
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # if the 'form_theme' option is null, the default '@EasyAdmin/form/bootstrap_4.html.twig' form theme is used
 
@@ -7,3 +8,14 @@ easy_admin:
         form_theme: ~
     entities:
         - AppTestBundle\Entity\UnitTests\Category
+=======
+# TEST
+# if the 'form_theme' option is null, the default '@EasyAdmin/form/bootstrap_4.html.twig' form theme is used
+
+# CONFIGURATION
+easy_admin:
+    design:
+        form_theme: ~
+    entities:
+        - AppTestBundle\Entity\UnitTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

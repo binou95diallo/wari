@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # when using the expanded entity configuration, is mandatory to define the
 # 'class' option to define the associated Doctrine entity class
@@ -12,3 +13,19 @@ easy_admin:
     entities:
         TestEntity:
             label: 'This class does not define its Doctrine class'
+=======
+# TEST
+# when using the expanded entity configuration, is mandatory to define the
+# 'class' option to define the associated Doctrine entity class
+
+# EXCEPTION
+expected_exception:
+    class: RuntimeException
+    message_string: 'The "TestEntity" entity must define its associated Doctrine entity class using the "class" option.'
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        TestEntity:
+            label: 'This class does not define its Doctrine class'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

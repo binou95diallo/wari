@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -8,3 +9,15 @@ easy_admin:
         Purchase:     AppTestBundle\Entity\FunctionalTests\Purchase
         PurchaseItem: AppTestBundle\Entity\FunctionalTests\PurchaseItem
         Product:      AppTestBundle\Entity\FunctionalTests\Product
+=======
+imports:
+    - { resource: config.yml }
+
+easy_admin:
+    entities:
+        Category:     AppTestBundle\Entity\FunctionalTests\Category
+        Image:        AppTestBundle\Entity\FunctionalTests\Image
+        Purchase:     AppTestBundle\Entity\FunctionalTests\Purchase
+        PurchaseItem: AppTestBundle\Entity\FunctionalTests\PurchaseItem
+        Product:      AppTestBundle\Entity\FunctionalTests\Product
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

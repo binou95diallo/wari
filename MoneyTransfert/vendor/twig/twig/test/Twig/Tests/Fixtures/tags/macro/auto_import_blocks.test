@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "macro" tag
 --TEMPLATE--
@@ -16,3 +17,23 @@
 return []
 --EXPECT--
 Hello FABIEN
+=======
+--TEST--
+"macro" tag
+--TEMPLATE--
+{% block content %}
+    {{ _self.hello('Fabien') }}
+{% endblock %}
+
+{% macro hello(name) -%}
+    Hello {{ _self.up(name) }}
+{% endmacro %}
+
+{% macro up(name) -%}
+    {{ name|upper }}
+{% endmacro %}
+--DATA--
+return []
+--EXPECT--
+Hello FABIEN
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

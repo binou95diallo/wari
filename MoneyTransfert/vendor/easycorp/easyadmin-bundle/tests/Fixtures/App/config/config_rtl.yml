@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: config.yml }
 
@@ -10,3 +11,17 @@ framework:
 easy_admin:
     entities:
         Category:     AppTestBundle\Entity\FunctionalTests\Category
+=======
+imports:
+    - { resource: config.yml }
+
+# use 'ar' (Arabic) as the locale of the app to force the detection of RTL languages
+parameters:
+    locale: ar
+framework:
+    default_locale: ar
+
+easy_admin:
+    entities:
+        Category:     AppTestBundle\Entity\FunctionalTests\Category
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

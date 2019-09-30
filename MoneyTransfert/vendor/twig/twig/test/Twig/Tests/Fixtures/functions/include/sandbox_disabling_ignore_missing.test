@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "include" tag sandboxed
 --TEMPLATE--
@@ -11,3 +12,18 @@ return ['foo' => 'bar<br />']
 
 
 bar&lt;br /&gt;
+=======
+--TEST--
+"include" tag sandboxed
+--TEMPLATE--
+{{ include("unknown.twig", sandboxed = true, ignore_missing = true) }}
+{{ include("bar.twig") }}
+--TEMPLATE(bar.twig)--
+{{ foo|e }}
+--DATA--
+return ['foo' => 'bar<br />']
+--EXPECT--
+
+
+bar&lt;br /&gt;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

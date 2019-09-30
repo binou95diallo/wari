@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Exit
 -----
 <?php
@@ -43,4 +44,51 @@ array(
             )
         )
     )
+=======
+Exit
+-----
+<?php
+exit;
+exit();
+exit('Die!');
+die;
+die();
+die('Exit!');
+-----
+array(
+    0: Stmt_Expression(
+        expr: Expr_Exit(
+            expr: null
+        )
+    )
+    1: Stmt_Expression(
+        expr: Expr_Exit(
+            expr: null
+        )
+    )
+    2: Stmt_Expression(
+        expr: Expr_Exit(
+            expr: Scalar_String(
+                value: Die!
+            )
+        )
+    )
+    3: Stmt_Expression(
+        expr: Expr_Exit(
+            expr: null
+        )
+    )
+    4: Stmt_Expression(
+        expr: Expr_Exit(
+            expr: null
+        )
+    )
+    5: Stmt_Expression(
+        expr: Expr_Exit(
+            expr: Scalar_String(
+                value: Exit!
+            )
+        )
+    )
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 )

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [exception] {{ status_code ~ ' | ' ~ status_text ~ ' | ' ~ exception.class }}
 [message] {{ exception.message }}
 {% for i, e in exception.toarray %}
@@ -5,3 +6,12 @@
 {{ include('@Twig/Exception/traces.txt.twig', { exception: e }, with_context = false) }}
 
 {% endfor %}
+=======
+[exception] {{ status_code ~ ' | ' ~ status_text ~ ' | ' ~ exception.class }}
+[message] {{ exception.message }}
+{% for i, e in exception.toarray %}
+[{{ i + 1 }}] {{ e.class }}: {{ e.message }}
+{{ include('@Twig/Exception/traces.txt.twig', { exception: e }, with_context = false) }}
+
+{% endfor %}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 routing:
     resource: "../config/routing.yml"
 
 _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
     prefix:   /_error
+=======
+routing:
+    resource: "../config/routing.yml"
+
+_errors:
+    resource: "@TwigBundle/Resources/config/routing/errors.xml"
+    prefix:   /_error
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

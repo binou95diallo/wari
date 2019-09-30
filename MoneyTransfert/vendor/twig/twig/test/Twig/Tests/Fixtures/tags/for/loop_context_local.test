@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "for" tag adds a loop variable to the context locally
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return ['items' => []]
 --EXPECT--
 WORKS
+=======
+--TEST--
+"for" tag adds a loop variable to the context locally
+--TEMPLATE--
+{% for item in items %}
+{% endfor %}
+{% if loop is not defined %}WORKS{% endif %}
+--DATA--
+return ['items' => []]
+--EXPECT--
+WORKS
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

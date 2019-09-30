@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.1/phpunit.xsd"
@@ -12,3 +13,19 @@
         </extension>
     </extensions>
 </phpunit>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.1/phpunit.xsd"
+         printerClass="PHPUnit\Test\NullPrinter">
+    <extensions>
+        <extension class="PHPUnit\Test\Extension">
+            <arguments>
+                <integer>10</integer>
+                <string>SOME_STRING</string>
+                <double>2.3</double>
+            </arguments>
+        </extension>
+    </extensions>
+</phpunit>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

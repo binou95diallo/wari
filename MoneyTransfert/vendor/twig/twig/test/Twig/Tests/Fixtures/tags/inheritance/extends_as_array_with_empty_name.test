@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "extends" tag
 --TEMPLATE--
@@ -10,3 +11,17 @@ foo
 return []
 --EXPECT--
 foo
+=======
+--TEST--
+"extends" tag
+--TEMPLATE--
+{% extends ["", "bar.twig"] %}
+--TEMPLATE(bar.twig)--
+{% block content %}
+foo
+{% endblock %}
+--DATA--
+return []
+--EXPECT--
+foo
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

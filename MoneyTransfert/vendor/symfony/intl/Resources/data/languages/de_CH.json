@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Version": "2.1.47.86",
     "Names": {
@@ -17,3 +18,24 @@
         "prg": "Altpreussisch"
     }
 }
+=======
+{
+    "Version": "2.1.47.86",
+    "Names": {
+        "ace": "Aceh-Sprache",
+        "ach": "Acholi-Sprache",
+        "ars": "Nadschd-Arabisch",
+        "bas": "Basaa-Sprache",
+        "be": "Weissrussisch",
+        "bik": "Bikol-Sprache",
+        "bin": "Bini-Sprache",
+        "chb": "Chibcha-Sprache",
+        "din": "Dinka-Sprache",
+        "fan": "Pangwe-Sprache",
+        "gba": "Gbaya-Sprache",
+        "kmb": "Kimbundu-Sprache",
+        "mus": "Muskogee-Sprache",
+        "prg": "Altpreussisch"
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

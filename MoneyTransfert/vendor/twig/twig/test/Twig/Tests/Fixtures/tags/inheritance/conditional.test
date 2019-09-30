@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "extends" tag
 --TEMPLATE--
@@ -12,3 +13,19 @@
 return ['foo' => 'foo.twig', 'standalone' => true]
 --EXPECT--
 FOOFOO
+=======
+--TEST--
+"extends" tag
+--TEMPLATE--
+{% extends standalone ? foo : 'bar.twig' %}
+
+{% block content %}{{ parent() }}FOO{% endblock %}
+--TEMPLATE(foo.twig)--
+{% block content %}FOO{% endblock %}
+--TEMPLATE(bar.twig)--
+{% block content %}BAR{% endblock %}
+--DATA--
+return ['foo' => 'foo.twig', 'standalone' => true]
+--EXPECT--
+FOOFOO
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

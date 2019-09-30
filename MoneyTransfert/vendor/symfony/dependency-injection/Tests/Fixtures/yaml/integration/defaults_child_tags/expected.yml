@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
     child_service_expected:
         class: stdClass
@@ -7,3 +8,14 @@ services:
         autowire: true
         tags: [from_defaults]
         public: true
+=======
+services:
+    child_service_expected:
+        class: stdClass
+        # set explicitly on child (not overridden by parent)
+        autoconfigure: false
+        # set explicitly on child
+        autowire: true
+        tags: [from_defaults]
+        public: true
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

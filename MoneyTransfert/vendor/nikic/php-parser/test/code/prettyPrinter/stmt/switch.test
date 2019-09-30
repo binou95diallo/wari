@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 switch/case/default
 -----
 <?php
@@ -34,4 +35,42 @@ switch ($expr) {
     default:
         echo 'Default case';
         break;
+=======
+switch/case/default
+-----
+<?php
+
+switch ($expr) {
+    case 0:
+        echo 'First case, with a break';
+        break;
+    case 1:
+        echo 'Second case, which falls through';
+    case 2:
+    case 3:
+    case 4:
+        echo 'Third case, return instead of break';
+        return;
+    // Comment
+    default:
+        echo 'Default case';
+        break;
+}
+-----
+switch ($expr) {
+    case 0:
+        echo 'First case, with a break';
+        break;
+    case 1:
+        echo 'Second case, which falls through';
+    case 2:
+    case 3:
+    case 4:
+        echo 'Third case, return instead of break';
+        return;
+    // Comment
+    default:
+        echo 'Default case';
+        break;
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

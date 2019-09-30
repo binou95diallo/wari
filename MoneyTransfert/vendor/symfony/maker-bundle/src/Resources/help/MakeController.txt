@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 The <info>%command.name%</info> command generates a new controller class.
 
 <info>php %command.full_name% CoolStuffController</info>
@@ -7,3 +8,14 @@ If the argument is missing, the command will ask for the controller class name i
 You can also generate the controller alone, without template with this option:
 
 <info>php %command.full_name% --no-template</info>
+=======
+The <info>%command.name%</info> command generates a new controller class.
+
+<info>php %command.full_name% CoolStuffController</info>
+
+If the argument is missing, the command will ask for the controller class name interactively.
+
+You can also generate the controller alone, without template with this option:
+
+<info>php %command.full_name% --no-template</info>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

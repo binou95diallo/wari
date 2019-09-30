@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imports:
     - { resource: ../config/default.yml }
 
@@ -17,3 +18,24 @@ fos_rest:
 
 twig:
     strict_variables: '%kernel.debug%'
+=======
+imports:
+    - { resource: ../config/default.yml }
+
+framework:
+    serializer:
+        enabled: true
+    templating:
+        engines: ['twig']
+
+fos_rest:
+    exception: ~
+    format_listener:
+        rules:
+            - { path: '^/', fallback_format: json }
+    zone:
+        - { path: ^/api/* }
+
+twig:
+    strict_variables: '%kernel.debug%'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

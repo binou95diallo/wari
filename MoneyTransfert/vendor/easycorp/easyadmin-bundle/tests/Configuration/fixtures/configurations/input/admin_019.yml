@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TEST
 # configuration format #3 expanded to define a custom entity label explicitly
 # which contains special YAML characters
@@ -8,3 +9,15 @@ easy_admin:
         Category:
             class: AppTestBundle\Entity\UnitTests\Category
             label: 'Custom #Category ~ Label'
+=======
+# TEST
+# configuration format #3 expanded to define a custom entity label explicitly
+# which contains special YAML characters
+
+# CONFIGURATION
+easy_admin:
+    entities:
+        Category:
+            class: AppTestBundle\Entity\UnitTests\Category
+            label: 'Custom #Category ~ Label'
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

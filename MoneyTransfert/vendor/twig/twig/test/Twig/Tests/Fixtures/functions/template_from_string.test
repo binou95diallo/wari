@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "template_from_string" function
 --TEMPLATE--
@@ -13,3 +14,20 @@ return ['name' => 'Fabien', 'template' => "Hello {{ name }}"]
 Hello Fabien
 Hello Fabien
 Hello Fabien
+=======
+--TEST--
+"template_from_string" function
+--TEMPLATE--
+{% include template_from_string(template) %}
+
+{% include template_from_string("Hello {{ name }}") %}
+{% include template_from_string('{% extends "parent.twig" %}{% block content %}Hello {{ name }}{% endblock %}') %}
+--TEMPLATE(parent.twig)--
+{% block content %}{% endblock %}
+--DATA--
+return ['name' => 'Fabien', 'template' => "Hello {{ name }}"]
+--EXPECT--
+Hello Fabien
+Hello Fabien
+Hello Fabien
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

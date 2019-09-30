@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "set" tag block capture
 --TEMPLATE--
@@ -8,3 +9,15 @@
 return []
 --EXPECT--
 f<br />o<br />o
+=======
+--TEST--
+"set" tag block capture
+--TEMPLATE--
+{% set foo %}f<br />o<br />o{% endset %}
+
+{{ foo }}
+--DATA--
+return []
+--EXPECT--
+f<br />o<br />o
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /*
@@ -35,3 +36,42 @@ class TestPluralAdderRemoverAndSetter
         $this->emails = array_diff($this->emails, [$email]);
     }
 }
+=======
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\PropertyAccess\Tests;
+
+class TestPluralAdderRemoverAndSetter
+{
+    private $emails = [];
+
+    public function getEmails()
+    {
+        return $this->emails;
+    }
+
+    public function setEmails(array $emails)
+    {
+        $this->emails = ['foo@email.com'];
+    }
+
+    public function addEmail($email)
+    {
+        $this->emails[] = $email;
+    }
+
+    public function removeEmail($email)
+    {
+        $this->emails = array_diff($this->emails, [$email]);
+    }
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

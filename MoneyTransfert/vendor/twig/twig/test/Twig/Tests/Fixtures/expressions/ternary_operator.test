@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 Twig supports the ternary operator
 --TEMPLATE--
@@ -16,3 +17,23 @@ YES1
 NO1
 foo<br />
 foo-bar
+=======
+--TEST--
+Twig supports the ternary operator
+--TEMPLATE--
+{{ 1 ? 'YES' : 'NO' }}
+{{ 0 ? 'YES' : 'NO' }}
+{{ 0 ? 'YES' : (1 ? 'YES1' : 'NO1') }}
+{{ 0 ? 'YES' : (0 ? 'YES1' : 'NO1') }}
+{{ 1 == 1 ? 'foo<br />':'' }}
+{{ foo ~ (bar ? ('-' ~ bar) : '') }}
+--DATA--
+return ['foo' => 'foo', 'bar' => 'bar']
+--EXPECT--
+YES
+NO
+YES1
+NO1
+foo<br />
+foo-bar
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.ant_targets
 /.idea
 /.php_cs
@@ -19,3 +20,26 @@
 /tests/end-to-end/*.php
 /vendor
 .phpunit.result.cache
+=======
+/.ant_targets
+/.idea
+/.php_cs
+/.php_cs.cache
+/build/documentation
+/build/logfiles
+/build/phar
+/build/phar-scoped
+/build/phpdox
+/build/*.phar
+/build/*.phar.asc
+/build/binary-phar-autoload.php
+/cache.properties
+/composer.lock
+/tests/end-to-end/*.diff
+/tests/end-to-end/*.exp
+/tests/end-to-end/*.log
+/tests/end-to-end/*.out
+/tests/end-to-end/*.php
+/vendor
+.phpunit.result.cache
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

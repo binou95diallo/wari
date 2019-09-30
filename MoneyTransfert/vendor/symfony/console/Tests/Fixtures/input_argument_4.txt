@@ -1,2 +1,7 @@
+<<<<<<< HEAD
   <info>argument_name</info>  multiline
                  argument description
+=======
+  <info>argument_name</info>  multiline
+                 argument description
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

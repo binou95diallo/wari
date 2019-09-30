@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <xsd:schema xmlns="http://www.example.com/schema/projectwithxsd"
@@ -11,3 +12,18 @@
     <xsd:attribute name="foo" type="xsd:string" />
   </xsd:complexType>
 </xsd:schema>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns="http://www.example.com/schema/projectwithxsd"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.example.com/schema/projectwithxsd"
+    elementFormDefault="qualified">
+
+  <xsd:element name="bar" type="bar" />
+
+  <xsd:complexType name="bar">
+    <xsd:attribute name="foo" type="xsd:string" />
+  </xsd:complexType>
+</xsd:schema>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

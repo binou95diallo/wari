@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
     public function method()
     {
@@ -6,3 +7,13 @@
 
         return call_user_func_array([$expects, 'method'], func_get_args());
     }
+=======
+
+    public function method()
+    {
+        $any     = new \PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount;
+        $expects = $this->expects($any);
+
+        return call_user_func_array([$expects, 'method'], func_get_args());
+    }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

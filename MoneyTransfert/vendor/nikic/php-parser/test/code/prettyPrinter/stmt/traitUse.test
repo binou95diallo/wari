@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Trait uses and adaptations
 -----
 <?php
@@ -22,4 +23,30 @@ class A
         B::f as g;
         B::f insteadof C, D;
     }
+=======
+Trait uses and adaptations
+-----
+<?php
+
+class A
+{
+    use B, C, D {
+        f as g;
+        f as private;
+        f as private g;
+        B::f as g;
+        B::f insteadof C, D;
+    }
+}
+-----
+class A
+{
+    use B, C, D {
+        f as g;
+        f as private;
+        f as private g;
+        B::f as g;
+        B::f insteadof C, D;
+    }
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b
 }

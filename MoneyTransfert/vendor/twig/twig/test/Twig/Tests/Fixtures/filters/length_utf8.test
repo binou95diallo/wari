@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "length" filter
 --TEMPLATE--
@@ -8,3 +9,15 @@ return ['string' => 'été', 'markup' => new \Twig\Markup('foo', 'UTF-8')]
 --EXPECT--
 3
 3
+=======
+--TEST--
+"length" filter
+--TEMPLATE--
+{{ string|length }}
+{{ markup|length }}
+--DATA--
+return ['string' => 'été', 'markup' => new \Twig\Markup('foo', 'UTF-8')]
+--EXPECT--
+3
+3
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

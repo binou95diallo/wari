@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <event-dispatcher>
   <callable type="function" name="global_function" priority="255"/>
   <callable type="closure" priority="-1"/>
 </event-dispatcher>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<event-dispatcher>
+  <callable type="function" name="global_function" priority="255"/>
+  <callable type="closure" priority="-1"/>
+</event-dispatcher>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

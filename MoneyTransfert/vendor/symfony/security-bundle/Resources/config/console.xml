@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
@@ -14,3 +15,21 @@
         </service>
     </services>
 </container>
+=======
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+
+        <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand">
+            <argument type="service" id="security.encoder_factory"/>
+            <argument type="collection" /> <!-- encoders' user classes -->
+            <tag name="console.command" command="security:encode-password" />
+        </service>
+    </services>
+</container>
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

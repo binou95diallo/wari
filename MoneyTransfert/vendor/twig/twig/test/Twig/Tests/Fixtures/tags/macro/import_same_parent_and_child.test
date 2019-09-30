@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "import" tag
 --TEMPLATE--
@@ -28,3 +29,35 @@ Do it
 
 
     Do it too
+=======
+--TEST--
+"import" tag
+--TEMPLATE--
+{% extends "parent" %}
+
+{% macro anotherThing() -%}
+    Do it too
+{% endmacro %}
+
+{% import _self as macros %}
+{% block content %}
+    {{ parent() }}
+    {{ macros.anotherThing() }}
+{% endblock %}
+--TEMPLATE(parent)--
+{% macro thing() %}
+    Do it
+{% endmacro %}
+
+{% import _self as macros %}
+{% block content %}
+    {{ macros.thing() }}
+{% endblock %}
+--DATA--
+return []
+--EXPECT--
+Do it
+
+
+    Do it too
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 {
     "builtin_form_types": [],
     "service_form_types": [
         "Symfony\\Component\\Form\\Tests\\Console\\Descriptor\\FooType"
     ]
 }
+=======
+{
+    "builtin_form_types": [],
+    "service_form_types": [
+        "Symfony\\Component\\Form\\Tests\\Console\\Descriptor\\FooType"
+    ]
+}
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "block" function with undefined block
 --TEMPLATE--
@@ -14,3 +15,21 @@
 return []
 --EXCEPTION--
 Twig\Error\RuntimeError: Block "unknown" on template "base.twig" does not exist in "index.twig" at line 5.
+=======
+--TEST--
+"block" function with undefined block
+--TEMPLATE--
+{% extends "base.twig" %}
+{% block foo %}
+    {{ parent() }}
+    {{ block('unknown') }}
+    {{ block('bar') }}
+{% endblock %}
+--TEMPLATE(base.twig)--
+{% block foo %}Foo{% endblock %}
+{% block bar %}Bar{% endblock %}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\RuntimeError: Block "unknown" on template "base.twig" does not exist in "index.twig" at line 5.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

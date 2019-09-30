@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --TEST--
 "defined" support for "complex" expressions
 --TEMPLATE--
@@ -6,3 +7,13 @@
 return []
 --EXCEPTION--
 Twig\Error\SyntaxError: The "defined" test only works with simple variables in "index.twig" at line 2.
+=======
+--TEST--
+"defined" support for "complex" expressions
+--TEMPLATE--
+{{ (1 + 2) is defined ? 'ok' : 'ko' }}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\SyntaxError: The "defined" test only works with simple variables in "index.twig" at line 2.
+>>>>>>> 920aea0ab65ee18c3c6889c75023fc25561a852b

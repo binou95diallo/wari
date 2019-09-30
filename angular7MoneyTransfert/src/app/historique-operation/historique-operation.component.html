@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12">
+          <h2>Liste des opérations par utilisateurs</h2><hr>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="mat-elevation-z8" class="table-wrapper">
+            <table mat-table [dataSource]="dataSource" matSort class="fl-table">
+          
+              <!-- ID Column -->
+              <ng-container matColumnDef="caissier">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Caissier </th>
+                <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+              </ng-container>
+          
+              <!-- Progress Column -->
+              <ng-container matColumnDef="montant">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Montant </th>
+                <td mat-cell *matCellDef="let row"> {{row.montant}}</td>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="dateTransaction">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Date transaction</th>
+                <td mat-cell *matCellDef="let row"> {{row.date_transaction}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="type">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Type</th>
+                <td mat-cell *matCellDef="let row" [style.color]="row.color">{{row.type}}</td>
+              </ng-container>
+      
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+</div>

@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+<div class="row">
+  <div class="col-md-12">
+    <h2>Liste des opérations par partenaire</h2><hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    <div class="mat-elevation-z8" class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort class="fl-table">
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="numeroCompte">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> NUmero Compte </th>
+          <td mat-cell *matCellDef="let row"> {{row.numero_compte}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ninea">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Ninea</th>
+          <td mat-cell *matCellDef="let row"> {{row.ninea}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="montant">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Montant Dépôt </th>
+          <td mat-cell *matCellDef="let row"> {{row.montant}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateDepot">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Date dépôt</th>
+          <td mat-cell *matCellDef="let row"> {{row.date_depot}} </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="solde">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Solde </th>
+          <td mat-cell *matCellDef="let row"> {{row.solde}}</td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="raisonSocial">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Raison Social</th>
+          <td mat-cell *matCellDef="let row"> {{row.raison_social}} </td>
+        </ng-container>
+    
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+</div>

@@ -1,0 +1,116 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Interface admin Partenaire</h2> <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+        
+          <span class="anchor" id="formLogin"></span>
+          <!-- form card registration -->
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h2 class="mb-0">Formulaire de registration</h2>
+            </div>
+            <div class="card-body">
+              <form  [formGroup]="registerUserData" (ngSubmit)="registerUser(registerUserData.value)">
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="uname1">Username</label>
+                            <input type="text"  formControlName="username" name="username" class="form-control">
+                          </div>
+                          <div id="error" *ngFor="let error of errorMessage.username">
+                              <div *ngIf="registerUserData.get('username').hasError(error.type) &&
+                              (registerUserData.get('username').dirty || registerUserData.get('username').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" name="password" class="form-control">
+                      </div>
+                      <div id="error" *ngFor="let error of errorMessage.password">
+                          <div *ngIf="registerUserData.get('password').hasError(error.type) &&
+                          (registerUserData.get('password').dirty || registerUserData.get('password').touched)">
+                              {{error.message}}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="uname1">Email</label>
+                          <input type="text" formControlName="email" name="email" class="form-control">
+                        </div>
+                        <div id="error" *ngFor="let error of errorMessage.email">
+                            <div *ngIf="registerUserData.get('email').hasError(error.type) &&
+                            (registerUserData.get('email').dirty || registerUserData.get('email').touched)">
+                                {{error.message}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname1">NomComplet</label>
+                            <input type="text" formControlName="nomComplet" name="nomComplet" class="form-control">
+                          </div>
+                          <div id="error" *ngFor="let error of errorMessage.nomComplet">
+                              <div *ngIf="registerUserData.get('nomComplet').hasError(error.type) &&
+                              (registerUserData.get('nomComplet').dirty || registerUserData.get('nomComplet').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="uname1">Adresse</label>
+                              <input type="text" formControlName="adresse" name="adresse" class="form-control">
+                            </div>
+                            <div *ngFor="let error of errorMessage.adresse">
+                                <div id="error" *ngIf="registerUserData.get('adresse').hasError(error.type) &&
+                                (registerUserData.get('adresse').dirty || registerUserData.get('adresse').touched)">
+                                    {{error.message}}
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="uname1">Telephone</label>
+                            <input type="text" formControlName="telephone" name="telephone" class="form-control">
+                          </div>
+                          <div *ngFor="let error of errorMessage.telephone">
+                              <div id="error" *ngIf="registerUserData.get('telephone').hasError(error.type) &&
+                              (registerUserData.get('telephone').dirty || registerUserData.get('telephone').touched)">
+                                  {{error.message}}
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="uname1">Profil</label>
+                              <select formControlName="profil" name="profil" id="" >
+                                <span *ngIf="isAdminPartenaire()">
+                                    <option value="userPart">Utilisateur</option>
+                                </span>
+                                <option value="adminPartenaire" >Admin Partenaire</option>
+                                  <option value="caissier">Caissier</option>
+                              </select>
+                            </div>
+                              <div class="form-group">
+                                <label for="">Photo</label>
+                                <img [src]="imageUrl" alt="" style="width:70px; height:70px;">
+                                <input #imageName
+                                  type="file" accept="image/*"  class="form-control" required
+                                  (change)="handleFileInput($event.target.files)">
+                              </div>
+                              <div class="form-group">
+                                <div id="error" *ngIf="errorMessages" class="alert alert-danger">{{errorMessages}}</div>
+                              </div>
+                              
+                    </div>
+                  </div>
+                <button id="submit" type="submit" class="btn btn-primary float-right" [disabled]="!registerUserData.valid">Register</button>
+              </form>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+</div>

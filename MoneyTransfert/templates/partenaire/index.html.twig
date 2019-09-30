@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partenaire index{% endblock %}
+
+{% block body %}
+    <h1>Partenaire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomComplet</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Ninea</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partenaire in partenaires %}
+            <tr>
+                <td>{{ partenaire.id }}</td>
+                <td>{{ partenaire.nomComplet }}</td>
+                <td>{{ partenaire.adresse }}</td>
+                <td>{{ partenaire.telephone }}</td>
+                <td>{{ partenaire.ninea }}</td>
+                <td>{{ partenaire.email }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

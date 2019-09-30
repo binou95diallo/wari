@@ -1,0 +1,116 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="py-5 mt-5" *ngIf="reussie==null">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+              <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Infos Expéditeur
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field>
+                      <input matInput [(ngModel)]="expediteur.nomComplet" name="nomComplet" placeholder="Nom et Prénom" type="text" required [formControl]="nomComplet">
+                      <mat-error *ngIf="nomComplet.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                
+                    <mat-form-field>
+                      <input matInput [(ngModel)]="expediteur.adresse" name="adresse" placeholder="Adresse" type="text" required [formControl]="adresse" >
+                      <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="expediteur.telephone" name="telephone" placeholder="Téléphone" type="number" required [formControl]="telephone" >
+                        <mat-error *ngIf="telephone.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <mat-label>Type Pièce</mat-label>
+                        <select [(ngModel)]="expediteur.typePiece" name="typePiece" id="" matNativeControl required>
+                            <option value="cni" >Carte d'identité</option>
+                            <option value="passport">Passport</option>
+                        </select>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input matInput [(ngModel)]="expediteur.numeroPiece" name="numeroPiece" placeholder="Numéro Pièce d'Identité" type="text" required [formControl]="numeroPiece" >
+                          <mat-error *ngIf="numeroPiece.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                      
+                  </mat-expansion-panel>
+                  
+                </mat-accordion>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+              <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Infos Bénéficiaire
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field>
+                      <input matInput [(ngModel)]="beneficiaire.nomComplet" name="nomCompletR" placeholder="Nom et Prénom" type="text" required [formControl]="nomComplet" >
+                      <mat-error *ngIf="nomComplet.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                
+                    <mat-form-field>
+                      <input matInput [(ngModel)]="beneficiaire.adresse" name="adresseR" placeholder="Adresse" type="text" [formControl]="adresse" required>
+                      <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="beneficiaire.telephone" name="telephoneR" placeholder="Téléphone" type="number" [formControl]="telephone"  required>
+                        <mat-error *ngIf="telephone.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                  </mat-expansion-panel>
+                  
+                </mat-accordion>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="example-container">
+                    <mat-form-field>
+                      <input matInput [(ngModel)]="beneficiaire.montant" name="montant"  placeholder="Montant" type="number" [formControl]="montant" required>
+                      <mat-error *ngIf="montant.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" (click)="envoiTransact()">Envoyer</button>
+                  
+                  </div>
+                  <div class="form-group">
+                      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+                      </div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+            <div class="py-5 mt-5" *ngIf="reussie=='oui'">
+              <fieldset>
+                <legend>Expéditeur</legend>
+                    <p>Nom et Prénom: {{transaction.expediteur.nomComplet}}</p>
+                    <p>Adresse: {{transaction.expediteur.adresse}}</p>
+                    <p>Telephone: {{transaction.expediteur.telephone}}</p>
+                    <p>NumeroPiece: {{transaction.expediteur.numeroPiece}}</p>
+              </fieldset>
+              <fieldset>
+                <legend>Bénéficiaire</legend>
+                    <p>Nom et Prénom: {{transaction.recepteur.nomCompletR}}</p>
+                    <p>Adresse: {{transaction.recepteur.adresseR}}</p>
+                    <p>Telephone: {{transaction.recepteur.telephoneR}}</p>
+                    <p>NumeroPiece: {{transaction.recepteur.numeroPieceR}}</p>
+              </fieldset>
+              <fieldset>
+                <legend>Transaction</legend>
+                    <p>Montant: {{transaction.montant}}</p>
+                    <p>Code:    {{transaction.code}}</p>
+                    <p>Frais:   {{transaction.frais}}</p>
+                    <p>Caissier:  {{transaction.user.username}}</p>
+              </fieldset>
+              <button mat-raised-button color="accent" (click)="imprimerRecu()">Imprimer</button>
+            </div>
+</div>
+  
